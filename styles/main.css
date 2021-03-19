@@ -496,6 +496,24 @@ ul li {
   width: 5px;
   height: 5px;
 }
+/* topcat */
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  right: 50px;
+  top: -900px;
+  z-index: 2;
+  width: 70px;
+  height: 900px;
+  background: url(https://blog-static.cnblogs.com/files/fsh001/scroll.gif);
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+}
+@media (max-width: 991px) {
+  .back-to-top {
+    display: none!important;
+  }
+}
 .navbar {
   padding: 38px 96px !important;
 }

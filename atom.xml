@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T05:29:29.179Z</updated>
+    <updated>2021-03-19T05:35:26.953Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -77,8 +77,8 @@ Syslinux 配置中Unraid OS栏添加以下命令<br>
 <br></p>
 <h5 id="2固定vf网卡mac地址"><em><strong>2.固定VF网卡MAC地址</strong></em></h5>
 <p>生成的VF网卡MAC地址是混乱的，不好记<br>
-所以.......</p>
-<p>我们需要给这些设备都给编上号，让自己好记<br>
+所以.......<br>
+我们需要给这些设备都给编上号，让自己好记<br>
 编辑<code>/boot/config/go</code> 文件<br>
 在<code>sudo echo 7 &gt; /sys/class/net/eth1/device/sriov_numvfs</code>下方添加以下命令</p>
 <pre><code>ip link set eth1 vf 0 mac 00:25:8b:03:10:01
@@ -159,7 +159,7 @@ SYSNICS=&quot;2&quot;
 <p>保存重启<br>
 这样在系统启动的时候就会启动此端口<br>
 这样虚拟机就可以正常获取网络了😁</p>
-<p>很不巧，我遇到了这些问题，所以我最终的go文件中信息如下</p>
+<p>#######很不巧，我遇到了这些问题，所以我最终的go文件中信息如下</p>
 <pre><code>#!/bin/bash
 # enable SRIOV and process vfio-pci binding again
 echo 7 &gt; /sys/class/net/eth1/device/sriov_numvfs

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T08:40:13.403Z</updated>
+    <updated>2021-03-19T08:50:27.810Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -40,7 +40,7 @@ Infuse:<br>
 垃圾infuse,安卓都不支持<br>
 所以哪个合适自己就选择哪个咯😉</p>
 <h3 id="2下载所需文件"><em><strong>2.下载所需文件</strong></em></h3>
-<h4 id="a-下载dll文件-dll感谢yukinos大佬制作的补丁">a. 下载dll文件  <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/System.Net.Http.dll">dll</a>感谢@Yukino's大佬制作的补丁</strong></em></h4>
+<h4 id="a-下载dll文件-dll感谢yukinos大佬制作的补丁">a. 下载dll文件 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/System.Net.Http.dll">dll</a>感谢@Yukino's大佬制作的补丁</strong></em></h4>
 <h4 id="b-下载欺诈服务器验证文件-ca">b. 下载欺诈服务器验证文件  <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/ca.7z">ca</a></strong></em></h4>
 <h3 id="3准备嫖她"><em><strong>3.准备嫖她</strong></em></h3>
 <h4 id="a-以unraid为例">a. 以Unraid为例</h4>
@@ -62,7 +62,7 @@ nginx -s reload
 <p>如果有IPV6的,要么勾选<code>禁止解析 IPv6 DNS 记录</code><br>
 <img src="https://s1oz.github.io/post-images/1616134857968.png" alt="" loading="lazy"><br>
 要么就<code>hosts</code>中加入ipv6地址劫持</p>
-<h3 id="4安装emby"><em><strong>4.安装Emby</strong></em></h3>
+<h2 id="4安装emby"><em><strong>4.安装Emby</strong></em></h2>
 <p>应用中搜素<code>Emby</code>,选择<code>EmbyServerBeta (BETA)</code>安装  🤞反正我是喜欢追新<br>
 里面根据自己片子目录映射,需要注意的就是两点<br>
 添加核显<br>
@@ -70,7 +70,7 @@ nginx -s reload
 映射dll补丁<br>
 <img src="https://s1oz.github.io/post-images/1616135545157.png" alt="" loading="lazy"><br>
 然后点击应用即可,以后如果官方更新,直接点更新即可,完全不影响,这样即可完美追新</p>
-<h3 id="5愉快的使用"><em><strong>5.愉快的使用</strong></em></h3>
+<h2 id="5愉快的使用"><em><strong>5.愉快的使用</strong></em></h2>
 <p>打开emby界面,随意在<code>Emby Premiere密钥</code>栏中输入激活码,点击保存即可激活会员权益<br>
 <img src="https://s1oz.github.io/post-images/1616135902477.png" alt="" loading="lazy"><br>
 再看下转码-高级中是否已经出现显卡<br>

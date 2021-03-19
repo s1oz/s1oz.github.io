@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T08:50:27.810Z</updated>
+    <updated>2021-03-19T08:59:46.948Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://s1oz.github.io/images/avatar.png</logo>
     <icon>https://s1oz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 杂乱的备忘录</rights>
+    <entry>
+        <title type="html"><![CDATA[假装给群晖披层马甲]]></title>
+        <id>https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/</id>
+        <link href="https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/">
+        </link>
+        <updated>2021-03-19T08:54:59.000Z</updated>
+        <content type="html"><![CDATA[<p>test</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Docker安装Emby并白嫖]]></title>
         <id>https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/</id>

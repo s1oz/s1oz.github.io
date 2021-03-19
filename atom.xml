@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T05:36:22.900Z</updated>
+    <updated>2021-03-19T05:37:44.754Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -33,7 +33,7 @@ Unraid-工具-系统设备-鼠标悬停在自己的网卡上<br>
 <p><code>8086:10c9</code>为网卡设备ID<br>
 <br><br>
 <br></p>
-<h3 id="准备工作"><em><strong>准备工作</strong></em></h3>
+<h3 id="开搞"><em><strong>开搞</strong></em></h3>
 <p>1.进bios-高级-芯片组 页面中默认应该是这样的<br>
 <img src="https://s1oz.github.io/post-images/1616125544679.jpg" alt="" loading="lazy"><br>
 把没开的所有选项都开启</p>

@@ -7,7 +7,7 @@
 
 <title>Unraid 6.9.x 网卡开启SR-IOV | 杂乱的备忘录</title>
 
-<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616139216524">
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616139580117">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
@@ -112,7 +112,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1616139216524" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1616139580117" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -209,9 +209,9 @@ Syslinux 配置中Unraid OS栏添加以下命令<br>
 <img src="https://s1oz.github.io/post-images/1616128005870.png" alt="" loading="lazy"><br>
 然后就可以勾选相应的网卡分配给虚拟机使用了</p>
 <h2 id="接下来说说疑难杂症"><em><strong>接下来说说疑难杂症</strong></em></h2>
-<p>就是我遇到的问题，相同案例可以按此方法解决</p>
-<h5 id="1系统设备无法勾选绑定网卡"><em><strong>1.系统设备无法勾选绑定网卡</strong></em></h5>
-<p>如网卡默认被unraid调用无法勾选先添加此命令<br>
+<p>就是我遇到的问题，相同案例可以按此方法解决<br>
+<em><strong>1.系统设备无法勾选绑定网卡</strong></em><br>
+如网卡默认被unraid调用无法勾选先添加此命令<br>
 从unraid分离<code>8086:10c9</code>按自己ID填写<br>
 <img src="https://s1oz.github.io/post-images/1616130061951.png" alt="" loading="lazy"></p>
 <pre><code>vifo-pci.ids=8086:10c9
@@ -219,8 +219,8 @@ Syslinux 配置中Unraid OS栏添加以下命令<br>
 <p>重启后网卡在系统设备中即可勾选绑定<br>
 绑定后建议删除此命令<br>
 建议所有绑定操作皆通过系统设备勾选操作</p>
-<h5 id="2固定vf网卡mac地址"><em><strong>2.固定VF网卡MAC地址</strong></em></h5>
-<p>生成的VF网卡MAC地址是混乱的，不好记<br>
+<p><em><strong>2.固定VF网卡MAC地址</strong></em><br>
+生成的VF网卡MAC地址是混乱的，不好记<br>
 所以.......<br>
 我们需要给这些设备都给编上号，让自己好记<br>
 编辑<code>/boot/config/go</code> 文件<br>
@@ -238,8 +238,8 @@ MAC地址随便编辑，我后面是根据VF网卡ID来<br>
 这玩意儿就图个好记<br>
 保存-重启<br>
 现在可以去路由器中的DHCP添加对应信息了😁</p>
-<h5 id="3虚拟机中网卡显示不完整"><em><strong>3.虚拟机中网卡显示不完整</strong></em></h5>
-<p>如图，系统设备中VF网卡只亮了一个<br>
+<p><em><strong>3.虚拟机中网卡显示不完整</strong></em><br>
+如图，系统设备中VF网卡只亮了一个<br>
 <img src="https://s1oz.github.io/post-images/1616128477045.png" alt="" loading="lazy"><br>
 虚拟机中只有一个网卡，没有将虚拟的7个VF全部显示出来<br>
 <img src="https://s1oz.github.io/post-images/1616128498247.png" alt="" loading="lazy"><br>
@@ -285,7 +285,7 @@ SYSNICS=&quot;2&quot;
 </code></pre>
 <p>这样确保只有unraid一个口，删除其他网卡<br>
 保存重启</p>
-<h5 id="4vf网卡没网-eth1网卡默认关闭"><em><strong>4.VF网卡没网 ETH1网卡默认关闭</strong></em></h5>
+<p><em><strong>4.VF网卡没网 ETH1网卡默认关闭</strong></em></p>
 <p>如果...<br>
 系统设备中VF网卡全亮了<br>
 虚拟机VF也全显示了<br>
@@ -301,7 +301,7 @@ SYSNICS=&quot;2&quot;
 <p>保存重启<br>
 这样在系统启动的时候就会启动此端口<br>
 这样虚拟机就可以正常获取网络了😁</p>
-<p>#######很不巧，我遇到了这些问题，所以我最终的go文件中信息如下</p>
+<p>####### 很不巧，我遇到了这些问题，所以我最终的go文件中信息如下</p>
 <pre><code>#!/bin/bash
 # enable SRIOV and process vfio-pci binding again
 echo 7 &gt; /sys/class/net/eth1/device/sriov_numvfs
@@ -348,13 +348,7 @@ ifconfig eth1 up
 <li><a href="#%E5%BC%80%E6%90%9E"><em><strong>开搞</strong></em></a></li>
 </ul>
 </li>
-<li><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%AF%B4%E8%AF%B4%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87"><em><strong>接下来说说疑难杂症</strong></em></a><br>
-*<br>
-*<br>
-* <a href="#1%E7%B3%BB%E7%BB%9F%E8%AE%BE%E5%A4%87%E6%97%A0%E6%B3%95%E5%8B%BE%E9%80%89%E7%BB%91%E5%AE%9A%E7%BD%91%E5%8D%A1"><em><strong>1.系统设备无法勾选绑定网卡</strong></em></a><br>
-* <a href="#2%E5%9B%BA%E5%AE%9Avf%E7%BD%91%E5%8D%A1mac%E5%9C%B0%E5%9D%80"><em><strong>2.固定VF网卡MAC地址</strong></em></a><br>
-* <a href="#3%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E7%BD%91%E5%8D%A1%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%8C%E6%95%B4"><em><strong>3.虚拟机中网卡显示不完整</strong></em></a><br>
-* <a href="#4vf%E7%BD%91%E5%8D%A1%E6%B2%A1%E7%BD%91-eth1%E7%BD%91%E5%8D%A1%E9%BB%98%E8%AE%A4%E5%85%B3%E9%97%AD"><em><strong>4.VF网卡没网 ETH1网卡默认关闭</strong></em></a></li>
+<li><a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%AF%B4%E8%AF%B4%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87"><em><strong>接下来说说疑难杂症</strong></em></a></li>
 </ul>
 </li>
 </ul>

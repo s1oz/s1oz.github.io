@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T04:55:33.661Z</updated>
+    <updated>2021-03-19T05:03:45.360Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -64,18 +64,16 @@ Syslinux 配置中Unraid OS栏添加以下命令<br>
 <br></p>
 <h2 id="接下来说说疑难杂症"><em><strong>接下来说说疑难杂症</strong></em></h2>
 <p>就是我遇到的问题，相同案例可以按此方法解决<br>
-<br><br>
 <br></p>
 <h5 id="1系统设备无法勾选绑定网卡"><em><strong>1.系统设备无法勾选绑定网卡</strong></em></h5>
 <p>如网卡默认被unraid调用无法勾选先添加此命令<br>
-从unraid分离<code>8086:10c9</code>按自己ID填写</p>
+从unraid分离<code>8086:10c9</code>按自己ID填写<br>
+<img src="https://s1oz.github.io/post-images/1616130061951.png" alt="" loading="lazy"></p>
 <pre><code>vifo-pci.ids=8086:10c9
 </code></pre>
-<p><img src="https://s1oz.github.io/post-images/1616056392218.png" alt="" loading="lazy"><br>
-重启后网卡在系统设备中即可勾选绑定<br>
+<p>重启后网卡在系统设备中即可勾选绑定<br>
 绑定后建议删除此命令<br>
 建议所有绑定操作皆通过系统设备勾选操作<br>
-<br><br>
 <br></p>
 <h5 id="2固定vf网卡mac地址"><em><strong>2.固定VF网卡MAC地址</strong></em></h5>
 <p>生成的VF网卡MAC地址是混乱的，不好记<br>
@@ -96,7 +94,6 @@ MAC地址随便编辑，我后面是根据VF网卡ID来<br>
 这玩意儿就图个好记<br>
 保存-重启<br>
 现在可以去路由器中的DHCP添加对应信息了😁<br>
-<br><br>
 <br></p>
 <h5 id="3虚拟机中网卡显示不完整"><em><strong>3.虚拟机中网卡显示不完整</strong></em></h5>
 <p>如图，系统设备中VF网卡只亮了一个<br>
@@ -145,7 +142,6 @@ SYSNICS=&quot;2&quot;
 </code></pre>
 <p>这样确保只有unraid一个口，删除其他网卡<br>
 保存重启<br>
-<br><br>
 <br></p>
 <h5 id="4vf网卡没网-eth1网卡默认关闭"><em><strong>4.VF网卡没网 ETH1网卡默认关闭</strong></em></h5>
 <p>如果...<br>
@@ -163,6 +159,23 @@ SYSNICS=&quot;2&quot;
 <p>保存重启<br>
 这样在系统启动的时候就会启动此端口<br>
 这样虚拟机就可以正常获取网络了😁</p>
+<p>很不巧，我遇到了这些问题，所以我最终的go文件中信息如下</p>
+<pre><code>#!/bin/bash
+# enable SRIOV and process vfio-pci binding again
+echo 7 &gt; /sys/class/net/eth1/device/sriov_numvfs
+ip link set eth1 vf 0 mac 00:25:8b:03:10:01
+ip link set eth1 vf 1 mac 00:25:8b:03:10:03
+ip link set eth1 vf 2 mac 00:25:8b:03:10:05
+ip link set eth1 vf 3 mac 00:25:8b:03:10:07
+ip link set eth1 vf 4 mac 00:25:8b:03:11:01
+ip link set eth1 vf 5 mac 00:25:8b:03:11:03
+ip link set eth1 vf 6 mac 00:25:8b:03:11:05
+/usr/local/sbin/vfio-pci &gt;&gt;/var/log/vfio-pci
+ifconfig eth1 up
+
+# Start the Management Utility
+/usr/local/sbin/emhttp &amp;
+</code></pre>
 ]]></content>
     </entry>
     <entry>

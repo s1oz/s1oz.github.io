@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T08:59:46.948Z</updated>
+    <updated>2021-03-19T09:00:30.847Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/">
         </link>
         <updated>2021-03-19T08:54:59.000Z</updated>
-        <content type="html"><![CDATA[<p>test</p>
+        <content type="html"><![CDATA[<p>做个记号</p>
 ]]></content>
     </entry>
     <entry>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T08:14:21.850Z</updated>
+    <updated>2021-03-19T08:27:39.198Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -82,7 +82,16 @@ nginx -s reload
 为了更愉快的使用,如刮削不出,封面不完整 <strong><strong>请配合蹄子,蹄子越香口感越好</strong></strong></p>
 <h3 id="可能会遇到的问题">可能会遇到的问题</h3>
 <h4 id="1-其他平台咋办">1. 其他平台咋办</h4>
-<p>都一个意思,docker通用,打补丁,劫持到伪站验证</p>
+<p>都一个意思,docker通用,打补丁,劫持到伪站验证<br>
+群辉套件之类的..已经有一键脚本了.转docker吧,追新才是王道<br>
+群辉利用<code>Web Station</code>搭建验证伪站可以替换此文件***<a href="https://raw.githubusercontent.com/s1oz/export_embyonekey/master/user.conf">user.conf</a>***<br>
+路径为</p>
+<pre><code>/usr/local/etc/nginx/conf.d/*-*-*-*
+</code></pre>
+<p><code>*-*-*-*</code>为建立虚拟主机的随机数字的文件夹<br>
+替换后以此命令刷新</p>
+<pre><code>nginx -s reload
+</code></pre>
 <h4 id="2-核显调用">2. 核显调用</h4>
 <p>现在的人,永远就自动照搬,不看官方更新,请不要在go文件中添加</p>
 <pre><code>    modprobe i915

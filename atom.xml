@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T05:37:44.754Z</updated>
+    <updated>2021-03-19T05:38:20.018Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -63,8 +63,7 @@ Syslinux 配置中Unraid OS栏添加以下命令<br>
 <br><br>
 <br></p>
 <h2 id="接下来说说疑难杂症"><em><strong>接下来说说疑难杂症</strong></em></h2>
-<p>就是我遇到的问题，相同案例可以按此方法解决<br>
-<br></p>
+<p>就是我遇到的问题，相同案例可以按此方法解决</p>
 <h5 id="1系统设备无法勾选绑定网卡"><em><strong>1.系统设备无法勾选绑定网卡</strong></em></h5>
 <p>如网卡默认被unraid调用无法勾选先添加此命令<br>
 从unraid分离<code>8086:10c9</code>按自己ID填写<br>

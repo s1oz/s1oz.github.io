@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T09:00:30.847Z</updated>
+    <updated>2021-03-19T09:20:31.299Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -16,7 +16,34 @@
         <link href="https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/">
         </link>
         <updated>2021-03-19T08:54:59.000Z</updated>
-        <content type="html"><![CDATA[<p>做个记号</p>
+        <content type="html"><![CDATA[<h3 id="1严打呀唉~"><em><strong>1.严打呀,唉~</strong></em></h3>
+<p>以前是要公网难,现在是有公网开端口难🙁<br>
+开了的时时刻刻要担心被运营商以违法搭建web服务找上门😱<br>
+所以,给群晖,<strong>&quot;备个案吧&quot;</strong><br>
+<strong>像这样</strong>😬<br>
+<img src="https://s1oz.github.io/post-images/1616145064564.png" alt="" loading="lazy"><br>
+是不是突然就不怕了<br>
+突然感觉自己是<strong>正经人</strong>了🙄<br>
+只要把自己骗倒,他就是真的!!!!</p>
+<h3 id="2咋整呢"><em><strong>2.咋整呢</strong></em></h3>
+<h4 id="a-先弄个假图标-icon">a. 先弄个假图标🤢 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/icon.png">icon</a></strong></em></h4>
+<h4 id="b-放入假图标">b. 放入假图标</h4>
+<p>把刚刚下载的<code>icon.png</code>上传到群晖上 如<code>/volume1/files/</code>文件夹<br>
+<code>root</code>权限登陆群晖</p>
+<pre><code>mv /volume1/files/icon.png /usr/syno/synoman/icon.png
+</code></pre>
+<p>移动假图片到系统目录</p>
+<h4 id="c-添加beian信息">c. 添加beian信息</h4>
+<p>在控制面板-主题样式-页脚信息中填入以下代码<br>
+<img src="https://s1oz.github.io/post-images/1616145559676.png" alt="" loading="lazy"></p>
+<pre><code>&lt;html&gt;                                                          
+&lt;img src=&quot;./icon.png&quot;&gt;
+&lt;a target=&quot;_blank&quot;   
+href=&quot;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602002841&quot; &gt;沪公网安备31010602002841号 &lt;/a&gt;&lt;a target=&quot;_blank&quot;  href=&quot;https://beian.miit.gov.cn/#/Integrated/recordQuery&quot; &gt;沪ICP备15015915号&lt;a&gt;                                           
+&lt;/html&gt;
+</code></pre>
+<p>点击确定,保存</p>
+<h3 id="好嘞你已经成功欺骗了自己">好嘞,你已经成功欺骗了自己</h3>
 ]]></content>
     </entry>
     <entry>

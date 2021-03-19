@@ -7,7 +7,7 @@
 
 <title>假装给群晖披层马甲 | 杂乱的备忘录</title>
 
-<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616144428414">
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616145628359">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
@@ -112,7 +112,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1616144428414" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1616145628359" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -152,7 +152,34 @@
 
                     <!-- <div class="post-content-wrapper"> -->
                     <div class="post-content">
-                        <p>做个记号</p>
+                        <h3 id="1严打呀唉~"><em><strong>1.严打呀,唉~</strong></em></h3>
+<p>以前是要公网难,现在是有公网开端口难🙁<br>
+开了的时时刻刻要担心被运营商以违法搭建web服务找上门😱<br>
+所以,给群晖,<strong>&quot;备个案吧&quot;</strong><br>
+<strong>像这样</strong>😬<br>
+<img src="https://s1oz.github.io/post-images/1616145064564.png" alt="" loading="lazy"><br>
+是不是突然就不怕了<br>
+突然感觉自己是<strong>正经人</strong>了🙄<br>
+只要把自己骗倒,他就是真的!!!!</p>
+<h3 id="2咋整呢"><em><strong>2.咋整呢</strong></em></h3>
+<h4 id="a-先弄个假图标-icon">a. 先弄个假图标🤢 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/icon.png">icon</a></strong></em></h4>
+<h4 id="b-放入假图标">b. 放入假图标</h4>
+<p>把刚刚下载的<code>icon.png</code>上传到群晖上 如<code>/volume1/files/</code>文件夹<br>
+<code>root</code>权限登陆群晖</p>
+<pre><code>mv /volume1/files/icon.png /usr/syno/synoman/icon.png
+</code></pre>
+<p>移动假图片到系统目录</p>
+<h4 id="c-添加beian信息">c. 添加beian信息</h4>
+<p>在控制面板-主题样式-页脚信息中填入以下代码<br>
+<img src="https://s1oz.github.io/post-images/1616145559676.png" alt="" loading="lazy"></p>
+<pre><code>&lt;html&gt;                                                          
+&lt;img src=&quot;./icon.png&quot;&gt;
+&lt;a target=&quot;_blank&quot;   
+href=&quot;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602002841&quot; &gt;沪公网安备31010602002841号 &lt;/a&gt;&lt;a target=&quot;_blank&quot;  href=&quot;https://beian.miit.gov.cn/#/Integrated/recordQuery&quot; &gt;沪ICP备15015915号&lt;a&gt;                                           
+&lt;/html&gt;
+</code></pre>
+<p>点击确定,保存</p>
+<h3 id="好嘞你已经成功欺骗了自己">好嘞,你已经成功欺骗了自己</h3>
 
                     </div>
                     <div class="essaySuffix-box">
@@ -174,7 +201,26 @@
                 </div>
                 <!-- </div> -->
                 <div class="toc-container">
-                    
+                    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1%E4%B8%A5%E6%89%93%E5%91%80%E5%94%89~"><em><strong>1.严打呀,唉~</strong></em></a></li>
+<li><a href="#2%E5%92%8B%E6%95%B4%E5%91%A2"><em><strong>2.咋整呢</strong></em></a>
+<ul>
+<li><a href="#a-%E5%85%88%E5%BC%84%E4%B8%AA%E5%81%87%E5%9B%BE%E6%A0%87-icon">a. 先弄个假图标🤢 <em><strong>icon</strong></em></a></li>
+<li><a href="#b-%E6%94%BE%E5%85%A5%E5%81%87%E5%9B%BE%E6%A0%87">b. 放入假图标</a></li>
+<li><a href="#c-%E6%B7%BB%E5%8A%A0beian%E4%BF%A1%E6%81%AF">c. 添加beian信息</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A5%BD%E5%98%9E%E4%BD%A0%E5%B7%B2%E7%BB%8F%E6%88%90%E5%8A%9F%E6%AC%BA%E9%AA%97%E4%BA%86%E8%87%AA%E5%B7%B1">好嘞,你已经成功欺骗了自己</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
                 </div>
             </article>
             <!-- </div> -->

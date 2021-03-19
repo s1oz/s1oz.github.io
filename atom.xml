@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T09:20:31.299Z</updated>
+    <updated>2021-03-19T12:30:23.173Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -312,6 +312,79 @@ ifconfig eth1 up
 # Start the Management Utility
 /usr/local/sbin/emhttp &amp;
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PXE+ABB 备份恢复好帮手]]></title>
+        <id>https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/</id>
+        <link href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
+        </link>
+        <updated>2019-08-15T11:08:52.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1pxe跟abb是啥"><em><strong>1.PXE跟ABB是啥</strong></em></h3>
+<h4 id="a-pxe">a. PXE:</h4>
+<p>预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动可以不依赖本地数据存储设备（如硬盘）或本地已安装的操作系统。</p>
+<h4 id="b-abb">B. ABB:</h4>
+<p>(Active Backup for Business)使您可从Synology NAS 的一个中央控制台管理所有VMware、Hyper-V、Windows 设备和文件服务器备份。快速可靠的恢复选项借助用于 Windows 设备、虚拟机和单个文件的即时还原选项，帮助您在面临灾难时仍可运行基本服务。</p>
+<p><strong><code>所以通过这两个搭配可以利用群辉来实现无盘启动安装系统跟恢复备份镜像</code></strong></p>
+<h3 id="2需要做啥准备工作"><em><strong>2.需要做啥准备工作</strong></em></h3>
+<h4 id="a-群辉安装所需套件">a. 群辉安装所需套件</h4>
+<p>套件中心安装<code>Active Backup for Business</code> <code>Web Station</code> <code>PHP 7.0</code>这三个套件</p>
+<h4 id="b-下载所需文件">b. 下载所需文件</h4>
+<p>压缩包中含有支持uefi启动的pxe跟集成abb的pe的压缩包 <em><strong><a href="https://">这</a></strong></em></p>
+<h4 id="c-配置文件路径">c.  配置文件路径</h4>
+<p>在群辉-控制面板-共享文件夹-新增<code>uefi</code>文件夹<br>
+<img src="https://s1oz.github.io/post-images/1616154472486.jpg" alt="" loading="lazy"><br>
+将压缩包解压后放置在此目录中<br>
+<img src="https://s1oz.github.io/post-images/1616154468238.jpg" alt="" loading="lazy"><br>
+并将文件夹中的<code>boot.ipxe.cfg</code>中的<br>
+<img src="https://s1oz.github.io/post-images/1616155457362.png" alt="" loading="lazy"></p>
+<pre><code>set nas_ip 192.168.2.101
+</code></pre>
+<p>ip改为自己群辉的ip</p>
+<h4 id="d-建立虚拟主机">d.  建立虚拟主机</h4>
+<p>在<code>Web Stasion</code>中新增虚拟机 如图配置<br>
+<img src="https://s1oz.github.io/post-images/1616154716349.jpg" alt="" loading="lazy"><br>
+端口默认<code>6666</code><br>
+文件根目录下为刚刚新建的<code>uefi</code>文件夹<br>
+下方选择<code>Nginx</code>跟<code>PHP7.0</code></p>
+<h4 id="e-启用群辉tftp服务">e. 启用群辉TFTP服务</h4>
+<p>群晖-控制面板-TFTP<br>
+<img src="https://s1oz.github.io/post-images/1616154850844.jpg" alt="" loading="lazy"><br>
+勾选<em>启用TFTP服务</em><br>
+TFTP跟文件夹选择刚刚新增的<code>uefi</code>文件夹</p>
+<h4 id="f-路由器tftp指向群辉">f. 路由器TFTP指向群辉</h4>
+<p>以OP为例,在dnsmasq文件中添加以下代码<br>
+<img src="https://s1oz.github.io/post-images/1616155500607.jpg" alt="" loading="lazy"></p>
+<pre><code>enable-tftp
+dhcp-boot=ipxe.efi,,192.168.1.2.101
+</code></pre>
+<p><code>ipxe.efi</code>为uefi启动文件<br>
+<code>192.168.1.2.101</code>为群辉ip</p>
+<h4 id="g-设置bios">g. 设置bios</h4>
+<p>电脑连接网线<br>
+bios中开启pxe启动相关选项<br>
+<img src="https://s1oz.github.io/post-images/1616155154301.png" alt="" loading="lazy"><br>
+并调整启动顺序<br>
+<strong>如卡pe无法进入,请检查bios是否开启安全启动,如有关闭即可正常启动</strong><br>
+到此配置结束</p>
+<h3 id="3启动后可以干嘛"><em><strong>3.启动后可以干嘛</strong></em></h3>
+<h4 id="a-连接pxe服务器并启动到pe">a. 连接PXE服务器并启动到PE</h4>
+<p>上电!开机!<br>
+<img src="https://s1oz.github.io/post-images/1616156310970.jpg" alt="" loading="lazy"></p>
+<h4 id="b-利用abb恢复之前备份的镜像">b. 利用ABB恢复之前备份的镜像</h4>
+<p>进入到PE后点击<code>是,启用共享并连接到设备</code><br>
+<img src="https://s1oz.github.io/post-images/1616156365757.jpg" alt="" loading="lazy"><br>
+然后该怎么做不用我说了吧🤣<br>
+桌面的<code>Synology Recovery Tool</code>文件夹的<code>recovery.exe</code><br>
+就是群辉的恢复工具,双击打开<br>
+<img src="https://s1oz.github.io/post-images/1616156533245.jpg" alt="" loading="lazy"><br>
+登陆后选择备份恢复即可</p>
+<h4 id="c-利用winntstup安装系统">c. 利用WinNTStup安装系统</h4>
+<p>通过smb服务连接到群辉<br>
+<img src="https://s1oz.github.io/post-images/1616156663165.jpg" alt="" loading="lazy"><br>
+加载群辉上的系统安装镜像<br>
+<img src="https://s1oz.github.io/post-images/1616156673333.jpg" alt="" loading="lazy">萝卜青菜各有索爱嘛<br>
+<strong>同理,如果PE上的ABB软件过于陈旧,可以下载了放置在群辉上,挂载后使用</strong></p>
 ]]></content>
     </entry>
 </feed>

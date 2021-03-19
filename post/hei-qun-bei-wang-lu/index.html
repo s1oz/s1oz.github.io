@@ -5,7 +5,7 @@
 <meta name="description" content="以备不时之需"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>关于 | 杂乱的备忘录</title>
+<title>黑群备忘录 | 杂乱的备忘录</title>
 
 <link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616161024612">
 
@@ -126,19 +126,19 @@
             <article style="display:flex;">
                 <div class="post-detail gt-bg-theme-color-second gt-post-content">
                     <h2 class="post-title">
-                        关于
+                        黑群备忘录
                     </h2>
                     <div class="post-info">
                         <div>
                             <time class="post-time gt-c-content-color-first">
-                                · 2017-06-22 ·
+                                · 2018-06-10 ·
                             </time>
                             
                         </div>
                         <div>
                             
-                            <span id="/post/about/"
-                                class="leancloud_visitors" data-flag-title="关于">
+                            <span id="/post/hei-qun-bei-wang-lu/"
+                                class="leancloud_visitors" data-flag-title="黑群备忘录">
                                 <em class="post-meta-item-text">阅读量 </em>
                                 <i class="leancloud-visitors-count">0</i>
                             </span>
@@ -148,12 +148,57 @@
 
                     <!-- <div class="post-content-wrapper"> -->
                     <div class="post-content">
-                        <h2 id="这是个杂乱的备忘录">这是个杂乱的备忘录😵</h2>
-<h2 id="想起什么记录什么">想起什么记录什么😖</h2>
-<h2 id="不就是折腾嘛">不就是折腾嘛😃</h2>
-<h2 id="既然折腾了">既然折腾了💪</h2>
-<h2 id="总会炸鸡的">总会炸鸡的😵</h2>
-<h2 id="boom了的时候总是要来温习下的">boom了的时候总是要来温习下的🤣</h2>
+                        <h3 id="引导"><em><strong>引导</strong></em></h3>
+<p>https://xpenology.com/forum/topic/12952-dsm-62-loader/</p>
+<h3 id="额外驱动"><em><strong>额外驱动</strong></em></h3>
+<p>https://xpenology.com/forum/topic/21663-driver-extension-jun-103b104b-for-dsm622-for-3615xs-3617xs-918/</p>
+<h3 id="系统下载"><em><strong>系统下载</strong></em></h3>
+<p>https://www.synology.cn/zh-cn/support/download/</p>
+<h3 id="引导盘制作工具"><em><strong>引导盘制作工具</strong></em></h3>
+<p><code>ChipGenius</code>读取U盘PID和VID<br>
+<code>OSFMount</code>挂载img,可添加驱动,修改sn mac<br>
+<code>PartitionGuru</code>pe状态下可直接在引导U盘添加驱动修改的sn mac<br>
+<code>Roadkil's DiskImage</code>img写盘工具<br>
+<code>UFS_Explorer</code>炸鸡后读取硬盘数据<br>
+<code>StarWind V2V Image Converter</code>镜像格式转换</p>
+<h3 id="active-backup-for-business-激活"><em><strong>Active Backup for Business 激活</strong></em></h3>
+<p>替换以下数据依次输入连接激活:<br>
+<code>URL</code>   NAS的地址<br>
+<code>PORT</code>  默认5001端口<br>
+<code>USER</code>  用户名<br>
+<code>PASS</code>   密码<br>
+<code>SERIALNUMBER</code> 黑群SN</p>
+<pre><code>https://URL:PORT/webapi/auth.cgi?api=SYNO.API.Auth&amp;method=Login&amp;version=1&amp;account=USER&amp;passwd=PASS
+https://URL:PORT/webapi/entry.cgi?api=SYNO.ActiveBackup.Activation&amp;method=set&amp;version=1&amp;activated=true&amp;serial_number=&quot;SERIALNUMBER&quot;
+</code></pre>
+<p>检测是否激活</p>
+<pre><code>https://URL:PORT/webapi/entry.cgi?api=SYNO.ActiveBackup.Activation&amp;method=get&amp;version=1
+</code></pre>
+<h3 id="命令"><em><strong>命令</strong></em></h3>
+<p>显示网卡显示真实MAC地址</p>
+<pre><code>dmesg | grep eth0
+</code></pre>
+<p>删除谷歌二次验证</p>
+<pre><code>rm /usr/syno/etc/preference/sheldon/google_authenticator
+</code></pre>
+<p>查看cpu核心数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;core id&quot; | wc -l
+</code></pre>
+<p>查询cpu线程数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot; | wc -l
+</code></pre>
+<p>6.2.x修改root密码</p>
+<pre><code>sudo -i
+cd /etc/ssh
+chmod 755 sshd_config
+vim /etc/ssh/sshd_config
+</code></pre>
+<p><code>#PermitRootLogin prohibit password</code>修改为<code>PermitRootLogin yes</code>保存重启</p>
+<pre><code>synouser --setpw root 6666666666
+</code></pre>
+<p>第三方套件源</p>
+<pre><code>http://packages.synocommunity.com
+</code></pre>
 
                     </div>
                     <div class="essaySuffix-box">
@@ -165,8 +210,8 @@
                                         href="/about"
                                         target="_blank">杂乱的备忘录</a></span></strong> <br><span
                                 style="font-weight: bold; white-space:nowrap;">本文链接</span>：<a
-                                href="https://s1oz.github.io/post/about/"
-                                target="_blank">https://s1oz.github.io/post/about/</a><br><span
+                                href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/"
+                                target="_blank">https://s1oz.github.io/post/hei-qun-bei-wang-lu/</a><br><span
                                 class="essaySuffix-right-title">版权声明</span>：本博客所有文章除特别声明外，均采用 <a
                                 href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA"
                                 title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</div>
@@ -178,12 +223,16 @@
                     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E8%BF%99%E6%98%AF%E4%B8%AA%E6%9D%82%E4%B9%B1%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95">这是个杂乱的备忘录😵</a></li>
-<li><a href="#%E6%83%B3%E8%B5%B7%E4%BB%80%E4%B9%88%E8%AE%B0%E5%BD%95%E4%BB%80%E4%B9%88">想起什么记录什么😖</a></li>
-<li><a href="#%E4%B8%8D%E5%B0%B1%E6%98%AF%E6%8A%98%E8%85%BE%E5%98%9B">不就是折腾嘛😃</a></li>
-<li><a href="#%E6%97%A2%E7%84%B6%E6%8A%98%E8%85%BE%E4%BA%86">既然折腾了💪</a></li>
-<li><a href="#%E6%80%BB%E4%BC%9A%E7%82%B8%E9%B8%A1%E7%9A%84">总会炸鸡的😵</a></li>
-<li><a href="#boom%E4%BA%86%E7%9A%84%E6%97%B6%E5%80%99%E6%80%BB%E6%98%AF%E8%A6%81%E6%9D%A5%E6%B8%A9%E4%B9%A0%E4%B8%8B%E7%9A%84">boom了的时候总是要来温习下的🤣</a></li>
+<li>
+<ul>
+<li><a href="#%E5%BC%95%E5%AF%BC"><em><strong>引导</strong></em></a></li>
+<li><a href="#%E9%A2%9D%E5%A4%96%E9%A9%B1%E5%8A%A8"><em><strong>额外驱动</strong></em></a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD"><em><strong>系统下载</strong></em></a></li>
+<li><a href="#%E5%BC%95%E5%AF%BC%E7%9B%98%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7"><em><strong>引导盘制作工具</strong></em></a></li>
+<li><a href="#active-backup-for-business-%E6%BF%80%E6%B4%BB"><em><strong>Active Backup for Business 激活</strong></em></a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4"><em><strong>命令</strong></em></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

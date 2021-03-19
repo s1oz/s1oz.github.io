@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T12:30:23.173Z</updated>
+    <updated>2021-03-19T13:37:09.842Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -10,147 +10,6 @@
     <logo>https://s1oz.github.io/images/avatar.png</logo>
     <icon>https://s1oz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 杂乱的备忘录</rights>
-    <entry>
-        <title type="html"><![CDATA[假装给群晖披层马甲]]></title>
-        <id>https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/</id>
-        <link href="https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/">
-        </link>
-        <updated>2021-03-19T08:54:59.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="1严打呀唉~"><em><strong>1.严打呀,唉~</strong></em></h3>
-<p>以前是要公网难,现在是有公网开端口难🙁<br>
-开了的时时刻刻要担心被运营商以违法搭建web服务找上门😱<br>
-所以,给群晖,<strong>&quot;备个案吧&quot;</strong><br>
-<strong>像这样</strong>😬<br>
-<img src="https://s1oz.github.io/post-images/1616145064564.png" alt="" loading="lazy"><br>
-是不是突然就不怕了<br>
-突然感觉自己是<strong>正经人</strong>了🙄<br>
-只要把自己骗倒,他就是真的!!!!</p>
-<h3 id="2咋整呢"><em><strong>2.咋整呢</strong></em></h3>
-<h4 id="a-先弄个假图标-icon">a. 先弄个假图标🤢 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/icon.png">icon</a></strong></em></h4>
-<h4 id="b-放入假图标">b. 放入假图标</h4>
-<p>把刚刚下载的<code>icon.png</code>上传到群晖上 如<code>/volume1/files/</code>文件夹<br>
-<code>root</code>权限登陆群晖</p>
-<pre><code>mv /volume1/files/icon.png /usr/syno/synoman/icon.png
-</code></pre>
-<p>移动假图片到系统目录</p>
-<h4 id="c-添加beian信息">c. 添加beian信息</h4>
-<p>在控制面板-主题样式-页脚信息中填入以下代码<br>
-<img src="https://s1oz.github.io/post-images/1616145559676.png" alt="" loading="lazy"></p>
-<pre><code>&lt;html&gt;                                                          
-&lt;img src=&quot;./icon.png&quot;&gt;
-&lt;a target=&quot;_blank&quot;   
-href=&quot;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602002841&quot; &gt;沪公网安备31010602002841号 &lt;/a&gt;&lt;a target=&quot;_blank&quot;  href=&quot;https://beian.miit.gov.cn/#/Integrated/recordQuery&quot; &gt;沪ICP备15015915号&lt;a&gt;                                           
-&lt;/html&gt;
-</code></pre>
-<p>点击确定,保存</p>
-<h3 id="好嘞你已经成功欺骗了自己">好嘞,你已经成功欺骗了自己</h3>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docker安装Emby并白嫖]]></title>
-        <id>https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/</id>
-        <link href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/">
-        </link>
-        <updated>2021-03-19T05:48:41.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="1聊聊"><em><strong>1.聊聊</strong></em></h3>
-<p>海报墙软件好多,但是哪个好用呢,都用过来,我觉得还是Emby比较好时😀<br>
-Emby:<br>
-相对成熟的方案,全平台支持,白嫖后没啥缺点了,感觉缺点可能就是不能直接播放ISO文件跟国产剧命名吧,不过对于我这种只下REMUX的来说不是问题,国产剧..硬链接批量加S1呗~<br>
-ISO文件真要看,大不了装kodi插件呗~<br>
-Jellyfin:<br>
-基于Emby3.x的开源代码二次开发,相对而言,不能这样说,APP就是垃圾!!<br>
-优点就在于免费,10.7.x开始支持ISO文件直接播放,不过app字幕有点问题,刮削反正都用的同样的源,我是没遇到其他网友说的EMBY刮不出.jellyfin好刮的问题,这种问题我觉得一律归为蹄子不香<br>
-现在的APP不香,有兴趣的可以用测试版,地址在 <em><strong><a href="https://dev.azure.com/jellyfin-project/jellyfin/_build">这</a></strong></em> 优点是界面改了,好看多了,但是使用体验....你懂的<br>
-Plex:<br>
-跟emby一样,硬解之类功能需要收费,不过便宜,淘宝大概300+的终身key,(感觉都是黑卡搞来的)<br>
-缺点在于,这憨憨远程访问要过自家服务器验证,对于访问plex服务器不畅通的选手来说,体验不佳<br>
-至于界面呢,跟EMBY完全不同,萝卜青菜各有所爱嘛~其他也没啥缺点<br>
-个人感觉Plex是专做流媒体了,emby反正像个本地海报墙<br>
-KODI:<br>
-我是用不惯,对于海报墙来说,上述几个都比这个好看,可能有点就在于本地直接装一个吧,适合就在电视上安装,刮削nas上的电影,反正也没播放记录同步<br>
-群辉VIDEOSTATION:<br>
-一开始就是被这玩意儿拉入坑的,额外加持刮削补丁后海报墙体验还不错,尤其对于国产剧集,算是不改名的最优解但是APP呢,不咋滴,个人感觉是不咋滴,支持格式少,要么就安装额外的如mxplayer之类调用播放,<br>
-Infuse:<br>
-好用是好用,你丫的有本事支持下安卓呀,所以.不说了<br>
-可以作为插件支持前面三种,直接读取刮削数据,香<br>
-垃圾infuse,安卓都不支持<br>
-所以哪个合适自己就选择哪个咯😉</p>
-<h3 id="2下载所需文件"><em><strong>2.下载所需文件</strong></em></h3>
-<h4 id="a-下载dll文件-dll感谢yukinos大佬制作的补丁">a. 下载dll文件 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/System.Net.Http.dll">dll</a>感谢@Yukino's大佬制作的补丁</strong></em></h4>
-<h4 id="b-下载欺诈服务器验证文件-ca">b. 下载欺诈服务器验证文件  <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/ca.7z">ca</a></strong></em></h4>
-<h3 id="3准备嫖她"><em><strong>3.准备嫖她</strong></em></h3>
-<h4 id="a-以unraid为例">a. 以Unraid为例</h4>
-<p>安装<code>User Scripts</code>插件<br>
-将<code>dll</code>  <code>ca.7z</code>解压后移动到unraid中如我存放的路径<code>/mnt/user/appdata/ca/</code><br>
-在<code>User Scripts</code>插件中新建名为<code>emby</code>的脚本,并设置为<code>At First Array Start Only</code><br>
-<img src="https://s1oz.github.io/post-images/1616134176605.png" alt="" loading="lazy"><br>
-点击<code>EDIT SCRIPTS</code>加入以下内容</p>
-<pre><code>!/bin/bash
-cp -rf /mnt/user/appdata/ca/default.conf /etc/nginx/conf.d/default.conf
-nginx -s reload
-</code></pre>
-<p><code>APPLY</code>保存 再点击<code>RUN SCRIPTS</code>运行一次脚本</p>
-<h4 id="b-在路由中劫持验证服务器地址">b. 在路由中劫持验证服务器地址</h4>
-<p>OP为例 <code>hosts</code>中添加以下信息</p>
-<pre><code>  192.168.1.10 mb3admin.com
-  192.168.1.10 www.mb3admin.com
-</code></pre>
-<p>如果有IPV6的,要么勾选<code>禁止解析 IPv6 DNS 记录</code><br>
-<img src="https://s1oz.github.io/post-images/1616134857968.png" alt="" loading="lazy"><br>
-要么就<code>hosts</code>中加入ipv6地址劫持</p>
-<h2 id="4安装emby"><em><strong>4.安装Emby</strong></em></h2>
-<p>应用中搜素<code>Emby</code>,选择<code>EmbyServerBeta (BETA)</code>安装  🤞反正我是喜欢追新<br>
-里面根据自己片子目录映射,需要注意的就是两点<br>
-添加核显<br>
-<img src="https://s1oz.github.io/post-images/1616135529324.png" alt="" loading="lazy"><br>
-映射dll补丁<br>
-<img src="https://s1oz.github.io/post-images/1616135545157.png" alt="" loading="lazy"><br>
-然后点击应用即可,以后如果官方更新,直接点更新即可,完全不影响,这样即可完美追新</p>
-<h2 id="5愉快的使用"><em><strong>5.愉快的使用</strong></em></h2>
-<p>打开emby界面,随意在<code>Emby Premiere密钥</code>栏中输入激活码,点击保存即可激活会员权益<br>
-<img src="https://s1oz.github.io/post-images/1616135902477.png" alt="" loading="lazy"><br>
-再看下转码-高级中是否已经出现显卡<br>
-<img src="https://s1oz.github.io/post-images/1616135948756.png" alt="" loading="lazy"><br>
-如果都有,那你已经成功白嫖了<br>
-既然已经用上了beta版服务器的特性,那也需要beta版的TV端APP支援呀<br>
-所以我们要安装最新的APP 点这 <em><strong><a href="https://emby.media/community/index.php?/topic/42240-emby-android-tv-release-notes-beta/">TVAPP</a></strong></em><br>
-虽然TV的APP安装后显示过期,但是完全不影响硬解哦😎<br>
-为了更愉快的使用,如刮削不出,封面不完整 <strong><strong>请配合蹄子,蹄子越香口感越好</strong></strong></p>
-<h3 id="6可能会遇到的问题"><em><strong>6.可能会遇到的问题</strong></em></h3>
-<h4 id="a-其他平台咋办">a. 其他平台咋办</h4>
-<p>都一个意思,docker通用,打补丁,劫持到伪站验证<br>
-群辉套件之类的..已经有一键脚本了.转docker吧,追新才是王道<br>
-群辉利用<code>Web Station</code>搭建验证伪站可以替换此文件***<a href="https://raw.githubusercontent.com/s1oz/export_embyonekey/master/user.conf">user.conf</a>***<br>
-路径为</p>
-<pre><code>/usr/local/etc/nginx/conf.d/*-*-*-*
-</code></pre>
-<p><code>*-*-*-*</code>为建立虚拟主机的随机数字的文件夹<br>
-替换后以此命令刷新</p>
-<pre><code>nginx -s reload
-</code></pre>
-<h4 id="b-核显调用">b. 核显调用</h4>
-<p>现在的人,永远就自动照搬,不看官方更新,请不要在go文件中添加</p>
-<pre><code>    modprobe i915
-</code></pre>
-<p>因为从beta35开始,官方就给出了此方法</p>
-<pre><code>    mkdir /boot/config/modprobe.d
-    touch /boot/config/modprobe.d/i915.conf
-</code></pre>
-<p>Unraid 默认会屏蔽显卡驱动,所以通过新建同名文件的方法来解除屏蔽,这样创建后,开机默认会加载核显<br>
-请不要在go文件中添加这个了</p>
-<pre><code>chmod -R 777 /dev/dri
-</code></pre>
-<p>6.9.1开始,默认会给容器中调用显卡设置为0777权限了<br>
-所以只需要选择添加设备,填入<code>/dev/dri</code>即可</p>
-<h4 id="c-emby服务器没有小黄标">c. Emby服务器没有小黄标</h4>
-<p>请自行排查<code>mb3admin.com</code>网址劫持到unriad所搭建的验证伪站<br>
-一般都是犹豫默认解析ipv6域名造成的,禁用或者添加解析即可</p>
-<h4 id="d-windows浏览器没有小黄标">d. windows浏览器没有小黄标</h4>
-<p>windows需要安装刚<code>ca.7z</code>解压文件中的<code>guomi.cer</code>证书</p>
-<h4 id="e-ios设备无法正常使用">e. IOS设备无法正常使用</h4>
-<p>IOS需要安装后在设置--通用--关于手机--证书信任设置中把<code>guomi.cer</code>证书信任</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Unraid 6.9.x 网卡开启SR-IOV]]></title>
         <id>https://s1oz.github.io/post/unraid-69x-wang-qia-kai-qi-sr-iov/</id>
@@ -315,6 +174,147 @@ ifconfig eth1 up
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[假装给群晖披层马甲]]></title>
+        <id>https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/</id>
+        <link href="https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/">
+        </link>
+        <updated>2020-12-25T08:54:59.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1严打呀唉~"><em><strong>1.严打呀,唉~</strong></em></h3>
+<p>以前是要公网难,现在是有公网开端口难🙁<br>
+开了的时时刻刻要担心被运营商以违法搭建web服务找上门😱<br>
+所以,给群晖,<strong>&quot;备个案吧&quot;</strong><br>
+<strong>像这样</strong>😬<br>
+<img src="https://s1oz.github.io/post-images/1616145064564.png" alt="" loading="lazy"><br>
+是不是突然就不怕了<br>
+突然感觉自己是<strong>正经人</strong>了🙄<br>
+只要把自己骗倒,他就是真的!!!!</p>
+<h3 id="2咋整呢"><em><strong>2.咋整呢</strong></em></h3>
+<h4 id="a-先弄个假图标-icon">a. 先弄个假图标🤢 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/icon.png">icon</a></strong></em></h4>
+<h4 id="b-放入假图标">b. 放入假图标</h4>
+<p>把刚刚下载的<code>icon.png</code>上传到群晖上 如<code>/volume1/files/</code>文件夹<br>
+<code>root</code>权限登陆群晖</p>
+<pre><code>mv /volume1/files/icon.png /usr/syno/synoman/icon.png
+</code></pre>
+<p>移动假图片到系统目录</p>
+<h4 id="c-添加beian信息">c. 添加beian信息</h4>
+<p>在控制面板-主题样式-页脚信息中填入以下代码<br>
+<img src="https://s1oz.github.io/post-images/1616145559676.png" alt="" loading="lazy"></p>
+<pre><code>&lt;html&gt;                                                          
+&lt;img src=&quot;./icon.png&quot;&gt;
+&lt;a target=&quot;_blank&quot;   
+href=&quot;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602002841&quot; &gt;沪公网安备31010602002841号 &lt;/a&gt;&lt;a target=&quot;_blank&quot;  href=&quot;https://beian.miit.gov.cn/#/Integrated/recordQuery&quot; &gt;沪ICP备15015915号&lt;a&gt;                                           
+&lt;/html&gt;
+</code></pre>
+<p>点击确定,保存</p>
+<h3 id="好嘞你已经成功欺骗了自己">好嘞,你已经成功欺骗了自己</h3>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker安装Emby并白嫖]]></title>
+        <id>https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/</id>
+        <link href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/">
+        </link>
+        <updated>2020-03-26T05:48:41.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1聊聊"><em><strong>1.聊聊</strong></em></h3>
+<p>海报墙软件好多,但是哪个好用呢,都用过来,我觉得还是Emby比较好时😀<br>
+Emby:<br>
+相对成熟的方案,全平台支持,白嫖后没啥缺点了,感觉缺点可能就是不能直接播放ISO文件跟国产剧命名吧,不过对于我这种只下REMUX的来说不是问题,国产剧..硬链接批量加S1呗~<br>
+ISO文件真要看,大不了装kodi插件呗~<br>
+Jellyfin:<br>
+基于Emby3.x的开源代码二次开发,相对而言,不能这样说,APP就是垃圾!!<br>
+优点就在于免费,10.7.x开始支持ISO文件直接播放,不过app字幕有点问题,刮削反正都用的同样的源,我是没遇到其他网友说的EMBY刮不出.jellyfin好刮的问题,这种问题我觉得一律归为蹄子不香<br>
+现在的APP不香,有兴趣的可以用测试版,地址在 <em><strong><a href="https://dev.azure.com/jellyfin-project/jellyfin/_build">这</a></strong></em> 优点是界面改了,好看多了,但是使用体验....你懂的<br>
+Plex:<br>
+跟emby一样,硬解之类功能需要收费,不过便宜,淘宝大概300+的终身key,(感觉都是黑卡搞来的)<br>
+缺点在于,这憨憨远程访问要过自家服务器验证,对于访问plex服务器不畅通的选手来说,体验不佳<br>
+至于界面呢,跟EMBY完全不同,萝卜青菜各有所爱嘛~其他也没啥缺点<br>
+个人感觉Plex是专做流媒体了,emby反正像个本地海报墙<br>
+KODI:<br>
+我是用不惯,对于海报墙来说,上述几个都比这个好看,可能有点就在于本地直接装一个吧,适合就在电视上安装,刮削nas上的电影,反正也没播放记录同步<br>
+群辉VIDEOSTATION:<br>
+一开始就是被这玩意儿拉入坑的,额外加持刮削补丁后海报墙体验还不错,尤其对于国产剧集,算是不改名的最优解但是APP呢,不咋滴,个人感觉是不咋滴,支持格式少,要么就安装额外的如mxplayer之类调用播放,<br>
+Infuse:<br>
+好用是好用,你丫的有本事支持下安卓呀,所以.不说了<br>
+可以作为插件支持前面三种,直接读取刮削数据,香<br>
+垃圾infuse,安卓都不支持<br>
+所以哪个合适自己就选择哪个咯😉</p>
+<h3 id="2下载所需文件"><em><strong>2.下载所需文件</strong></em></h3>
+<h4 id="a-下载dll文件-dll感谢yukinos大佬制作的补丁">a. 下载dll文件 <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/System.Net.Http.dll">dll</a>感谢@Yukino's大佬制作的补丁</strong></em></h4>
+<h4 id="b-下载欺诈服务器验证文件-ca">b. 下载欺诈服务器验证文件  <em><strong><a href="https://raw.githubusercontent.com/s1oz/unraid/master/emby_ca/ca.7z">ca</a></strong></em></h4>
+<h3 id="3准备嫖她"><em><strong>3.准备嫖她</strong></em></h3>
+<h4 id="a-以unraid为例">a. 以Unraid为例</h4>
+<p>安装<code>User Scripts</code>插件<br>
+将<code>dll</code>  <code>ca.7z</code>解压后移动到unraid中如我存放的路径<code>/mnt/user/appdata/ca/</code><br>
+在<code>User Scripts</code>插件中新建名为<code>emby</code>的脚本,并设置为<code>At First Array Start Only</code><br>
+<img src="https://s1oz.github.io/post-images/1616134176605.png" alt="" loading="lazy"><br>
+点击<code>EDIT SCRIPTS</code>加入以下内容</p>
+<pre><code>!/bin/bash
+cp -rf /mnt/user/appdata/ca/default.conf /etc/nginx/conf.d/default.conf
+nginx -s reload
+</code></pre>
+<p><code>APPLY</code>保存 再点击<code>RUN SCRIPTS</code>运行一次脚本</p>
+<h4 id="b-在路由中劫持验证服务器地址">b. 在路由中劫持验证服务器地址</h4>
+<p>OP为例 <code>hosts</code>中添加以下信息</p>
+<pre><code>  192.168.1.10 mb3admin.com
+  192.168.1.10 www.mb3admin.com
+</code></pre>
+<p>如果有IPV6的,要么勾选<code>禁止解析 IPv6 DNS 记录</code><br>
+<img src="https://s1oz.github.io/post-images/1616134857968.png" alt="" loading="lazy"><br>
+要么就<code>hosts</code>中加入ipv6地址劫持</p>
+<h2 id="4安装emby"><em><strong>4.安装Emby</strong></em></h2>
+<p>应用中搜素<code>Emby</code>,选择<code>EmbyServerBeta (BETA)</code>安装  🤞反正我是喜欢追新<br>
+里面根据自己片子目录映射,需要注意的就是两点<br>
+添加核显<br>
+<img src="https://s1oz.github.io/post-images/1616135529324.png" alt="" loading="lazy"><br>
+映射dll补丁<br>
+<img src="https://s1oz.github.io/post-images/1616135545157.png" alt="" loading="lazy"><br>
+然后点击应用即可,以后如果官方更新,直接点更新即可,完全不影响,这样即可完美追新</p>
+<h2 id="5愉快的使用"><em><strong>5.愉快的使用</strong></em></h2>
+<p>打开emby界面,随意在<code>Emby Premiere密钥</code>栏中输入激活码,点击保存即可激活会员权益<br>
+<img src="https://s1oz.github.io/post-images/1616135902477.png" alt="" loading="lazy"><br>
+再看下转码-高级中是否已经出现显卡<br>
+<img src="https://s1oz.github.io/post-images/1616135948756.png" alt="" loading="lazy"><br>
+如果都有,那你已经成功白嫖了<br>
+既然已经用上了beta版服务器的特性,那也需要beta版的TV端APP支援呀<br>
+所以我们要安装最新的APP 点这 <em><strong><a href="https://emby.media/community/index.php?/topic/42240-emby-android-tv-release-notes-beta/">TVAPP</a></strong></em><br>
+虽然TV的APP安装后显示过期,但是完全不影响硬解哦😎<br>
+为了更愉快的使用,如刮削不出,封面不完整 <strong><strong>请配合蹄子,蹄子越香口感越好</strong></strong></p>
+<h3 id="6可能会遇到的问题"><em><strong>6.可能会遇到的问题</strong></em></h3>
+<h4 id="a-其他平台咋办">a. 其他平台咋办</h4>
+<p>都一个意思,docker通用,打补丁,劫持到伪站验证<br>
+群辉套件之类的..已经有一键脚本了.转docker吧,追新才是王道<br>
+群辉利用<code>Web Station</code>搭建验证伪站可以替换此文件***<a href="https://raw.githubusercontent.com/s1oz/export_embyonekey/master/user.conf">user.conf</a>***<br>
+路径为</p>
+<pre><code>/usr/local/etc/nginx/conf.d/*-*-*-*
+</code></pre>
+<p><code>*-*-*-*</code>为建立虚拟主机的随机数字的文件夹<br>
+替换后以此命令刷新</p>
+<pre><code>nginx -s reload
+</code></pre>
+<h4 id="b-核显调用">b. 核显调用</h4>
+<p>现在的人,永远就自动照搬,不看官方更新,请不要在go文件中添加</p>
+<pre><code>    modprobe i915
+</code></pre>
+<p>因为从beta35开始,官方就给出了此方法</p>
+<pre><code>    mkdir /boot/config/modprobe.d
+    touch /boot/config/modprobe.d/i915.conf
+</code></pre>
+<p>Unraid 默认会屏蔽显卡驱动,所以通过新建同名文件的方法来解除屏蔽,这样创建后,开机默认会加载核显<br>
+请不要在go文件中添加这个了</p>
+<pre><code>chmod -R 777 /dev/dri
+</code></pre>
+<p>6.9.1开始,默认会给容器中调用显卡设置为0777权限了<br>
+所以只需要选择添加设备,填入<code>/dev/dri</code>即可</p>
+<h4 id="c-emby服务器没有小黄标">c. Emby服务器没有小黄标</h4>
+<p>请自行排查<code>mb3admin.com</code>网址劫持到unriad所搭建的验证伪站<br>
+一般都是犹豫默认解析ipv6域名造成的,禁用或者添加解析即可</p>
+<h4 id="d-windows浏览器没有小黄标">d. windows浏览器没有小黄标</h4>
+<p>windows需要安装刚<code>ca.7z</code>解压文件中的<code>guomi.cer</code>证书</p>
+<h4 id="e-ios设备无法正常使用">e. IOS设备无法正常使用</h4>
+<p>IOS需要安装后在设置--通用--关于手机--证书信任设置中把<code>guomi.cer</code>证书信任</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[PXE+ABB 备份恢复好帮手]]></title>
         <id>https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/</id>
         <link href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
@@ -385,6 +385,65 @@ bios中开启pxe启动相关选项<br>
 加载群辉上的系统安装镜像<br>
 <img src="https://s1oz.github.io/post-images/1616156673333.jpg" alt="" loading="lazy">萝卜青菜各有索爱嘛<br>
 <strong>同理,如果PE上的ABB软件过于陈旧,可以下载了放置在群辉上,挂载后使用</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[黑群备忘录]]></title>
+        <id>https://s1oz.github.io/post/hei-qun-bei-wang-lu/</id>
+        <link href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/">
+        </link>
+        <updated>2018-06-10T12:50:32.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="引导"><em><strong>引导</strong></em></h3>
+<p>https://xpenology.com/forum/topic/12952-dsm-62-loader/</p>
+<h3 id="额外驱动"><em><strong>额外驱动</strong></em></h3>
+<p>https://xpenology.com/forum/topic/21663-driver-extension-jun-103b104b-for-dsm622-for-3615xs-3617xs-918/</p>
+<h3 id="系统下载"><em><strong>系统下载</strong></em></h3>
+<p>https://www.synology.cn/zh-cn/support/download/</p>
+<h3 id="引导盘制作工具"><em><strong>引导盘制作工具</strong></em></h3>
+<p><code>ChipGenius</code>读取U盘PID和VID<br>
+<code>OSFMount</code>挂载img,可添加驱动,修改sn mac<br>
+<code>PartitionGuru</code>pe状态下可直接在引导U盘添加驱动修改的sn mac<br>
+<code>Roadkil's DiskImage</code>img写盘工具<br>
+<code>UFS_Explorer</code>炸鸡后读取硬盘数据<br>
+<code>StarWind V2V Image Converter</code>镜像格式转换</p>
+<h3 id="active-backup-for-business-激活"><em><strong>Active Backup for Business 激活</strong></em></h3>
+<p>替换以下数据依次输入连接激活:<br>
+<code>URL</code>   NAS的地址<br>
+<code>PORT</code>  默认5001端口<br>
+<code>USER</code>  用户名<br>
+<code>PASS</code>   密码<br>
+<code>SERIALNUMBER</code> 黑群SN</p>
+<pre><code>https://URL:PORT/webapi/auth.cgi?api=SYNO.API.Auth&amp;method=Login&amp;version=1&amp;account=USER&amp;passwd=PASS
+https://URL:PORT/webapi/entry.cgi?api=SYNO.ActiveBackup.Activation&amp;method=set&amp;version=1&amp;activated=true&amp;serial_number=&quot;SERIALNUMBER&quot;
+</code></pre>
+<p>检测是否激活</p>
+<pre><code>https://URL:PORT/webapi/entry.cgi?api=SYNO.ActiveBackup.Activation&amp;method=get&amp;version=1
+</code></pre>
+<h3 id="命令"><em><strong>命令</strong></em></h3>
+<p>显示网卡显示真实MAC地址</p>
+<pre><code>dmesg | grep eth0
+</code></pre>
+<p>删除谷歌二次验证</p>
+<pre><code>rm /usr/syno/etc/preference/sheldon/google_authenticator
+</code></pre>
+<p>查看cpu核心数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;core id&quot; | wc -l
+</code></pre>
+<p>查询cpu线程数</p>
+<pre><code>cat /proc/cpuinfo |grep &quot;processor&quot; | wc -l
+</code></pre>
+<p>6.2.x修改root密码</p>
+<pre><code>sudo -i
+cd /etc/ssh
+chmod 755 sshd_config
+vim /etc/ssh/sshd_config
+</code></pre>
+<p><code>#PermitRootLogin prohibit password</code>修改为<code>PermitRootLogin yes</code>保存重启</p>
+<pre><code>synouser --setpw root 6666666666
+</code></pre>
+<p>第三方套件源</p>
+<pre><code>http://packages.synocommunity.com
+</code></pre>
 ]]></content>
     </entry>
 </feed>

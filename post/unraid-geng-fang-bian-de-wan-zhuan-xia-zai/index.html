@@ -7,7 +7,7 @@
 
 <title>Unraid更方便的玩转下载 | 杂乱的备忘录</title>
 
-<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616218994563">
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616219128690">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
@@ -120,7 +120,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1616218994563" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1616219128690" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -193,14 +193,14 @@
 在<code>网络类型</code>中直接选择上面显示的带有<code>macvlan</code>标识的<code>br0</code><br>
 然后输入想要设置的同网段的ip<br>
 这样这个容器启动后就会被分配为这个ip<br>
-容器也不需要如在<code>Bridge</code>模式一样在映射端口<br>
-相当于弱鸡版本的host模式,容器默认端口多少<br>
+容器也不需要如在<code>Bridge</code>模式一样再次映射端口<br>
+相当于弱鸡版本的host模式,容器默认端口多少就是多少<br>
 直接<code>ip+端口</code>即可欢快的访问了访问</p>
 <h4 id="b群晖为例">b.群晖为例</h4>
 <p>群晖跟Unraid相比,就是默认没有<code>macvlan</code>接口<br>
 所以需要多几条命令来建立接口<br>
 然后再通过命令生成容器设置ip信息<br>
-关于群晖使用,看这吧&gt;<a href="https://bsdcpp.github.io/2020/11/23/Docker-macvlan%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">bsdcpp</a>&lt;大佬已经给个命令跟实例了,对照着抄即可</p>
+关于群晖使用,看这吧&gt;<a href="https://bsdcpp.github.io/2020/11/23/Docker-macvlan%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">bsdcpp</a>&lt;大佬已经给出了命令跟实例了,对照着抄即可</p>
 <h3 id="收尾">收尾</h3>
 <p>现在容器已经获取到了独立的IP了👍<br>
 那为了愉快的使用,我们直接在蹄子的访问控制中给<br>

@@ -97,40 +97,91 @@
     </div>
 </nav>
 
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/JTLMZLR1L/">#nas</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/cEciqjH0E/">#unraid</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/hg2LQiRuh/">#dsm</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/JPgPkVMq1/">#备忘录</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/u2aFX4fpX/">#windows</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/k3_hMjZpe/">#docker</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/GoG82PnDw/">#emby</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://s1oz.github.io/tag/a22x0XSXk/">#openwrt</a>
-            
-        </div>
-    </article>
+
+        <div class="post-list-container">
+    <div class="post-inner">
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
+                            <span class="post-title gt-c-content-color-first">PXE+ABB 备份恢复好帮手</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-08-15 ·
+                        </time>
+                        
+                            <a href="https://s1oz.github.io/tag/JTLMZLR1L/" class="post-tag">
+                                # nas
+                            </a>
+                        
+                            <a href="https://s1oz.github.io/tag/hg2LQiRuh/" class="post-tag">
+                                # dsm
+                            </a>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/" class="post-feature-image"
+                       style="background-image: url('https://s1oz.github.io/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/">
+                            <span class="post-title gt-c-content-color-first">Xpenology备忘录</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2018-06-10 ·
+                        </time>
+                        
+                            <a href="https://s1oz.github.io/tag/JPgPkVMq1/" class="post-tag">
+                                # 备忘录
+                            </a>
+                        
+                            <a href="https://s1oz.github.io/tag/JTLMZLR1L/" class="post-tag">
+                                # nas
+                            </a>
+                        
+                            <a href="https://s1oz.github.io/tag/hg2LQiRuh/" class="post-tag">
+                                # dsm
+                            </a>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/" class="post-feature-image"
+                       style="background-image: url('https://s1oz.github.io/post-images/hei-qun-bei-wang-lu.png')">
+                    </a>
+                
+            </div>
+        
+    </div>
 </div>
+
+        <div class="pagination-container">
+    
+        <a href="https://s1oz.github.io/" class="prev-page gt-a-link">上一页</a>
+    
+    
 </div>
+
+
         <div class="site-footer gt-c-content-color-first">
 
   <div class="social-container">
@@ -173,3 +224,25 @@
 </div>
 </body>
 </html>
+<div class="back-to-top cd-top faa-float animated cd-is-visible" style="top: -999px;"></div>
+<script>
+$(function() {
+    //scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。
+    $(window).scroll(function() {
+            var scroHei = $(window).scrollTop();//滚动的高度
+            if (scroHei > 400) {
+               $('.back-to-top').css('top','-0px');
+               // $('.back-to-top').fadeIn();
+            } else {                                                
+                $('.back-to-top').css('top','-999px');
+                // $('.back-to-top').fadeOut();
+            }
+        })
+        /*点击返回顶部*/
+    $('.back-to-top').click(function() {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 600);
+    })
+})
+</script>

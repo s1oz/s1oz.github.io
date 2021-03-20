@@ -5,7 +5,7 @@
 <meta name="description" content="以备不时之需"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Unraid备忘录 | 杂乱的备忘录</title>
+<title>valine评论系统开启及删除评论 | 杂乱的备忘录</title>
 
 <link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616220822014">
 
@@ -134,31 +134,23 @@
             <article style="display:flex;">
                 <div class="post-detail gt-bg-theme-color-second gt-post-content">
                     <h2 class="post-title">
-                        Unraid备忘录
+                        valine评论系统开启及删除评论
                     </h2>
                     <div class="post-info">
                         <div>
                             <time class="post-time gt-c-content-color-first">
-                                · 2020-09-10 ·
+                                · 2021-03-20 ·
                             </time>
                             
-                            <a href="https://s1oz.github.io/tag/JPgPkVMq1/" class="post-tags">
-                                # 备忘录
-                            </a>
-                            
-                            <a href="https://s1oz.github.io/tag/JTLMZLR1L/" class="post-tags">
-                                # nas
-                            </a>
-                            
-                            <a href="https://s1oz.github.io/tag/cEciqjH0E/" class="post-tags">
-                                # unraid
+                            <a href="https://s1oz.github.io/tag/P24Duz8y6/" class="post-tags">
+                                # valine
                             </a>
                             
                         </div>
                         <div>
                             
-                            <span id="/post/unraid-bei-wang-lu/"
-                                class="leancloud_visitors" data-flag-title="Unraid备忘录">
+                            <span id="/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/"
+                                class="leancloud_visitors" data-flag-title="valine评论系统开启及删除评论">
                                 <em class="post-meta-item-text">阅读量 </em>
                                 <i class="leancloud-visitors-count">0</i>
                             </span>
@@ -168,52 +160,29 @@
 
                     <!-- <div class="post-content-wrapper"> -->
                     <div class="post-content">
-                        <h3 id="系统下载">系统下载</h3>
-<pre><code>https://unraid.net/download
-</code></pre>
-<h3 id="插件">插件</h3>
-<p><code>CA Auto Update Applications</code> 自动更新插件跟docker<br>
-<code>CA Cleanup Appdata</code> 清理删除容器后的映射的残留目录<br>
-<code>CA Config Editor</code> 系统配置文件统一编译工具<br>
-<code>Community Applications</code>应用商店</p>
-<pre><code>#商店安装地址
-https://raw.githubusercontent.com/Squidly271/community.applications/master/plugins/community.applications.plg
-</code></pre>
-<p><code>Custom Tab</code> web页面添加额外窗口<br>
-<code>Dynamix Active Streams</code> 显示smb连接用户信息<br>
-<code>Dynamix System Buttons</code> 重启按钮<br>
-<code>Dynamix System Information</code> 系统信息显示<br>
-<code>Dynamix System Statistics</code> 图表显示资源占用信息<br>
-<code>Dynamix System Temperature</code> 添加温度显示<br>
-<code>Dynamix WireGuard</code> 简易的VPN<br>
-<code>Fix Common Problems</code> 系统诊断<br>
-<code>Intel GPU TOP</code>核显信息显示<br>
-<code>Libvirt Hotplug USB</code>USB设备管理工具<br>
-<code>Nerd Tools</code>额外安装包管理工具 <em>perl温度显示依赖 netho 实时流量可按进程或IP排序</em><br>
-<code>Unassigned Devices</code>挂载非阵列中的硬盘<br>
-<code>Unraid.net</code>官方U盘云备份工具<br>
-<code>User Scripts</code>添加自定义脚本</p>
-<pre><code>#定时备份TR数据
-#!/bin/bash
-cp -rf /mnt/user/appdata/transmission /mnt/user/files/trbackups/bak_`date '+%Y%m%d_%H.%M.%S'`
-</code></pre>
-<h3 id="docker">Docker</h3>
-<p><code>emby/embyserver:beta</code> 管理电影跟剧集<br>
-<code>ich777/jellyfin:stable-rc</code> 管理学习资料<br>
-<code>80x86/filebrowser:amd64</code> Unraid文件管理<br>
-<code>linuxserver/transmission:amd64-version-3.00-r0</code> PT保种<br>
-<code>linuxserver/qbittorrent:version-14.2.5.99202004250119-7015-2c65b79ubuntu18.04.1</code> PT刷数据<br>
-<code>johngong/qbittorrent:qee-latest</code> 学习资料磁力下载<br>
-<code>p3terx/aria2-pro</code> http文件下载<br>
-<code>p3terx/ariang</code> 配套UI<br>
-<code>jd</code> 薅羊毛<br>
-<code>redrain</code> 红包雨<br>
-<code>iyuucn/iyuuplus:latest</code> 自动辅种<br>
-<code>tzahi12345/youtubedl-material:nightly</code> youtube搬运<br>
-<code>johngong/baidunetdisk</code> 垃圾百度云盘<br>
-<code>adolfintel/speedtest</code> 网络测速<br>
-<code>https://github.com/s1oz/unraid</code>模板储存库</p>
-<h4 id="啥时候boom了重来记得磁盘格式默认btrfs">啥时候boom了重来记得磁盘格式默认Btrfs</h4>
+                        <h3 id="以gridea为例">以Gridea为例</h3>
+<p>好多主题已经默认带valine评论系统了<br>
+如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜<br>
+不止<code>Gridea</code>其他如<code>hexo</code>也是通用的<br>
+所以我们只需要根据需求填入对于的<code>APPID</code> <code>APPKey</code>即可</p>
+<h3 id="获取id-key并填入开启评论">获取ID Key并填入开启评论</h3>
+<p>我们先在这注册一个<a href="https://www.leancloud.cn/"><strong>账号</strong></a><br>
+自己走流程,顺带提一句,需要实名验证😓<br>
+好了之后我们需要创建一个开发版的应用<br>
+<img src="https://s1oz.github.io/post-images/1616220016355.png" alt="" loading="lazy"><br>
+名称随意.创建后点击进入这个应用<br>
+点击左下方<code>设置-应用Keys</code>即可看到我们所需要的<code>APPID</code> <code>APPKey</code><br>
+<img src="https://s1oz.github.io/post-images/1616220167950.png" alt="" loading="lazy"><br>
+然后回到<code>Gridea</code><br>
+在<code>主题</code> <code>自定义配置</code> <code>valine评论系统</code>中开启,并填入对应的<code>APPID</code> <code>APPKey</code><img src="https://s1oz.github.io/post-images/1616220259100.png" alt="" loading="lazy"><br>
+保存同步后,你已经可以在你的备忘录发布评论了<br>
+<strong>抢个沙发,板凳瓜子已经备好~👻</strong></p>
+<h3 id="删除已经发布的评论">删除已经发布的评论</h3>
+<p>如果有而已留言怎么办呢<br>
+当然是干掉它咯😏<br>
+还是原来的配方,<code>储存</code>-<code>结构化数据</code>中的<code>Comment</code>框里的就是评论<br>
+<img src="https://s1oz.github.io/post-images/1616220449958.png" alt="" loading="lazy"><br>
+看着不爽,勾选,删除,<strong>世界干净了..</strong></p>
 
                     </div>
                     <div class="essaySuffix-box">
@@ -225,8 +194,8 @@ cp -rf /mnt/user/appdata/transmission /mnt/user/files/trbackups/bak_`date '+%Y%m
                                         href="/about"
                                         target="_blank">杂乱的备忘录</a></span></strong> <br><span
                                 style="font-weight: bold; white-space:nowrap;">本文链接</span>：<a
-                                href="https://s1oz.github.io/post/unraid-bei-wang-lu/"
-                                target="_blank">https://s1oz.github.io/post/unraid-bei-wang-lu/</a><br><span
+                                href="https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/"
+                                target="_blank">https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/</a><br><span
                                 class="essaySuffix-right-title">版权声明</span>：本博客所有文章除特别声明外，均采用 <a
                                 href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA"
                                 title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</div>
@@ -240,13 +209,9 @@ cp -rf /mnt/user/appdata/transmission /mnt/user/files/trbackups/bak_`date '+%Y%m
 <ul>
 <li>
 <ul>
-<li><a href="#%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD">系统下载</a></li>
-<li><a href="#%E6%8F%92%E4%BB%B6">插件</a></li>
-<li><a href="#docker">Docker</a>
-<ul>
-<li><a href="#%E5%95%A5%E6%97%B6%E5%80%99boom%E4%BA%86%E9%87%8D%E6%9D%A5%E8%AE%B0%E5%BE%97%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F%E9%BB%98%E8%AE%A4btrfs">啥时候boom了重来记得磁盘格式默认Btrfs</a></li>
-</ul>
-</li>
+<li><a href="#%E4%BB%A5gridea%E4%B8%BA%E4%BE%8B">以Gridea为例</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96id-key%E5%B9%B6%E5%A1%AB%E5%85%A5%E5%BC%80%E5%90%AF%E8%AF%84%E8%AE%BA">获取ID Key并填入开启评论</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%B7%B2%E7%BB%8F%E5%8F%91%E5%B8%83%E7%9A%84%E8%AF%84%E8%AE%BA">删除已经发布的评论</a></li>
 </ul>
 </li>
 </ul>
@@ -262,8 +227,8 @@ cp -rf /mnt/user/appdata/transmission /mnt/user/files/trbackups/bak_`date '+%Y%m
             
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://s1oz.github.io/post/windows-bei-wang-lu/" class="post-title gt-a-link">
-                    Windows备忘录
+                <a href="https://s1oz.github.io/post/unraid-69x-wang-qia-kai-qi-sr-iov/" class="post-title gt-a-link">
+                    Unraid 6.9.x 网卡开启SR-IOV
                 </a>
             </div>
             

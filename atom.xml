@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-20T06:15:04.784Z</updated>
+    <updated>2021-03-20T07:24:40.687Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -23,6 +23,13 @@
         <link href="https://s1oz.github.io/post/unraid-69x-wang-qia-kai-qi-sr-iov/">
         </link>
         <updated>2021-03-19T03:39:45.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[49年入国军 尝试白嫖ETH]]></title>
+        <id>https://s1oz.github.io/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/</id>
+        <link href="https://s1oz.github.io/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/">
+        </link>
+        <updated>2021-01-20T06:25:06.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[假装给群晖披层马甲]]></title>
@@ -72,12 +79,5 @@
         <link href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
         </link>
         <updated>2019-08-15T11:08:52.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Xpenology备忘录]]></title>
-        <id>https://s1oz.github.io/post/hei-qun-bei-wang-lu/</id>
-        <link href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/">
-        </link>
-        <updated>2018-06-10T12:50:32.000Z</updated>
     </entry>
 </feed>

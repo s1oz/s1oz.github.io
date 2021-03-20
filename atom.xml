@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-19T14:38:17.447Z</updated>
+    <updated>2021-03-20T02:24:27.576Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -210,6 +210,84 @@ href=&quot;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Unraid备忘录]]></title>
+        <id>https://s1oz.github.io/post/unraid-bei-wang-lu/</id>
+        <link href="https://s1oz.github.io/post/unraid-bei-wang-lu/">
+        </link>
+        <updated>2020-09-10T02:04:04.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="系统下载">系统下载</h3>
+<pre><code>https://unraid.net/download
+</code></pre>
+<h3 id="插件">插件</h3>
+<p><code>CA Auto Update Applications</code> 自动更新插件跟docker<br>
+<code>CA Cleanup Appdata</code> 清理删除容器后的映射的残留目录<br>
+<code>CA Config Editor</code> 系统配置文件统一编译工具<br>
+<code>Community Applications</code>应用商店</p>
+<pre><code>#商店安装地址
+https://raw.githubusercontent.com/Squidly271/community.applications/master/plugins/community.applications.plg
+</code></pre>
+<p><code>Custom Tab</code> web页面添加额外窗口<br>
+<code>Dynamix Active Streams</code> 显示smb连接用户信息<br>
+<code>Dynamix System Buttons</code> 重启按钮<br>
+<code>Dynamix System Information</code> 系统信息显示<br>
+<code>Dynamix System Statistics</code> 图表显示资源占用信息<br>
+<code>Dynamix System Temperature</code> 添加温度显示<br>
+<code>Dynamix WireGuard</code> 简易的VPN<br>
+<code>Fix Common Problems</code> 系统诊断<br>
+<code>Intel GPU TOP</code>核显信息显示<br>
+<code>Libvirt Hotplug USB</code>USB设备管理工具<br>
+<code>Nerd Tools</code>额外安装包管理工具 <em>perl温度显示依赖 netho 实时流量可按进程或IP排序</em><br>
+<code>Unassigned Devices</code>挂载非阵列中的硬盘<br>
+<code>Unraid.net</code>官方U盘云备份工具<br>
+<code>User Scripts</code>添加自定义脚本</p>
+<pre><code>#定时备份TR数据
+#!/bin/bash
+cp -rf /mnt/user/appdata/transmission /mnt/user/files/trbackups/bak_`date '+%Y%m%d_%H.%M.%S'`
+</code></pre>
+<h3 id="docker">Docker</h3>
+<p><code>emby/embyserver:beta</code> 管理电影跟剧集<br>
+<code>ich777/jellyfin:stable-rc</code> 管理学习资料<br>
+<code>80x86/filebrowser:amd64</code> Unraid文件管理<br>
+<code>linuxserver/transmission:amd64-version-3.00-r0</code> PT保种<br>
+<code>linuxserver/qbittorrent:version-14.2.5.99202004250119-7015-2c65b79ubuntu18.04.1</code> PT刷数据<br>
+<code>johngong/qbittorrent:qee-latest</code> 学习资料磁力下载<br>
+<code>p3terx/aria2-pro</code> http文件下载<br>
+<code>p3terx/ariang</code> 配套UI<br>
+<code>jd</code> 薅羊毛<br>
+<code>redrain</code> 红包雨<br>
+<code>iyuucn/iyuuplus:latest</code> 自动辅种<br>
+<code>tzahi12345/youtubedl-material:nightly</code> youtube搬运<br>
+<code>johngong/baidunetdisk</code> 垃圾百度云盘<br>
+<code>adolfintel/speedtest</code> 网络测速<br>
+<code>https://github.com/s1oz/unraid</code>模板储存库</p>
+<h4 id="啥时候boom了重来记得磁盘格式默认btrfs">啥时候boom了重来记得磁盘格式默认Btrfs</h4>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows备忘录]]></title>
+        <id>https://s1oz.github.io/post/windows-bei-wang-lu/</id>
+        <link href="https://s1oz.github.io/post/windows-bei-wang-lu/">
+        </link>
+        <updated>2020-05-23T02:16:53.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="原版系统下载">原版系统下载</h3>
+<p><em><strong><a href="https://msdn.itellyou.cn/">旧界面</a></strong></em>  <em><strong><a href="https://next.itellyou.cn/">新界面</a></strong></em></p>
+<h3 id="精简系统下载">精简系统下载</h3>
+<p>三杰ltsc <em><strong><a href="https://pan.baidu.com/s/1ucjtIR89Q3EWpBuhF6BydA">提取码: 8jyi</a></strong></em><br>
+不忘初心 <em><strong><a href="https://www.pc521.net/">官网</a></strong></em><br>
+WES7 <em><strong><a href="https://pan.baidu.com/s/1t9v5fXlKC2IDTbnzGaTmVg">提取码: wvsy</a></strong></em></p>
+<h3 id="pe下载">PE下载</h3>
+<p>双心PE <em><strong><a href="http://wuyou.net/forum.php?mod=viewthread&amp;tid=416308">无忧论坛</a></strong></em></p>
+<h3 id="补丁">补丁</h3>
+<p><em><strong><a href="https://pockies.github.io/2018/02/08/ltsb-install-uwp/">Windows10 LTSB/LTSC版安装应用商店与UWP</a></strong></em></p>
+<h3 id="激活">激活</h3>
+<p><em><strong><a href="https://www.moerats.com/kms/">KMS激活脚本</a></strong></em><br>
+<em><strong><a href="https://51.ruyo.net/16911.html/">数字权利激活</a></strong></em></p>
+<h3 id="软件">软件</h3>
+<p><em><strong><a href="https://weibo.com/u/1112829033">Adobe @vposy</a></strong></em><br>
+<em><strong><a href="https://github.com/hooke007/MPV_lazy">MPV懒人包</a></strong></em></p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Docker安装Emby并白嫖]]></title>
         <id>https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/</id>
         <link href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/">
@@ -312,6 +390,54 @@ nginx -s reload
 <p>windows需要安装刚<code>ca.7z</code>解压文件中的<code>guomi.cer</code>证书</p>
 <h4 id="e-ios设备无法正常使用">e. IOS设备无法正常使用</h4>
 <p>IOS需要安装后在设置--通用--关于手机--证书信任设置中把<code>guomi.cer</code>证书信任</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[OpenWrt备忘录]]></title>
+        <id>https://s1oz.github.io/post/openwrt-bei-wang-lu/</id>
+        <link href="https://s1oz.github.io/post/openwrt-bei-wang-lu/">
+        </link>
+        <updated>2020-02-07T02:08:34.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="模板选择">模板选择</h3>
+<pre><code>https://github.com/P3TERX/Actions-OpenWrt
+</code></pre>
+<h3 id="源码选择">源码选择</h3>
+<pre><code>https://github.com/Lienol/openwrt
+https://github.com/coolsnowwolf/lede
+</code></pre>
+<h3 id="插件仓库选择">插件仓库选择</h3>
+<pre><code>https://github.com/siropboy/mypackages
+</code></pre>
+<pre><code>https://github.com/jerrykuku/openwrt-package
+</code></pre>
+<pre><code>https://github.com/xiaorouji/openwrt-passwall
+</code></pre>
+<h3 id="命令">命令</h3>
+<pre><code>#ssh编译命令
+cd openwrt &amp;&amp; make menuconfig
+</code></pre>
+<pre><code>#ssh界面获取config
+./scripts/diffconfig.sh &gt; seed.config
+cat seed.config
+</code></pre>
+<pre><code>#上传tmp刷机命令
+dd if=/tmp/upload/op.img of=/dev/sda
+</code></pre>
+<pre><code>#echo '替换UPNP为2.0.20170421'
+rm -rf feeds/packages/net/miniupnpd
+svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
+</code></pre>
+<pre><code>#echo '修改默认IP为10.0.0.1'
+sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+</code></pre>
+<pre><code>#修改版本号
+sed -i 's/OpenWrt/xxxx $(TZ=UTC-8 date &quot;+%Y.%m.%d&quot;) @ OpenWrt/g' package/lean/default-settings/files/zzz-default-settings
+</code></pre>
+<pre><code>#echo '修改机器名称'
+sed -i 's/OpenWrt/XXXX/g' package/base-files/files/bin/config_generate
+</code></pre>
+<pre><code>将所需配置文件按原路径丢入新建名为files的文件夹中即为files大法
+</code></pre>
 ]]></content>
     </entry>
     <entry>

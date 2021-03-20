@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-20T02:24:27.576Z</updated>
+    <updated>2021-03-20T02:27:20.478Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -517,7 +517,7 @@ bios中开启pxe启动相关选项<br>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[黑群备忘录]]></title>
+        <title type="html"><![CDATA[xpenology备忘录]]></title>
         <id>https://s1oz.github.io/post/hei-qun-bei-wang-lu/</id>
         <link href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/">
         </link>

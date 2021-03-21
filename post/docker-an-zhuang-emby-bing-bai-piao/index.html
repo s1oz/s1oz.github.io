@@ -1,170 +1,178 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8"/>
-<meta name="description" content="以备不时之需"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="apple-touch-icon"
+  href="https://cdn.jsdelivr.net/gh/chiperman/Blog-photos/./img/iocn/aojep-i6dt9.49j3g5o9xbg.png">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+<meta name="apple-mobile-web-app-title" content="XiaoX 博客">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <title>Docker安装Emby并白嫖 | 杂乱的备忘录</title>
 
-<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1616225261904">
-
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
-
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.0/mermaid.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Noto+Sans+SC:300|Montserrat&display=swap"
+  rel="stylesheet">
+<link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+<!-- 下面是我自己的iconfont -->
+<link href="https://at.alicdn.com/t/font_1651848_9ur7s2zwgll.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://s1oz.github.io/media/scripts/script.js'></script>
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
 <script>
-    var config = {
-        startOnLoad:true,
-        flowchart:{
-            useMaxWidth:false,
-            htmlLabels:true
-        }
-    };
-    mermaid.initialize(config);
-    $(function(){
-        var elements = document.getElementsByClassName("language-mermaid");
-        for (var i = elements.length; i--;) {
-            element = elements[i];
-            var graphDefinition = element.innerText;
-            if (graphDefinition) {
-                var svg = mermaid.render('ha_mermaid_' + i, graphDefinition, function(svg){});
-                if (svg) {
-                    var svgElement = document.createElement('div');
-                    preNode = element.parentNode;
-                    svgElement.innerHTML = svg;
-                    svgElement.setAttribute('class', 'mermaid');
-                    svgElement.setAttribute('data-processed', 'true');
-                    preNode.parentNode.replaceChild(svgElement, preNode);
-                }
-            }
-        }
-    });
+  hljs.initHighlightingOnLoad();
 </script>
+<script>
+  wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  });
+  wow.init();
+</script>
+
 </head>
 
-<body>
-    <div class="main gt-bg-theme-color-first">
-        <nav class="navbar navbar-expand-lg">
-    <a href="/">
-        <div class="navbar-brand">
-            <img class="user-avatar" src="/images/avatar.png" alt="头像">
-            <div class="site-name gt-c-content-color-first">
-                杂乱的备忘录
-            </div>
-        </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav " style="text-align: center">
-            
-                <div class="nav-item">
-                    
-                        <a href="/" class="menu gt-a-link">
-                            首页
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/archives" class="menu gt-a-link">
-                            归档
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/tags" class="menu gt-a-link">
-                            标签
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/friends" class="menu gt-a-link">
-                            友链
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/post/about" class="menu gt-a-link">
-                            关于
-                        </a>
-                    
-                </div>
-            
-        </div>
-        <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1616225261904" action="/search/index.html">
-                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
-                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
-            </form>
-        </div>
-    </div>
-</nav>
+<body class="post-template-default single single-post postid-70 single-format-standard">
+	<div id="wrapper">
+				<header id="header" class="site-header" 
+			style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://s1oz.github.io/post-images/docker-an-zhuang-emby-bing-bai-piao.png)"
+			>
+			<div class="site-branding">
+				<h1 class="site-title">
+					<div class="post-title-name">
+						<a href="https://s1oz.github.io" rel="home">Docker安装Emby并白嫖</a>
+					</div>
+				</h1>
+				<h2 class="site-description">以备不时之需</h2>
+			</div>
+			<nav id="nav-wrapper">
+				<div class="container">
+					<div class="nav-toggle">
+						<div class="bars">
+							<div class="bar"></div>
+							<div class="bar"></div>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<ul id="" class="dove">
+						
 
-        <div class="post-container">
+						<li>
 
-            <!-- <div class="post-detail gt-bg-theme-color-second"> -->
-            <article style="display:flex;">
-                <div class="post-detail gt-bg-theme-color-second gt-post-content">
-                    <h2 class="post-title">
-                        Docker安装Emby并白嫖
-                    </h2>
-                    <div class="post-info">
-                        <div>
-                            <time class="post-time gt-c-content-color-first">
-                                · 2020-03-26 ·
-                            </time>
-                            
-                            <a href="https://s1oz.github.io/tag/k3_hMjZpe/" class="post-tags">
-                                # docker
-                            </a>
-                            
-                            <a href="https://s1oz.github.io/tag/GoG82PnDw/" class="post-tags">
-                                # emby
-                            </a>
-                            
-                        </div>
-                        <div>
-                            
-                            <span id="/post/docker-an-zhuang-emby-bing-bai-piao/"
-                                class="leancloud_visitors" data-flag-title="Docker安装Emby并白嫖">
-                                <em class="post-meta-item-text">阅读量 </em>
-                                <i class="leancloud-visitors-count">0</i>
-                            </span>
-                            
-                        </div>
-                    </div>
+							<a href="/"> 首页</a></li>
 
-                    <!-- <div class="post-content-wrapper"> -->
-                    <div class="post-content">
-                        <h3 id="1聊聊"><em><strong>1.聊聊</strong></em></h3>
+						
+
+						<li>
+
+							<a href="/archives"> 归档</a></li>
+
+						
+
+						<li>
+
+							<a href="/tags"> 标签</a></li>
+
+						
+
+						<li>
+
+							<a href="/friends"> 友链</a></li>
+
+						
+
+						<li>
+
+							<a href="/post/about"> 关于</a></li>
+
+						
+
+					</ul>
+					</li>
+
+					</ul>
+				</div>
+			</nav>
+
+			<div class="jingge">
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</div>
+			<form id="gridea-search-form" data-update="1616329184263" action="/search/index.html">
+				<div class="search-box">
+					<input class="search-txt" name="q" placeholder="Type to search" />
+					<a class="search-btn">
+						<i class="iconfont icon-search1" action="/search/index.html"></i>
+					</a>
+				</div>
+			</form>
+		</header>
+		<div id="content" class="container">
+			<div class="row">
+				<div class="col-md-8 site-main">
+					<article id="post-70"
+						class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+						<div class="entry-content">
+							<div class="entry-meta">
+								<div class="entry-info">
+									<time>
+										2020-03-26
+									</time>
+									<span>
+										6 min read
+									</span>
+									<!-- id 将作为查询条件 -->
+									<span id="/docker-an-zhuang-emby-bing-bai-piao/" class="leancloud_visitors"  data-flag-title="Docker安装Emby并白嫖">
+										<span class="leancloud-visitors-count"></span>次阅读
+									</span>
+									<span class="isTop">
+										<script type="text/javascript">
+											var isTop;
+											isTop = false;
+											if (isTop == true) {
+												// document.write("<i class="iconfont icon-icon-test"></i>")
+												document.write("<span>⭐ Top</span>");
+											}
+										  </script>
+									</span>
+								</div>
+							</div>
+							<div class="wow zoomIn entry-summary song">
+								<h3 id="1聊聊"><em><strong>1.聊聊</strong></em></h3>
 <p>海报墙软件好多,但是哪个好用呢,都用过来,我觉得还是Emby比较好时😀<br>
 Emby:<br>
 相对成熟的方案,全平台支持,白嫖后没啥缺点了,感觉缺点可能就是不能直接播放ISO文件跟国产剧命名吧,不过对于我这种只下REMUX的来说不是问题,国产剧..硬链接批量加S1呗~<br>
@@ -265,221 +273,392 @@ nginx -s reload
 <h4 id="e-ios设备无法正常使用">e. IOS设备无法正常使用</h4>
 <p>IOS需要安装后在设置--通用--关于手机--证书信任设置中把<code>guomi.cer</code>证书信任</p>
 
-                    </div>
-                    <div class="essaySuffix-box">
-                        <div class="essaySuffix-box-left"><img
-                                src="/images/avatar.png" alt="">
-                        </div>
-                        <div class="essaySuffix-box-right"><span
-                                class="essaySuffix-right-title">本文作者</span>：<strong><span style="font-size: 12px;"><a
-                                        href="/about"
-                                        target="_blank">杂乱的备忘录</a></span></strong> <br><span
-                                style="font-weight: bold; white-space:nowrap;">本文链接</span>：<a
-                                href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/"
-                                target="_blank">https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/</a><br><span
-                                class="essaySuffix-right-title">版权声明</span>：本博客所有文章除特别声明外，均采用 <a
-                                href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA"
-                                title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</div>
-                        <div style="clear: both;"></div>
-                    </div>
-                </div>
-                <!-- </div> -->
-                <div class="toc-container">
-                    <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#1%E8%81%8A%E8%81%8A"><em><strong>1.聊聊</strong></em></a></li>
-<li><a href="#2%E4%B8%8B%E8%BD%BD%E6%89%80%E9%9C%80%E6%96%87%E4%BB%B6"><em><strong>2.下载所需文件</strong></em></a>
-<ul>
-<li><a href="#a-%E4%B8%8B%E8%BD%BDdll%E6%96%87%E4%BB%B6-dll%E6%84%9F%E8%B0%A2yukinos%E5%A4%A7%E4%BD%AC%E5%88%B6%E4%BD%9C%E7%9A%84%E8%A1%A5%E4%B8%81">a. 下载dll文件 <em><strong>dll感谢@Yukino's大佬制作的补丁</strong></em></a></li>
-<li><a href="#b-%E4%B8%8B%E8%BD%BD%E6%AC%BA%E8%AF%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%AA%8C%E8%AF%81%E6%96%87%E4%BB%B6-ca">b. 下载欺诈服务器验证文件  <em><strong>ca</strong></em></a></li>
-</ul>
-</li>
-<li><a href="#3%E5%87%86%E5%A4%87%E5%AB%96%E5%A5%B9"><em><strong>3.准备嫖她</strong></em></a>
-<ul>
-<li><a href="#a-%E4%BB%A5unraid%E4%B8%BA%E4%BE%8B">a. 以Unraid为例</a></li>
-<li><a href="#b-%E5%9C%A8%E8%B7%AF%E7%94%B1%E4%B8%AD%E5%8A%AB%E6%8C%81%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9C%B0%E5%9D%80">b. 在路由中劫持验证服务器地址</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#4%E5%AE%89%E8%A3%85emby"><em><strong>4.安装Emby</strong></em></a></li>
-<li><a href="#5%E6%84%89%E5%BF%AB%E7%9A%84%E4%BD%BF%E7%94%A8"><em><strong>5.愉快的使用</strong></em></a>
-<ul>
-<li><a href="#6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><em><strong>6.可能会遇到的问题</strong></em></a>
-<ul>
-<li><a href="#a-%E5%85%B6%E4%BB%96%E5%B9%B3%E5%8F%B0%E5%92%8B%E5%8A%9E">a. 其他平台咋办</a></li>
-<li><a href="#b-%E6%A0%B8%E6%98%BE%E8%B0%83%E7%94%A8">b. 核显调用</a></li>
-<li><a href="#c-emby%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E5%B0%8F%E9%BB%84%E6%A0%87">c. Emby服务器没有小黄标</a></li>
-<li><a href="#d-windows%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B2%A1%E6%9C%89%E5%B0%8F%E9%BB%84%E6%A0%87">d. windows浏览器没有小黄标</a></li>
-<li><a href="#e-ios%E8%AE%BE%E5%A4%87%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8">e. IOS设备无法正常使用</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+							</div>
+							<div class="wow zoomIn vt-post-tags">
+								
+								<a href="https://s1oz.github.io/tag/k3_hMjZpe/" rel="tag">docker</a>
+								
+								<a href="https://s1oz.github.io/tag/GoG82PnDw/" rel="tag">emby</a>
+								
+							</div>
+							<nav class="navigation3 post-navigation3" role="navigation">
 
-                </div>
-            </article>
-            <!-- </div> -->
+								<div class="nav-links3">
+									
+									<div class="wow zoomIn nav-previous3"><a href="https://s1oz.github.io/post/windows-bei-wang-lu/"
+											rel="prev"> Windows备忘录</a></div>
+									
+									
+									<div class="wow zoomIn nav-next3"><a href="https://s1oz.github.io/post/openwrt-bei-wang-lu/"
+											rel="next"> OpenWrt备忘录</a></div>
+									
+								</div>
+							</nav>
+							<div class="wow zoomIn author-info" style="visibility: visible; animation-name: zoomIn;">
+								<div class="author-avatar pull-left"><img
+										src="https://s1oz.github.io/images/avatar.png"></div>
+								
+								<div class="author-description">
+									<div class="author-title">
+										<div class="author-link" rel="author">s1oz</div>
+									</div>
+									
+									
+									<p class="author-bio">想起什么就记录点什么</p>
+								</div>
+							</div>
+							
+						</div>
+					</article>
+					<div id="marlin_lite_about_widget-2" class="wow zoomIn widget marlin_lite_about_widget"
+						data-wow-delay="0.1s">
 
-          
+						
+						<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://s1oz.github.io/media/scripts/Valine.min.js'></script>
+<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
 
+
+
+<div class="comment"></div>
+<script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            lang: 'zh-cn',
+            visitor: true,
             
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://s1oz.github.io/post/openwrt-bei-wang-lu/" class="post-title gt-a-link">
-                    OpenWrt备忘录
-                </a>
-            </div>
             
-
+            emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+            	
+            	
             
+        });
+    </script> 
 
-            
-            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
 
-<style>
-	div#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
-	}
+					</div>
+				</div>
+				<div class="tocc col l3 hide-on-med-and-down">
+
+    <div class="toc-widget">
+
+        <div class="toc-title"></div>
+
+        <div id="toc-content">
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+
+    $(function () {
+        var bt;
+        bt = $('.toc-widget');
+        if ($(document).width() > 480) {
+            $(window).scroll(function () {
+                var st;
+                st = $(window).scrollTop();
+                if (st > 450) {
+                    return bt.css('display', 'block');
+                } else {
+                    return bt.css('display', 'none');
+                }
+            })
+        }
+    });
+</script>
+			</div>
+		</div>
+		<footer id="colophon" class="site-footer">
+	<div class="container">
+		<div class="copyright">
+			Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+			<b>Crafted with 💔 by <a href="https://chiperman.github.io/about/" target="_blank">chiperman</a></b>
+			<br>
+			<b>Eleven forever.</b>
+			<br>
+			<span class="runtime">
+				「我」已经运行了<script type="text/javascript">
+					var urodz = new Date("05/07/2019");
+					var now = new Date();
+					var ile = now.getTime() - urodz.getTime();
+					var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+					document.write(+dni)
+				</script>天
+				<br>
+			</span>
+			<b>Theme: </b>
+			<a href="https://github.com/chiperman/gridea-theme-xiaox" target="_blank" title="Pan">
+				<span><b>Pan - XiaoX</b></span>
+			</a>
+			<b>. Powered by </b>
+			<a href="https://gridea.dev/" target="_blank" title="Gridea">
+				<span><b>Gridea</b></span>
+			</a>
+		</div>
+	</div><!-- .container -->
+</footer><!-- #colophon -->
+	</div>
+
+	<script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+
+<script src="https://s1oz.github.io/media/scripts/marlin-scripts.js"></script>
+
+<script src="//tokinx.github.io/lately/lately.min.js"></script>
+<script>
+  jQuery(document).ready(function () {
+    $.lately({
+      'target': '.lately-a,.lately-b,.lately-c'
+    })
+  });
+</script>
+<style type="text/css">
+  /* 一键到顶部 */
+  a.back_to_top {
+    text-decoration: none;
+    position: fixed;
+    bottom: 65px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+  }
+
+  a.back_to_top span {
+    color: #888;
+  }
+
+  a.back_to_top:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+  }
+
+  a.back_to_top:hover span {
+    color: #555;
+  }
+
+  @media print,
+  screen and (max-width: 580px) {
+    .back_to_top {
+      display: none !important;
+    }
+  }
+
+  /* 一键到底部 */
+
+  a.down_to_bottom {
+    text-decoration: none;
+    position: fixed;
+    bottom: 15px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+  }
+
+  a.down_to_bottom span {
+    color: #888;
+  }
+
+  a.down_to_bottom:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+  }
+
+  a.down_to_bottom:hover span {
+    color: #555;
+  }
+
+  @media print,
+  screen and (max-width: 580px) {
+    .down_to_bottom {
+      display: none !important;
+    }
+  }
 </style>
 
 
-	<div id="vcomments"></div>
+<a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span>
+</a>
+
+<a id="down_to_bottom" href="#" class="down_to_bottom"><span><i class="iconfont icon-xiangxia"></i></span>
+</a>
+
+<script src="//instant.page/3.0.0" type="module" defer
+  integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 
 <script>
-	new Valine({
-		el: '#vcomments',
-		appId: '1Chk7yAh42l6bhCqfvlCatpG-9Nh9j0Va',
-		appKey: 'B2DRuYPtJJwKyo7xcK7QGkVK',
-		avatar: 'retro',
-		pageSize: 5,
-		recordIp: true,
-		placeholder: '文明你我他~',
-		visitor: true,
-	});
-</script>
+  function getScrollTop() {
+    var scrollTop = 0,
+      bodyScrollTop = 0,
+      documentScrollTop = 0;
+    if (document.body) {
+      bodyScrollTop = document.body.scrollTop;
+    }
+    if (document.documentElement) {
+      documentScrollTop = document.documentElement.scrollTop;
+    }
+    scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+    return scrollTop;
+  };
 
-            
+  function getScrollHeight() {
+    var scrollHeight = 0,
+      bodyScrollHeight = 0,
+      documentScrollHeight = 0;
+    if (document.body) {
+      bSH = document.body.scrollHeight;
+    }
+    if (document.documentElement) {
+      dSH = document.documentElement.scrollHeight;
+    }
+    scrollHeight = (bSH - dSH > 0) ? bSH : dSH;
+    return scrollHeight;
+  };
 
-            <div class="site-footer gt-c-content-color-first">
+  function getWindowHeight() {
+    var windowHeight = 0;
+    if (document.compatMode == "CSS1Compat") {
+      windowHeight = document.documentElement.clientHeight;
+    } else {
+      windowHeight = document.body.clientHeight;
+    }
+    return windowHeight;
+  };
 
-  <div class="social-container">
-
-    <a href="" target="_blank" title="">
-      <i class="fab fa-github gt-c-content-color-first"></i>
-    </a>
-
-    <a href="" target="_blank" title="">
-      <i class="fas fa-blog gt-c-content-color-first"></i>
-    </a>
-
-    <a href="" target="_blank" title="">
-      <i class="fab fa-cuttlefish gt-c-content-color-first"></i>
-    </a>
-
-    <a href="mailto:" title="">
-      <i class="fas fa-envelope gt-c-content-color-first"></i>
-    </a>
-
-  </div>
-  <div class="slogan gt-c-content-color-first">以备不时之需</div>
-  
-  <div class="footer-info">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  </div>
-  
-  <div>
-    <div>
-      Theme by <a href="https://github.com/jxiaow/gridea-theme-pure-fashion" target="_blank">jxiaow</a>, Powered by <a
-              href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://s1oz.github.io/atom.xml" target="_blank">RSS</a></a>
-  </div>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
-            <script>
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-  
-  if (mainNavLinks == null || mainNavLinks.length == 0) {
-    let tocContainer = document.querySelector(".toc-container");
-    tocContainer.classList.remove("toc-container")
-    // tocContainer.parentElement.firstElementChild.style.width = "100%"
-    console.log("隐藏大纲")
-  } else {
-
-    // This should probably be throttled.
-    // Especially because it triggers during smooth scrolling.
-    // https://lodash.com/docs/4.17.10#throttle
-    // You could do like...
-    // window.addEventListener("scroll", () => {
-    //    _.throttle(doThatStuff, 100);
-    // });
-    // Only not doing it here to keep this Pen dependency-free.
-
-
-    window.addEventListener("scroll", event => {
-      let fromTop = window.scrollY;
-
-      mainNavLinks.forEach((link, index) => {
-        let section = document.getElementById(decodeURI(link.hash).substring(1));
-        let nextSection = null
-        if (mainNavLinks[index + 1]) {
-          nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-        }
-        if (section.offsetTop <= fromTop) {
-          if (nextSection) {
-            if (nextSection.offsetTop > fromTop) {
-              link.classList.add("current");
-            } else {
-              link.classList.remove("current");
-            }
+  $(document).ready((function (_this) {
+    return function () {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function () {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block');
           } else {
-            link.classList.add("current");
+            return bt.css('display', 'none');
           }
-        } else {
-          link.classList.remove("current");
-        }
-      });
-    });
-  }
+        });
+        return bt.click(function () {
+          $('body,html').animate({
+            scrollTop: 0
+          }, 800);
+          return false;
+        });
+      }
+    };
+  })(this));
 
-
-
+  $(document).ready((function (_this) {
+    return function () {
+      var bt;
+      bt = $('#down_to_bottom');
+      if ($(document).width() > 480) {
+        $(window).scroll(function () {
+          var st;
+          st = $(window).scrollTop();
+          if (getScrollTop() + getWindowHeight() == getScrollHeight()) {
+            return bt.css('display', 'none');
+          } else {
+            return bt.css('display', 'block');
+          }
+        });
+        return bt.click(function () {
+          $('body,html').animate({
+            scrollTop: $('body,html')[0].scrollHeight
+          }, 800);
+          return false;
+        });
+      }
+    };
+  })(this));
 </script>
+	<script data-no-instant>
+		(function ($) {
+			$.extend({
+				adamsOverload: function () {
+					$('.navigation:eq(0)').remove();
+					$("").attr("rel", "external");
+					$("a[rel='external'],a[rel='external nofollow']").attr("target", "_blank");
+					$("a.vi").attr("rel", "");
+					$.viewImage({
+						'target': 'img',
+						'exclude': '.vsmile-icons img,.gallery img',
+						'delay': 300
+					});
+					$.lately({
+						'target': '.commentmetadata a,.infos time,.post-list time'
+					});
+					prettyPrint();
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<script>
-  let images = document.querySelectorAll("figure > img");
-  //   debugger
-  //   console.log("dddd: "+ images);
-  images.forEach(image => {
-    var parent = image.parentElement;
-    parent.removeChild(image);
-    var aelem = document.createElement('a');
-    aelem.href = image.src;
-    aelem.dataset['fancybox'] = 'gallery';
-    aelem.classList.add('fancybox');
-    aelem.appendChild(image);
-    parent.appendChild(aelem);
-  })
-
-//   <a data-fancybox="gallery" href="big_1.jpg"><img src="small_1.jpg"></a>
-// <a data-fancybox="gallery" href="big_2.jpg"><img src="small_2.jpg"></a>
-</script>
-        </div>
-    </div>
+					$('ul.links li a').each(function () {
+						if ($(this).parent().find('.bg').length == 0) {
+							$(this).parent().append(
+								'<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain=' +
+								$(this).attr("href") + ')"></div>--->')
+						}
+					});
+				}
+			});
+		})(jQuery);
+		jQuery.adamsOverload();
+	</script>
 
 </body>
 

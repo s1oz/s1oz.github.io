@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Unraid更方便的玩转下载 | 杂乱的备忘录</title>
+<title>长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件 | 杂乱的备忘录</title>
 
 <link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Noto+Sans+SC:300|Montserrat&display=swap"
@@ -45,12 +45,12 @@
 <body class="post-template-default single single-post postid-70 single-format-standard">
 	<div id="wrapper">
 				<header id="header" class="site-header" 
-			style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://s1oz.github.io/post-images/unraid-geng-fang-bian-de-wan-zhuan-xia-zai.png)"
+			style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://s1oz.github.io/post-images/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian.png)"
 			>
 			<div class="site-branding">
 				<h1 class="site-title">
 					<div class="post-title-name">
-						<a href="https://s1oz.github.io" rel="home">Unraid更方便的玩转下载</a>
+						<a href="https://s1oz.github.io" rel="home">长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件</a>
 					</div>
 				</h1>
 				<h2 class="site-description">以备不时之需</h2>
@@ -150,13 +150,13 @@
 							<div class="entry-meta">
 								<div class="entry-info">
 									<time>
-										2020-11-22
+										2019-07-18
 									</time>
 									<span>
-										2 min read
+										1 min read
 									</span>
 									<!-- id 将作为查询条件 -->
-									<span id="/unraid-geng-fang-bian-de-wan-zhuan-xia-zai/" class="leancloud_visitors"  data-flag-title="Unraid更方便的玩转下载">
+									<span id="/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/" class="leancloud_visitors"  data-flag-title="长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件">
 										<span class="leancloud-visitors-count"></span>次阅读
 									</span>
 									<span class="isTop">
@@ -172,68 +172,26 @@
 								</div>
 							</div>
 							<div class="wow zoomIn entry-summary song">
-								<h3 id="为什么要这样做">为什么要这样做</h3>
-<p>9102年了,谁还没蹄子呢👺<br>
-下载工具一般也都是直接安装在<code>NAS</code>上,也没做分离<br>
-但是既然用了蹄子,肯定就不能进行p2p下载了👎<br>
-应该大部分基友都是搞个OP来煮蹄子吧<br>
-<code>lean</code>的只有煮与不煮<br>
-要么就是直接不给<code>NAS</code>吃蹄子,docker呀之类的,刮削之类呀,就蛮受影响的<br>
-<code>Lienol</code>的可以分用啥方法煮<br>
-要么都是给<code>NAS</code><strong>GFW模式</strong>但是我感觉这蛮影响体验的,大部分好使的,但是不在名单内的网址就跟上面一样受到影响了,所以...唉<br>
-既然这样,那就只能靠<code>macvlan</code>了<br>
-让<code>NAS</code>与<code>下载工具</code>分别拥有单独IP,这样给<code>NAS</code>吃蹄子,不给<code>下载工具</code>吃蹄子<br>
-问题就完美解决了</p>
-<h3 id="如何使用">如何使用</h3>
-<h4 id="aunraid为例">a.Unraid为例</h4>
-<p>Unraid最简单了,我们先来看下Docker所使用的网络<br>
-在终端中输入</p>
-<pre><code>docker network ls
-</code></pre>
-<p><img src="https://s1oz.github.io/post-images/1616218057010.png" alt="" loading="lazy"><br>
-看~<strong>br0</strong>就是,所以我们不需要手动去创建<br>
-我们可以直接编辑需要更改的容器<br>
-<img src="https://s1oz.github.io/post-images/1616218167295.png" alt="" loading="lazy"><br>
-在<code>网络类型</code>中直接选择上面显示的带有<code>macvlan</code>标识的<code>br0</code><br>
-然后输入想要设置的同网段的ip<br>
-这样这个容器启动后就会被分配为这个ip<br>
-容器也不需要如在<code>Bridge</code>模式一样再次映射端口<br>
-相当于弱鸡版本的host模式,容器默认端口多少就是多少<br>
-直接<code>ip+端口</code>即可欢快的访问了访问</p>
-<h4 id="b群晖为例">b.群晖为例</h4>
-<p>群晖跟Unraid相比,就是默认没有<code>macvlan</code>接口<br>
-所以需要多几条命令来建立接口<br>
-然后再通过命令生成容器设置ip信息<br>
-关于群晖使用,看这吧&gt;<a href="https://bsdcpp.github.io/2020/11/23/Docker-macvlan%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">bsdcpp</a>&lt;大佬已经给出了命令跟实例了,对照着抄即可</p>
-<h3 id="收尾">收尾</h3>
-<p>现在容器已经获取到了独立的IP了👍<br>
-那为了愉快的使用,我们直接在蹄子的访问控制中给<br>
-<code>NAS</code><strong>中国列表以外</strong><br>
-<code>下载工具</code><strong>不代理</strong><br>
-这样<br>
-<code>NAS</code>刮削,下载,访问都畅通无阻了<br>
-<code>下载工具</code>随你上传下载,不走蹄子流量,再也不用担心被<strong>ban</strong></p>
+								<h3 id="入错电视">入错电视</h3>
+<h3 id="如何修改">如何修改</h3>
+<h3 id=""></h3>
 
 							</div>
 							<div class="wow zoomIn vt-post-tags">
 								
-								<a href="https://s1oz.github.io/tag/k3_hMjZpe/" rel="tag">docker</a>
-								
-								<a href="https://s1oz.github.io/tag/JTLMZLR1L/" rel="tag">nas</a>
-								
-								<a href="https://s1oz.github.io/tag/cEciqjH0E/" rel="tag">unraid</a>
+								<a href="https://s1oz.github.io/tag/Ezsfahijf/" rel="tag">tv</a>
 								
 							</div>
 							<nav class="navigation3 post-navigation3" role="navigation">
 
 								<div class="nav-links3">
 									
-									<div class="wow zoomIn nav-previous3"><a href="https://s1oz.github.io/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/"
-											rel="prev"> 假装给群晖披层马甲</a></div>
+									<div class="wow zoomIn nav-previous3"><a href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/"
+											rel="prev"> PXE+ABB 备份恢复好帮手</a></div>
 									
 									
-									<div class="wow zoomIn nav-next3"><a href="https://s1oz.github.io/post/unraid-bei-wang-lu/"
-											rel="next"> Unraid备忘录</a></div>
+									<div class="wow zoomIn nav-next3"><a href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/"
+											rel="next"> Xpenology备忘录</a></div>
 									
 								</div>
 							</nav>

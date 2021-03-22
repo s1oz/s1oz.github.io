@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-21T14:42:50.107Z</updated>
+    <updated>2021-03-22T08:43:07.151Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://s1oz.github.io/images/avatar.png</logo>
     <icon>https://s1oz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 杂乱的备忘录</rights>
+    <entry>
+        <title type="html"><![CDATA[Unraid上rclone插件的使用]]></title>
+        <id>https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/</id>
+        <link href="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/">
+        </link>
+        <updated>2021-03-22T08:08:32.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[valine评论系统开启及删除评论]]></title>
         <id>https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/</id>
@@ -72,12 +79,5 @@
         <link href="https://s1oz.github.io/post/openwrt-bei-wang-lu/">
         </link>
         <updated>2020-02-07T02:08:34.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[PXE+ABB 备份恢复好帮手]]></title>
-        <id>https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/</id>
-        <link href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
-        </link>
-        <updated>2019-08-15T11:08:52.000Z</updated>
     </entry>
 </feed>

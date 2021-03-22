@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid 6.9.x 网卡开启SR-IOV | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616409928236">
+<link rel="shortcut icon" href="/favicon.ico?v=1616410063673">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1772,8 +1772,8 @@ drive_type = business
 mkdir /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我想分的细一点,所以等下使用`google-emby空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
-&lt;h4 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h4&gt;
-&lt;h5 id=&#34;示例&#34;&gt;示例&lt;/h5&gt;
+&lt;h3 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h3&gt;
+&lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
 &lt;pre&gt;&lt;code&gt;rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
@@ -1786,7 +1786,9 @@ mkdir /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入命令后,如成功挂载,就会有显示挂载的目录了&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616409741458.JPG&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h5 id=&#34;开机自动挂载&#34;&gt;开机自动挂载&lt;/h5&gt;
+&lt;h3 id=&#34;如何使用&#34;&gt;如何使用&lt;/h3&gt;
+&lt;p&gt;未完待续&lt;/p&gt;
+&lt;h3 id=&#34;开机自动挂载&#34;&gt;开机自动挂载&lt;/h3&gt;
 &lt;p&gt;可使用&lt;code&gt;User Scripts&lt;/code&gt;插件新建开机任务,输入示例命令&lt;/p&gt;
 &lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;fusermount -qzu /mnt/user/rclone/google

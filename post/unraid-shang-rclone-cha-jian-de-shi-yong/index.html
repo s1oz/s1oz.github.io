@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid上rclone插件的使用 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616403207230">
+<link rel="shortcut icon" href="/favicon.ico?v=1616403584176">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -209,7 +209,7 @@
     
     <div class="site-description right-motion">
       
-        <p id="binft">想起什么,就记录点什么</p>
+        <p id="binft">想起什么,就记录点什么\n所以很多都是无厘头的东西\n一切为了炸鸡而准备!!!</p>
       
     </div>
     
@@ -259,13 +259,14 @@
 </li>
 <li><a href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E4%BA%8E%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E7%9A%84%E7%9B%AE%E5%BD%95">创建用于挂载磁盘的目录</a>
 <ul>
-<li><a href="#%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD">磁盘挂载</a>
+<li><a href="#%E6%8C%82%E8%BD%BD%E7%BD%91%E7%9B%98%E5%88%B0%E6%9C%AC%E5%9C%B0">挂载网盘到本地</a>
 <ul>
 <li><a href="#%E8%B0%B7%E6%AD%8C%E7%BD%91%E7%9B%98%E7%A4%BA%E4%BE%8B">谷歌网盘示例</a>
 <ul>
 <li><a href="#%E6%9F%A5%E8%AF%A2%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E5%B0%86%E7%BD%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%88%B0%E6%9C%AC%E5%9C%B0">查询是否成功将网盘挂载到本地</a></li>
 </ul>
 </li>
+<li><a href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD">开机自动挂载</a></li>
 </ul>
 </li>
 </ul>
@@ -589,7 +590,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1499<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1527<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -845,7 +846,7 @@ e/n/d/r/c/s/q&gt; q
 mkdir /mnt/user/rclone/google
 </code></pre>
 <p>我想分的细一点,所以等下使用`google-emby空文件夹挂载刚刚连接的谷歌团队盘</p>
-<h4 id="磁盘挂载">磁盘挂载</h4>
+<h4 id="挂载网盘到本地">挂载网盘到本地</h4>
 <h5 id="谷歌网盘示例">谷歌网盘示例</h5>
 <pre><code>rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 </code></pre>
@@ -859,6 +860,8 @@ mkdir /mnt/user/rclone/google
 </code></pre>
 <p>输入命令后,如成功挂载,就会有显示<code>1.0P</code>的目录了<br>
 <img src="https://s1oz.github.io/post-images/1616402941561.png" alt="" loading="lazy"></p>
+<h5 id="开机自动挂载">开机自动挂载</h5>
+<p>可使用<code>User Scripts</code>插件新建开机任务,输入示例命令</p>
 <h3 id="常用命令">常用命令</h3>
 <pre><code>fusermount -qzu /mnt/user/rclone/google
 </code></pre>
@@ -1666,7 +1669,7 @@ e/n/d/r/c/s/q&amp;gt; q
 mkdir /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我想分的细一点,所以等下使用`google-emby空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
-&lt;h4 id=&#34;磁盘挂载&#34;&gt;磁盘挂载&lt;/h4&gt;
+&lt;h4 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h4&gt;
 &lt;h5 id=&#34;谷歌网盘示例&#34;&gt;谷歌网盘示例&lt;/h5&gt;
 &lt;pre&gt;&lt;code&gt;rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 &lt;/code&gt;&lt;/pre&gt;
@@ -1680,6 +1683,8 @@ mkdir /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入命令后,如成功挂载,就会有显示&lt;code&gt;1.0P&lt;/code&gt;的目录了&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616402941561.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;开机自动挂载&#34;&gt;开机自动挂载&lt;/h5&gt;
+&lt;p&gt;可使用&lt;code&gt;User Scripts&lt;/code&gt;插件新建开机任务,输入示例命令&lt;/p&gt;
 &lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;fusermount -qzu /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;

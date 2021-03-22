@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>valine评论系统开启及删除评论 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616403073068">
+<link rel="shortcut icon" href="/favicon.ico?v=1616403207230">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1378,13 +1378,14 @@ mkdir /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我想分的细一点,所以等下使用`google-emby空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
 &lt;h4 id=&#34;磁盘挂载&#34;&gt;磁盘挂载&lt;/h4&gt;
-&lt;h5 id=&#34;googleteam示例&#34;&gt;googleteam示例&lt;/h5&gt;
+&lt;h5 id=&#34;谷歌网盘示例&#34;&gt;谷歌网盘示例&lt;/h5&gt;
 &lt;pre&gt;&lt;code&gt;rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
 &lt;code&gt;googleemby:&lt;/code&gt; &lt;strong&gt;googleemby&lt;/strong&gt;为网盘的名字不特指谷歌网盘**:&lt;strong&gt;不改动&lt;/strong&gt;留空为挂载整个网盘**&lt;br&gt;
 &lt;strong&gt;如挂载单个文件夹例子为&lt;code&gt;googleemby:test&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;/mnt/user/rclone/google-emby&lt;/code&gt;本地用于挂载的空目录&lt;/p&gt;
+&lt;code&gt;/mnt/user/rclone/google-emby&lt;/code&gt;本地用于挂载的空目录&lt;br&gt;
+关于其他参数含义,可自行查阅最下方命令说明&lt;/p&gt;
 &lt;h6 id=&#34;查询是否成功将网盘挂载到本地&#34;&gt;查询是否成功将网盘挂载到本地&lt;/h6&gt;
 &lt;pre&gt;&lt;code&gt;df -h
 &lt;/code&gt;&lt;/pre&gt;

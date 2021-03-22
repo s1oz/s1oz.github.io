@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Docker安装Emby并白嫖 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616403584176">
+<link rel="shortcut icon" href="/favicon.ico?v=1616409805910">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -205,7 +205,7 @@
 <div class="sidebar-wrapper box-shadow-wrapper ">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
-    <p class="site-author-name">以备不时之需</p>
+    <p class="site-author-name">s1oz</p>
     
     <div class="site-description right-motion">
       
@@ -712,7 +712,7 @@ nginx -s reload
   <ul class="post-copyright">
     <li class="post-copyright-author">
       <strong class="language" data-lan="author">本文作者：</strong>
-      以备不时之需
+      s1oz
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
@@ -1247,12 +1247,12 @@ nginx -s reload
           &lt;h3 id=&#34;安装rclone插件&#34;&gt;安装rclone插件&lt;/h3&gt;
 &lt;p&gt;应用中搜素&lt;code&gt;rclone&lt;/code&gt;&lt;br&gt;
 选择这个插件安装,其他两个为docker&lt;br&gt;
+安装完成后会出现在&lt;code&gt;设置&lt;/code&gt;-&lt;code&gt;用户实用程序&lt;/code&gt;中&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616402378422.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;连接网盘&#34;&gt;连接网盘&lt;/h3&gt;
 &lt;h4 id=&#34;谷歌团队盘&#34;&gt;谷歌团队盘&lt;/h4&gt;
 &lt;p&gt;在&lt;code&gt;终端&lt;/code&gt;中输入&lt;code&gt;rclone config&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;root@Tower:~# rclone config
-No remotes found - make a new one
+&lt;pre&gt;&lt;code&gt;No remotes found - make a new one
 n) New remote
 s) Set configuration password
 q) Quit config
@@ -1480,6 +1480,242 @@ e/n/d/r/c/s/q&amp;gt; q
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;按&lt;code&gt;q&lt;/code&gt;退出配置界面&lt;br&gt;
 到此网盘已经成功连接到rclone&lt;/p&gt;
+&lt;h4 id=&#34;微软网盘&#34;&gt;微软网盘&lt;/h4&gt;
+&lt;p&gt;因Unraid没有浏览器&lt;br&gt;
+所以rclone无法直接获取&lt;code&gt;code&lt;/code&gt;来连接网盘&lt;br&gt;
+我们采用这种的方式来,在&lt;code&gt;windows&lt;/code&gt;上获取&lt;code&gt;config&lt;/code&gt;内容&lt;br&gt;
+下载个&lt;a href=&#34;https://downloads.rclone.org/v1.54.1/rclone-v1.54.1-windows-amd64.zip&#34;&gt;客户端&lt;/a&gt;&lt;br&gt;
+假设解压到&lt;code&gt;c&lt;/code&gt;盘根目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Users\Administrator&amp;gt;cd c:\rclone
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;切换到解压目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;c:\rclone&amp;gt;rclone config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开始配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q&amp;gt; n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择n新建&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name&amp;gt; onedrive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立个名称&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Type of storage to configure.
+Enter a string value. Press Enter for the default (&amp;quot;&amp;quot;).
+Choose a number from below, or type in your own value
+ 1 / 1Fichier
+   \ &amp;quot;fichier&amp;quot;
+ 2 / Alias for an existing remote
+   \ &amp;quot;alias&amp;quot;
+ 3 / Amazon Drive
+   \ &amp;quot;amazon cloud drive&amp;quot;
+ 4 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, and Tencent COS
+   \ &amp;quot;s3&amp;quot;
+ 5 / Backblaze B2
+   \ &amp;quot;b2&amp;quot;
+ 6 / Box
+   \ &amp;quot;box&amp;quot;
+ 7 / Cache a remote
+   \ &amp;quot;cache&amp;quot;
+ 8 / Citrix Sharefile
+   \ &amp;quot;sharefile&amp;quot;
+ 9 / Compress a remote
+   \ &amp;quot;compress&amp;quot;
+10 / Dropbox
+   \ &amp;quot;dropbox&amp;quot;
+11 / Encrypt/Decrypt a remote
+   \ &amp;quot;crypt&amp;quot;
+12 / Enterprise File Fabric
+   \ &amp;quot;filefabric&amp;quot;
+13 / FTP Connection
+   \ &amp;quot;ftp&amp;quot;
+14 / Google Cloud Storage (this is not Google Drive)
+   \ &amp;quot;google cloud storage&amp;quot;
+15 / Google Drive
+   \ &amp;quot;drive&amp;quot;
+16 / Google Photos
+   \ &amp;quot;google photos&amp;quot;
+17 / Hadoop distributed file system
+   \ &amp;quot;hdfs&amp;quot;
+18 / Hubic
+   \ &amp;quot;hubic&amp;quot;
+19 / In memory object storage system.
+   \ &amp;quot;memory&amp;quot;
+20 / Jottacloud
+   \ &amp;quot;jottacloud&amp;quot;
+21 / Koofr
+   \ &amp;quot;koofr&amp;quot;
+22 / Local Disk
+   \ &amp;quot;local&amp;quot;
+23 / Mail.ru Cloud
+   \ &amp;quot;mailru&amp;quot;
+24 / Mega
+   \ &amp;quot;mega&amp;quot;
+25 / Microsoft Azure Blob Storage
+   \ &amp;quot;azureblob&amp;quot;
+26 / Microsoft OneDrive
+   \ &amp;quot;onedrive&amp;quot;
+27 / OpenDrive
+   \ &amp;quot;opendrive&amp;quot;
+28 / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ &amp;quot;swift&amp;quot;
+29 / Pcloud
+   \ &amp;quot;pcloud&amp;quot;
+30 / Put.io
+   \ &amp;quot;putio&amp;quot;
+31 / QingCloud Object Storage
+   \ &amp;quot;qingstor&amp;quot;
+32 / SSH/SFTP Connection
+   \ &amp;quot;sftp&amp;quot;
+33 / Sugarsync
+   \ &amp;quot;sugarsync&amp;quot;
+34 / Tardigrade Decentralized Cloud Storage
+   \ &amp;quot;tardigrade&amp;quot;
+35 / Transparently chunk/split large files
+   \ &amp;quot;chunker&amp;quot;
+36 / Union merges the contents of several upstream fs
+   \ &amp;quot;union&amp;quot;
+37 / Webdav
+   \ &amp;quot;webdav&amp;quot;
+38 / Yandex Disk
+   \ &amp;quot;yandex&amp;quot;
+39 / Zoho
+   \ &amp;quot;zoho&amp;quot;
+40 / http Connection
+   \ &amp;quot;http&amp;quot;
+41 / premiumize.me
+   \ &amp;quot;premiumizeme&amp;quot;
+42 / seafile
+   \ &amp;quot;seafile&amp;quot;
+Storage&amp;gt; 26
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如要连接谷歌的盘,根据标识选择26(版本不同,序号不一定一样,按实际标识选择)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;** See help for onedrive backend at: https://rclone.org/onedrive/ **
+
+OAuth Client Id
+Leave blank normally.
+Enter a string value. Press Enter for the default (&amp;quot;&amp;quot;).
+client_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不输入,直接回车&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;OAuth Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&amp;quot;&amp;quot;).
+client_secret&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不输入,直接回车&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Choose national cloud region for OneDrive.
+Enter a string value. Press Enter for the default (&amp;quot;global&amp;quot;).
+Choose a number from below, or type in your own value
+ 1 / Microsoft Cloud Global
+   \ &amp;quot;global&amp;quot;
+ 2 / Microsoft Cloud for US Government
+   \ &amp;quot;us&amp;quot;
+ 3 / Microsoft Cloud Germany
+   \ &amp;quot;de&amp;quot;
+ 4 / Azure and Office 365 operated by 21Vianet in China
+   \ &amp;quot;cn&amp;quot;
+region&amp;gt; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Edit advanced config? (y/n)
+y) Yes
+n) No (default)
+y/n&amp;gt; n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择n,不编辑&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes (default)
+n) No
+y/n&amp;gt; y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择&lt;code&gt;1&lt;/code&gt;自动配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;If your browser doesn&#39;t open automatically go to the following link: http://127.0.0.1:53682/auth?state=FDOLLiSz***rSJBbag
+Log in and authorize rclone for access
+Waiting for code...
+Got code
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;点击链接,登陆账户,授权给rclone使用,脚本自动获取&lt;code&gt;code&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Choose a number from below, or type in an existing value
+ 1 / OneDrive Personal or Business
+   \ &amp;quot;onedrive&amp;quot;
+ 2 / Root Sharepoint site
+   \ &amp;quot;sharepoint&amp;quot;
+ 3 / Sharepoint site name or URL (e.g. mysite or https://contoso.sharepoint.com/sites/mysite)
+   \ &amp;quot;url&amp;quot;
+ 4 / Search for a Sharepoint site
+   \ &amp;quot;search&amp;quot;
+ 5 / Type in driveID (advanced)
+   \ &amp;quot;driveid&amp;quot;
+ 6 / Type in SiteID (advanced)
+   \ &amp;quot;siteid&amp;quot;
+ 7 / Sharepoint server-relative path (advanced, e.g. /teams/hr)
+   \ &amp;quot;path&amp;quot;
+Your choice&amp;gt; 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Found 1 drives, please select the one you want to use:
+0: OneDrive (business) id=b!jC7ndQM3XkO5C6RFjk8FC0l6JPipknpLuC4BB4ohz64u3aY5OQn_T4Vh-Rr-ZaZD
+Chose drive to use:&amp;gt; 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择标识的&lt;code&gt;0&lt;/code&gt;网盘&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Found drive &#39;root&#39; of type &#39;business&#39;, URL: https://kogfw***.sharepoint.com/personal/s1oz_****/Documents
+Is that okay?
+y) Yes (default)
+n) No
+y/n&amp;gt; y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择&lt;code&gt;y&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--------------------
+[onedrive]
+type = onedrive
+region = global
+token = {&amp;quot;access_token&amp;quot;:&amp;quot;eyJ0eXAiLiIs**gU2l0ZXMuUmVhZC5BbGwgcHJvZmlsZSMastoKDtaM8uxbH-ypRGI0y8H_ysiRw20QRRLc7pdol6BmYo0BcRNXJgJN6xccP5b20-iyLejE_vF1Iw5AKQP4-qirH3NHP-S5l*********pLuC4BB4ohz64u3aY5OQn_T4Vh-Rr-ZaZD
+drive_type = business
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d&amp;gt; y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示相关&lt;code&gt;config&lt;/code&gt;信息,提示你是否确认&lt;br&gt;
+输入&lt;code&gt;y&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Current remotes:
+
+Name                 Type
+====                 ====
+onedrive             onedrive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&amp;gt; q
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按q退出配置界面&lt;br&gt;
+&lt;strong&gt;将刚显示的这段&lt;code&gt;config&lt;/code&gt;信息粘贴到rclone插件中&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--------------------
+[onedrive]
+type = onedrive
+region = global
+token = {&amp;quot;access_token&amp;quot;:&amp;quot;eyJ0eXAiLiIs**gU2l0ZXMuUmVhZC5BbGwgcHJvZmlsZSMastoKDtaM8uxbH-ypRGI0y8H_ysiRw20QRRLc7pdol6BmYo0BcRNXJgJN6xccP5b20-iyLejE_vF1Iw5AKQP4-qirH3NHP-S5l*********pLuC4BB4ohz64u3aY5OQn_T4Vh-Rr-ZaZD
+drive_type = business
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;粘贴至Unraid&lt;code&gt;设置&lt;/code&gt;-&lt;code&gt;用户实用程序&lt;/code&gt;-rclcone&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616409428903.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+然后在&lt;code&gt;Unraid&lt;/code&gt;终端中输入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rclone config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即可看到已经连接的网盘信息&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616409616840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;创建用于挂载磁盘的目录&#34;&gt;创建用于挂载磁盘的目录&lt;/h3&gt;
 &lt;p&gt;根据自己需求,新建一个用于挂载网盘的空文件夹&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mkdir /mnt/user/rclone
@@ -1487,19 +1723,19 @@ mkdir /mnt/user/rclone/google
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我想分的细一点,所以等下使用`google-emby空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
 &lt;h4 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h4&gt;
-&lt;h5 id=&#34;谷歌网盘示例&#34;&gt;谷歌网盘示例&lt;/h5&gt;
+&lt;h5 id=&#34;示例&#34;&gt;示例&lt;/h5&gt;
 &lt;pre&gt;&lt;code&gt;rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
 &lt;code&gt;googleemby:&lt;/code&gt; &lt;strong&gt;googleemby&lt;/strong&gt;为网盘的名字不特指谷歌网盘**:&lt;strong&gt;不改动&lt;/strong&gt;留空为挂载整个网盘**&lt;br&gt;
 &lt;strong&gt;如挂载单个文件夹例子为&lt;code&gt;googleemby:test&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;/mnt/user/rclone/google-emby&lt;/code&gt;本地用于挂载的空目录&lt;br&gt;
+&lt;code&gt;/mnt/user/rclone/google&lt;/code&gt;本地用于挂载的空目录&lt;br&gt;
 关于其他参数含义,可自行查阅最下方命令说明&lt;/p&gt;
 &lt;h6 id=&#34;查询是否成功将网盘挂载到本地&#34;&gt;查询是否成功将网盘挂载到本地&lt;/h6&gt;
 &lt;pre&gt;&lt;code&gt;df -h
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;输入命令后,如成功挂载,就会有显示&lt;code&gt;1.0P&lt;/code&gt;的目录了&lt;br&gt;
-&lt;img src=&#34;https://s1oz.github.io/post-images/1616402941561.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;输入命令后,如成功挂载,就会有显示挂载的目录了&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616409741458.JPG&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;开机自动挂载&#34;&gt;开机自动挂载&lt;/h5&gt;
 &lt;p&gt;可使用&lt;code&gt;User Scripts&lt;/code&gt;插件新建开机任务,输入示例命令&lt;/p&gt;
 &lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
@@ -1509,22 +1745,6 @@ mkdir /mnt/user/rclone/google
 &lt;pre&gt;&lt;code&gt;https://rclone.org/commands/
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;官方的命令说明&lt;/p&gt;
-&lt;h3 id=&#34;待补全&#34;&gt;待补全&lt;/h3&gt;
-&lt;h6 id=&#34;onedrive示例&#34;&gt;onedrive示例&lt;/h6&gt;
-&lt;p&gt;rclone mount onedrive:share /mnt/user/rclone/onedrive &lt;br&gt;
---copy-links &lt;br&gt;
---no-gzip-encoding &lt;br&gt;
---no-check-certificate &lt;br&gt;
---allow-other &lt;br&gt;
---allow-non-empty &lt;br&gt;
---umask 000 &lt;br&gt;
---transfers 4 &lt;br&gt;
---buffer-size 32M &lt;br&gt;
---low-level-retries 200 &lt;br&gt;
---dir-cache-time 5m &lt;br&gt;
---vfs-cache-mode off &lt;br&gt;
---vfs-read-chunk-size 32M &lt;br&gt;
---vfs-read-chunk-size-limit 1G &amp;amp;&lt;/p&gt;
 ">Unraid上rclone插件的使用</a>
       </div>
       

@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid上rclone插件的使用 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616410132995">
+<link rel="shortcut icon" href="/favicon.ico?v=1616410246657">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -584,7 +584,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2571<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2570<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -1082,7 +1082,7 @@ mkdir /mnt/user/rclone/google
 <pre><code>rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 </code></pre>
 <p>需要修改的就是<br>
-<code>googleemby:</code> <strong>googleemby</strong>为网盘的名字不特指谷歌网盘**:<strong>不改动</strong>留空为挂载整个网盘**<br>
+<code>googleemby:</code> <strong>googleemby</strong>为网盘的名字不特指谷歌网盘<strong>结尾留空为挂载整个网盘</strong><br>
 <strong>如挂载单个文件夹例子为<code>googleemby:test</code></strong><br>
 <code>/mnt/user/rclone/google</code>本地用于挂载的空目录<br>
 关于其他参数含义,可自行查阅最下方命令说明</p>
@@ -2131,7 +2131,7 @@ mkdir /mnt/user/rclone/google
 &lt;pre&gt;&lt;code&gt;rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
-&lt;code&gt;googleemby:&lt;/code&gt; &lt;strong&gt;googleemby&lt;/strong&gt;为网盘的名字不特指谷歌网盘**:&lt;strong&gt;不改动&lt;/strong&gt;留空为挂载整个网盘**&lt;br&gt;
+&lt;code&gt;googleemby:&lt;/code&gt; &lt;strong&gt;googleemby&lt;/strong&gt;为网盘的名字不特指谷歌网盘&lt;strong&gt;结尾留空为挂载整个网盘&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;如挂载单个文件夹例子为&lt;code&gt;googleemby:test&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
 &lt;code&gt;/mnt/user/rclone/google&lt;/code&gt;本地用于挂载的空目录&lt;br&gt;
 关于其他参数含义,可自行查阅最下方命令说明&lt;/p&gt;

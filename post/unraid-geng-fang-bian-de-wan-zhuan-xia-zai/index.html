@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid更方便的玩转下载 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616410310165">
+<link rel="shortcut icon" href="/favicon.ico?v=1616468013638">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1649,26 +1649,29 @@ drive_type = business
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616409616840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;创建用于挂载磁盘的目录&#34;&gt;创建用于挂载磁盘的目录&lt;/h3&gt;
 &lt;p&gt;根据自己需求,新建一个用于挂载网盘的空文件夹&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;mkdir /mnt/user/rclone
-mkdir /mnt/user/rclone/google
+&lt;pre&gt;&lt;code&gt;mkdir -p /mnt/user/rclone/onedrive
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我想分的细一点,所以等下使用`google-emby空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
+&lt;p&gt;我想分的细一点,所以等下使用`onedrive空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
 &lt;h3 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h3&gt;
 &lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;rclone mount  googleemby: /mnt/user/rclone/google --buffer-size 32M --dir-cache-time 5m --vfs-cache-mode off --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 1G --daemon
+&lt;pre&gt;&lt;code&gt;rclone mount onedrive:test /mnt/user/rclone/onedrive --copy-links --allow-other --umask 000 --buffer-size 32M --vfs-cache-mode writes --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
-&lt;code&gt;googleemby:&lt;/code&gt; &lt;strong&gt;googleemby&lt;/strong&gt;为网盘的名字不特指谷歌网盘&lt;strong&gt;结尾留空为挂载整个网盘&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;如挂载单个文件夹例子为&lt;code&gt;googleemby:test&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;/mnt/user/rclone/google&lt;/code&gt;本地用于挂载的空目录&lt;br&gt;
-关于其他参数含义,可自行查阅最下方命令说明&lt;/p&gt;
+&lt;code&gt;onedrive:test&lt;/code&gt; &lt;strong&gt;onedrive&lt;/strong&gt;为网盘的名字不特指微软网盘&lt;strong&gt;test&lt;/strong&gt;为要挂载的网盘文件夹路径,不填留为挂载整个网盘&lt;br&gt;
+&lt;code&gt;/mnt/user/rclone/onedrive&lt;/code&gt;本地用于挂载的空目录&lt;br&gt;
+关于其他参数含义,可自行查阅最下方命令说明&lt;br&gt;
+如需要给emby之类使用,挂载文件夹不显示文件,请修改&lt;code&gt;--umask 000&lt;/code&gt;&lt;br&gt;
+在&lt;code&gt;emby&lt;/code&gt;终端输入 &lt;code&gt;umask&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/ # umask
+0022
+/ # 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将示例中&lt;code&gt;--umask 000&lt;/code&gt;修改为&lt;code&gt;--umask 0022&lt;/code&gt;emby即可正常访问文件&lt;/p&gt;
 &lt;h4 id=&#34;查询是否成功将网盘挂载到本地&#34;&gt;查询是否成功将网盘挂载到本地&lt;/h4&gt;
 &lt;pre&gt;&lt;code&gt;df -h
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;输入命令后,如成功挂载,就会有显示挂载的目录了&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616409741458.JPG&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;如何使用&#34;&gt;如何使用&lt;/h3&gt;
-&lt;p&gt;未完待续&lt;/p&gt;
 &lt;h3 id=&#34;开机自动挂载&#34;&gt;开机自动挂载&lt;/h3&gt;
 &lt;p&gt;可使用&lt;code&gt;User Scripts&lt;/code&gt;插件新建开机任务,输入示例命令&lt;/p&gt;
 &lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;

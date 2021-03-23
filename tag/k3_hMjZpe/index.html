@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616468013638">
+<link rel="shortcut icon" href="/favicon.ico?v=1616468781625">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1068,7 +1068,7 @@ drive_type = business
 &lt;p&gt;我想分的细一点,所以等下使用`onedrive空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
 &lt;h3 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h3&gt;
 &lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;rclone mount onedrive:test /mnt/user/rclone/onedrive --copy-links --allow-other --umask 000 --buffer-size 32M --vfs-cache-mode writes --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G &amp;amp;
+&lt;pre&gt;&lt;code&gt;rclone mount onedrive:test /mnt/user/rclone/onedrive --copy-links --allow-other --default-permissions --umask 000 --buffer-size 32M --vfs-cache-mode writes --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
 &lt;code&gt;onedrive:test&lt;/code&gt; &lt;strong&gt;onedrive&lt;/strong&gt;为网盘的名字不特指微软网盘&lt;strong&gt;test&lt;/strong&gt;为要挂载的网盘文件夹路径,不填留为挂载整个网盘&lt;br&gt;

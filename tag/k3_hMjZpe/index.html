@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616468781625">
+<link rel="shortcut icon" href="/favicon.ico?v=1616642012092">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -200,7 +200,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">13</span>
+        <span class="site-item-stat-count">14</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -249,6 +249,27 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      <a href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              03-25
+              <small>Unraid一卡多用挖矿+转码</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -585,6 +606,69 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/"" data-c="
+          &lt;h3 id=&#34;一卡多用&#34;&gt;一卡多用&lt;/h3&gt;
+&lt;p&gt;原来是靠&lt;a href=&#34;https://s1oz.github.io/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/&#34;&gt;新建虚拟机直通显卡挖矿&lt;/a&gt;&lt;br&gt;
+但是这样显卡只能挖矿 ,实在可惜呀😒&lt;br&gt;
+然而无意间发现有&lt;strong&gt;docker版本挖矿容器&lt;/strong&gt;&lt;br&gt;
+因这个方法挖矿,只要显存够用的话,其他容器都能调用这张N卡,如给&lt;code&gt;emby&lt;/code&gt;直接解码转码&lt;br&gt;
+所以,核显终于可以多出来做其他用处了&lt;br&gt;
+要不直通核显安装个黑苹果?&lt;br&gt;
+要不直通核显安装个挂机游戏用的游戏机?&lt;br&gt;
+玩法多多,想怎样就怎样了😍&lt;/p&gt;
+&lt;h3 id=&#34;如何使用&#34;&gt;如何使用&lt;/h3&gt;
+&lt;h4 id=&#34;确保没有被vfio绑定&#34;&gt;确保没有被VFIO绑定&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;工具&lt;/code&gt;-&lt;code&gt;系统设备&lt;/code&gt;中不要勾选N卡,如有勾选,取消勾选后保存重启&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641788222.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;安装相关应用&#34;&gt;安装相关应用&lt;/h4&gt;
+&lt;p&gt;应用中搜索&lt;code&gt;nvidia&lt;/code&gt;安装框中的&lt;code&gt;3&lt;/code&gt;个应用&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641796088.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+安装好后做如下设置&lt;br&gt;
+&lt;strong&gt;Nvidia Driver&lt;/strong&gt;中确认显卡识别正常并成功驱动&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641801740.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;GPU Statistics&lt;/strong&gt;中修改&lt;code&gt;Vendor:&lt;/code&gt;为我们需要挖矿的N卡&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641809203.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;trex-miner&lt;/strong&gt;框中填入&lt;code&gt;钱包地址``矿池地址``主机名&lt;/code&gt;保存启动&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641814790.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;确认并优化矿机&#34;&gt;确认并优化矿机&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;http://[IP]:4067&lt;/code&gt;此为矿机管理页面,界面如下&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641842444.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+此时已显示算力,代表正常运行&lt;br&gt;
+我们需要限制下&lt;strong&gt;显卡功耗&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nvidia-smi –pl 70
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此命令为限制功耗为&lt;code&gt;70&lt;/code&gt;,具体数值按自己显卡设置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nvidia-smi –ac 2000,1500
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此命令为设置显卡频率,有些显卡支持,反正我的不支持&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nvidia-smi -pm 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此命令为开启持续模式,频率和功耗的设置不会因容器重启而丢失上方设置,&lt;code&gt;1&lt;/code&gt;为开启&lt;code&gt;0&lt;/code&gt;为关闭&lt;br&gt;
+到此就可以安心挖矿了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nvidia-smi -rac
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此命令为重置时钟回到基准状态&lt;br&gt;
+&lt;strong&gt;关于trxe超频&lt;/strong&gt;&lt;br&gt;
+设置mt参数超频.但是&lt;strong&gt;只支持&lt;/strong&gt;&lt;code&gt;GDDR5 GDDR5X的10xx系&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;emby调用矿卡&#34;&gt;EMBY调用矿卡&lt;/h3&gt;
+&lt;p&gt;在容器设置中添加以下&lt;code&gt;3&lt;/code&gt;个参数&lt;br&gt;
+&lt;strong&gt;额外参数&lt;/strong&gt;中加入这条指令&lt;code&gt;--runtime=nvidia&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641872561.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+新增键为&lt;code&gt;NVIDIA_VISIBLE_DEVICES&lt;/code&gt;的变量&lt;br&gt;
+值&lt;code&gt;GPU-c38b2c86-4472-f09d-1049-e55ad805ea03&lt;/code&gt;为&lt;strong&gt;Nvidia Driver&lt;/strong&gt;中获取的信息&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641917092.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+新增键为&lt;code&gt;NVIDIA_DRIVER_CAPABILITIES&lt;/code&gt;的变量&lt;br&gt;
+值填写&lt;code&gt;all&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641921404.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+保存后即可在EMBY中看到相关显卡&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616641931423.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+勾选相应矿卡使用&lt;br&gt;
+到此,核显解脱了😍&lt;br&gt;
+插播一点,关于EMBY白嫖教程可以看这&lt;a href=&#34;https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/&#34;&gt;嫖她&lt;/a&gt;&lt;/p&gt;
+">Unraid一卡多用挖矿+转码</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/"" data-c="
@@ -1068,7 +1152,7 @@ drive_type = business
 &lt;p&gt;我想分的细一点,所以等下使用`onedrive空文件夹挂载刚刚连接的谷歌团队盘&lt;/p&gt;
 &lt;h3 id=&#34;挂载网盘到本地&#34;&gt;挂载网盘到本地&lt;/h3&gt;
 &lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;rclone mount onedrive:test /mnt/user/rclone/onedrive --copy-links --allow-other --default-permissions --umask 000 --buffer-size 32M --vfs-cache-mode writes --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G &amp;amp;
+&lt;pre&gt;&lt;code&gt;rclone mount onedrive:test /mnt/user/rclone/onedrive --copy-links --allow-other --umask 0022 --buffer-size 32M --vfs-cache-mode writes --dir-cache-time 12h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;需要修改的就是&lt;br&gt;
 &lt;code&gt;onedrive:test&lt;/code&gt; &lt;strong&gt;onedrive&lt;/strong&gt;为网盘的名字不特指微软网盘&lt;strong&gt;test&lt;/strong&gt;为要挂载的网盘文件夹路径,不填留为挂载整个网盘&lt;br&gt;

@@ -8,7 +8,7 @@
 <meta name="keywords" content="s1oz的备忘录">
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
-<title>valine评论系统开启及删除评论 | 杂乱的备忘录</title>
+<title>解锁N卡在Unraid上的转码限制 | 杂乱的备忘录</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1616658524554">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 </script>
 
 
-  <meta name="description" content="valine评论系统开启及删除评论" />
-  <meta name="keywords" content="valine" />
+  <meta name="description" content="解锁N卡在Unraid上的转码限制" />
+  <meta name="keywords" content="nas,emby,unraid" />
 </head>
 
 <body>
@@ -251,9 +251,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#%E4%BB%A5gridea%E4%B8%BA%E4%BE%8B">以Gridea为例</a></li>
-<li><a href="#%E8%8E%B7%E5%8F%96id-key%E5%B9%B6%E5%A1%AB%E5%85%A5%E5%BC%80%E5%90%AF%E8%AF%84%E8%AE%BA">获取ID Key并填入开启评论</a></li>
-<li><a href="#%E5%88%A0%E9%99%A4%E5%B7%B2%E7%BB%8F%E5%8F%91%E5%B8%83%E7%9A%84%E8%AF%84%E8%AE%BA">删除已经发布的评论</a></li>
+<li><a href="#%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90">举个栗子</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E9%94%81">如何解锁</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E4%B8%8B%E6%95%88%E6%9E%9C">测试下效果</a></li>
 </ul>
 </li>
 </ul>
@@ -523,8 +523,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/">
-      valine评论系统开启及删除评论
+    <a class="post-title-link" href="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/">
+      解锁N卡在Unraid上的转码限制
     </a>
   </h1>
   <div class="post-meta">
@@ -532,7 +532,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-03-20 13:50:06">2021-03-20</span>
+      <span class="publish-time" data-t="2021-03-25 15:39:25">2021-03-25</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -541,8 +541,20 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://s1oz.github.io/tag/P24Duz8y6/">
-        <span>valine</span>
+      <a href="https://s1oz.github.io/tag/JTLMZLR1L/">
+        <span>nas</span>
+      </a>、
+      
+      
+      
+      <a href="https://s1oz.github.io/tag/GoG82PnDw/">
+        <span>emby</span>
+      </a>、
+      
+      
+      
+      <a href="https://s1oz.github.io/tag/cEciqjH0E/">
+        <span>unraid</span>
       </a>
       
       
@@ -551,17 +563,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>289<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>200<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/" data-flag-title="valine评论系统开启及删除评论" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/" data-flag-title="解锁N卡在Unraid上的转码限制" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -570,29 +582,32 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h3 id="以gridea为例">以Gridea为例</h3>
-<p>好多主题已经默认带valine评论系统了<br>
-如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜<br>
-不止<code>Gridea</code>其他如<code>hexo</code>也是通用的<br>
-所以我们只需要根据需求填入对于的<code>APPID</code> <code>APPKey</code>即可</p>
-<h3 id="获取id-key并填入开启评论">获取ID Key并填入开启评论</h3>
-<p>我们先在这注册一个<a href="https://www.leancloud.cn/"><strong>账号</strong></a><br>
-自己走流程,顺带提一句,需要实名验证😓<br>
-好了之后我们需要创建一个开发版的应用<br>
-<img src="https://s1oz.github.io/post-images/1616220016355.png" alt="" loading="lazy"><br>
-名称随意.创建后点击进入这个应用<br>
-点击左下方<code>设置-应用Keys</code>即可看到我们所需要的<code>APPID</code> <code>APPKey</code><br>
-<img src="https://s1oz.github.io/post-images/1616220167950.png" alt="" loading="lazy"><br>
-然后回到<code>Gridea</code><br>
-在<code>主题</code> <code>自定义配置</code> <code>valine评论系统</code>中开启,并填入对应的<code>APPID</code> <code>APPKey</code><img src="https://s1oz.github.io/post-images/1616220259100.png" alt="" loading="lazy"><br>
-保存同步后,你已经可以在你的备忘录发布评论了<br>
-<strong>抢个沙发,板凳瓜子已经备好~👻</strong></p>
-<h3 id="删除已经发布的评论">删除已经发布的评论</h3>
-<p>如果有<strong>XX</strong>留言怎么办呢<br>
-当然是干掉它咯😏<br>
-还是原来的配方,<code>储存</code>-<code>结构化数据</code>中的<code>Comment</code>框里的就是评论<br>
-<img src="https://s1oz.github.io/post-images/1616220449958.png" alt="" loading="lazy"><br>
-看着不爽,勾选,删除,<strong>世界干净了..</strong></p>
+              <h3 id="举个栗子">举个栗子</h3>
+<p>如EMBY调用N卡来进行转码播放,有效终端为3个<br>
+也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码<br>
+还有一个可怜的人就只能软件转码了<br>
+这样会造成cpu资源极度的浪费...<br>
+但是...一般哪里来那么多客户端转码播放🤣<br>
+但是,有备无患嘛对吧</p>
+<h3 id="如何解锁">如何解锁</h3>
+<p>此处已经有因为国外的大佬制作好了<a href="https://github.com/SpaceinvaderOne/unlocknvidia_unraid">解锁补丁</a><br>
+我们只需要用起来即可<br>
+通过<code>User Scripts</code>新建脚本<br>
+<img src="https://s1oz.github.io/post-images/1616658378917.png" alt="" loading="lazy"><br>
+粘贴如下代码<br>
+<img src="https://s1oz.github.io/post-images/1616658386051.png" alt="" loading="lazy"></p>
+<pre><code>#!/bin/bash
+wget https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh
+chmod +x ./patch.sh
+./patch.sh
+</code></pre>
+<p>保存<br>
+<img src="https://s1oz.github.io/post-images/1616658396344.png" alt="" loading="lazy"><br>
+设置启动方式<br>
+手动运行下</p>
+<h3 id="测试下效果">测试下效果</h3>
+<p><img src="https://s1oz.github.io/post-images/1616658419347.jpg" alt="" loading="lazy"><br>
+恭喜你,已经成功解锁😜</p>
 
             </div>
             
@@ -609,7 +624,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/" title="valine评论系统开启及删除评论">https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/</a>
+      <a href="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/" title="解锁N卡在Unraid上的转码限制">https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -618,21 +633,21 @@
   </ul>
   <div class="tags">
     
-      <a href="https://s1oz.github.io/tag/P24Duz8y6/"># valine</a>
+      <a href="https://s1oz.github.io/tag/JTLMZLR1L/"># nas</a>
+    
+      <a href="https://s1oz.github.io/tag/GoG82PnDw/"># emby</a>
+    
+      <a href="https://s1oz.github.io/tag/cEciqjH0E/"># unraid</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Unraid上rclone插件的使用" href="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/">Unraid上rclone插件的使用</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Unraid上rclone插件的使用" href="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Unraid 6.9.x 网卡开启SR-IOV" href="https://s1oz.github.io/post/unraid-69x-wang-qia-kai-qi-sr-iov/">Unraid 6.9.x 网卡开启SR-IOV</a>
-        <a class="nav-mobile-next" title="Unraid 6.9.x 网卡开启SR-IOV" href="https://s1oz.github.io/post/unraid-69x-wang-qia-kai-qi-sr-iov/">下一篇</a>
+        <a class="nav-pc-next" title="Unraid一卡多用挖矿+转码" href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/">Unraid一卡多用挖矿+转码</a>
+        <a class="nav-mobile-next" title="Unraid一卡多用挖矿+转码" href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

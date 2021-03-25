@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616642108397">
+<link rel="shortcut icon" href="/favicon.ico?v=1616658524554">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -200,7 +200,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">14</span>
+        <span class="site-item-stat-count">15</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -249,6 +249,14 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -586,6 +594,37 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/"" data-c="
+          &lt;h3 id=&#34;举个栗子&#34;&gt;举个栗子&lt;/h3&gt;
+&lt;p&gt;如EMBY调用N卡来进行转码播放,有效终端为3个&lt;br&gt;
+也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码&lt;br&gt;
+还有一个可怜的人就只能软件转码了&lt;br&gt;
+这样会造成cpu资源极度的浪费...&lt;br&gt;
+但是...一般哪里来那么多客户端转码播放🤣&lt;br&gt;
+但是,有备无患嘛对吧&lt;/p&gt;
+&lt;h3 id=&#34;如何解锁&#34;&gt;如何解锁&lt;/h3&gt;
+&lt;p&gt;此处已经有因为国外的大佬制作好了&lt;a href=&#34;https://github.com/SpaceinvaderOne/unlocknvidia_unraid&#34;&gt;解锁补丁&lt;/a&gt;&lt;br&gt;
+我们只需要用起来即可&lt;br&gt;
+通过&lt;code&gt;User Scripts&lt;/code&gt;新建脚本&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616658378917.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+粘贴如下代码&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616658386051.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+wget https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh
+chmod +x ./patch.sh
+./patch.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;保存&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616658396344.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+设置启动方式&lt;br&gt;
+手动运行下&lt;/p&gt;
+&lt;h3 id=&#34;测试下效果&#34;&gt;测试下效果&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1oz.github.io/post-images/1616658419347.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+恭喜你,已经成功解锁😜&lt;/p&gt;
+">解锁N卡在Unraid上的转码限制</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/"" data-c="
           &lt;h3 id=&#34;一卡多用&#34;&gt;一卡多用&lt;/h3&gt;
 &lt;p&gt;原来是靠&lt;a href=&#34;https://s1oz.github.io/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/&#34;&gt;新建虚拟机直通显卡挖矿&lt;/a&gt;&lt;br&gt;
@@ -606,6 +645,7 @@
 安装好后做如下设置&lt;br&gt;
 &lt;strong&gt;Nvidia Driver&lt;/strong&gt;中确认显卡识别正常并成功驱动&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616641801740.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+第一次安装,需要在&lt;code&gt;设置&lt;/code&gt;-&lt;code&gt;Docker&lt;/code&gt;中点击关闭,然后再次开启&lt;br&gt;
 &lt;strong&gt;GPU Statistics&lt;/strong&gt;中修改&lt;code&gt;Vendor:&lt;/code&gt;为我们需要挖矿的N卡&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616641809203.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 &lt;strong&gt;trex-miner&lt;/strong&gt;框中依次填入&lt;code&gt;钱包地址 矿池地址 主机名&lt;/code&gt;保存启动&lt;br&gt;

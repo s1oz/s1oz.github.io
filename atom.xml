@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-03-25T03:15:47.269Z</updated>
+    <updated>2021-03-25T07:48:54.678Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://s1oz.github.io/images/avatar.png</logo>
     <icon>https://s1oz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 杂乱的备忘录</rights>
+    <entry>
+        <title type="html"><![CDATA[解锁N卡在Unraid上的转码限制]]></title>
+        <id>https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/</id>
+        <link href="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/">
+        </link>
+        <updated>2021-03-25T07:39:25.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Unraid一卡多用挖矿+转码]]></title>
         <id>https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/</id>
@@ -72,12 +79,5 @@
         <link href="https://s1oz.github.io/post/windows-bei-wang-lu/">
         </link>
         <updated>2020-05-23T02:16:53.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docker安装Emby并白嫖]]></title>
-        <id>https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/</id>
-        <link href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/">
-        </link>
-        <updated>2020-03-26T05:48:41.000Z</updated>
     </entry>
 </feed>

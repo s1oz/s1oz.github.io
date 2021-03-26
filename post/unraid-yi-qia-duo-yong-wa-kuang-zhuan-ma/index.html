@@ -8,8 +8,8 @@
 <meta name="keywords" content="s1oz的备忘录">
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
-<title>Unraid一卡多用挖矿+转码 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616717034400">
+<title>Unraid一卡多用转码+挖矿+超频 | 杂乱的备忘录</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1616741941081">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -48,7 +48,7 @@
 </script>
 
 
-  <meta name="description" content="Unraid一卡多用挖矿+转码" />
+  <meta name="description" content="Unraid一卡多用转码+挖矿+超频" />
   <meta name="keywords" content="docker,nas,emby,unraid" />
 </head>
 
@@ -259,6 +259,12 @@
 </ul>
 </li>
 <li><a href="#%E7%A1%AE%E8%AE%A4%E5%B9%B6%E4%BC%98%E5%8C%96%E7%9F%BF%E6%9C%BA">确认并优化矿机</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E8%B6%85%E9%A2%91">关于超频</a>
+<ul>
+<li><a href="#trxe%E6%8C%96%E7%9F%BF%E8%BD%AF%E4%BB%B6%E8%B6%85%E9%A2%91">trxe挖矿软件超频</a></li>
+<li><a href="#n%E5%8D%A1%E5%AE%98%E6%96%B9%E5%B7%A5%E5%85%B7%E9%99%8D%E9%A2%91%E8%B6%85%E9%A2%91">N卡官方工具降频/超频</a></li>
+</ul>
+</li>
 <li><a href="#emby%E8%B0%83%E7%94%A8%E7%9F%BF%E5%8D%A1">EMBY调用矿卡</a></li>
 </ul>
 </li>
@@ -530,7 +536,7 @@
             <section class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/">
-      Unraid一卡多用挖矿+转码
+      Unraid一卡多用转码+挖矿+超频
     </a>
   </h1>
   <div class="post-meta">
@@ -581,17 +587,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>590<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>949<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/" data-flag-title="Unraid一卡多用挖矿+转码" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/" data-flag-title="Unraid一卡多用转码+挖矿+超频" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -641,9 +647,47 @@
 到此就可以安心挖矿了</p>
 <pre><code>nvidia-smi -rac
 </code></pre>
-<p>此命令为重置时钟回到基准状态<br>
-<strong>关于trxe超频</strong><br>
-设置mt参数超频.但是<strong>只支持</strong><code>GDDR5 GDDR5X的10xx系</code></p>
+<p>此命令为重置时钟回到基准状态</p>
+<h3 id="关于超频">关于超频</h3>
+<h4 id="trxe挖矿软件超频">trxe挖矿软件超频</h4>
+<p>设置mt参数超频.但是<strong>只支持</strong><code>GDDR5 GDDR5X的10xx系</code><br>
+反正我没用过,具体的自己扒官方代码去</p>
+<h4 id="n卡官方工具降频超频">N卡官方工具降频/超频</h4>
+<p>牛逼还是老黄牛逼呢,啧啧啧~~<br>
+<code>nvidia-smi –ac</code>前面说到这个命令不支持了<br>
+<code>nvidia-settings</code>吧,也不支持,少了点支持<br>
+所以.我们来<strong>歪门邪道</strong>吧<br>
+应用中搜索<code>debian</code><br>
+安装此版本<br>
+<img src="https://s1oz.github.io/post-images/1616739959914.png" alt="" loading="lazy"><br>
+并填对这<code>三个</code>信息<br>
+<img src="https://s1oz.github.io/post-images/1616740006868.png" alt="" loading="lazy"><br>
+启动,并打开<code>debian</code>界面<br>
+<img src="https://s1oz.github.io/post-images/1616740052769.png" alt="" loading="lazy"><br>
+先在终端中<code>su</code>提权,输入刚刚设置的密码<br>
+<img src="https://s1oz.github.io/post-images/1616740167730.png" alt="" loading="lazy"><br>
+因<code>nvidia-xconfig</code>默认没有<strong>超频</strong>跟<strong>调节风扇</strong>选项<br>
+所以需要在<code>xorg.conf</code>文件中添加以下代码来开启隐藏功能</p>
+<pre><code>    Option  &quot;Coolbits&quot; &quot;24&quot;
+</code></pre>
+<p>关于<code>&quot;24&quot;</code>的含义</p>
+<pre><code>- 1 (bit0) 允许老的（Fermi核心）之前的显卡超频
+- 2 (bit1) 当使用不同显存的GPU需要设置成SLI时，可以设置这一位
+- 4 (bit2) 允许手动设置显卡风扇的转速
+- 8 (bit3) 允许超频，驱动版本要比337.12新，架构要比Fermi新
+- 16 (bit4) 允许超电压，驱动版本要比346.16新，架构要比Fermi新
+</code></pre>
+<p><img src="https://s1oz.github.io/post-images/1616740225913.png" alt="" loading="lazy"><br>
+修改好后<code>:wq</code>保存,并重启<code>debian</code>容器并设置自动启动<br>
+重启后,打开<code>NVIDIA X Server Settings</code><br>
+<img src="https://s1oz.github.io/post-images/1616740487540.png" alt="" loading="lazy"><br>
+在<code>PowerMizer</code>选项中即可修改<strong>核心频率</strong>跟<strong>显存频率</strong><br>
+来对比下吧<br>
+此为默认频率<br>
+<img src="https://s1oz.github.io/post-images/1616741919298.png" alt="" loading="lazy"><br>
+此为降核心超显存频率<br>
+<img src="https://s1oz.github.io/post-images/1616741938212.png" alt="" loading="lazy"><br>
+<strong>方法很简单.输入数字,回车生效</strong></p>
 <h3 id="emby调用矿卡">EMBY调用矿卡</h3>
 <p>在容器设置中添加以下<code>3</code>个参数<br>
 <strong>额外参数</strong>中加入这条指令<code>--runtime=nvidia</code><br>
@@ -675,7 +719,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/" title="Unraid一卡多用挖矿+转码">https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/</a>
+      <a href="https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/" title="Unraid一卡多用转码+挖矿+超频">https://s1oz.github.io/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -1283,9 +1327,47 @@ chmod +x ./patch.sh
 到此就可以安心挖矿了&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nvidia-smi -rac
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;此命令为重置时钟回到基准状态&lt;br&gt;
-&lt;strong&gt;关于trxe超频&lt;/strong&gt;&lt;br&gt;
-设置mt参数超频.但是&lt;strong&gt;只支持&lt;/strong&gt;&lt;code&gt;GDDR5 GDDR5X的10xx系&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此命令为重置时钟回到基准状态&lt;/p&gt;
+&lt;h3 id=&#34;关于超频&#34;&gt;关于超频&lt;/h3&gt;
+&lt;h4 id=&#34;trxe挖矿软件超频&#34;&gt;trxe挖矿软件超频&lt;/h4&gt;
+&lt;p&gt;设置mt参数超频.但是&lt;strong&gt;只支持&lt;/strong&gt;&lt;code&gt;GDDR5 GDDR5X的10xx系&lt;/code&gt;&lt;br&gt;
+反正我没用过,具体的自己扒官方代码去&lt;/p&gt;
+&lt;h4 id=&#34;n卡官方工具降频超频&#34;&gt;N卡官方工具降频/超频&lt;/h4&gt;
+&lt;p&gt;牛逼还是老黄牛逼呢,啧啧啧~~&lt;br&gt;
+&lt;code&gt;nvidia-smi –ac&lt;/code&gt;前面说到这个命令不支持了&lt;br&gt;
+&lt;code&gt;nvidia-settings&lt;/code&gt;吧,也不支持,少了点支持&lt;br&gt;
+所以.我们来&lt;strong&gt;歪门邪道&lt;/strong&gt;吧&lt;br&gt;
+应用中搜索&lt;code&gt;debian&lt;/code&gt;&lt;br&gt;
+安装此版本&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616739959914.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+并填对这&lt;code&gt;三个&lt;/code&gt;信息&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616740006868.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+启动,并打开&lt;code&gt;debian&lt;/code&gt;界面&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616740052769.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+先在终端中&lt;code&gt;su&lt;/code&gt;提权,输入刚刚设置的密码&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616740167730.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+因&lt;code&gt;nvidia-xconfig&lt;/code&gt;默认没有&lt;strong&gt;超频&lt;/strong&gt;跟&lt;strong&gt;调节风扇&lt;/strong&gt;选项&lt;br&gt;
+所以需要在&lt;code&gt;xorg.conf&lt;/code&gt;文件中添加以下代码来开启隐藏功能&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    Option  &amp;quot;Coolbits&amp;quot; &amp;quot;24&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关于&lt;code&gt;&amp;quot;24&amp;quot;&lt;/code&gt;的含义&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- 1 (bit0) 允许老的（Fermi核心）之前的显卡超频
+- 2 (bit1) 当使用不同显存的GPU需要设置成SLI时，可以设置这一位
+- 4 (bit2) 允许手动设置显卡风扇的转速
+- 8 (bit3) 允许超频，驱动版本要比337.12新，架构要比Fermi新
+- 16 (bit4) 允许超电压，驱动版本要比346.16新，架构要比Fermi新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1oz.github.io/post-images/1616740225913.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+修改好后&lt;code&gt;:wq&lt;/code&gt;保存,并重启&lt;code&gt;debian&lt;/code&gt;容器并设置自动启动&lt;br&gt;
+重启后,打开&lt;code&gt;NVIDIA X Server Settings&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616740487540.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+在&lt;code&gt;PowerMizer&lt;/code&gt;选项中即可修改&lt;strong&gt;核心频率&lt;/strong&gt;跟&lt;strong&gt;显存频率&lt;/strong&gt;&lt;br&gt;
+来对比下吧&lt;br&gt;
+此为默认频率&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616741919298.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+此为降核心超显存频率&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1616741938212.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;方法很简单.输入数字,回车生效&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;emby调用矿卡&#34;&gt;EMBY调用矿卡&lt;/h3&gt;
 &lt;p&gt;在容器设置中添加以下&lt;code&gt;3&lt;/code&gt;个参数&lt;br&gt;
 &lt;strong&gt;额外参数&lt;/strong&gt;中加入这条指令&lt;code&gt;--runtime=nvidia&lt;/code&gt;&lt;br&gt;
@@ -1301,7 +1383,7 @@ chmod +x ./patch.sh
 勾选相应矿卡使用&lt;br&gt;
 到此,核显解脱了😍&lt;br&gt;
 插播一点,关于EMBY白嫖教程可以看这&lt;a href=&#34;https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/&#34;&gt;嫖她&lt;/a&gt;&lt;/p&gt;
-">Unraid一卡多用挖矿+转码</a>
+">Unraid一卡多用转码+挖矿+超频</a>
       </div>
       
       <div class="item">

@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1616741941081">
+<link rel="shortcut icon" href="/favicon.ico?v=1616758286301">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1335,6 +1335,7 @@ Unraid-工具-系统设备-鼠标悬停在自己的网卡上&lt;br&gt;
 &lt;img src=&#34;https://s1oz.github.io/post-images/1616125845084.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 &lt;code&gt;VFs: 8&lt;/code&gt; 理解为最大支持8个网口&lt;br&gt;
 然后编辑&lt;code&gt;/boot/config/go&lt;/code&gt; 文件&lt;br&gt;
+安装&lt;code&gt;Config File Editor&lt;/code&gt;插件可以直接编辑&lt;code&gt;go&lt;/code&gt;文件&lt;br&gt;
 在&lt;code&gt;# Start the Management Utility&lt;/code&gt;上方添加以下命令&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo echo 7 &amp;gt; /sys/class/net/eth1/device/sriov_numvfs
 &lt;/code&gt;&lt;/pre&gt;

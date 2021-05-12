@@ -8,7 +8,7 @@
 <meta name="keywords" content="s1oz">
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
-<title>长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件 | 杂乱的备忘录</title>
+<title>qBittorrent参数设置 | 杂乱的备忘录</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1620808039395">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -62,8 +62,8 @@
 </script>
 
 
-  <meta name="description" content="长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件" />
-  <meta name="keywords" content="tv" />
+  <meta name="description" content="qBittorrent参数设置" />
+  <meta name="keywords" content="qb" />
 </head>
 
 <body>
@@ -214,8 +214,7 @@
       <div class="sidebar-body muse" id="sidebar_body">
         
           
-            <div class="post-side-meta" id="post_side_meta">
-              
+            
 <div class="sidebar-wrapper box-shadow-wrapper ">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -255,206 +254,6 @@
 
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper  auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E5%85%A5%E9%94%99%E7%94%B5%E8%A7%86">入错电视</a></li>
-<li><a href="#%E8%AF%A5%E4%B8%8B%E5%88%80%E5%AD%90%E8%BF%98%E6%98%AF%E8%A6%81%E4%B8%8B">该下刀子还是要下</a>
-<ul>
-<li><a href="#%E6%AF%92%E7%98%A4%E5%87%A0%E7%82%B9">毒瘤几点</a></li>
-</ul>
-</li>
-<li><a href="#%E5%A6%82%E4%BD%95%E5%88%87%E9%99%A4%E6%AF%92%E7%98%A4%E5%88%B6%E4%BD%9C%E4%B8%93%E6%9C%89%E5%9B%BA%E4%BB%B6">如何切除毒瘤制作专有固件</a></li>
-<li><a href="#%E7%8E%B0%E5%9C%A8%E6%9D%A5%E6%90%9E%E6%9C%BA%E5%90%A7">现在来搞机吧😡</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  </div>
-</div>
-
-<script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
-      }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
-    });
-  }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
           
         
       </div>
@@ -542,8 +341,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://s1oz.github.io/post/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/">
-      长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件
+    <a class="post-title-link" href="https://s1oz.github.io/post/qbittorrent-can-shu-she-zhi/">
+      qBittorrent参数设置
     </a>
   </h1>
   <div class="post-meta">
@@ -551,7 +350,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-07-18 15:35:16">2019-07-18</span>
+      <span class="publish-time" data-t="2021-05-12 16:08:05">2021-05-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -560,8 +359,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://s1oz.github.io/tag/Ezsfahijf/">
-        <span>tv</span>
+      <a href="https://s1oz.github.io/tag/52vQWThzB/">
+        <span>qb</span>
       </a>
       
       
@@ -570,17 +369,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>7<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1283<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>8<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/" data-flag-title="长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/qbittorrent-can-shu-she-zhi/" data-flag-title="qBittorrent参数设置" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -589,140 +388,13 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h3 id="入错电视">入错电视</h3>
-<p>年轻人不懂事，不知大法好<br>
-看介绍写着支持<strong>杜比世界</strong>,然后鬼迷心窍<br>
-居然买过国产电视<br>
-国内厂商清一色的<strong>瀑布流UI</strong><br>
-然后各种广告，感觉怎么用怎么不爽<br>
-个人还是倾向与<strong>原生安卓TV</strong>的界面<br>
-所以，最后还是投入了大法的怀抱<br>
-<strong>大法真香</strong></p>
-<h3 id="该下刀子还是要下">该下刀子还是要下</h3>
-<h4 id="毒瘤几点">毒瘤几点</h4>
-<p>瀑布流推荐不符合喜欢 看电视都是有明确看啥！所以这玩意太影响操作吧，把应用放在最右边的，又在最底部<br>
-现在的app软件已经自带广告了，你个电视还懂不懂弹个广告烦不烦<br>
-固件限制安装其他apk，响应郭嘉号召，后期固件更新已经不支持自己安装apk了<br>
-系统自动没用的软件太多，臃肿卡顿</p>
-<h3 id="如何切除毒瘤制作专有固件">如何切除毒瘤制作专有固件</h3>
-<p>####流程大概就是 断网刷入原版老固件&gt;后刷入自制的精简包<br>
-下载这两个软件<br>
-电视固件解包工具  <em><strong><a href="https://github.com/dipcore/mstar-bin-tool">这</a></strong></em><br>
-python环境 <em><strong><a href="https://www.python.org/downloads/">这</a></strong></em><br>
-蘑菇rom助手 <em><strong><a href="https://www.baidu.com">这</a></strong></em><br>
-安装python后解包原版固件准备精简<br>
-<code>unpack.py</code> 为解包命令<br>
-在<code>mstar-bin-tool-master</code>目录中使用命令行解压固件</p>
-<pre><code>unpack.py upgrade_ZLS70Hi5_V1.00039.bin
-</code></pre>
-<p><img src="https://s1oz.github.io/post-images/1620801153239.png" alt="" loading="lazy"><br>
-解包后的固件目录为<code>unpacked</code>我们需要的是目录中的<code>system.img</code><br>
-<img src="https://s1oz.github.io/post-images/1620801241683.png" alt="" loading="lazy"><br>
-用rom编辑助手打开<code>system.img</code>准备编辑<br>
-<img src="https://s1oz.github.io/post-images/1620801394374.png" alt="" loading="lazy"><br>
-要做的就是<strong>apk精简</strong>.删除我们不需要的毒瘤<br>
-<img src="https://s1oz.github.io/post-images/1620801544018.png" alt="" loading="lazy"><br>
-替换<code>hosts</code>文件来屏蔽所有自带广告做到干净的桌面<br>
-<img src="https://s1oz.github.io/post-images/1620801584253.png" alt="" loading="lazy"><br>
-插播一点,关于<code>hosts</code>中地址的抓包方法,我的方法如下<br>
-op搭建AdGuardHome<br>
-电视无线连接至网络<br>
-adg中收集一切尝试联网的网址</p>
-<pre><code>127.0.0.1 localhost
-127.0.0.1 0.cn.pool.ntp.orgtvuser-ch.cedock.com
-127.0.0.1 cn.pool.ntp.orgtvuser-ch.cedock.com
-127.0.0.1 adashbc.ut.taobao.com
-127.0.0.1 ads.huan.tv
-127.0.0.1 adservice.chsmarttv.com
-127.0.0.1 alicdn.epg.huan.tv
-127.0.0.1 api.launcher.smart-tv.cn
-127.0.0.1 apilauncher.smart-tv.cn
-127.0.0.1 app-upgrade.smart-tv.cn
-127.0.0.1 authenticate.chiq-cloud.com
-127.0.0.1 ch.xmpp.huan.tv
-127.0.0.1 chc.ads.huan.tv
-127.0.0.1 chiq5.smart-tv.cn
-127.0.0.1 commdata.v.qq.com
-127.0.0.1 config.chsmarttv.com
-127.0.0.1 d.appstore.huan.tv
-127.0.0.1 d.chapp.huan.tv
-127.0.0.1 data.chsmarttv.com
-127.0.0.1 date.chsmarttv.com
-127.0.0.1 date.hpplay.com.cn
-127.0.0.1 dev.voicecloud.cn
-127.0.0.1 domain.aishengji.com
-127.0.0.1 download.changhong.upgrade2.huan.tv
-127.0.0.1 downloadxml.changhong.upgrade2.huan.tv
-127.0.0.1 esw.tymcdn.com
-127.0.0.1 game.loveota.com
-127.0.0.1 hxqd.openspeech.cn
-127.0.0.1 iapi.chiq-cloud.com
-127.0.0.1 imdns.hpplay.cn
-127.0.0.1 input.shouji.sougou.com
-127.0.0.1 itv.voicecloud.cn
-127.0.0.1 itv2-id.openspeech.cn
-127.0.0.1 itv2-ip.openspeech.cn
-127.0.0.1 itv2-up.openspeech.cn
-127.0.0.1 jfapi.chiq-cloud.com
-127.0.0.1 launcher.smart-tv.cn
-127.0.0.1 launcherimg.smart-tv.cn
-127.0.0.1 livemonitor.huan.tv
-127.0.0.1 loc.map.baidu.com
-127.0.0.1 log.appstore3.huan.tv
-127.0.0.1 log.vcgame.cn
-127.0.0.1 mission-pub.smart-tv.cn
-127.0.0.1 monitor.uu.qq.com
-127.0.0.1 newvoice.chiq5.smart-tv.cn
-127.0.0.1 ntp.tuxfamily.net
-127.0.0.1 pingma.qq.com
-127.0.0.1 plbslog.umeng.com
-127.0.0.1 rp.hpplay.cn
-127.0.0.1 s3a.time.edu.cn
-127.0.0.1 scs.openspeech.cn
-127.0.0.1 sdkauth.hpplay.cn
-127.0.0.1 sdkconfig.video.qq.com
-127.0.0.1 service.changhong.upgrade2.huan.tv
-127.0.0.1 ss.chiq-cloud.com
-127.0.0.1 sys-update.ch.hifuntv.com
-127.0.0.1 thirdapp.appstore.huan.tv
-127.0.0.1 time.chiq-cloud.com
-127.0.0.1 tvlogon.chiq-cloud.com
-127.0.0.1 tvms.chiq-cloud.com
-127.0.0.1 tvuser-ch.cedock.com
-127.0.0.1 uapi.chiq-cloud.com
-127.0.0.1 ub.analysis.huan.tv
-127.0.0.1 ulogs.umeng.com
-127.0.0.1 update.lejiao.tv
-127.0.0.1 vv.video.qq.com
-127.0.0.1 www.epg.huan.tv
-127.0.0.1 openapp.ch.hifuntv.com.lan
-127.0.0.1 openapp.ch.hifuntv.com
-127.0.0.1 sr.super-ssp.tv
-127.0.0.1 cdn.hpplay.com.cn
-127.0.0.1 data.openspeech.cn
-127.0.0.1 data.hpplay.com.cn
-127.0.0.1 input.shouji.sogou.com
-127.0.0.1 localhost.lan
-127.0.0.1 umeng.online
-127.0.0.1 hifuntv.com
-127.0.0.1 huan.tv
-127.0.0.1 chsmarttv.com
-127.0.0.1 chiq-cloud.com
-127.0.0.1 lejiao.tv
-127.0.0.1 smart-tv.cn
-</code></pre>
-<p>一切修改完毕后,点击<strong>开始封装</strong><br>
-<img src="https://s1oz.github.io/post-images/1620801921461.png" alt="" loading="lazy"><br>
-完成后我们获得了一个容量小很多的img镜像<br>
-在<code>mstar-bin-tool-master</code>目录中新建一个<code>pack</code>目录,将此精简过的img拷贝到<code>pack</code>中<br>
-<code>pack.py</code> 为打包命令<br>
-在<code>mstar-bin-tool-master</code>目录中使用命令行打包固件</p>
-<pre><code>pack.py configs\xgimi.ini
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://s1oz.github.io/post-images/1620802277767.png" alt="" loading="lazy"></figure>
-<p>到此,精简包制作结束</p>
-<h3 id="现在来搞机吧">现在来搞机吧😡</h3>
-<p><strong>将原版固件拷贝至<code>fat32</code>格式的U盘&gt;电视机断电关机&gt;插入U盘&gt;长按电源键进入自动刷机&gt;开启后在连接遥控器界面连接完毕后关机&gt;将U盘的固件替换为精简包再次插入&gt;长按电源键进入自动刷机&gt;联网正常使用</strong></p>
+              <p><a href="https://github.com/CzBiX/qb-web/releases/latest">第三方ui下载地址</a><br>
+<img src="https://s1oz.github.io/post-images/1620806927997.png" alt="" loading="lazy"><br>
+<img src="https://s1oz.github.io/post-images/1620806932378.png" alt="" loading="lazy"><br>
+<img src="https://s1oz.github.io/post-images/1620806936438.png" alt="" loading="lazy"><br>
+<img src="https://s1oz.github.io/post-images/1620806939375.png" alt="" loading="lazy"><br>
+<img src="https://s1oz.github.io/post-images/1620806945860.png" alt="" loading="lazy"><br>
+<img src="https://s1oz.github.io/post-images/1620806952011.png" alt="" loading="lazy"></p>
 
             </div>
             
@@ -735,7 +407,7 @@ adg中收集一切尝试联网的网址</p>
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://s1oz.github.io/post/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/" title="长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件">https://s1oz.github.io/post/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/</a>
+      <a href="https://s1oz.github.io/post/qbittorrent-can-shu-she-zhi/" title="qBittorrent参数设置">https://s1oz.github.io/post/qbittorrent-can-shu-she-zhi/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -744,21 +416,17 @@ adg中收集一切尝试联网的网址</p>
   </ul>
   <div class="tags">
     
-      <a href="https://s1oz.github.io/tag/Ezsfahijf/"># tv</a>
+      <a href="https://s1oz.github.io/tag/52vQWThzB/"># qb</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="PXE+ABB 备份恢复好帮手" href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">PXE+ABB 备份恢复好帮手</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="PXE+ABB 备份恢复好帮手" href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Xpenology备忘录" href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/">Xpenology备忘录</a>
-        <a class="nav-mobile-next" title="Xpenology备忘录" href="https://s1oz.github.io/post/hei-qun-bei-wang-lu/">下一篇</a>
+        <a class="nav-pc-next" title="Markdown备忘录" href="https://s1oz.github.io/post/markdown-bei-wang-lu/">Markdown备忘录</a>
+        <a class="nav-mobile-next" title="Markdown备忘录" href="https://s1oz.github.io/post/markdown-bei-wang-lu/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

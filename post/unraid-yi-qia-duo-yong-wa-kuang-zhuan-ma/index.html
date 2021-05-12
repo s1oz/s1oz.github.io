@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid一卡多用转码+挖矿+超频 | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1620799686560">
+<link rel="shortcut icon" href="/favicon.ico?v=1620806175898">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -232,19 +232,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">15</span>
+        <span class="site-item-stat-count">18</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-count">12</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">11</span>
+        <span class="site-item-stat-count">12</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -1259,6 +1259,396 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/markdown-bei-wang-lu/"" data-c="
+          &lt;h1 id=&#34;一-标题&#34;&gt;一、标题&lt;/h1&gt;
+&lt;p&gt;在想要设置为标题的文字前面加#来表示&lt;br&gt;
+一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。&lt;/p&gt;
+&lt;p&gt;注：标准语法一般在#后跟个空格再写文字，貌似简书不加空格也行。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;h1 id=&#34;这是一级标题&#34;&gt;这是一级标题&lt;/h1&gt;
+&lt;h2 id=&#34;这是二级标题&#34;&gt;这是二级标题&lt;/h2&gt;
+&lt;h3 id=&#34;这是三级标题&#34;&gt;这是三级标题&lt;/h3&gt;
+&lt;h4 id=&#34;这是四级标题&#34;&gt;这是四级标题&lt;/h4&gt;
+&lt;h5 id=&#34;这是五级标题&#34;&gt;这是五级标题&lt;/h5&gt;
+&lt;h6 id=&#34;这是六级标题&#34;&gt;这是六级标题&lt;/h6&gt;
+&lt;h1 id=&#34;二-字体&#34;&gt;二、字体&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;br&gt;
+要加粗的文字左右分别用两个*号包起来&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;斜体&lt;/strong&gt;&lt;br&gt;
+要倾斜的文字左右分别用一个*号包起来&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;斜体加粗&lt;/strong&gt;&lt;br&gt;
+要倾斜和加粗的文字左右分别用三个*号包起来&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;删除线&lt;/strong&gt;&lt;br&gt;
+要加删除线的文字左右分别用两个~~号包起来&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;**这是加粗的文字**
+*这是倾斜的文字*`
+***这是斜体加粗的文字***
+~~这是加删除线的文字~~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;br&gt;
+&lt;strong&gt;这是加粗的文字&lt;/strong&gt;&lt;br&gt;
+&lt;em&gt;这是倾斜的文字&lt;/em&gt;`&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;这是斜体加粗的文字&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;s&gt;这是加删除线的文字&lt;/s&gt;&lt;/p&gt;
+&lt;h1 id=&#34;三-引用&#34;&gt;三、引用&lt;/h1&gt;
+&lt;p&gt;在引用的文字前加&amp;gt;即可。引用也可以嵌套，如加两个&amp;gt;&amp;gt;三个&amp;gt;&amp;gt;&amp;gt;&lt;br&gt;
+n个...&lt;br&gt;
+貌似可以一直加下去，但没神马卵用&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;这是引用的内容
+&amp;gt;&amp;gt;这是引用的内容
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;这是引用的内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是引用的内容&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是引用的内容&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是引用的内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;四-分割线&#34;&gt;四、分割线&lt;/h1&gt;
+&lt;p&gt;三个或者三个以上的 - 或者 * 都可以。&lt;br&gt;
+示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+----
+***
+*****
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;效果如下可以看到显示效果是一样的&#34;&gt;效果如下：&lt;br&gt;
+可以看到，显示效果是一样的。&lt;/h2&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;五-图片&#34;&gt;五、图片&lt;/h1&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)
+
+图片alt就是显示在图片下面的文字，相当于对图片内容的解释。
+图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&amp;amp;fm=27&amp;amp;gp=0.jpg &amp;quot;区块链&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;br&gt;
+![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/&lt;br&gt;
+u=702257389,1274025419&amp;amp;fm=27&amp;amp;gp=0.jpg &amp;quot;区块链&amp;quot;)&lt;/p&gt;
+&lt;h1 id=&#34;六-超链接&#34;&gt;六、超链接&lt;/h1&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[超链接名](超链接地址 &amp;quot;超链接title&amp;quot;)
+title可加可不加
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[简书](http://jianshu.com)
+[百度](http://baidu.com)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;br&gt;
+&lt;a href=&#34;http://jianshu.com&#34;&gt;简书&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://baidu.com&#34;&gt;百度&lt;/a&gt;&lt;br&gt;
+如果想要在新页面中打开的话可以用html语言的a标签代替。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;超链接地址&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;超链接名&amp;lt;/a&amp;gt;
+
+示例
+&amp;lt;a href=&amp;quot;https://www.jianshu.com/u/1f5ac0cf6a8b&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;简书&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;七-列表&#34;&gt;七、列表&lt;/h1&gt;
+&lt;h4 id=&#34;无序列表&#34;&gt;无序列表&lt;/h4&gt;
+&lt;p&gt;语法：&lt;br&gt;
+无序列表用 - + * 任何一种都可以&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- 列表内容
++ 列表内容
+* 列表内容
+
+注意：- + * 跟内容之间都要有一个空格
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;列表内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;列表内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;列表内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;有序列表&#34;&gt;有序列表&lt;/h4&gt;
+&lt;p&gt;语法：&lt;br&gt;
+数字加点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 列表内容
+2. 列表内容
+3. 列表内容
+
+注意：序号跟内容之间要有空格
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;列表内容&lt;/li&gt;
+&lt;li&gt;列表内容&lt;/li&gt;
+&lt;li&gt;列表内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;八-表格&#34;&gt;八、表格&lt;/h1&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;表头|表头|表头
+---|:--:|---:
+内容|内容|内容
+内容|内容|内容
+
+第二行分割表头和内容。
+- 有一个就行，为了对齐，多加了几个
+文字默认居左
+-两边加：表示文字居中
+-右边加：表示文字居右
+注：原生的语法两边都要用 | 包起来。此处省略
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;姓名|技能|排行
+--|:--:|--:
+刘备|哭|大哥
+关羽|打|二哥
+张飞|骂|三弟
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;姓名&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;技能&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;排行&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;刘备&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;哭&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;大哥&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;关羽&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;打&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;二哥&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张飞&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;骂&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;三弟&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;九-代码&#34;&gt;九、代码&lt;/h1&gt;
+&lt;p&gt;语法：&lt;br&gt;
+单行代码：代码之间分别用一个反引号包起来&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    `代码内容`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(```)
+  代码...
+  代码...
+  代码...
+(```)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注：为了防止转译，前后三个反引号处加了小括号，实际是没有的。这里只是用来演示，实际中去掉两边小括号即可。&lt;/code&gt;&lt;br&gt;
+示例：&lt;/p&gt;
+&lt;p&gt;单行代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`create database hero;`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(```)
+    function fun(){
+         echo &amp;quot;这是一句非常牛逼的代码&amp;quot;;
+    }
+    fun();
+(```)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;p&gt;单行代码&lt;br&gt;
+&lt;code&gt;create database hero;&lt;/code&gt;&lt;br&gt;
+代码块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function fun(){
+  echo &amp;quot;这是一句非常牛逼的代码&amp;quot;;
+}
+fun();
+&lt;/code&gt;&lt;/pre&gt;
+">Markdown备忘录</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/docker-bei-wang-lu/"" data-c="
+          &lt;h3 id=&#34;常用命令&#34;&gt;常用命令&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;docker images	列出所有镜像(images)
+docker ps	列出正在运行的容器(containers)
+docker exec -it 容器ID sh
+docker login 登陆账号
+docker commit 334c515d250e s1oz/bulid:0.01 现有容器制作成为镜像。
+docker push s1oz/test:0.1 push 推送现有镜像到docker hub仓库
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;场景一镜像下载-运行及删除&#34;&gt;场景一：镜像下载、运行及删除&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;COMMAND	DESC
+查看	
+docker images	列出所有镜像(images)
+docker ps	列出正在运行的容器(containers)
+docker ps -a	列出所有的容器
+docker pull centos	下载centos镜像
+docker top ‘container’	查看容器内部运行程序
+容器	
+docker exec -it 容器ID sh	进入容器
+docker stop ‘container’	停止一个正在运行的容器，‘container’可以是容器ID或名称
+docker start ‘container’	启动一个已经停止的容器
+docker restart ‘container’	重启容器
+docker rm ‘container’	删除容器
+docker run -i -t -p :80 LAMP /bin/bash	运行容器并做http端口转发
+docker exec -it ‘container’ /bin/bash	进入ubuntu类容器的bash
+docker exec -it /bin/sh	进入alpine类容器的sh
+docker rm docker ps -a -q	删除所有已经停止的容器
+docker kill $(docker ps -a -q)	杀死所有正在运行的容器，$()功能同``
+镜像	
+docker build -t wp-api .	构建1个镜像,-t(镜像的名字及标签) wp-api(镜像名) .(构建的目录)
+docker run -i -t wp-api	-t -i以交互伪终端模式运行,可以查看输出信息
+docker run -d -p 80:80 wp-api	镜像端口 -d后台模式运行镜像
+docker rmi [image-id]	删除镜像
+docker rmi $(docker images -q)	删除所有镜像
+docker rmi $(sudo docker images --filter &amp;quot;dangling=true&amp;quot; -q --no-trunc)	删除无用镜像
+ocker run --help	帮助
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;场景二下载镜像并直接运行&#34;&gt;场景二：下载镜像并直接运行&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;docker run  --name ubuntu -it ubuntu bash 
+docker cp dd ubuntu:tmp/ #复制文件dd 到容器的/tmp 目录
+Ctrl-p Ctrl-q  #退出
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;场景三修改镜像并保存到私有仓库&#34;&gt;场景三：修改镜像，并保存到私有仓库&lt;/h3&gt;
+&lt;p&gt;期望结果:在ubuntu 镜像中添加 apache，将新的镜像保存到私有仓库中&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec -it ubuntu bash 
+apt-get update
+apt-get install apache2
+Ctrl-p Ctrl-q  #退出
+docker commit -a &amp;quot;mir355&amp;quot; -m &amp;quot;ubuntu add apache2&amp;quot; {ID}  private/ubuntu_apache:v1   #保存镜像
+docker stop ubuntu 
+docker rm ubuntu
+docker run -i -t --name apache2 -p 8080:80 private/ubuntu_apache:v1 /bin/bash
+/etc/init.d/apache2 start
+Ctrl-p Ctrl-q  #退出
+#通过 docker tag重命名镜像，使之与registry匹配
+docker tag private/ubuntu_apache:v1 127.0.0.1:5000/private/ubuntu_apache:v1
+#保存到私有仓库
+docker push 127.0.0.1:5000/private/ubuntu_apache:v1
+curl http://127.0.0.1:5000/v2/_catalog
+
+#下载镜像
+docker pull 127.0.0.1:5000/private/ubuntu_apache:v1
+&lt;/code&gt;&lt;/pre&gt;
+">Docker备忘录</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/git-bei-wang-lu/"" data-c="
+          &lt;p&gt;###常用命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch 查看本地所有分支
+git status 查看当前状态 
+git commit 提交 
+git branch -a 查看所有的分支
+git branch -r 查看远程所有分支
+git commit -am &amp;quot;init&amp;quot; 提交并且加注释 
+git remote add origin git@192.168.1.119:ndshow
+git push origin master 将文件给推到服务器上 
+git remote show origin 显示远程库origin里的资源 
+git push origin master:develop
+git push origin master:hb-dev 将本地库与服务器上的库进行关联 
+git checkout --track origin/dev 切换到远程dev分支
+git branch -D master develop 删除本地库develop
+git checkout -b dev 建立一个新的本地分支dev
+git merge origin/dev 将分支dev与当前分支进行合并
+git checkout dev 切换到本地dev分支
+git remote show 查看远程库
+git add .
+git rm 文件名(包括路径) 从git中删除指定文件
+git clone git://github.com/schacon/grit.git 从服务器上将代码给拉下来
+git config --list 看所有用户
+git ls-files 看已经被提交的
+git rm [file name] 删除一个文件
+git commit -a 提交当前repos的所有的改变
+git add [file name] 添加一个文件到git index
+git commit -v 当你用－v参数的时候可以看commit的差异
+git commit -m &amp;quot;This is the message describing the commit&amp;quot; 添加commit信息
+git commit -a -a是代表add，把所有的change加到git index里然后再commit
+git commit -a -v 一般提交命令
+git log 看你commit的日志
+git diff 查看尚未暂存的更新
+git rm a.a 移除文件(从暂存区和工作区中删除)
+git rm --cached a.a 移除文件(只从暂存区中删除)
+git commit -m &amp;quot;remove&amp;quot; 移除文件(从Git中删除)
+git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)
+git diff --cached 或 $ git diff --staged 查看尚未提交的更新
+git stash push 将文件给push到一个临时空间中
+git stash pop 将文件从临时空间pop下来
+---------------------------------------------------------
+git remote add origin git@github.com:username/Hello-World.git
+git push origin master 将本地项目给提交到服务器中
+-----------------------------------------------------------
+git pull 本地与服务器端同步
+-----------------------------------------------------------------
+git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。
+git push origin serverfix:awesomebranch
+------------------------------------------------------------------
+git fetch 相当于是从远程获取最新版本到本地，不会自动merge
+git commit -a -m &amp;quot;log_message&amp;quot; (-a是提交所有改动，-m是加入log信息) 本地修改同步至服务器端 ：
+git branch branch_0.1 master 从主分支master创建branch_0.1分支
+git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0
+git checkout branch_1.0/master 切换到branch_1.0/master分支
+du -hs
+
+git branch 删除远程branch
+git push origin :branch_remote_name
+git branch -r -d branch_remote_name
+-----------------------------------------------------------
+
+初始化版本库，并提交到远程服务器端
+mkdir WebApp
+cd WebApp
+git init 本地初始化
+touch README
+git add README 添加文件
+git commit -m &#39;first commit&#39;
+git remote add origin git@github.com:daixu/WebApp.git
+
+增加一个远程服务器端
+
+上面的命令会增加URL地址为&#39;git@github.com:daixu/WebApp.git&#39;，名称为origin的远程服务器库，以后提交代码的时候只需要使用 origin别名即可
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;###常见错误&lt;br&gt;
+&lt;code&gt;fatal: remote origin already exists.&lt;/code&gt;同步失败&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git remote rm origin
+&lt;/code&gt;&lt;/pre&gt;
+">Git备忘录</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/"" data-c="
@@ -2584,8 +2974,139 @@ bios中开启pxe启动相关选项&lt;br&gt;
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/"" data-c="
           &lt;h3 id=&#34;入错电视&#34;&gt;入错电视&lt;/h3&gt;
-&lt;h3 id=&#34;如何修改&#34;&gt;如何修改&lt;/h3&gt;
-&lt;h3 id=&#34;&#34;&gt;&lt;/h3&gt;
+&lt;p&gt;年轻人不懂事，不知大法好&lt;br&gt;
+看介绍写着支持&lt;strong&gt;杜比世界&lt;/strong&gt;,然后鬼迷心窍&lt;br&gt;
+居然买过国产电视&lt;br&gt;
+国内厂商清一色的&lt;strong&gt;瀑布流UI&lt;/strong&gt;&lt;br&gt;
+然后各种广告，感觉怎么用怎么不爽&lt;br&gt;
+个人还是倾向与&lt;strong&gt;原生安卓TV&lt;/strong&gt;的界面&lt;br&gt;
+所以，最后还是投入了大法的怀抱&lt;br&gt;
+&lt;strong&gt;大法真香&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;该下刀子还是要下&#34;&gt;该下刀子还是要下&lt;/h3&gt;
+&lt;h4 id=&#34;毒瘤几点&#34;&gt;毒瘤几点&lt;/h4&gt;
+&lt;p&gt;瀑布流推荐不符合喜欢 看电视都是有明确看啥！所以这玩意太影响操作吧，把应用放在最右边的，又在最底部&lt;br&gt;
+现在的app软件已经自带广告了，你个电视还懂不懂弹个广告烦不烦&lt;br&gt;
+固件限制安装其他apk，响应郭嘉号召，后期固件更新已经不支持自己安装apk了&lt;br&gt;
+系统自动没用的软件太多，臃肿卡顿&lt;/p&gt;
+&lt;h3 id=&#34;如何切除毒瘤制作专有固件&#34;&gt;如何切除毒瘤制作专有固件&lt;/h3&gt;
+&lt;p&gt;####流程大概就是 断网刷入原版老固件&amp;gt;后刷入自制的精简包&lt;br&gt;
+下载这两个软件&lt;br&gt;
+电视固件解包工具  &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/dipcore/mstar-bin-tool&#34;&gt;这&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+python环境 &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;这&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+蘑菇rom助手 &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://www.baidu.com&#34;&gt;这&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+安装python后解包原版固件准备精简&lt;br&gt;
+&lt;code&gt;unpack.py&lt;/code&gt; 为解包命令&lt;br&gt;
+在&lt;code&gt;mstar-bin-tool-master&lt;/code&gt;目录中使用命令行解压固件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;unpack.py upgrade_ZLS70Hi5_V1.00039.bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1oz.github.io/post-images/1620801153239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+解包后的固件目录为&lt;code&gt;unpacked&lt;/code&gt;我们需要的是目录中的&lt;code&gt;system.img&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1620801241683.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+用rom编辑助手打开&lt;code&gt;system.img&lt;/code&gt;准备编辑&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1620801394374.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+要做的就是&lt;strong&gt;apk精简&lt;/strong&gt;.删除我们不需要的毒瘤&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1620801544018.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+替换&lt;code&gt;hosts&lt;/code&gt;文件来屏蔽所有自带广告做到干净的桌面&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1620801584253.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+插播一点,关于&lt;code&gt;hosts&lt;/code&gt;中地址的抓包方法,我的方法如下&lt;br&gt;
+op搭建AdGuardHome&lt;br&gt;
+电视无线连接至网络&lt;br&gt;
+adg中收集一切尝试联网的网址&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;127.0.0.1 localhost
+127.0.0.1 0.cn.pool.ntp.orgtvuser-ch.cedock.com
+127.0.0.1 cn.pool.ntp.orgtvuser-ch.cedock.com
+127.0.0.1 adashbc.ut.taobao.com
+127.0.0.1 ads.huan.tv
+127.0.0.1 adservice.chsmarttv.com
+127.0.0.1 alicdn.epg.huan.tv
+127.0.0.1 api.launcher.smart-tv.cn
+127.0.0.1 apilauncher.smart-tv.cn
+127.0.0.1 app-upgrade.smart-tv.cn
+127.0.0.1 authenticate.chiq-cloud.com
+127.0.0.1 ch.xmpp.huan.tv
+127.0.0.1 chc.ads.huan.tv
+127.0.0.1 chiq5.smart-tv.cn
+127.0.0.1 commdata.v.qq.com
+127.0.0.1 config.chsmarttv.com
+127.0.0.1 d.appstore.huan.tv
+127.0.0.1 d.chapp.huan.tv
+127.0.0.1 data.chsmarttv.com
+127.0.0.1 date.chsmarttv.com
+127.0.0.1 date.hpplay.com.cn
+127.0.0.1 dev.voicecloud.cn
+127.0.0.1 domain.aishengji.com
+127.0.0.1 download.changhong.upgrade2.huan.tv
+127.0.0.1 downloadxml.changhong.upgrade2.huan.tv
+127.0.0.1 esw.tymcdn.com
+127.0.0.1 game.loveota.com
+127.0.0.1 hxqd.openspeech.cn
+127.0.0.1 iapi.chiq-cloud.com
+127.0.0.1 imdns.hpplay.cn
+127.0.0.1 input.shouji.sougou.com
+127.0.0.1 itv.voicecloud.cn
+127.0.0.1 itv2-id.openspeech.cn
+127.0.0.1 itv2-ip.openspeech.cn
+127.0.0.1 itv2-up.openspeech.cn
+127.0.0.1 jfapi.chiq-cloud.com
+127.0.0.1 launcher.smart-tv.cn
+127.0.0.1 launcherimg.smart-tv.cn
+127.0.0.1 livemonitor.huan.tv
+127.0.0.1 loc.map.baidu.com
+127.0.0.1 log.appstore3.huan.tv
+127.0.0.1 log.vcgame.cn
+127.0.0.1 mission-pub.smart-tv.cn
+127.0.0.1 monitor.uu.qq.com
+127.0.0.1 newvoice.chiq5.smart-tv.cn
+127.0.0.1 ntp.tuxfamily.net
+127.0.0.1 pingma.qq.com
+127.0.0.1 plbslog.umeng.com
+127.0.0.1 rp.hpplay.cn
+127.0.0.1 s3a.time.edu.cn
+127.0.0.1 scs.openspeech.cn
+127.0.0.1 sdkauth.hpplay.cn
+127.0.0.1 sdkconfig.video.qq.com
+127.0.0.1 service.changhong.upgrade2.huan.tv
+127.0.0.1 ss.chiq-cloud.com
+127.0.0.1 sys-update.ch.hifuntv.com
+127.0.0.1 thirdapp.appstore.huan.tv
+127.0.0.1 time.chiq-cloud.com
+127.0.0.1 tvlogon.chiq-cloud.com
+127.0.0.1 tvms.chiq-cloud.com
+127.0.0.1 tvuser-ch.cedock.com
+127.0.0.1 uapi.chiq-cloud.com
+127.0.0.1 ub.analysis.huan.tv
+127.0.0.1 ulogs.umeng.com
+127.0.0.1 update.lejiao.tv
+127.0.0.1 vv.video.qq.com
+127.0.0.1 www.epg.huan.tv
+127.0.0.1 openapp.ch.hifuntv.com.lan
+127.0.0.1 openapp.ch.hifuntv.com
+127.0.0.1 sr.super-ssp.tv
+127.0.0.1 cdn.hpplay.com.cn
+127.0.0.1 data.openspeech.cn
+127.0.0.1 data.hpplay.com.cn
+127.0.0.1 input.shouji.sogou.com
+127.0.0.1 localhost.lan
+127.0.0.1 umeng.online
+127.0.0.1 hifuntv.com
+127.0.0.1 huan.tv
+127.0.0.1 chsmarttv.com
+127.0.0.1 chiq-cloud.com
+127.0.0.1 lejiao.tv
+127.0.0.1 smart-tv.cn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一切修改完毕后,点击&lt;strong&gt;开始封装&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1620801921461.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+完成后我们获得了一个容量小很多的img镜像&lt;br&gt;
+在&lt;code&gt;mstar-bin-tool-master&lt;/code&gt;目录中新建一个&lt;code&gt;pack&lt;/code&gt;目录,将此精简过的img拷贝到&lt;code&gt;pack&lt;/code&gt;中&lt;br&gt;
+&lt;code&gt;pack.py&lt;/code&gt; 为打包命令&lt;br&gt;
+在&lt;code&gt;mstar-bin-tool-master&lt;/code&gt;目录中使用命令行打包固件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pack.py configs\xgimi.ini
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://s1oz.github.io/post-images/1620802277767.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;到此,精简包制作结束&lt;/p&gt;
+&lt;h3 id=&#34;现在来搞机吧&#34;&gt;现在来搞机吧😡&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;将原版固件拷贝至&lt;code&gt;fat32&lt;/code&gt;格式的U盘&amp;gt;电视机断电关机&amp;gt;插入U盘&amp;gt;长按电源键进入自动刷机&amp;gt;开启后在连接遥控器界面连接完毕后关机&amp;gt;将U盘的固件替换为精简包再次插入&amp;gt;长按电源键进入自动刷机&amp;gt;联网正常使用&lt;/strong&gt;&lt;/p&gt;
 ">长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件</a>
       </div>
       

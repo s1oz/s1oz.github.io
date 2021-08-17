@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://s1oz.github.io</id>
     <title>杂乱的备忘录</title>
-    <updated>2021-05-14T05:56:01.405Z</updated>
+    <updated>2021-08-17T05:22:24.649Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://s1oz.github.io"/>
     <link rel="self" href="https://s1oz.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://s1oz.github.io/images/avatar.png</logo>
     <icon>https://s1oz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 杂乱的备忘录</rights>
+    <entry>
+        <title type="html"><![CDATA[ikuai安装shellclash]]></title>
+        <id>https://s1oz.github.io/post/ikuai-an-zhuang-shellclash/</id>
+        <link href="https://s1oz.github.io/post/ikuai-an-zhuang-shellclash/">
+        </link>
+        <updated>2021-08-17T04:34:16.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[qBittorrent参数设置]]></title>
         <id>https://s1oz.github.io/post/qbittorrent-can-shu-she-zhi/</id>
@@ -72,12 +79,5 @@
         <link href="https://s1oz.github.io/post/unraid-69x-wang-qia-kai-qi-sr-iov/">
         </link>
         <updated>2021-03-19T03:39:45.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[49年入国军 尝试白嫖ETH]]></title>
-        <id>https://s1oz.github.io/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/</id>
-        <link href="https://s1oz.github.io/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/">
-        </link>
-        <updated>2021-01-20T06:25:06.000Z</updated>
     </entry>
 </feed>

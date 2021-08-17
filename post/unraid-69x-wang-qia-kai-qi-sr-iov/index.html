@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid 6.9.x 网卡开启SR-IOV | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1620971753277">
+<link rel="shortcut icon" href="/favicon.ico?v=1629177630953">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -232,7 +232,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">19</span>
+        <span class="site-item-stat-count">20</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1307,6 +1307,51 @@ ifconfig eth1 up
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/ikuai-an-zhuang-shellclash/"" data-c="
+          &lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
+&lt;p&gt;一直单op，偶然尝试ikuai网心收益居然比op高&lt;br&gt;
+所以~来折腾吧&lt;br&gt;
+ikuai+旁路由模式&lt;br&gt;
+j1900直接安装ikuai，kvm安装op&lt;br&gt;
+试过以下方式，但是过旁路有的机子掉速&lt;br&gt;
+1.端口分流-外网线路 优点是op挂了 10秒内能自动切换回主线路&lt;br&gt;
+2.端口分流-下一跳网关 op设置方便 但是op嗝屁了 过旁路有的机子无法正常上网&lt;br&gt;
+3.域名分流 不怎么掉速 但是添加域名1000条一组 有点反人类 还是白名单好使&lt;br&gt;
+4.双dhcp段互指网关  一个德行 op嗝屁了 过旁路有的机子无法正常上网&lt;br&gt;
+不知道是op垃圾。。还是ikuai垃圾&lt;br&gt;
+所以。。暂时看 ikuai安装shellclash是最优解了&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1629177510160.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;流程&#34;&gt;流程&lt;/h3&gt;
+&lt;p&gt;ikuai开启ssh然后安装好docker并开启&lt;br&gt;
+下载&lt;a href=&#34;https://www.baidu.com&#34;&gt;所需文件&lt;/a&gt;解压后上传至ikuai中&lt;br&gt;
+&lt;img src=&#34;https://s1oz.github.io/post-images/1629175761411.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如我的路径就是/sda6/bak/&lt;br&gt;
+docker中下载&lt;a href=&#34;https://hub.docker.com/r/s1oz/ikuaipatch&#34;&gt;s1oz/ikuaipatch:latest&lt;/a&gt;的镜像&lt;br&gt;
+并如下配置并启动&lt;img src=&#34;https://s1oz.github.io/post-images/1629176052225.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+一定要勾选开机自启 很关键&lt;br&gt;
+然后就可以通过&lt;strong&gt;putty&lt;/strong&gt;之类工具访问爱快了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;user passwd
+root 111111 解释器为bash 可安装opkg
+sshd 111111 解释器为ikuai正常后台
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;root登录后输入以下命令安装&lt;strong&gt;shellclash&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export url=&#39;https://cdn.jsdelivr.net/gh/juewuy/ShellClash@master&#39; &amp;amp;&amp;amp; wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  &amp;amp;&amp;amp; sh /tmp/install.sh &amp;amp;&amp;amp; source /etc/profile &amp;amp;&amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要记住的是安装至/etc目录&lt;br&gt;
+其他自己调教使用&lt;br&gt;
+调教完毕后&lt;strong&gt;需要备份clash&lt;/strong&gt; 在putty中输入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp -r /etc/clash/ /etc/disk_user/sda6/bak/ #备份目录按实际盘符调整
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为每次爱快重启会恢复，所以利用docker的开机自启动脚本来关联替换文件&lt;br&gt;
+&lt;strong&gt;每次有重大更改，切记备份clash。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路&#34;&gt;思路&lt;/h3&gt;
+&lt;p&gt;容器中挂载/../../目录能直接挂载爱快根目录&lt;br&gt;
+通过修改passwd等文件能修改密码跟解释器&lt;br&gt;
+因爱快重启还原，通过docker自启动脚本来替换修改后文件&lt;/p&gt;
+">ikuai安装shellclash</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://s1oz.github.io/post/qbittorrent-can-shu-she-zhi/"" data-c="

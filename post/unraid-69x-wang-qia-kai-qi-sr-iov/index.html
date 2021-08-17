@@ -9,7 +9,7 @@
 <meta name="description" content="以备不时之需">
 <meta name="theme-color" content="#000">
 <title>Unraid 6.9.x 网卡开启SR-IOV | 杂乱的备忘录</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1629178071531">
+<link rel="shortcut icon" href="/favicon.ico?v=1629182940049">
 <link rel="stylesheet" href="/media/css/muse.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1345,7 +1345,8 @@ sshd 111111 解释器为ikuai正常后台
 &lt;pre&gt;&lt;code&gt;cp -r /etc/clash/ /etc/disk_user/sda6/bak/ #备份目录按实际盘符调整
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;因为每次爱快重启会恢复，所以利用docker的开机自启动脚本来关联替换文件&lt;br&gt;
-&lt;strong&gt;每次有重大更改，切记备份clash。&lt;/strong&gt;&lt;/p&gt;
+&lt;strong&gt;每次有重大更改，切记备份clash。&lt;/strong&gt;&lt;br&gt;
+如果重启了clash没起来，ssh到爱快输入&lt;code&gt;clash&lt;/code&gt; 然后&lt;code&gt;1&lt;/code&gt;启动即可&lt;/p&gt;
 &lt;h3 id=&#34;思路&#34;&gt;思路&lt;/h3&gt;
 &lt;p&gt;容器中挂载/../../目录能直接挂载爱快根目录&lt;br&gt;
 通过修改passwd等文件能修改密码跟解释器&lt;br&gt;

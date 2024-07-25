@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://s1oz.github.io</id>
+    <title>杂乱的备忘录</title>
+    <updated>2024-07-25T07:10:14.819Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://s1oz.github.io"/>
+    <link rel="self" href="https://s1oz.github.io/atom.xml"/>
+    <subtitle>以备不时之需</subtitle>
+    <logo>https://s1oz.github.io/images/avatar.png</logo>
+    <icon>https://s1oz.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 杂乱的备忘录</rights>
+    <entry>
+        <title type="html"><![CDATA[WindowsinDocker直通显卡网卡]]></title>
+        <id>https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/</id>
+        <link href="https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/">
+        </link>
+        <updated>2024-06-01T02:12:23.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[将UNRAID设置为HyperBackup远程rsync备份目的地]]></title>
+        <id>https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/</id>
+        <link href="https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/">
+        </link>
+        <updated>2024-05-22T00:50:02.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在Gridea中添加Mermaid支持来显示图表]]></title>
+        <id>https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/</id>
+        <link href="https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/">
+        </link>
+        <updated>2024-05-15T05:05:04.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[玩客云复活成PIKVM]]></title>
+        <id>https://s1oz.github.io/post/wan-ke-yun-fu-huo-cheng-pikvm/</id>
+        <link href="https://s1oz.github.io/post/wan-ke-yun-fu-huo-cheng-pikvm/">
+        </link>
+        <updated>2024-01-15T12:53:55.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station]]></title>
+        <id>https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/</id>
+        <link href="https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/">
+        </link>
+        <updated>2023-07-10T01:58:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡]]></title>
+        <id>https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/</id>
+        <link href="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+        </link>
+        <updated>2023-05-27T00:26:30.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UNRAID直通UHD630核显给虚拟机踩坑]]></title>
+        <id>https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/</id>
+        <link href="https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/">
+        </link>
+        <updated>2023-01-03T08:30:08.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[NginxProxyManager禁止或允许某地区访问]]></title>
+        <id>https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/</id>
+        <link href="https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/">
+        </link>
+        <updated>2022-09-22T07:07:05.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UNRAID使用NginxProxyManager外网访问遇到的小问题]]></title>
+        <id>https://s1oz.github.io/post/unraid-shi-yong-nginxproxymanager-yu-dao-de-xiao-wen-ti/</id>
+        <link href="https://s1oz.github.io/post/unraid-shi-yong-nginxproxymanager-yu-dao-de-xiao-wen-ti/">
+        </link>
+        <updated>2022-09-16T05:52:04.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[给UNRAID添加登录通知]]></title>
+        <id>https://s1oz.github.io/post/gei-unraid-tian-jia-deng-lu-tong-zhi/</id>
+        <link href="https://s1oz.github.io/post/gei-unraid-tian-jia-deng-lu-tong-zhi/">
+        </link>
+        <updated>2022-09-02T00:59:53.000Z</updated>
+    </entry>
+</feed>

@@ -1,0 +1,262 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>添加密码访问验证 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="添加密码访问验证 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <link rel="canonical" href="https://s1oz.github.io/post/tian-jia-mi-ma-fang-wen-yan-zheng/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"添加密码访问验证","url":"https://s1oz.github.io/post/tian-jia-mi-ma-fang-wen-yan-zheng/","description":"","datePublished":"2021-10-03T13:16:51+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/tian-jia-mi-ma-fang-wen-yan-zheng/","name":"添加密码访问验证","position":2}]}</script>
+<meta property="og:title" content="添加密码访问验证">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://s1oz.github.io/post/tian-jia-mi-ma-fang-wen-yan-zheng/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/tian-jia-mi-ma-fang-wen-yan-zheng/">
+<meta name="twitter:title" content="添加密码访问验证">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              添加密码访问验证
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-03
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <script language = JavaScript> function password() {
+
+    var testV = 1;
+
+    var pass1 = prompt('验证口令','');
+
+    var passwordforthisarticle = "passwd123";
+
+    var inputtimemax = 19960319;
+
+    while (testV < inputtimemax) {
+
+    if (!pass1)
+
+    history.go(-1);
+
+    if (pass1 == passwordforthisarticle) {
+
+    break;
+
+    }
+
+    testV+=1;
+
+    var pass1 =
+
+    prompt('Password error!');
+
+    }
+
+    if (pass1!= passwordforthisarticle & testV == inputtimemax)  
+
+    history.go(-1);
+
+    return " ";
+
+    }
+
+    document.write(password());
+
+</script>
+<p>在正文头部添加以下代码</p>
+<pre><code>&lt;script language = JavaScript&gt; function password() {
+
+    var testV = 1;
+
+    var pass1 = prompt('提示文本','');
+
+    var passwordforthisarticle = &quot;密码&quot;;
+
+    var inputtimemax = 19960319;
+
+    while (testV &lt; inputtimemax) {
+
+    if (!pass1)
+
+    history.go(-1);
+
+    if (pass1 == passwordforthisarticle) {
+
+    break;
+
+    }
+
+    testV+=1;
+
+    var pass1 =
+
+    prompt('Password error!');
+
+    }
+
+    if (pass1!= passwordforthisarticle &amp; testV == inputtimemax)  
+
+    history.go(-1);
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/qbittorrent-can-shu-she-zhi/">
+              <h3 class="post-title">
+                qBittorrent参数设置
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

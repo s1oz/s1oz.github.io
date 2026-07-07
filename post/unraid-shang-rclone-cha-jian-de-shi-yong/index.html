@@ -1,0 +1,761 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Unraid上rclone插件的使用 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Unraid上rclone插件的使用 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="友情提示 页面过长 请善用右侧目录 安装rclone插件 应用中搜素rclone 选择这个插件安装,其他两个为docker 安装完成后会出现在设置-用户实用程序中 连接网盘 谷歌团队盘 在终端中输入`rclone co&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid上rclone插件的使用","url":"https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/","description":"友情提示 页面过长 请善用右侧目录 安装rclone插件 应用中搜素rclone 选择这个插件安装,其他两个为docker 安装完成后会出现在设置-用户实用程序中 连接网盘 谷歌团队盘 在终端中输入`rclone co\u0026hellip;","image":"/post-images/unraid-shang-rclone-cha-jian-de-shi-yong.png","datePublished":"2021-03-22T16:08:32+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/","name":"Unraid上rclone插件的使用","position":2}]}</script>
+<meta property="og:title" content="Unraid上rclone插件的使用">
+<meta property="og:description" content="友情提示 页面过长 请善用右侧目录 安装rclone插件 应用中搜素rclone 选择这个插件安装,其他两个为docker 安装完成后会出现在设置-用户实用程序中 连接网盘 谷歌团队盘 在终端中输入`rclone co&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/post-images/unraid-shang-rclone-cha-jian-de-shi-yong.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/unraid-shang-rclone-cha-jian-de-shi-yong/">
+<meta name="twitter:title" content="Unraid上rclone插件的使用">
+<meta name="twitter:description" content="友情提示 页面过长 请善用右侧目录 安装rclone插件 应用中搜素rclone 选择这个插件安装,其他两个为docker 安装完成后会出现在设置-用户实用程序中 连接网盘 谷歌团队盘 在终端中输入`rclone co&amp;hellip;">
+<meta name="twitter:image" content="/post-images/unraid-shang-rclone-cha-jian-de-shi-yong.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Unraid上rclone插件的使用
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-22
+              </span>
+              <span>
+                24 分钟阅读
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="/post-images/unraid-shang-rclone-cha-jian-de-shi-yong.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="--">友情提示 页面过长 请善用右侧目录</h3>
+<h3 id="rclone">安装rclone插件</h3>
+<p>应用中搜素<code>rclone</code><br />
+选择这个插件安装,其他两个为docker<br />
+安装完成后会出现在<code>设置</code>-<code>用户实用程序</code>中<br />
+<img src="https://s1oz.github.io/post-images/1616402378422.png" alt="" /></p>
+<h3 id="heading">连接网盘</h3>
+<h4 id="heading-1">谷歌团队盘</h4>
+<p>在<code>终端</code>中输入<code>rclone config</code></p>
+<pre><code>No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q&gt; n
+</code></pre>
+<p>选择n新建</p>
+<pre><code>name&gt; googleemby
+</code></pre>
+<p>建立个名称</p>
+<pre><code>Type of storage to configure.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+ 1 / 1Fichier
+   \ &quot;fichier&quot;
+ 2 / Alias for an existing remote
+   \ &quot;alias&quot;
+ 3 / Amazon Drive
+   \ &quot;amazon cloud drive&quot;
+ 4 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, and Tencent COS
+   \ &quot;s3&quot;
+ 5 / Backblaze B2
+   \ &quot;b2&quot;
+ 6 / Box
+   \ &quot;box&quot;
+ 7 / Cache a remote
+   \ &quot;cache&quot;
+ 8 / Citrix Sharefile
+   \ &quot;sharefile&quot;
+ 9 / Compress a remote
+   \ &quot;compress&quot;
+10 / Dropbox
+   \ &quot;dropbox&quot;
+11 / Encrypt/Decrypt a remote
+   \ &quot;crypt&quot;
+12 / Enterprise File Fabric
+   \ &quot;filefabric&quot;
+13 / FTP Connection
+   \ &quot;ftp&quot;
+14 / Google Cloud Storage (this is not Google Drive)
+   \ &quot;google cloud storage&quot;
+15 / Google Drive
+   \ &quot;drive&quot;
+16 / Google Photos
+   \ &quot;google photos&quot;
+17 / Hadoop distributed file system
+   \ &quot;hdfs&quot;
+18 / Hubic
+   \ &quot;hubic&quot;
+19 / In memory object storage system.
+   \ &quot;memory&quot;
+20 / Jottacloud
+   \ &quot;jottacloud&quot;
+21 / Koofr
+   \ &quot;koofr&quot;
+22 / Local Disk
+   \ &quot;local&quot;
+23 / Mail.ru Cloud
+   \ &quot;mailru&quot;
+24 / Mega
+   \ &quot;mega&quot;
+25 / Microsoft Azure Blob Storage
+   \ &quot;azureblob&quot;
+26 / Microsoft OneDrive
+   \ &quot;onedrive&quot;
+27 / OpenDrive
+   \ &quot;opendrive&quot;
+28 / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ &quot;swift&quot;
+29 / Pcloud
+   \ &quot;pcloud&quot;
+30 / Put.io
+   \ &quot;putio&quot;
+31 / QingCloud Object Storage
+   \ &quot;qingstor&quot;
+32 / SSH/SFTP Connection
+   \ &quot;sftp&quot;
+33 / Sugarsync
+   \ &quot;sugarsync&quot;
+34 / Tardigrade Decentralized Cloud Storage
+   \ &quot;tardigrade&quot;
+35 / Transparently chunk/split large files
+   \ &quot;chunker&quot;
+36 / Union merges the contents of several upstream fs
+   \ &quot;union&quot;
+37 / Webdav
+   \ &quot;webdav&quot;
+38 / Yandex Disk
+   \ &quot;yandex&quot;
+39 / Zoho
+   \ &quot;zoho&quot;
+40 / http Connection
+   \ &quot;http&quot;
+41 / premiumize.me
+   \ &quot;premiumizeme&quot;
+42 / seafile
+   \ &quot;seafile&quot;
+Storage&gt; 15
+</code></pre>
+<p>如要连接谷歌的盘,根据标识选择15(版本不同,序号不一定一样,按实际标识选择)</p>
+<pre><code>** See help for drive backend at: https://rclone.org/drive/ **
+
+Google Application Client Id
+Setting your own is recommended.
+See https://rclone.org/drive/#making-your-own-client-id for how to create your own.
+If you leave this blank, it will use an internal key which is low performance.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_id&gt; 
+</code></pre>
+<p>不输入,直接回车</p>
+<pre><code>OAuth Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_secret&gt; 
+</code></pre>
+<p>不输入,直接回车</p>
+<pre><code>Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+ 1 / Full access all files, excluding Application Data Folder.
+   \ &quot;drive&quot;
+ 2 / Read-only access to file metadata and file contents.
+   \ &quot;drive.readonly&quot;
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ &quot;drive.file&quot;
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ &quot;drive.appfolder&quot;
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ &quot;drive.metadata.readonly&quot;
+scope&gt; 1
+</code></pre>
+<p>选择1</p>
+<pre><code>ID of the root folder
+Leave blank normally.
+
+Fill in to access &quot;Computers&quot; folders (see docs), or for rclone to use
+a non root folder as its starting point.
+
+Enter a string value. Press Enter for the default (&quot;&quot;).
+root_folder_id&gt; 
+</code></pre>
+<p>不输入,直接回车</p>
+<pre><code>Service Account Credentials JSON file path 
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+
+Leading `~` will be expanded in the file name as will environment variables such as `${RCLONE_CONFIG_DIR}`.
+
+Enter a string value. Press Enter for the default (&quot;&quot;).
+service_account_file&gt; 
+</code></pre>
+<p>不输入,直接回车</p>
+<pre><code>Edit advanced config? (y/n)
+y) Yes
+n) No (default)
+y/n&gt; n
+</code></pre>
+<p>选择n,不编辑</p>
+<pre><code>Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes (default)
+n) No
+y/n&gt; n
+</code></pre>
+<p>选择n,因为unraid没有浏览器,所以我们需要手动获取<code>code</code></p>
+<pre><code>Please go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;client_id=2022***s.googleusercontent.com&amp;redirect_uri=urn%3Aietf%3Aw***************************gleapis.com%2Fau***ive&amp;state=1Tc3s8imv7v7yK6y//SBg
+</code></pre>
+<p>电脑上打开连接,登陆账户,授权给<code>rclone</code>使用,复制显示的<code>code</code></p>
+<pre><code>Log in and authorize rclone for access
+Enter verification code&gt; 4/1AY0e-g64_jCl62pm7Y1oLDE****wyWKvlIY8VlBxdvhdZoFNes
+</code></pre>
+<p>粘贴<code>code</code>回车</p>
+<pre><code>Configure this as a Shared Drive (Team Drive)?
+y) Yes
+n) No (default)
+y/n&gt; y
+</code></pre>
+<p>询问是否是团队盘,因为我需要挂载的是团队盘,所以选<code>y</code></p>
+<pre><code>Fetching Shared Drive list...
+Choose a number from below, or type in your own value
+ 1 / 诺亚方舟3
+   \ &quot;0AOLCuxbrocW***9PVA&quot;
+ 2 / 神秘礼物影视
+   \ &quot;0AFKcdHXz9s60U***VA&quot;
+ 3 / emby
+   \ &quot;0AA0yqh7***JEUk9PVA&quot;
+ 4 / G Drive
+   \ &quot;0AGv7GHb8S75***PVA&quot;
+Enter a Shared Drive ID&gt; 3
+</code></pre>
+<p>罗列出账户上有的团队盘,我需要挂载第<code>3</code>个,所以输入<code>3</code>回车</p>
+<pre><code>--------------------
+[googleemby]
+type = drive
+scope = drive
+token = {&quot;access_token&quot;:&quot;y******************************************************************************08:00&quot;}
+team_drive = 0AA0yqh7N2ZJE***A
+root_folder_id = 
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y
+Current remotes:
+</code></pre>
+<p>显示相关<code>config</code>信息,提示你是否确认<br />
+输入<code>y</code></p>
+<pre><code>Name                 Type
+====                 ====
+googleemby           drive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt; q
+</code></pre>
+<p>按<code>q</code>退出配置界面<br />
+到此网盘已经成功连接到rclone</p>
+<h4 id="heading-2">微软网盘</h4>
+<p>因Unraid没有浏览器<br />
+所以rclone无法直接获取<code>code</code>来连接网盘<br />
+我们采用这种的方式来,在<code>windows</code>上获取<code>config</code>内容<br />
+下载个<a href="https://downloads.rclone.org/v1.54.1/rclone-v1.54.1-windows-amd64.zip">客户端</a><br />
+假设解压到<code>c</code>盘根目录</p>
+<pre><code>C:\Users\Administrator&gt;cd c:\rclone
+</code></pre>
+<p>切换到解压目录</p>
+<pre><code>c:\rclone&gt;rclone config
+</code></pre>
+<p>开始配置</p>
+<pre><code>No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q&gt; n
+</code></pre>
+<p>选择n新建</p>
+<pre><code>name&gt; onedrive
+</code></pre>
+<p>建立个名称</p>
+<pre><code>Type of storage to configure.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+ 1 / 1Fichier
+   \ &quot;fichier&quot;
+ 2 / Alias for an existing remote
+   \ &quot;alias&quot;
+ 3 / Amazon Drive
+   \ &quot;amazon cloud drive&quot;
+ 4 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, and Tencent COS
+   \ &quot;s3&quot;
+ 5 / Backblaze B2
+   \ &quot;b2&quot;
+ 6 / Box
+   \ &quot;box&quot;
+ 7 / Cache a remote
+   \ &quot;cache&quot;
+ 8 / Citrix Sharefile
+   \ &quot;sharefile&quot;
+ 9 / Compress a remote
+   \ &quot;compress&quot;
+10 / Dropbox
+   \ &quot;dropbox&quot;
+11 / Encrypt/Decrypt a remote
+   \ &quot;crypt&quot;
+12 / Enterprise File Fabric
+   \ &quot;filefabric&quot;
+13 / FTP Connection
+   \ &quot;ftp&quot;
+14 / Google Cloud Storage (this is not Google Drive)
+   \ &quot;google cloud storage&quot;
+15 / Google Drive
+   \ &quot;drive&quot;
+16 / Google Photos
+   \ &quot;google photos&quot;
+17 / Hadoop distributed file system
+   \ &quot;hdfs&quot;
+18 / Hubic
+   \ &quot;hubic&quot;
+19 / In memory object storage system.
+   \ &quot;memory&quot;
+20 / Jottacloud
+   \ &quot;jottacloud&quot;
+21 / Koofr
+   \ &quot;koofr&quot;
+22 / Local Disk
+   \ &quot;local&quot;
+23 / Mail.ru Cloud
+   \ &quot;mailru&quot;
+24 / Mega
+   \ &quot;mega&quot;
+25 / Microsoft Azure Blob Storage
+   \ &quot;azureblob&quot;
+26 / Microsoft OneDrive
+   \ &quot;onedrive&quot;
+27 / OpenDrive
+   \ &quot;opendrive&quot;
+28 / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ &quot;swift&quot;
+29 / Pcloud
+   \ &quot;pcloud&quot;
+30 / Put.io
+   \ &quot;putio&quot;
+31 / QingCloud Object Storage
+   \ &quot;qingstor&quot;
+32 / SSH/SFTP Connection
+   \ &quot;sftp&quot;
+33 / Sugarsync
+   \ &quot;sugarsync&quot;
+34 / Tardigrade Decentralized Cloud Storage
+   \ &quot;tardigrade&quot;
+35 / Transparently chunk/split large files
+   \ &quot;chunker&quot;
+36 / Union merges the contents of several upstream fs
+   \ &quot;union&quot;
+37 / Webdav
+   \ &quot;webdav&quot;
+38 / Yandex Disk
+   \ &quot;yandex&quot;
+39 / Zoho
+   \ &quot;zoho&quot;
+40 / http Connection
+   \ &quot;http&quot;
+41 / premiumize.me
+   \ &quot;premiumizeme&quot;
+42 / seafile
+   \ &quot;seafile&quot;
+Storage&gt; 26
+</code></pre>
+<p>如要连接谷歌的盘,根据标识选择26(版本不同,序号不一定一样,按实际标识选择)</p>
+<pre><code>** See help for onedrive backend at: https://rclone.org/onedrive/ **
+
+OAuth Client Id
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_id&gt;
+</code></pre>
+<p>不输入,直接回车</p>
+<pre><code>OAuth Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_secret&gt;
+</code></pre>
+<p>不输入,直接回车</p>
+<pre><code>Choose national cloud region for OneDrive.
+Enter a string value. Press Enter for the default (&quot;global&quot;).
+Choose a number from below, or type in your own value
+ 1 / Microsoft Cloud Global
+   \ &quot;global&quot;
+ 2 / Microsoft Cloud for US Government
+   \ &quot;us&quot;
+ 3 / Microsoft Cloud Germany
+   \ &quot;de&quot;
+ 4 / Azure and Office 365 operated by 21Vianet in China
+   \ &quot;cn&quot;
+region&gt; 1
+</code></pre>
+<p>选择1</p>
+<pre><code>Edit advanced config? (y/n)
+y) Yes
+n) No (default)
+y/n&gt; n
+</code></pre>
+<p>选择n,不编辑</p>
+<pre><code>Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes (default)
+n) No
+y/n&gt; y
+</code></pre>
+<p>选择<code>1</code>自动配置</p>
+<pre><code>If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth?state=FDOLLiSz***rSJBbag
+Log in and authorize rclone for access
+Waiting for code...
+Got code
+</code></pre>
+<p>点击链接,登陆账户,授权给rclone使用,脚本自动获取<code>code</code></p>
+<pre><code>Choose a number from below, or type in an existing value
+ 1 / OneDrive Personal or Business
+   \ &quot;onedrive&quot;
+ 2 / Root Sharepoint site
+   \ &quot;sharepoint&quot;
+ 3 / Sharepoint site name or URL (e.g. mysite or https://contoso.sharepoint.com/sites/mysite)
+   \ &quot;url&quot;
+ 4 / Search for a Sharepoint site
+   \ &quot;search&quot;
+ 5 / Type in driveID (advanced)
+   \ &quot;driveid&quot;
+ 6 / Type in SiteID (advanced)
+   \ &quot;siteid&quot;
+ 7 / Sharepoint server-relative path (advanced, e.g. /teams/hr)
+   \ &quot;path&quot;
+Your choice&gt; 1
+</code></pre>
+<p>选择<code>1</code></p>
+<pre><code>Found 1 drives, please select the one you want to use:
+0: OneDrive (business) id=b!jC7ndQM3XkO5C6RFjk8FC0l6JPipknpLuC4BB4ohz64u3aY5OQn_T4Vh-Rr-ZaZD
+Chose drive to use:&gt; 0
+</code></pre>
+<p>选择标识的<code>0</code>网盘</p>
+<pre><code>Found drive 'root' of type 'business', URL: https://kogfw***.sharepoint.com/personal/s1oz_****/Documents
+Is that okay?
+y) Yes (default)
+n) No
+y/n&gt; y
+</code></pre>
+<p>选择<code>y</code></p>
+<pre><code>--------------------
+[onedrive]
+type = onedrive
+region = global
+token = {&quot;access_token&quot;:&quot;eyJ0eXAiLiIs**gU2l0ZXMuUmVhZC5BbGwgcHJvZmlsZSMastoKDtaM8uxbH-ypRGI0y8H_ysiRw20QRRLc7pdol6BmYo0BcRNXJgJN6xccP5b20-iyLejE_vF1Iw5AKQP4-qirH3NHP-S5l*********pLuC4BB4ohz64u3aY5OQn_T4Vh-Rr-ZaZD
+drive_type = business
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y
+</code></pre>
+<p>显示相关<code>config</code>信息,提示你是否确认<br />
+输入<code>y</code></p>
+<pre><code>Current remotes:
+
+Name                 Type
+====                 ====
+onedrive             onedrive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt; q
+</code></pre>
+<p>按q退出配置界面<br />
+<strong>将刚显示的这段<code>config</code>信息粘贴到rclone插件中</strong></p>
+<pre><code>--------------------
+[onedrive]
+type = onedrive
+region = global
+token = {&quot;access_token&quot;:&quot;eyJ0eXAiLiIs**gU2l0ZXMuUmVhZC5BbGwgcHJvZmlsZSMastoKDtaM8uxbH-ypRGI0y8H_ysiRw20QRRLc7pdol6BmYo0BcRNXJgJN6xccP5b20-iyLejE_vF1Iw5AKQP4-qirH3NHP-S5l*********pLuC4BB4ohz64u3aY5OQn_T4Vh-Rr-ZaZD
+drive_type = business
+</code></pre>
+<p>粘贴至Unraid<code>设置</code>-<code>用户实用程序</code>-rclcone<br />
+<img src="https://s1oz.github.io/post-images/1616409428903.png" alt="" /><br />
+然后在<code>Unraid</code>终端中输入</p>
+<pre><code>rclone config
+</code></pre>
+<p>即可看到已经连接的网盘信息<br />
+<img src="https://s1oz.github.io/post-images/1616409616840.png" alt="" /></p>
+<h3 id="heading-3">创建用于挂载磁盘的目录</h3>
+<p>根据自己需求,新建一个用于挂载网盘的空文件夹</p>
+<pre><code>mkdir -p /mnt/user/rclone/onedrive
+</code></pre>
+<p>我想分的细一点,所以等下使用`onedrive空文件夹挂载刚刚连接的谷歌团队盘</p>
+<h3 id="heading-4">挂载网盘到本地</h3>
+<h4 id="heading-5">示例</h4>
+<pre><code>rclone mount onedrive:test /mnt/user/rclone/onedrive --use-mmap --umask 0000 --default-permissions --allow-non-empty --allow-other --buffer-size 1G --low-level-retries 10 --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G --vfs-cache-mode off --checkers=8 --transfers=4 --rc &amp;
+</code></pre>
+<p>需要修改的就是<br />
+<code>onedrive:test</code> <strong>onedrive</strong>为网盘的名字不特指微软网盘<strong>test</strong>为要挂载的网盘文件夹路径,不填留为挂载整个网盘<br />
+<code>/mnt/user/rclone/onedrive</code>本地用于挂载的空目录<br />
+关于其他参数含义,可自行查阅最下方命令说明<br />
+如emby之类添加挂载文件夹不显示文<br />
+请在<code>emby</code>终端输入 <code>umask</code></p>
+<pre><code>/ # umask
+0022
+/ # 
+</code></pre>
+<p>将示例中<code>--umask 0000</code>修改为<code>--umask 0022</code>emby即可正常访问文件</p>
+<h4 id="heading-6">查询是否成功将网盘挂载到本地</h4>
+<pre><code>df -h
+</code></pre>
+<p>输入命令后,如成功挂载,就会有显示挂载的目录了<br />
+<img src="https://s1oz.github.io/post-images/1616409741458.JPG" alt="" /></p>
+<h3 id="shell">shell脚本</h3>
+<p>可使用<code>User Scripts</code>插件新建开机任务,例如我的脚本如下</p>
+<h4 id="heading-7">开机挂载</h4>
+<p>我内存反正过剩,直接不要缓存,按需修改<code>OPTIONS</code>中的内容</p>
+<pre><code>#!/bin/bash
+# 设置变量
+MOUNT_POINT=&quot;/mnt/user/rclone/onedrive&quot;    # 挂载点目录
+REMOTE_NAME=&quot;onedrive&quot;          # rclone 配置的服务商名称
+REMOTE_PATH=&quot;&quot;              # 实际的远程路径
+OPTIONS=&quot;--use-mmap --umask 0000 --default-permissions --allow-non-empty --allow-other --buffer-size 1G --low-level-retries 10 --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G --vfs-cache-mode off --checkers=8 --transfers=4 --rc&quot;  # rclone 挂载选项
+
+
+# 创建挂载点目录，如果不存在
+if [ ! -d &quot;$MOUNT_POINT&quot; ]; then
+    mkdir -p &quot;$MOUNT_POINT&quot;
+fi
+
+# 执行 rclone 挂载命令
+rclone mount &quot;$REMOTE_NAME:$REMOTE_PATH&quot; &quot;$MOUNT_POINT&quot; $OPTIONS &amp;
+
+# 获取挂载进程的PID
+MOUNT_PID=$!
+
+# 等待一段时间，确保挂载完成
+sleep 10
+
+# 检查挂载是否成功
+if mountpoint -q &quot;$MOUNT_POINT&quot;; then
+    echo &quot;挂载成功！&quot;
+else
+    echo &quot;挂载失败！&quot;
+    exit 1
+fi
+
+# 显示挂载状态
+df -h | grep &quot;$MOUNT_POINT&quot;
+
+# 提示挂载完毕
+echo &quot;挂载完毕&quot;
+</code></pre>
+<h4 id="heading-8">停止阵列卸载</h4>
+<pre><code>#!/bin/bash
+
+# 设置挂载点目录
+MOUNT_POINT=&quot;/mnt/user/rclone/onedrive&quot;
+
+# 检查挂载点是否存在并卸载
+if mountpoint -q &quot;$MOUNT_POINT&quot;; then
+    fusermount -zu &quot;$MOUNT_POINT&quot;
+    if ! mountpoint -q &quot;$MOUNT_POINT&quot;; then
+        echo &quot;卸载成功！&quot;
+    else
+        echo &quot;卸载失败！&quot;
+        exit 1
+    fi
+else
+    echo &quot;挂载点未挂载。&quot;
+fi
+
+</code></pre>
+<h3 id="heading-9">常用命令</h3>
+<pre><code>https://rclone.org/commands/
+</code></pre>
+<p>官方的命令说明</p>
+<h3 id="onedrvieapi">onedrvie私有API</h3>
+<p>创建私有api所需勾选的权限<br />
+<img src="https://s1oz.github.io/post-images/1616410285018.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616410288426.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616410291008.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616410293616.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616410296434.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616410299093.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616410301669.png" alt="" /><br />
+![](</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/">
+              <h3 class="post-title">
+                valine评论系统开启及删除评论
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

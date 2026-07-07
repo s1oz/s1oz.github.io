@@ -1,0 +1,271 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>自建clash订阅转换subconverter后端并配置规则 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="自建clash订阅转换subconverter后端并配置规则 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="clash,shellclash,dns" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="起因 一开始shellclash用的好好的 但是，折腾研究惯了，shellclash中试了一遍没找到适合自己的规则 所以就想着自己摸索下，所以才有了这个备忘录 搭建后端 因为不想用公共的服务器从而暴露自己的订阅链接所以自建 反正自用，所以不需要花里胡哨的前端，只要搭建后端就可以满足需求 作者已经有现成的容器 tindy2013/subconverter &amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"自建clash订阅转换subconverter后端并配置规则","url":"https://s1oz.github.io/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/","description":"起因 一开始shellclash用的好好的 但是，折腾研究惯了，shellclash中试了一遍没找到适合自己的规则 所以就想着自己摸索下，所以才有了这个备忘录 搭建后端 因为不想用公共的服务器从而暴露自己的订阅链接所以自建 反正自用，所以不需要花里胡哨的前端，只要搭建后端就可以满足需求 作者已经有现成的容器 tindy2013/subconverter \u0026hellip;","datePublished":"2021-12-23T15:27:01+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/","name":"自建clash订阅转换subconverter后端并配置规则","position":2}]}</script>
+<meta property="og:title" content="自建clash订阅转换subconverter后端并配置规则">
+<meta property="og:description" content="起因 一开始shellclash用的好好的 但是，折腾研究惯了，shellclash中试了一遍没找到适合自己的规则 所以就想着自己摸索下，所以才有了这个备忘录 搭建后端 因为不想用公共的服务器从而暴露自己的订阅链接所以自建 反正自用，所以不需要花里胡哨的前端，只要搭建后端就可以满足需求 作者已经有现成的容器 tindy2013/subconverter &amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/">
+<meta name="twitter:title" content="自建clash订阅转换subconverter后端并配置规则">
+<meta name="twitter:description" content="起因 一开始shellclash用的好好的 但是，折腾研究惯了，shellclash中试了一遍没找到适合自己的规则 所以就想着自己摸索下，所以才有了这个备忘录 搭建后端 因为不想用公共的服务器从而暴露自己的订阅链接所以自建 反正自用，所以不需要花里胡哨的前端，只要搭建后端就可以满足需求 作者已经有现成的容器 tindy2013/subconverter &amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              自建clash订阅转换subconverter后端并配置规则
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-12-23
+              </span>
+              <span>
+                4 分钟阅读
+              </span>
+              
+                <a href="/tag/clash/" class="post-tag">
+                  # clash
+                </a>
+              
+                <a href="/tag/shellclash/" class="post-tag">
+                  # shellclash
+                </a>
+              
+                <a href="/tag/dns/" class="post-tag">
+                  # dns
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="heading">起因</h2>
+<p>一开始shellclash用的好好的<br />
+但是，<del>折腾</del>研究惯了，shellclash中试了一遍没找到适合自己的规则<br />
+所以就想着自己摸索下，所以才有了这个备忘录</p>
+<h2 id="heading-1">搭建后端</h2>
+<p>因为不想用公共的服务器从而暴露自己的订阅链接所以自建<br />
+反正自用，所以不需要花里胡哨的前端，只要搭建后端就可以满足需求<br />
+作者已经有现成的容器  <strong>tindy2013/subconverter</strong></p>
+<pre><code>docker run -d --restart=always -p 25500:25500 tindy2013/subconverter:latest
+</code></pre>
+<p>可以直接运行，unraid小天使已经有模板，选择运行即可</p>
+<pre><code>curl http://localhost:25500/version
+</code></pre>
+<p>此命令可以测试后端是否正常运行，输入后如看见 <strong>subconverter vx.x.x backend</strong> 即正常运行</p>
+<h2 id="heading-2">分流规则</h2>
+<p>先感谢下<a href="https://github.com/ACL4SSR/ACL4SSR/tree/master">ACL4SSR</a> <a href="https://git.jasuit.com/jh163888/ios_rule_script"> jh163888</a> <a href="https://github.com/DivineEngine/Profiles"> DivineEngine</a> <a href="https://github.com/LM-Firefly/Rules"> LM-Firefly</a> <a href="https://github.com/dler-io/Rules/"> lhie1</a><a href="https://github.com/blackmatrix7/ios_rule_script"> blackmatrix7</a><br />
+规则都来自这些无私奉献的大佬<br />
+可以在大佬们项目中添加对应的list规则，生成一个自己专属的ini配置文件<br />
+需要注意的是<strong>规则标志位处</strong>优先级是<strong>从上至下</strong><br />
+举个栗子,假设<code>s1oz.github.io</code>此域名存在于<strong>全球直连</strong>跟<strong>节点选择</strong>两个规则中</p>
+<pre><code>;设置规则标志位
+ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+;设置规则标志位
+</code></pre>
+<p>这样默认是<strong>全球直连</strong>规则优先,所以<code>s1oz.github.io</code>走的直连</p>
+<pre><code>;设置规则标志位
+ruleset=🚀 节点选择,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+;设置规则标志位
+</code></pre>
+<p>这样默认是<strong>节点选择</strong>规则优先,所以<code>s1oz.github.io</code>走的代理</p>
+<h2 id="ini">使用自定义ini转换规则</h2>
+<pre><code>https://raw.githubusercontent.com/s1oz/unraid/master/s1oz.ini
+</code></pre>
+<p>如我的规则  ↑  就加了很多去广告跟分流，应该大致可能可以替代<strong>adguard home</strong>的去广告了</p>
+<h2 id="providers">推荐直接使用providers(无需后端转换)</h2>
+<p><strong>无需后端转换</strong>,默认使用meta内核,<strong>只需补齐yaml文件中的订阅地址导入即可</strong><br />
+其他软件要使用此yaml报错请参照文件内备注<strong>自行删减</strong><br />
+shellclash可用6-2订阅即可实现快速定时更新规则跟订阅,可以本地加黑白名单666<br />
+ps:可以丢本地的web服务器或直接丢yacd目录,然后订阅此地址<br />
+如 http://192.168.1.1:9000/ui/s1oz.yaml</p>
+<pre><code>https://raw.githubusercontent.com/s1oz/unraid/master/s1oz.yaml
+</code></pre>
+<h2 id="heading-3">转换规则</h2>
+<pre><code>http://后端地址:25500/sub?target=clash&amp;insert=true&amp;new_name=true&amp;scv=true&amp;url=机场订阅地址&amp;config=自己专属的ini配置文件
+</code></pre>
+<p>此为模板，按自己条件套用，浏览器访问可直接查看，shellclash可用6-2直接订阅此链接</p>
+<pre><code>http://后端地址:25500/sub?target=clash&amp;insert=true&amp;new_name=true&amp;scv=true&amp;url=机场订阅地址A|机场订阅地址B&amp;config=自己专属的ini配置文件
+</code></pre>
+<p>如有多个订阅地址,可以合并并转换成一个,如普通视频节点订阅+游戏节点订阅<br />
+SS订阅链接或者SSR订阅链接都可以,只需要再多个链接中加 |</p>
+<pre><code>已停止支持chacha20加密，请更换更安全的节点加密协议！
+</code></pre>
+<p>需要注意的是如不支持协议,需<strong>自行替换第三方魔改内核</strong></p>
+<pre><code>target=clash 指想要生成的配置类型，此为转换为clash的参数
+insert=true 用于设置是否将配置文件中的 insert_url 插入，默认为 true
+new_name=true 如果设置为 true，则将启用 Clash 的新组名称 (proxies, proxy-groups, rules)
+scv=true 用于关闭 TLS 节点的证书检查，默认为 false
+config=自己专属的ini配置文件 指 外部配置 的地址 (包含分组和规则部分)
+</code></pre>
+<p>更多参数调用参阅<a href="https://github.com/tindy2013/subconverter/blob/master/README-cn.md">调用说明 (进阶)</a></p>
+<h2 id="heading-4">踩坑</h2>
+<p>机场订阅，差点被搞死了<br />
+默认订阅链接是</p>
+<pre><code>https://xxxx.com/link/3E1234123wd7?clash=1&amp;version=2
+</code></pre>
+<p>上方的&amp;version=2属于新版配置在shellclash导入订阅时提示</p>
+<pre><code>配置文件获取失败！
+请尝试使用【在线生成配置文件】功能！
+</code></pre>
+<p>一直没注意，后来<del>删除&amp;version=2后代表适配旧版配置</del>也不</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma/">
+              <h3 class="post-title">
+                Unraid一卡多用转码+挖矿+超频
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Unraid 7.3.1 上 Redroid 容器部署完整指南 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Unraid 7.3.1 上 Redroid 容器部署完整指南 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
+<link rel="canonical" href="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-07-07T09:14:12+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan/","name":"Unraid 7.3.1 上 Redroid 容器部署完整指南","position":2}]}</script>
+<meta property="og:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
+<meta property="og:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
+<meta property="og:url" content="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan/">
+<meta name="twitter:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
+<meta name="twitter:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Unraid 7.3.1 上 Redroid 容器部署完整指南
+            </h2>
+            <div class="post-info">
+              <span>
+                2026-07-07
+              </span>
+              <span>
+                12 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="-">📌 环境准备</h2>
+<p>在 Unraid 7.3.1 版本上实践，<strong>无需任何额外修改和安装插件</strong>，默认内核已集成相关依赖。<br />
+只需要在 <strong>Boot Parameters → Custom Parameters</strong> 的 <strong>Add Custom Parameter</strong> 添加 <code>psi=1</code>，然后保存重启即可激活所有环境。</p>
+<pre><code>root@Tower:~# cat /proc/pressure/*
+some avg10=1.65 avg60=1.82 avg300=1.20 total=355489358
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+some avg10=0.20 avg60=0.25 avg300=0.59 total=347818195
+full avg10=0.18 avg60=0.19 avg300=0.50 total=328382926
+some avg10=0.00 avg60=0.00 avg300=0.00 total=0
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+</code></pre>
+<h2 id="--1">⚠️ 重要注意事项</h2>
+<h3 id="root-">Root 权限需求判断</h3>
+<p>根据你是否需要 Root 权限，选择不同的 Docker 存储驱动：</p>
+<table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">Docker 存储驱动</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>不需要 Root</strong></td>
+<td align="left"><code>Btrfs</code>（默认）</td>
+<td align="left">可直接运行官方原版镜像</td>
+</tr>
+<tr>
+<td align="left"><strong>需要 Root</strong>（游戏辅助/修改器）</td>
+<td align="left"><code>overlay2</code></td>
+<td align="left"><strong>必须修改</strong>，否则镜像无法正常工作</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>我玩的游戏大航海时代:传说需要使用辅助工具，所以 Root 是刚需。</strong></p>
+</blockquote>
+<hr />
+<h2 id="--2">🧪 测试过程与问题排查</h2>
+<h3 id="-btrfs-">默认 <code>Btrfs</code> 存储驱动下遇到的问题</h3>
+<p>在使用默认 <code>Btrfs</code> 存储驱动时，遇到以下问题：</p>
+<ol>
+<li><strong>预制 Magisk 镜像</strong>：点击 Magisk 应用后自动卸载，无法正常获取 Root 权限</li>
+<li><strong>修改版镜像</strong>：无法正常启动</li>
+<li><strong>redroid-script 自定义构建</strong>：基于官方镜像使用<a href="https://github.com/ayasa520/redroid-script">ayasa520/redroid-script</a>添加 NDK + Magisk 后也无法启动</li>
+<li><strong>官方原版镜像</strong>：能够正常启动 ✅</li>
+</ol>
+<h3 id="--3">💡 解决方案</h3>
+<p>AI 分析后指出，这些问题大概率是 <strong><code>Btrfs</code> 存储驱动与 Redroid 镜像层的兼容性问题</strong>。将 Docker 存储驱动修改为 <strong><code>overlay2</code></strong> 后，以上所有问题全部解决：</p>
+<ul>
+<li>所有镜像正常启动</li>
+<li>预制 Magisk 镜像正常启动</li>
+<li>Root 权限正常工作</li>
+</ul>
+<hr />
+<h2 id="--4">🐳 镜像选择推荐</h2>
+<p>测试了大部分Android 11-13的镜像，个人感觉<a href="https://hub.docker.com/r/erstt/redroid">erstt/redroid</a>系列镜像表现最优：</p>
+<h3 id="heading">版本选择建议</h3>
+<table>
+<thead>
+<tr>
+<th align="left">版本</th>
+<th align="left">兼容性</th>
+<th align="left">资源占用</th>
+<th align="left">推荐场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Android 11</strong></td>
+<td align="left">✅ 更好</td>
+<td align="left">⬇️ 更低</td>
+<td align="left"><strong>挂机优选</strong>，scrcpy 兼容性更好</td>
+</tr>
+<tr>
+<td align="left"><strong>Android 13</strong></td>
+<td align="left">⚠️ 略差</td>
+<td align="left">⬆️ 略高</td>
+<td align="left">部分新游戏可能需要</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-1">转译层选择</h3>
+<table>
+<thead>
+<tr>
+<th align="left">镜像</th>
+<th align="left">转译层</th>
+<th align="left">适用平台</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>erstt/redroid:11.0.0_houdini_magisk_ChromeOS</code></td>
+<td align="left"><strong>Houdini</strong></td>
+<td align="left"><strong>Intel 优选</strong></td>
+<td align="left">Intel CPU 优化，兼容性更广</td>
+</tr>
+<tr>
+<td align="left"><code>erstt/redroid:11.0.0_ndk_magisk_ChromeOS</code></td>
+<td align="left"><strong>NDK Translation</strong></td>
+<td align="left"><strong>AMD 优选</strong></td>
+<td align="left">兼容性好，部分场景下性能更优</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>个人推荐</strong>：intel处理器优先使用 <code>houdini</code> 版本，如遇到游戏兼容性问题再切换至 <code>ndk</code> 版本。</p>
+</blockquote>
+<hr />
+<h2 id="-unraid">📦 Unraid容器创建步骤</h2>
+<h3 id="1-">1. 基本配置</h3>
+<table>
+<thead>
+<tr>
+<th align="left">配置项</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>存储库</strong></td>
+<td align="left"><code>erstt/redroid:11.0.0_houdini_magisk_ChromeOS</code></td>
+</tr>
+<tr>
+<td align="left"><strong>额外参数</strong></td>
+<td align="left"><code>-itd -m 16G --memory-swappiness=0</code></td>
+</tr>
+<tr>
+<td align="left"><strong>网络类型</strong></td>
+<td align="left"><code>Bridge</code></td>
+</tr>
+<tr>
+<td align="left"><strong>特权</strong></td>
+<td align="left"><code>开启</code></td>
+</tr>
+<tr>
+<td align="left"><strong>映射端口</strong></td>
+<td align="left"><code>5555:5555</code></td>
+</tr>
+<tr>
+<td align="left"><strong>持久化目录</strong></td>
+<td align="left"><code>/mnt/system/appdata/redroid:/data</code></td>
+</tr>
+<tr>
+<td align="left"><strong>设备</strong></td>
+<td align="left"><code>/dev/dri</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-extra-parameters">2. 发布参数（Extra Parameters）</h3>
+<h4 id="houdini-">Houdini 版本</h4>
+<pre><code>androidboot.use_memfd=1 androidboot.redroid_net_ndns=1 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=60 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive androidboot.redroid_gpu_backend=mesa ro.product.cpu.abilist=x86_64,arm64-v8a ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=libhoudini.so
+</code></pre>
+<h4 id="ndk-">NDK 版本</h4>
+<pre><code>androidboot.use_memfd=1 androidboot.redroid_net_ndns=1 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=60 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive androidboot.redroid_gpu_backend=mesa ro.product.cpu.abilist=x86_64,arm64-v8a ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=libndk_translation.so ro.ndk_translation.version=0.2.3
+</code></pre>
+<h3 id="3-">3. 配置说明</h3>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">作用</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>androidboot.use_memfd=1</code></td>
+<td align="left">使用 memfd 替代 ashmem</td>
+<td align="left">高版本内核必需</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_net_dns1=223.5.5.5</code></td>
+<td align="left">DNS 解析（阿里 DNS）</td>
+<td align="left">可按需修改</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_width/height/dpi</code></td>
+<td align="left">分辨率 &amp; DPI</td>
+<td align="left">可按需调整</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_fps=60</code></td>
+<td align="left">系统帧率上限</td>
+<td align="left">游戏内可另设</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_gpu_mode=host</code></td>
+<td align="left">硬件加速</td>
+<td align="left"><strong>需要设备映射</strong></td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.selinux=permissive</code></td>
+<td align="left">SELinux 宽容模式</td>
+<td align="left">Magisk 需要</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_gpu_backend=mesa</code></td>
+<td align="left">Mesa 驱动</td>
+<td align="left"><strong>UHD 630 适用</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>GPU 后端说明</strong>：我使用的是 UHD 630 核显。如果是 <strong>N 卡或 A 卡</strong>，<code>androidboot.redroid_gpu_backend=mesa</code> 这个参数删除即可。</p>
+</blockquote>
+<blockquote>
+<p><strong>转译层参数</strong>：根据镜像类型，在发布参数中添加对应的转译层参数（<code>libhoudini.so</code> 或 <code>libndk_translation.so</code>）。</p>
+</blockquote>
+<pre><code>root@Tower:~# docker inspect redroid | grep -A 20 &quot;Cmd&quot;
+            &quot;Cmd&quot;: [
+                &quot;androidboot.use_memfd=1&quot;,
+                &quot;androidboot.redroid_net_ndns=1&quot;,
+                &quot;androidboot.redroid_net_dns1=223.5.5.5&quot;,
+                &quot;androidboot.redroid_width=720&quot;,
+                &quot;androidboot.redroid_height=1280&quot;,
+                &quot;androidboot.redroid_dpi=180&quot;,
+                &quot;androidboot.redroid_fps=60&quot;,
+                &quot;androidboot.redroid_gpu_mode=host&quot;,
+                &quot;androidboot.selinux=permissive&quot;,
+                &quot;androidboot.redroid_gpu_backend=mesa&quot;,
+                &quot;-&quot;,
+                &quot;ro.product.cpu.abilist=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi&quot;,
+                &quot;ro.product.cpu.abilist64=x86_64,arm64-v8a&quot;,
+                &quot;ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi&quot;,
+                &quot;ro.dalvik.vm.isa.arm=x86&quot;,
+                &quot;ro.dalvik.vm.isa.arm64=x86_64&quot;,
+                &quot;ro.enable.native.bridge.exec=1&quot;,
+                &quot;ro.enable.native.bridge.exec64=1&quot;,
+                &quot;ro.dalvik.vm.native.bridge=libhoudini.so&quot;
+            ],
+</code></pre>
+<h2 id="httpss1ozgithubiopost-images1783386091127png"><img src="https://s1oz.github.io/post-images/1783386091127.png" alt="" /></h2>
+<h2 id="--5">🖥️ 客户端连接工具</h2>
+<h3 id="heading-2">安卓端</h3>
+<p><strong><a href="https://github.com/XRSec/Screen-Remote">Screen-Remote</a></strong></p>
+<blockquote>
+<p>迭代了好几个版本，现在体验完胜其他方案。</p>
+</blockquote>
+<h3 id="windows-">Windows 端</h3>
+<table>
+<thead>
+<tr>
+<th align="left">工具</th>
+<th align="left">用途</th>
+<th align="left">链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>scrcpy-gui</strong></td>
+<td align="left">连接及远程操作</td>
+<td align="left"><a href="https://github.com/kil0bit-kb/scrcpy-gui">kil0bit-kb/scrcpy-gui</a></td>
+</tr>
+<tr>
+<td align="left"><strong>QtScrcpy</strong></td>
+<td align="left">可映射方向键，用键盘控制行走</td>
+<td align="left"><a href="https://github.com/barry-ran/QtScrcpy">barry-ran/QtScrcpy</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-3">输入法推荐</h3>
+<p><strong>微信输入法</strong> — 兼容性不错，在 Redroid 环境下表现稳定。</p>
+<hr />
+<h2 id="--6">🎮 游戏按键映射示例</h2>
+<h3 id="qtscrcpy-">《大航海时代：传说》QtScrcpy 映射脚本</h3>
+<p>将以下内容另存为 JSON 文件，放入 <code>QtScrcpy\keymap</code> 目录，刷新脚本后点击应用即可。按 <strong><code>~</code> 键</strong>（反引号）开启/关闭映射。<br />
+这样就能键盘控制角色移动了,上班摸鱼更方便了!</p>
+<pre><code class="language-json">{
+  &quot;switchKey&quot;: &quot;Key_QuoteLeft&quot;,
+  &quot;keyMapNodes&quot;: [
+    {
+      &quot;comment&quot;: &quot;虚拟摇杆 - WASD 控制移动&quot;,
+      &quot;type&quot;: &quot;KMT_STEER_WHEEL&quot;,
+      &quot;centerPos&quot;: {
+        &quot;x&quot;: 0.1498,
+        &quot;y&quot;: 0.7489
+      },
+      &quot;leftOffset&quot;: 0.11468,
+      &quot;rightOffset&quot;: 0.11381,
+      &quot;upOffset&quot;: 0.19237,
+      &quot;downOffset&quot;: 0.20701,
+      &quot;leftKey&quot;: &quot;Key_A&quot;,
+      &quot;rightKey&quot;: &quot;Key_D&quot;,
+      &quot;upKey&quot;: &quot;Key_W&quot;,
+      &quot;downKey&quot;: &quot;Key_S&quot;,
+      &quot;switchMap&quot;: false
+    },
+    {
+      &quot;comment&quot;: &quot;空格键 - 交互/确认&quot;,
+      &quot;type&quot;: &quot;KMT_CLICK&quot;,
+      &quot;pos&quot;: {
+        &quot;x&quot;: 0.9061,
+        &quot;y&quot;: 0.8195
+      },
+      &quot;key&quot;: &quot;Key_Space&quot;,
+      &quot;switchMap&quot;: false
+    }
+  ],
+  &quot;width&quot;: 1064.4285888671875,
+  &quot;height&quot;: 622.857177734375
+}
+</code></pre>
+<h3 id="heading-4">按键说明</h3>
+<table>
+<thead>
+<tr>
+<th align="left">按键</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>W</code> / <code>A</code> / <code>S</code> / <code>D</code></td>
+<td align="left">控制角色移动（虚拟摇杆）</td>
+</tr>
+<tr>
+<td align="left"><code>Space</code>（空格）</td>
+<td align="left">交互 / 确认点击</td>
+</tr>
+<tr>
+<td align="left"><code>`</code>（反引号）</td>
+<td align="left">切换映射开关</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="--7">📝 总结</h2>
+<ol>
+<li><strong>环境准备</strong>：Unraid 7.3.1 默认内核已就绪，只需添加 <code>psi=1</code> 重启</li>
+<li><strong>存储驱动</strong>：需要 Root → 使用 <code>overlay2</code>；不需要 Root → <code>Btrfs</code> 即可</li>
+<li><strong>镜像选择</strong>：intel推荐 <code>erstt/redroid:11.0.0_houdini_magisk_ChromeOS</code></li>
+<li><strong>性能调优</strong>：根据硬件调整 CPU-GPU 参数，例如降低分辨率,降低刷新率等操作，intel核显用 <code>mesa</code>，独显删除该参数</li>
+<li><strong>客户端</strong>：安卓用 Screen-Remote，Windows 用 QtScrcpy/scrcpy-gui</li>
+</ol>
+<hr />
+<h3 id="--8">📌 常见问题</h3>
+<p><strong>Q：为什么必须用 overlay2？</strong></p>
+<p>A：<code>Btrfs</code> 与 Redroid 多层镜像文件存在兼容性问题，导致 Magisk 镜像无法正常启动。</p>
+<p><strong>Q：Android 11 和 13 怎么选？</strong></p>
+<p>A：挂机优选 Android 11，兼容性更好，资源占用更低。scrcpy 连接也更稳定。</p>
+<p><strong>Q：Houdini 和 NDK 怎么选？</strong></p>
+<p>A：Intel CPU 优先 Houdini，如遇游戏兼容性问题再切换 NDK。AMD CPU 优先 NDK。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+              <h3 class="post-title">
+                在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

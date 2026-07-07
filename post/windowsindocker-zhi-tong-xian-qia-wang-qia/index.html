@@ -1,0 +1,308 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>WindowsinDocker直通显卡网卡 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="WindowsinDocker直通显卡网卡 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="让套娃来的更狠些吧~ 之前看到这个dockur/windows项目感觉套娃很好玩,一开始只想着替代chrome用 后来发现很多人其实有GPU需要,这个issues经过几个月的发展,现在看到意见完美解决了,特来走下流程 &amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"WindowsinDocker直通显卡网卡","url":"https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/","description":"让套娃来的更狠些吧~ 之前看到这个dockur/windows项目感觉套娃很好玩,一开始只想着替代chrome用 后来发现很多人其实有GPU需要,这个issues经过几个月的发展,现在看到意见完美解决了,特来走下流程 \u0026hellip;","datePublished":"2024-06-01T10:12:23+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/","name":"WindowsinDocker直通显卡网卡","position":2}]}</script>
+<meta property="og:title" content="WindowsinDocker直通显卡网卡">
+<meta property="og:description" content="让套娃来的更狠些吧~ 之前看到这个dockur/windows项目感觉套娃很好玩,一开始只想着替代chrome用 后来发现很多人其实有GPU需要,这个issues经过几个月的发展,现在看到意见完美解决了,特来走下流程 &amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/windowsindocker-zhi-tong-xian-qia-wang-qia/">
+<meta name="twitter:title" content="WindowsinDocker直通显卡网卡">
+<meta name="twitter:description" content="让套娃来的更狠些吧~ 之前看到这个dockur/windows项目感觉套娃很好玩,一开始只想着替代chrome用 后来发现很多人其实有GPU需要,这个issues经过几个月的发展,现在看到意见完美解决了,特来走下流程 &amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              WindowsinDocker直通显卡网卡
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-06-01
+              </span>
+              <span>
+                7 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="heading">让套娃来的更狠些吧~</h2>
+<p>之前看到这个<a href="https://github.com/dockur/windows">dockur/windows项目</a>感觉套娃很好玩,一开始只想着替代<code>chrome</code>用<br />
+后来发现很多人其实有GPU需要,这个<a href="https://github.com/dockur/windows/issues/22">issues</a>经过几个月的发展,现在看到意见完美解决了,特来走下流程<br />
+已经完美支持<code>硬盘 网卡 显卡 USB设备</code>直通<br />
+<img src="https://s1oz.github.io/post-images/1719027504343.png" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1719023615288.png" alt="" /><br />
+题外话,另一个项目(virtual-dsm)[https://github.com/vdsm/virtual-dsm]也好玩的~</p>
+<h2 id="heading-1">安装说明</h2>
+<h3 id="heading-2">勾选要直通的设备并重启</h3>
+<p><img src="https://s1oz.github.io/post-images/1719024958954.png" alt="" /><br />
+勾选PCI设备,例如SATA控制器/显卡/网卡等</p>
+<h3 id="windowsindocker">安装WindowsinDocker</h3>
+<p>UNRAID应用市场搜索<code>WindowsinDocker</code>安装</p>
+<h3 id="heading-3">直通设备</h3>
+<p>添加设备,值中填入<code>/dev/vfio</code><br />
+<img src="https://s1oz.github.io/post-images/1719025830995.png" alt="" /><br />
+添加<code>ARGUMENTS</code>变量 将要直通设备代码添加到值中<br />
+<img src="https://s1oz.github.io/post-images/1719024653247.png" alt="" /><br />
+例如我要添加**虚拟声卡 显卡 网卡 UPS 隐藏虚拟化 **就要添加以下内容<br />
+需要注意的是,每一段都有空格,按自己需求增删套用</p>
+<pre><code>-device vfio-pci,host=01:00.0,multifunction=on -device vfio-pci,host=03:00.1,multifunction=on -device usb-host,vendorid=0x051d,productid=0x0002 -cpu host,-hypervisor,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,kvm=off,hv_vendor_id=intel
+</code></pre>
+<h3 id="heading-4">修改自动安装默认语言</h3>
+<p>添加<code>LANGUAGE</code>变量 值中填入<code>Chinese</code></p>
+<h3 id="iso">使用自定义ISO镜像</h3>
+<p>修改默认<code>Version</code>值为<code>custom.iso</code><br />
+映射自定义ISO为<code>custom.iso</code><br />
+<img src="https://s1oz.github.io/post-images/1719025604510.png" alt="" /><br />
+<code>小贴士</code> 自动安装只支持原版ISO,第三方精简版无法使用自动安装</p>
+<h3 id="heading-5">修改默认用户名密码</h3>
+<p>默认自动安装用户名为<code>Docker</code>密码为空<br />
+添加<code>USERNAME</code>跟<code>PASSWORD</code>变量,值填入自定义用户名/密码</p>
+<h3 id="heading-6">添加硬盘</h3>
+<p>通过<code>lsblk</code>命令获取自己需要添加的硬盘</p>
+<pre><code>root@Tower:~# lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0         7:0    0  64.8M  1 loop /lib
+loop1         7:1    0 355.2M  1 loop /usr
+loop2         7:2    0    16G  0 loop /etc/libvirt
+sda           8:0    1  28.7G  0 disk 
+└─sda1        8:1    1  28.7G  0 part /boot
+sdb           8:16   0   9.1T  0 disk 
+└─sdb1        8:17   0   9.1T  0 part 
+sdc           8:32   0 931.5G  0 disk 
+└─sdc1        8:33   0 931.5G  0 part 
+sdd           8:48   0 447.1G  0 disk 
+md1p1         9:1    0 931.5G  0 md   /var/lib/docker
+                                      /mnt/disk1
+md3p1         9:3    0   9.1T  0 md   /mnt/disk3
+md5p1         9:5    0 931.5G  0 md   /mnt/disk5
+nvme0n1     259:0    0 931.5G  0 disk 
+└─nvme0n1p1 259:1    0 931.5G  0 part 
+</code></pre>
+<p>例如我要添加的是<code>sdd</code><br />
+就添加设备,填入<code>/dev/sdd:/disk1</code><br />
+<img src="https://s1oz.github.io/post-images/1719025871633.png" alt="" /><br />
+<code>sdd</code>为我需要添加的硬盘<br />
+<code>/disk1</code>123456按优先级依次引导,系统要安装在此硬盘就设置为<code>1</code><br />
+<strong>默认占用全部空间,要D盘自动手动压缩下</strong><br />
+更多说明看作者文档</p>
+<h3 id="heading-7">添加共享目录</h3>
+<p>添加路径<code>/mnt/user/shua/:/shared</code><br />
+<code>/mnt/user/shua/</code>为UNRAID实际路径<br />
+<img src="https://s1oz.github.io/post-images/1719026939168.png" alt="" /><br />
+可直接在<code>网络</code>中名称为<code>host.lan</code>的主机直接访问挂载的文件夹</p>
+<h2 id="heading-8">直通相关说明</h2>
+<h3 id="pci">添加PCI设备</h3>
+<p>很简单,要什么就加什么<br />
+例如添加独显<br />
+<img src="https://s1oz.github.io/post-images/1719024244845.png" alt="" /><br />
+如我的P4就一个<code>01:00.0</code>那就加一个</p>
+<pre><code>-device vfio-pci,host=01:00.0,multifunction=on
+</code></pre>
+<p>正牌军有<code>01:00.1</code>之类的就依次补全</p>
+<pre><code>-device vfio-pci,host=01:00.0,multifunction=on -device vfio-pci,host=01:00.1,multifunction=on
+</code></pre>
+<p>例如添加网卡<br />
+<img src="https://s1oz.github.io/post-images/1719024270018.png" alt="" /><br />
+我只分配第二个网口</p>
+<pre><code>-device vfio-pci,host=03:00.1,multifunction=on
+</code></pre>
+<p><code>小贴士</code>如添加网卡后在容器中将<code>网络类型</code>设置为<code>无</code> 则无法正常启动<br />
+如将虚拟网卡禁用 则<code>host.lan</code>无法访问</p>
+<h3 id="usb">添加usb设备</h3>
+<p>先添加设备,值中填入<code>/dev/bus/usb</code><br />
+例如添加UPS<br />
+<img src="https://s1oz.github.io/post-images/1719024415111.png" alt="" /><br />
+找到对应的ID代入即可</p>
+<pre><code>-device usb-host,vendorid=0x051d,productid=0x0002
+</code></pre>
+<h3 id="heading-9">添加虚拟声卡</h3>
+<p>如果你用RDP或者直通声卡插耳机那当我没说<br />
+如果是其他远程软件看片游戏之类😡会报错没有声卡,可以加一个虚拟声卡的代码凑活用,虽然会爆音</p>
+<pre><code>-device ich9-intel-hda -device hda-output -audio alsa
+</code></pre>
+<p>最好的的方法还是手动安装虚拟声卡软件<a href="https://github.com/nnyj/virtual-surround-sound">virtual-surround-sound</a>,支持7.1哦</p>
+<h3 id="vnc">禁用VNC</h3>
+<p>添加<code>DISPLAY</code>变量,值为<code>disabled</code>即可关闭VNC,这样<code>8006</code>端口就无法用浏览器访问了<br />
+<img src="https://s1oz.github.io/post-images/1719026368707.png" alt="" /><br />
+建议安装完远程软件后,留到最后一步禁用,洁癖&hellip;洁癖</p>
+<h3 id="heading-10">隐藏虚拟化过检测</h3>
+<p>按需添加以下代码</p>
+<pre><code>-cpu host,-hypervisor,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,kvm=off,hv_vendor_id=intel
+</code></pre>
+<p>解释如下:</p>
+<pre><code>-cpu host: 使用宿主机的CPU配置。
+-hypervisor: 禁用hypervisor特性。
++kvm_pv_unhalt: 启用KVM PV unhalt特性。
++kvm_pv_eoi: 启用KVM PV EOI特性。
+hv_spinlocks=0x1fff: 设置spinlock计数器。
+hv_vapic: 启用虚拟APIC。
+hv_time: 启用Hyper-V时间。
+hv_reset: 启用Hyper-V重置。
+hv_vpindex: 启用虚拟处理器索引。
+hv_runtime: 启用Hyper-V运行时。
+hv_relaxed: 启用Hyper-V放松特性。
+kvm=off: 禁用KVM。
+hv_vendor_id=intel: 设置Hyper-V厂商ID为&quot;intel&quot;。
+</code></pre>
+<h2 id="heading-11">想咋玩咋玩</h2>
+<p>远程之类可参考[在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡](<a href="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-x">https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-x</a></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/">
+              <h3 class="post-title">
+                将UNRAID设置为HyperBackup远程rsync备份目的地
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

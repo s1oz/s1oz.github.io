@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>UNRAID直通UHD630核显给虚拟机踩坑 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UNRAID直通UHD630核显给虚拟机踩坑 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="没独立显卡直通玩了,哭泣😭 那就给把核显从emby里撕开拿出来给虚拟机吧 安装流程 1.系统设备中勾选核显绑定并重启 2.新建虚拟机并安装(Q35还是I440FX都行)安装win10并开启远程访问 3.删除vnc显卡,添加UHD630核显 4.运气好开机正常安装驱动就能运行 我遇到以下坑 安装完系统自动更新驱动并报错代码43(推荐先尝试此方法) 先看结论: `&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID直通UHD630核显给虚拟机踩坑","url":"https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/","description":"没独立显卡直通玩了,哭泣😭 那就给把核显从emby里撕开拿出来给虚拟机吧 安装流程 1.系统设备中勾选核显绑定并重启 2.新建虚拟机并安装(Q35还是I440FX都行)安装win10并开启远程访问 3.删除vnc显卡,添加UHD630核显 4.运气好开机正常安装驱动就能运行 我遇到以下坑 安装完系统自动更新驱动并报错代码43(推荐先尝试此方法) 先看结论: `\u0026hellip;","datePublished":"2023-01-03T16:30:08+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/","name":"UNRAID直通UHD630核显给虚拟机踩坑","position":2}]}</script>
+<meta property="og:title" content="UNRAID直通UHD630核显给虚拟机踩坑">
+<meta property="og:description" content="没独立显卡直通玩了,哭泣😭 那就给把核显从emby里撕开拿出来给虚拟机吧 安装流程 1.系统设备中勾选核显绑定并重启 2.新建虚拟机并安装(Q35还是I440FX都行)安装win10并开启远程访问 3.删除vnc显卡,添加UHD630核显 4.运气好开机正常安装驱动就能运行 我遇到以下坑 安装完系统自动更新驱动并报错代码43(推荐先尝试此方法) 先看结论: `&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/">
+<meta name="twitter:title" content="UNRAID直通UHD630核显给虚拟机踩坑">
+<meta name="twitter:description" content="没独立显卡直通玩了,哭泣😭 那就给把核显从emby里撕开拿出来给虚拟机吧 安装流程 1.系统设备中勾选核显绑定并重启 2.新建虚拟机并安装(Q35还是I440FX都行)安装win10并开启远程访问 3.删除vnc显卡,添加UHD630核显 4.运气好开机正常安装驱动就能运行 我遇到以下坑 安装完系统自动更新驱动并报错代码43(推荐先尝试此方法) 先看结论: `&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UNRAID直通UHD630核显给虚拟机踩坑
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-01-03
+              </span>
+              <span>
+                2 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>没独立显卡直通玩了,哭泣😭<br />
+那就给把核显从emby里撕开拿出来给虚拟机吧</p>
+<h2 id="heading">安装流程</h2>
+<p>1.系统设备中勾选核显绑定并重启<br />
+2.新建虚拟机并安装(Q35还是I440FX都行)安装win10并开启远程访问<br />
+3.删除vnc显卡,添加UHD630核显<br />
+4.运气好开机正常安装驱动就能运行</p>
+<h2 id="heading-1">我遇到以下坑</h2>
+<h3 id="43">安装完系统自动更新驱动并报错代码43(推荐先尝试此方法)</h3>
+<p>先看结论: <code>I440FX</code>默认支持最新(31.0.101.xxxx) <code>Q35</code>只支持(26.20.100.7870)<br />
+根据情况安装对应版本驱动,安装完毕后就能正常驱动不会报错43<br />
+无需添加<code>vbios</code></p>
+<h3 id="43-1">更换驱动还报错代码43</h3>
+<p>试试添加此<a href="https://raw.githubusercontent.com/s1oz/unraid/master/i915ovmf.rom">vbios</a>即可正常安装驱动使用</p>
+<h3 id="heading-2">正常驱动后系统内存占满</h3>
+<p>这个貌似是驱动问题,关闭虚拟机在xml文件中做小小修改<br />
+libvirt 8.2.0+以上 差不多就是unriad6.10开始的版本(后续版本无此问题)<br />
+要给核显添加名称,并添加对应参数</p>
+<pre><code>    &lt;hostdev mode='subsystem' type='pci' managed='yes'&gt;
+      &lt;driver name='vfio'/&gt;
+      &lt;source&gt;
+        &lt;address domain='0x0000' bus='0x00' slot='0x02' function='0x0'/&gt;
+      &lt;/source&gt;
+      &lt;alias name='ua-igpu'/&gt; #给核显添加名称
+      &lt;rom file='/mnt/user/isos/vbios/i915ovmf.rom'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/&gt;
+    &lt;/hostdev&gt;
+    &lt;memballoon model='none'/&gt;
+  &lt;/devices&gt;
+  &lt;seclabel type='dynamic' model='dac' relabel='yes'/&gt;
+  #这开始添加如下代码能修正系统内存占满问题
+  &lt;qemu:override&gt;
+    &lt;qemu:device alias='ua-igpu'&gt;
+      &lt;qemu:frontend&gt;
+        &lt;qemu:property name='x-igd-opregion' type='bool' value='true'/&gt;
+        &lt;qemu:property name='x-igd-gms' type='unsigned' val
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/">
+              <h3 class="post-title">
+                NginxProxyManager禁止或允许某地区访问
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

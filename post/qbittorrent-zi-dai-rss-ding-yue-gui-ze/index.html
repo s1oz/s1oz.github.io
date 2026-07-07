@@ -1,0 +1,226 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>qBittorrent自带RSS订阅规则 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="qBittorrent自带RSS订阅规则 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="qb,rss" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="填个小坑,国产剧集追更 可以单独创建准确剧名的rss链接添加至qb的rss订阅 追更缺少S01命名的国产剧集 Feng Qi Luo Yang 2021 E25-E26 2160p WEB-DL AAC H264-OurTV 有多集区间的种子 如E25-E26,则添加以下规则 2021.+E(2[5-9]|[3-9]\d)-?.2160[Pp] **效&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/qbittorrent-zi-dai-rss-ding-yue-gui-ze/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"qBittorrent自带RSS订阅规则","url":"https://s1oz.github.io/post/qbittorrent-zi-dai-rss-ding-yue-gui-ze/","description":"填个小坑,国产剧集追更 可以单独创建准确剧名的rss链接添加至qb的rss订阅 追更缺少S01命名的国产剧集 Feng Qi Luo Yang 2021 E25-E26 2160p WEB-DL AAC H264-OurTV 有多集区间的种子 如E25-E26,则添加以下规则 2021.+E(2[5-9]|[3-9]\\d)-?.2160[Pp] **效\u0026hellip;","datePublished":"2021-12-24T13:27:59+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/qbittorrent-zi-dai-rss-ding-yue-gui-ze/","name":"qBittorrent自带RSS订阅规则","position":2}]}</script>
+<meta property="og:title" content="qBittorrent自带RSS订阅规则">
+<meta property="og:description" content="填个小坑,国产剧集追更 可以单独创建准确剧名的rss链接添加至qb的rss订阅 追更缺少S01命名的国产剧集 Feng Qi Luo Yang 2021 E25-E26 2160p WEB-DL AAC H264-OurTV 有多集区间的种子 如E25-E26,则添加以下规则 2021.+E(2[5-9]|[3-9]\d)-?.2160[Pp] **效&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/qbittorrent-zi-dai-rss-ding-yue-gui-ze/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/qbittorrent-zi-dai-rss-ding-yue-gui-ze/">
+<meta name="twitter:title" content="qBittorrent自带RSS订阅规则">
+<meta name="twitter:description" content="填个小坑,国产剧集追更 可以单独创建准确剧名的rss链接添加至qb的rss订阅 追更缺少S01命名的国产剧集 Feng Qi Luo Yang 2021 E25-E26 2160p WEB-DL AAC H264-OurTV 有多集区间的种子 如E25-E26,则添加以下规则 2021.+E(2[5-9]|[3-9]\d)-?.2160[Pp] **效&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              qBittorrent自带RSS订阅规则
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-12-24
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+                <a href="/tag/qb/" class="post-tag">
+                  # qb
+                </a>
+              
+                <a href="/tag/rss/" class="post-tag">
+                  # rss
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>填个小坑,国产剧集追更<br />
+可以单独创建准确剧名的rss链接添加至qb的rss订阅</p>
+<h2 id="s01">追更缺少S01命名的国产剧集</h2>
+<p><code>Feng Qi Luo Yang 2021 E25-E26 2160p WEB-DL AAC H264-OurTV</code><br />
+有多集区间的种子 如E25-E26,则添加以下规则</p>
+<pre><code>2021.+E(2[5-9]|[3-9]\d)-?.2160[Pp]
+</code></pre>
+<p><strong>效果为追更2021年产的25集-99集的4k分辨率的剧集</strong><br />
+<code>2021</code>匹配年份 (2021|2022)为2021或2022年份<br />
+<code>.+</code>匹配任意字符1次或多次<br />
+<code>.*</code>匹配任意字符0次或多次<br />
+<code>.?</code>匹配任意字符0次或1次<br />
+<code>E(2[5-9]|[3-9]\d)</code> 从25下载到99集<br />
+<code>E(2[5-9]|[3-9]\d|[1-9]\d{2})</code>或<code>E(2[5-9]|[3-9]\d|1\d\d)</code>可订阅剧集过百<code>1\d\d</code> 匹配100 - 199, <code>[1-9]\d\d</code>或者<code>[1-9]\d{2})</code> 匹配 100 - 999<br />
+<code>-?</code>忽略匹配<code>-</code>后面的字符<br />
+<code>2160[Pp]</code>匹配分辫率 如4[Kk]|2160[Pp]|1080[Pp]<br />
+<code>\D</code>匹配任意非数字字符1次<br />
+<code>\d</code>匹配任意数字字符1次<br />
+<code>\.</code>匹配小数点<br />
+<code>\s</code>匹配空字符，所有RSS资源在表示体积的GB前都有一个空格<br />
+<code>GB</code>匹配GB<br />
+<code>[12]?</code>匹配字符“1”或“2”，匹配次数为0次或1次</p>
+<h2 id="s01-1">追更带S01命名剧集</h2>
+<p>按需求添加 2160p 1080p 720p分辨率之类,我需要下载2016p 就在qb中如下设置</p>
+<pre><code>√使用正则表达式
+必须包含：  2160
+不可包含：  
+剧集过滤器：    #不填写默认全部下载,如要从4集开始下载 可以填写1x4-; 4-;之类
+</code></pre>
+<p>如果追更完毕,建议删除RSS订阅链接<br />
+感</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/clash-tian-jia-doh-jie-xi/">
+              <h3 class="post-title">
+                clash添加doh解析
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

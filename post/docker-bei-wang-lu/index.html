@@ -1,0 +1,248 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Docker备忘录 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Docker备忘录 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="常用命令 docker images 列出所有镜像(images) docker ps 列出正在运行的容器(containers) docker exec -it 容器ID sh docker login 登陆账号 docker commit 334c515d250e s1oz/bulid:0.01 现有容器制作成为镜像。 docker push s1oz/test:...">
+<link rel="canonical" href="https://s1oz.github.io/post/docker-bei-wang-lu/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker备忘录","url":"https://s1oz.github.io/post/docker-bei-wang-lu/","description":"常用命令 docker images 列出所有镜像(images) docker ps 列出正在运行的容器(containers) docker exec -it 容器ID sh docker login 登陆账号 docker commit 334c515d250e s1oz/bulid:0.01 现有容器制作成为镜像。 docker push s1oz/test:...","image":"/post-images/docker-bei-wang-lu.png","datePublished":"2018-04-27T15:19:13+08:00","dateModified":"2026-07-07T09:13:26+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/docker-bei-wang-lu/","name":"Docker备忘录","position":2}]}</script>
+<meta property="og:title" content="Docker备忘录">
+<meta property="og:description" content="常用命令 docker images 列出所有镜像(images) docker ps 列出正在运行的容器(containers) docker exec -it 容器ID sh docker login 登陆账号 docker commit 334c515d250e s1oz/bulid:0.01 现有容器制作成为镜像。 docker push s1oz/test:...">
+<meta property="og:url" content="https://s1oz.github.io/post/docker-bei-wang-lu/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/post-images/docker-bei-wang-lu.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/docker-bei-wang-lu/">
+<meta name="twitter:title" content="Docker备忘录">
+<meta name="twitter:description" content="常用命令 docker images 列出所有镜像(images) docker ps 列出正在运行的容器(containers) docker exec -it 容器ID sh docker login 登陆账号 docker commit 334c515d250e s1oz/bulid:0.01 现有容器制作成为镜像。 docker push s1oz/test:...">
+<meta name="twitter:image" content="/post-images/docker-bei-wang-lu.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Docker备忘录
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-04-27
+              </span>
+              <span>
+                3 分钟阅读
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="/post-images/docker-bei-wang-lu.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="heading">常用命令</h3>
+<pre><code>docker images	列出所有镜像(images)
+docker ps	列出正在运行的容器(containers)
+docker exec -it 容器ID sh
+docker login 登陆账号
+docker commit 334c515d250e s1oz/bulid:0.01 现有容器制作成为镜像。
+docker push s1oz/test:0.1 push 推送现有镜像到docker hub仓库
+</code></pre>
+<h3 id="heading-1">场景一：镜像下载、运行及删除</h3>
+<pre><code>COMMAND	DESC
+查看	
+docker images	列出所有镜像(images)
+docker ps	列出正在运行的容器(containers)
+docker ps -a	列出所有的容器
+docker pull centos	下载centos镜像
+docker top ‘container’	查看容器内部运行程序
+容器	
+docker exec -it 容器ID sh	进入容器
+docker stop ‘container’	停止一个正在运行的容器，‘container’可以是容器ID或名称
+docker start ‘container’	启动一个已经停止的容器
+docker restart ‘container’	重启容器
+docker rm ‘container’	删除容器
+docker run -i -t -p :80 LAMP /bin/bash	运行容器并做http端口转发
+docker exec -it ‘container’ /bin/bash	进入ubuntu类容器的bash
+docker exec -it /bin/sh	进入alpine类容器的sh
+docker rm docker ps -a -q	删除所有已经停止的容器
+docker kill $(docker ps -a -q)	杀死所有正在运行的容器，$()功能同``
+镜像	
+docker build -t wp-api .	构建1个镜像,-t(镜像的名字及标签) wp-api(镜像名) .(构建的目录)
+docker run -i -t wp-api	-t -i以交互伪终端模式运行,可以查看输出信息
+docker run -d -p 80:80 wp-api	镜像端口 -d后台模式运行镜像
+docker rmi [image-id]	删除镜像
+docker rmi $(docker images -q)	删除所有镜像
+docker rmi $(sudo docker images --filter &quot;dangling=true&quot; -q --no-trunc)	删除无用镜像
+ocker run --help	帮助
+</code></pre>
+<h3 id="heading-2">场景二：下载镜像并直接运行</h3>
+<pre><code>docker run  --name ubuntu -it ubuntu bash 
+docker cp dd ubuntu:tmp/ #复制文件dd 到容器的/tmp 目录
+Ctrl-p Ctrl-q  #退出
+</code></pre>
+<h3 id="heading-3">场景三：修改镜像，并保存到私有仓库</h3>
+<p>期望结果:在ubuntu 镜像中添加 apache，将新的镜像保存到私有仓库中</p>
+<pre><code>docker exec -it ubuntu bash 
+apt-get update
+apt-get install apache2
+Ctrl-p Ctrl-q  #退出
+docker commit -a &quot;mir355&quot; -m &quot;ubuntu add apache2&quot; {ID}  private/ubuntu_apache:v1   #保存镜像
+docker stop ubuntu 
+docker rm ubuntu
+docker run -i -t --name apache2 -p 8080:80 private/ubuntu_apache:v1 /bin/bash
+/etc/init.d/apache2 start
+Ctrl-p Ctrl-q  #退出
+#通过 docker tag重命名镜像，使之与registry匹配
+docker tag private/ubuntu_apache:v1 127.0.0.1:5000/private/ubuntu_apache:v1
+#保存到私有仓库
+docker push 127.0.0.1:5000/private/ubuntu_apache:v1
+curl http://127.0.
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/about/">
+              <h3 class="post-title">
+                关于
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

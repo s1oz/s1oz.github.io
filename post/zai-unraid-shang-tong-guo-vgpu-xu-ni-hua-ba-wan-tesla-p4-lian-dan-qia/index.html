@@ -1,0 +1,465 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&amp;hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡","url":"https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/","description":"废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码\u0026gt;拆掉独显,直通核显\u0026gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低\u0026hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一\u0026hellip;","datePublished":"2023-05-27T08:26:30+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/","name":"在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡","position":2}]}</script>
+<meta property="og:title" content="在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡">
+<meta property="og:description" content="废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&amp;hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+<meta name="twitter:title" content="在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡">
+<meta name="twitter:description" content="废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&amp;hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-05-27
+              </span>
+              <span>
+                14 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="-">废话 直接跳</h3>
+<ul>
+<li>主要还是折腾,心痒痒,对~就是玩</li>
+<li>从1660直通虚拟机,核显转码&gt;拆掉独显,直通核显&gt;用炼丹卡玩下vGPU</li>
+<li><del>说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图?</del></li>
+</ul>
+<h3 id="heading">需要准备些什么</h3>
+<ol>
+<li>一台正常使用的UNRAID电脑</li>
+<li>BIOS正确开启VT-d / Above 4G Decoding 之类跟直通相关的选项</li>
+<li>一张身经百战的Tesla P4炼丹卡</li>
+<li>无所畏惧的精神</li>
+</ol>
+<h3 id="unraidvgpu">UNRAID安装vGPU插件</h3>
+<h4 id="heading-1">前提</h4>
+<ol>
+<li>保证UNRAID上不要安装Nvidia-Driver插件</li>
+<li>正常插入P4炼丹卡到主机中,在UNRAID的系统设备中不要勾选P4炼丹卡</li>
+</ol>
+<h4 id="heading-2">安装插件</h4>
+<ol>
+<li>安装<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver">stl88083365大佬</a>开发的<a href="https://raw.githubusercontent.com/stl88083365/unraid-nvidia-vgpu-driver/master/nvidia-vgpu-driver.plg">Unraid vGPU插件</a> 再次感谢大佬搞了这么方便的插件<br />
+在<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver/releases">releases页面</a>显示的就是插件支持的最新内核版本号<br />
+需要注意的是插件的版本是跟UNRAID的内核走的,如UNRAID版本过新,请<strong>降级后安装对应插件</strong></li>
+<li>插件安装完毕后可以根据大佬项目中的<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver#readme">README.md</a>流程走<br />
+大致就是安装&rsquo;user scripts&rsquo;插件,新建个用于加载驱动的脚本并粘贴以下内容<br />
+<strong>需要修改的两段我中文注释了</strong></li>
+</ol>
+<pre><code>#!/bin/bash
+# set -x
+
+# Load drivers 
+depmod -a
+nvidia-modprobe
+
+## 一共两段
+### 段落1
+### 定义虚拟机使用的vGPU的UUID,按下方vGPU的类型按需增删,分几个就用几个,uuid可用uuidgen命令创建
+vm1=&quot;2b6976dd-8620-49de-8d8d-ae9ba47a50db&quot;
+vm2=&quot;5fd6286d-06ac-4406-8b06-f26511c260d3&quot;
+#vm3=&quot;f090c00f-338b-47b4-a419-700101cd70c5&quot;
+#vm4=&quot;cee34c0a-6144-4f3e-8bdb-51538a98ba80&quot;
+#vm5=&quot;692c4c12-0def-4aa8-87b4-732fd5ef43ea&quot;
+#vm6=&quot;bc4b8513-43f0-49d2-81b1-a4aa9fe35826&quot;
+#vm7=&quot;e46b8864-0271-41ce-86b4-d5df5579d332&quot;
+#vm8=&quot;6fb3f4a0-a17d-43e5-b4fd-1a52acc3e382&quot;
+## 定义N卡的PCI位置
+NVPCI=&quot;0000:03:00.0&quot;
+## 定义vGPU的类型 玩游戏只用Q模式,其他都不考虑,更多信息可以在Nvidia Vgpu Driver插件中查询
+## 8个1G显存写63,4个2G显存的写64,2个4G显存写65,1个8G显存写66
+## 7.0.0版本开始大佬使用了550版本驱动,P4显示为 NVIDIA RTXA5500 ,请根据Nvidia Vgpu Driver插件中Mdevctl types来填写,如nvidia-765
+MDEVLIST=&quot;nvidia-65&quot;
+
+if [ ! -d /boot/config/nvidia-vgpu ]; then
+    mkdir -p /boot/config/nvidia-vgpu
+fi
+
+if [ ! -d /etc/vgpu_unlock/ ]; then
+    mkdir -p /etc/vgpu_unlock/
+fi
+
+if [ -f /boot/config/nvidia-vgpu/profile_override.toml ]; then
+  ln -sf /boot/config/nvidia-vgpu/profile_override.toml /etc/vgpu_unlock/profile_override.toml
+else 
+  touch /boot/config/nvidia-vgpu/profile_override.toml
+  ln -sf /boot/config/nvidia-vgpu/profile_override.toml /etc/vgpu_unlock/profile_override.toml
+fi
+
+echo &quot;unlock = false&quot; &gt; /etc/vgpu_unlock/config.toml
+
+env LD_PRELOAD=/usr/local/lib/libvgpu_unlock_rs.so &gt;/dev/null
+
+if pgrep -x nvidia-vgpu-mgr &gt; /dev/null
+then
+    nvidia-vgpud stop
+    nvidia-vgpu-mgr stop
+    killall nvidia-vgpu-mgr
+fi
+LD_PRELOAD=/usr/local/lib/libvgpu_unlock_rs.so nvidia-vgpud 
+LD_PRELOAD=/usr/local/lib/libvgpu_unlock_rs.so nvidia-vgpu-mgr
+
+sleep 3
+
+### 段落2
+### 上方定义几个vm,这就填几个
+#### 例子arr=( &quot;${vm1}&quot; &quot;${vm2}&quot; &quot;${vm3}&quot; &quot;${vm4}&quot; )
+arr=( &quot;${vm1}&quot; &quot;${vm2}&quot; )
+
+for os in &quot;${arr[@]}&quot;; do
+    if [[ &quot;$(mdevctl list)&quot; == *&quot;$os&quot;* ]]; then
+        echo &quot; [i] Found $os running, stopping and undefining...&quot;
+        mdevctl stop -u &quot;$os&quot;
+        mdevctl undefine -u &quot;$os&quot;
+    fi
+done
+
+for os in &quot;${arr[@]}&quot;; do
+    echo &quot; [i] Defining and running $os...&quot;
+    mdevctl define -u &quot;$os&quot; -p &quot;$NVPCI&quot; --type &quot;$MDEVLIST&quot;
+    mdevctl start -u &quot;$os&quot;
+done
+
+echo &quot; [i] Currently defined mdev devices:&quot;
+mdevctl list
+</code></pre>
+<p>然后把脚本设置为At First Array Start Only(第一次启动阵列时运行脚本)<br />
+然后运行此命令,告知由主机驱动程序管理设备</p>
+<pre><code>echo &quot;options nvidia cudahost=1&quot; &gt; /boot/config/modprobe.d/nvidia.conf
+</code></pre>
+<p>最后点击运行脚本,现在已经可以在UNRAID中输入命令查看显卡信息了</p>
+<pre><code>验证是否正常加载驱动
+lsmod |grep vfio 
+
+查看机器上所有N卡信息
+nvidia-smi
+
+查看vGPU显卡信息
+nvidia-smi vgpu
+
+关闭ECC,释放所有显存
+nvidia-smi -e 0
+
+滚动显示设备状态
+nvidia-smi dmon
+
+实时显示显存 5秒刷新一次
+nvidia-smi -l 5
+</code></pre>
+<p>更多信息可以直接在UNRAID的设置-Nvidia Vgpu Driver中查询</p>
+<h4 id="heading-3">更新插件</h4>
+<p>通过<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver/blob/master/plugin_update_helper">plugin_update_helper</a>脚本来更新<br />
+使用方法很简单：</p>
+<ol>
+<li>在&rsquo;user scripts&rsquo;插件中,新建个脚本并粘贴<strong>plugin_update_helper</strong>中内容</li>
+<li>点击此脚本右侧<strong>Run In Background</strong>,让其后台运行</li>
+<li>工具-系统更新-检查更新，然后点击<strong>更新</strong>来安装新版本，等待安装完毕不要点重启</li>
+<li>这时刚后台运行的脚本会自动判断<strong>changes.txt</strong>已更新,对比<strong>releases</strong>版本是否对应系统内核版本,如果对应会自动更新,更新结束会发送通知，然后再重启系统即可</li>
+<li>如果出现不能使用,就恢复,并删除插件后重新安装插件即可</li>
+</ol>
+<h3 id="heading-4">虚拟机上使用</h3>
+<h4 id="vgpu">验证vGPU驱动</h4>
+<ol>
+<li>先在UNRAID的设置-Nvidia Vgpu Driver中查看刚脚本定义的vGPU的UUID是否正常显示</li>
+</ol>
+<pre><code>## mdevctl list命令也可查询
+root@Tower:~# mdevctl list
+2b6976dd-8620-49de-8d8d-ae9ba47a50db 0000:03:00.0 nvidia-65 manual (defined)
+5fd6286d-06ac-4406-8b06-f26511c260d3 0000:03:00.0 nvidia-65 manual (defined)
+</code></pre>
+<h4 id="heading-5">新建虚拟机</h4>
+<ol>
+<li>新建WIN10虚拟机,切记添加SPICE不要用VNC,因为安装vGPU驱动VNC有bug,完成安装后关机</li>
+<li>编辑虚拟机xml文件,在<strong>video</strong>标签下方增加以下内容</li>
+</ol>
+<pre><code>#vGPU 更改为自己的uuid跟正确的PCI位置
+    &lt;hostdev mode='subsystem' type='mdev' managed='no' model='vfio-pci' display='off'&gt;
+      &lt;source&gt;
+        &lt;address uuid='2b6976dd-8620-49de-8d8d-ae9ba47a50db'/&gt;
+      &lt;/source&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+    &lt;/hostdev&gt;
+</code></pre>
+<pre><code>#声卡 按需添加
+    &lt;sound model='ich9'&gt;
+    &lt;/sound&gt;
+</code></pre>
+<pre><code>#题外话 硬盘想显示为ssd，只需加在对应硬盘后面加 rotation_rate='1' 即可
+#例子 只限IDE SATA 不支持virtio
+      &lt;target dev='hdc' bus='sata' rotation_rate='1'/&gt;
+</code></pre>
+<p>修改保存后应该是这样的<br />
+<img src="https://s1oz.github.io/post-images/1685407263550.png" alt="" /></p>
+<h4 id="heading-6">安装驱动</h4>
+<ol>
+<li>开启虚拟机,通过浏览器直接访问 <strong>切记不要使用自动安装驱动或者驱动精灵之类来安装驱动</strong><br />
+<del>先拜读<a href="https://github.com/justin-himself/NVIDIA-VGPU-Driver-Archive">justin-himself</a>佬的项目这个仓库包含了 NVIDIA vGPU 驱动的历史版本<br />
+win虚拟机<strong>无脑安装</strong><a href="https://github.com/justin-himself/NVIDIA-VGPU-Driver-Archive/releases">Releases页面</a>中最新版本<br />
+<strong>下载NVIDIA-GRID-Linux-KVM开头的几个分卷解压</strong><br />
+安装<strong>Guest_Drivers</strong>文件夹中<strong>exe</strong>结尾GRID驱动</del><br />
+<strong>大佬已删库</strong>，请直接从<a href="https://cloud.google.com/compute/docs/gpus/grid-drivers-table?hl=zh-cn">Google Cloud</a>下载所需要的版本安装即可</li>
+</ol>
+<h3 id="vgpu-1">搭建民间vGPU激活方案</h3>
+<ul>
+<li>UNRAID直接下载容器模板后添加启动即可(自行修改模板中DLS_URL变量的 IP)</li>
+</ul>
+<pre><code>wget -O /boot/config/plugins/dockerMan/templates/FastAPI-DLS.xml https://raw.githubusercontent.com/s1oz/unraid/master/fastapi-dls.xml
+</code></pre>
+<p>项目源码为oscar.krause大佬的<a href="https://gitea.publichub.eu/oscar.krause/fastapi-dls">fastapi-dls</a>,更多内容请自行拜读<br />
+使用的镜像为来自<a href="https://foxi.buduanwang.vip/virtualization/pve/2195.html/">佛西博客</a>中的<a href="https://hub.docker.com/r/makedie/fastapi-dls">makedie/fastapi-dls</a>,感谢大佬自封证书挽救懒人</p>
+<ul>
+<li>WIN10虚拟机激活授权<br />
+虚拟机浏览器中打开https://容器IP:9443   <strong>切记是https</strong>  默认页面为配置说明<br />
+Windows激活方式如下:<br />
+浏览器访问 https://容器IP:9443/client-token 后会自动下载授权文件<br />
+将文件导入到<code>C:\Program Files\NVIDIA Corporation\vGPU Licensing\ClientConfigToken</code>文件夹中后重启即可<br />
+重启后右下角就弹出激活了<br />
+判断是否激活</li>
+</ul>
+<pre><code>nvidia-smi -q |findstr Lincese
+</code></pre>
+<h3 id="heading-7">开启串流远程玩游戏</h3>
+<p>得益于vGPU加成,安装驱动后直接附带了一个虚拟显示器<br />
+可以直接通过浏览器使用SPICE访问虚拟机来进行操作<br />
+安装parsec然后开始畅玩(都是成年人了,这点你肯定会的)<br />
+<strong>唯一要注意的就是在桌面右击-显示设置-多显示器-仅在2上显示</strong></p>
+<h4 id="heading-8">说个题外话:</h4>
+<p>一般串流要么插HDMI欺诈器之类,要么额外安装一个虚拟显示器来让远程游戏正确工作<br />
+举例个虚拟显示器:<br />
+先下载<a href="https://www.amyuni.com/downloads/usbmmidd_v2.zip">虚拟显示驱动程序</a><br />
+解压后以管理员身份运行<code>usbmmidd_v2</code>文件夹中的<code>usbmmidd.bat</code>即可<br />
+运行后会自动添加一个虚拟显示器</p>
+<pre><code>如果要停用虚拟显示器
+在文件夹路径以管理员身份运行的命令行中输入以下命令  停用多个虚拟显示器运行多次
+deviceinstaller64 enableidd 0
+如果重新运行就输入
+deviceinstaller64 enableidd 1
+</code></pre>
+<p>想完全卸载虚拟显示器可以在设备管理器中删除<code>USB Mobile Monitor Virtual Display</code></p>
+<h4 id="heading-9">多样串流按需选择</h4>
+<p>串流玩游戏方案有很多,mstsc / anydesk / parsec / moonlight等<br />
+不过moonlight不支持远程剪贴板复制粘贴,<br />
+两种解决方案,</p>
+<ol>
+<li>额外安装<a href="https://github.com/aitsc/natclip">natclip</a>,实现windows、macos或及其之间的剪切板文本共享, 可用于moonlight串流等远程控制剪切板不能用或失效的问题</li>
+<li>换mstsc / anydesk / parsec 之类</li>
+</ol>
+<p>虚拟机直接安装<a href="https://github.com/LizardByte/Sunshine">Sunshine</a>来让P4支持moonlight<br />
+服务端安装使用自行拜读<a href="https://docs.lizardbyte.dev/projects/sunshine/en/latest/">Sunshine Wiki</a><br />
+客户端安装使用自行拜读<a href="https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide">Moonlight Wiki</a></p>
+<h3 id="heading-10">超频</h3>
+<p>先用<code>nvidia-smi -q -d SUPPORTED_CLOCKS</code>查询下显卡最高支持的频率</p>
+<pre><code>root@Tower:~# nvidia-smi -q -d SUPPORTED_CLOCKS
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Sat May 27 12:46:25 2023
+Driver Version                            : 525.105.17
+CUDA Version                              : 12.0
+vGPU Driver Capability
+        Heterogenous Multi-vGPU           : Supported
+
+Attached GPUs                             : 1
+GPU 00000000:03:00.0
+    Supported Clocks
+        Memory                            : 3003 MHz
+            Graphics                      : 1531 MHz
+            Graphics                      : 1518 MHz
+            Graphics                      : 1506 MHz
+            Graphics                      : 1493 MHz
+
+                        ~~~~~~~~~~
+
+            Graphics                      : 455 MHz
+        Memory                            : 405 MHz
+            Graphics                      : 455 MHz
+</code></pre>
+<p>得知显存最高<strong>3003*,核心最高</strong>1531**<br />
+我就<strong>保守点</strong>来个3003,1531吧<br />
+输入<code>nvidia-smi -ac 3003,1531</code></p>
+<pre><code>root@Tower:~# nvidia-smi -ac 3003,1531
+Applications clocks set to &quot;(MEM 3003, SM 1531)&quot; for GPU 00000000:03:00.0
+All done.
+</code></pre>
+<p><img src="https://s1oz.github.io/post-images/1685407196185.jpg" alt="" /><br />
+超频完成,恭喜性能增加了.功耗也增加了<br />
+不怕耗电的,就直接新建脚本,然后把脚本设置为At First Array Start Only(第一次启动阵列时运行脚本</p>
+<h3 id="emby">给Emby添加炼丹卡解码转码</h3>
+<p>转码是会员功能,请先<a href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/">白嫖</a><br />
+调用N卡只要加以下参数<br />
+emby官方docker直接在额外参数中添加 <code>--gpus </code><br />
+新建设备  值填 <code>/dev/dri</code>即可<br />
+然后转码中勾选即可<br />
+<img src="https://s1oz.github.io/post-images/1685407178668.png" alt="" /></p>
+<h4 id="p4bug">P4独有bug</h4>
+<ul>
+<li>开机后需先开有vGPU的虚拟机后再开Emby</li>
+<li>不然�</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/">
+              <h3 class="post-title">
+                自建clash订阅转换subconverter后端并配置规则
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>在Gridea中添加Mermaid支持来显示图表 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="在Gridea中添加Mermaid支持来显示图表 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="gridaea,mermaid" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="修改主题文件 将以下代码粘贴至Gridea站点源文件夹中里post.ejs文件的&amp;lt;head&amp;gt;部分 例如我的源文件夹是E:\Gridea主题使用的是 gridea-theme-next 那我这个文件完整路径就是E:\Gridea\themes\gridea-theme-next\templates\post.ejs &amp;lt;script&amp;gt; // 加载外部脚本...">
+<link rel="canonical" href="https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"在Gridea中添加Mermaid支持来显示图表","url":"https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/","description":"修改主题文件 将以下代码粘贴至Gridea站点源文件夹中里post.ejs文件的\u0026lt;head\u0026gt;部分 例如我的源文件夹是E:\\Gridea主题使用的是 gridea-theme-next 那我这个文件完整路径就是E:\\Gridea\\themes\\gridea-theme-next\\templates\\post.ejs \u0026lt;script\u0026gt; // 加载外部脚本...","datePublished":"2024-05-15T13:05:04+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/","name":"在Gridea中添加Mermaid支持来显示图表","position":2}]}</script>
+<meta property="og:title" content="在Gridea中添加Mermaid支持来显示图表">
+<meta property="og:description" content="修改主题文件 将以下代码粘贴至Gridea站点源文件夹中里post.ejs文件的&amp;lt;head&amp;gt;部分 例如我的源文件夹是E:\Gridea主题使用的是 gridea-theme-next 那我这个文件完整路径就是E:\Gridea\themes\gridea-theme-next\templates\post.ejs &amp;lt;script&amp;gt; // 加载外部脚本...">
+<meta property="og:url" content="https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/">
+<meta name="twitter:title" content="在Gridea中添加Mermaid支持来显示图表">
+<meta name="twitter:description" content="修改主题文件 将以下代码粘贴至Gridea站点源文件夹中里post.ejs文件的&amp;lt;head&amp;gt;部分 例如我的源文件夹是E:\Gridea主题使用的是 gridea-theme-next 那我这个文件完整路径就是E:\Gridea\themes\gridea-theme-next\templates\post.ejs &amp;lt;script&amp;gt; // 加载外部脚本...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              在Gridea中添加Mermaid支持来显示图表
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-05-15
+              </span>
+              <span>
+                7 分钟阅读
+              </span>
+              
+                <a href="/tag/gridaea/" class="post-tag">
+                  # gridaea
+                </a>
+              
+                <a href="/tag/mermaid/" class="post-tag">
+                  # mermaid
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="heading">修改主题文件</h3>
+<p>将以下代码粘贴至Gridea站点源文件夹中里<code>post.ejs</code>文件的<code>&lt;head&gt;</code>部分<br />
+例如我的源文件夹是<code>E:\Gridea</code>主题使用的是 <code>gridea-theme-next</code><br />
+那我这个文件完整路径就是<code>E:\Gridea\themes\gridea-theme-next\templates\post.ejs</code></p>
+<pre><code>&lt;script&gt;
+// 加载外部脚本
+function loadScript(src, callback) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+// 初始化Mermaid
+function initializeMermaid(config) {
+    mermaid.initialize(config);
+}
+
+// 渲染单个Mermaid图表
+function renderMermaidChart(element, index) {
+    let graphDefinition = element.textContent.trim();
+    if (graphDefinition) {
+        let svg = mermaid.render(`ha_mermaid_${index}`, graphDefinition);
+        if (svg) {
+            let svgElement = document.createElement('div');
+            svgElement.innerHTML = svg;
+            svgElement.classList.add('mermaid');
+            svgElement.setAttribute('data-processed', 'true');
+            element.parentNode.replaceChild(svgElement, element);
+        }
+    }
+}
+
+// 懒加载Mermaid图表
+function lazyLoadMermaidCharts() {
+    const observer = new IntersectionObserver((entries, observer) =&gt; {
+        entries.forEach(entry =&gt; {
+            if (entry.isIntersecting) {
+                observer.unobserve(entry.target);
+                renderMermaidChart(entry.target);
+            }
+        });
+    }, { threshold: 0.5 }); // 触发加载的阈值为元素显示50%时
+
+    const elements = document.querySelectorAll(&quot;.language-mermaid&quot;);
+    elements.forEach(element =&gt; {
+        observer.observe(element);
+    });
+}
+
+// 当DOM加载完成时执行
+document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+    // 异步加载Mermaid.js
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js', function() {
+        // Mermaid配置选项
+        const mermaidConfig = {
+            startOnLoad: true,
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true
+            }
+        };
+        // 初始化Mermaid
+        initializeMermaid(mermaidConfig);
+        // 懒加载Mermaid图表
+        lazyLoadMermaidCharts();
+    });
+});
+&lt;/script&gt;
+</code></pre>
+<h3 id="heading-1">如何引用</h3>
+<p>只需在中间添加对应代码即可</p>
+<pre><code>&lt;div class=&quot;mermaid&quot;&gt;
+图表内容
+&lt;/div&gt;
+</code></pre>
+<h3 id="heading-2">流程图示例</h3>
+<pre><code>&lt;div class=&quot;mermaid&quot;&gt;
+graph TD;
+    A[开始] --&gt; B[过程1];
+    B --&gt; C[过程2];
+    C --&gt; D[过程3];
+    D --&gt; E[判断条件];
+    E -- 条件成立 --&gt; F[过程4];
+    E -- 条件不成立 --&gt; G[过程5];
+    F --&gt; H[结束];
+    G --&gt; H;
+&lt;/div&gt;
+</code></pre>
+<p>输出效果:</p>
+<div class="mermaid">
+graph TD;
+    A[开始] --> B[过程1];
+    B --> C[过程2];
+    C --> D[过程3];
+    D --> E[判断条件];
+    E -- 条件成立 --> F[过程4];
+    E -- 条件不成立 --> G[过程5];
+    F --> H[结束];
+    G --> H;
+</div>
+<h3 id="heading-3">时序图示例</h3>
+<pre><code>&lt;div class=&quot;mermaid&quot;&gt;
+sequenceDiagram
+    participant 客户
+    participant 服务员
+    客户-&gt;&gt;服务员: 点菜
+    服务员-&gt;&gt;厨师: 下单
+    厨师-&gt;&gt;服务员: 完成菜品
+    服务员-&gt;&gt;客户: 上菜
+    客户-&gt;&gt;服务员: 结账
+    服务员-&gt;&gt;客户: 收款
+&lt;/div&gt;
+</code></pre>
+<p>输出效果:</p>
+<div class="mermaid">
+sequenceDiagram
+    participant 客户
+    participant 服务员
+    客户->>服务员: 点菜
+    服务员->>厨师: 下单
+    厨师->>服务员: 完成菜品
+    服务员->>客户: 上菜
+    客户->>服务员: 结账
+    服务员->>客户: 收款
+</div>
+<h3 id="heading-4">甘特图示例</h3>
+<pre><code>&lt;div class=&quot;mermaid&quot;&gt;
+gantt
+    title 项目甘特图
+    dateFormat  YYYY-MM-DD
+    section 项目阶段
+    任务1: 2024-05-01, 10d
+    任务2: 2024-05-15, 8d
+    任务3: 2024-06-01, 15d
+    任务4: 2024-06-16, 5d
+&lt;/div&gt;
+</code></pre>
+<p>输出效果:</p>
+<div class="mermaid">
+gantt
+    title 项目甘特图
+    dateFormat  YYYY-MM-DD
+    section 项目阶段
+    任务1: 2024-05-01, 10d
+    任务2: 2024-05-15, 8d
+    任务3: 2024-06-01, 15d
+    任务4: 2024-06-16, 5d
+</div>
+<h3 id="heading-5">状态图示例</h3>
+<pre><code>stateDiagram-v2
+    [*] --&gt; 就绪
+    就绪 --&gt; 运行: 启动
+    运行 --&gt; 错误: 系统错误
+    运行 --&gt; 待命: 暂停
+    错误 --&gt; 待命: 重启
+    待命 --&gt; 运行: 恢复
+&lt;/div&gt;
+</code></pre>
+<p>输出效果:</p>
+<div class="mermaid">
+stateDiagram-v2
+    [*] --> 就绪
+    就绪 --> 运行: 启动
+    运行 --> 错误: 系统错误
+    运行 --> 待命: 暂停
+    错误 --> 待命: 重启
+    待命 --> 运行: 恢复
+</div>
+<h3 id="heading-6">饼图示例</h3>
+<pre><code>&lt;div class=&quot;mermaid&quot;&gt;
+pie
+    title 饼图示例
+    &quot;A&quot; : 30
+    &quot;B&quot; : 20
+    &quot;C&quot; : 25
+    &quot;D&quot; : 15
+    &quot;E&quot; : 10
+&lt;/div&gt;
+</code></pre>
+<p>输出效果:</p>
+<div class="mermaid">
+pie
+    title 饼图示例
+    "A" : 30
+    "B" : 20
+    "C" : 25
+    "D" : 15
+    "E" : 10
+</div>
+<h3 id="heading-7">用户体验旅程图示例</h3>
+<pre><code>&lt;div class=&quot;mermaid&quot;&gt;
+journey
+    title 用户体验旅程
+    section 购物
+        浏览商品: 10分钟: 用户
+        添加商品到购物车: 5分钟: 用户
+        结算购物车: 2分钟: 系统
+        返回个人主页: 1分钟: 系统
+    section 退出
+        点击退出: 1分钟: 用户
+        确认退出: 2分钟: 系统
+        返回登录页面: 1分钟: 系统
+&lt;/div&gt;
+</code></pre>
+<p>输出效果:</p>
+<div class="mermaid">
+journey
+    title 用户体验旅程
+    section 购物
+        浏览商品: 10分钟: 用户
+        添加商品到购物车: 5分钟: 用户
+        结算购物车: 2分钟: 系统
+        返回个人主页: 1分钟: 系统
+    section 退出
+        点击退出: 1分钟: 用户
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/wan-ke-yun-fu-huo-cheng-pikvm/">
+              <h3 class="post-title">
+                玩客云复活成PIKVM
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

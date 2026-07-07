@@ -1,0 +1,225 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="hk-q1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="前言 18年白嫖的了移动的这个摄像头 到手后搜了搜发现就是海康萤石云c6h，出厂预置移动辣鸡定制固件 看到有大佬提取了固件,动手能力强的可以直接拆开吹下ic写入c6h固件 然而手残党的我&amp;hellip;.算了算了 曲线救国RTSP连入群晖 根据海康CVE-2017-7921漏洞 可以使用弱密码直接通过RTSP查看主码流 例子 # 主码流 ...">
+<link rel="canonical" href="https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station","url":"https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/","description":"前言 18年白嫖的了移动的这个摄像头 到手后搜了搜发现就是海康萤石云c6h，出厂预置移动辣鸡定制固件 看到有大佬提取了固件,动手能力强的可以直接拆开吹下ic写入c6h固件 然而手残党的我\u0026hellip;.算了算了 曲线救国RTSP连入群晖 根据海康CVE-2017-7921漏洞 可以使用弱密码直接通过RTSP查看主码流 例子 # 主码流 ...","datePublished":"2023-07-10T09:58:36+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/","name":"移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station","position":2}]}</script>
+<meta property="og:title" content="移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station">
+<meta property="og:description" content="前言 18年白嫖的了移动的这个摄像头 到手后搜了搜发现就是海康萤石云c6h，出厂预置移动辣鸡定制固件 看到有大佬提取了固件,动手能力强的可以直接拆开吹下ic写入c6h固件 然而手残党的我&amp;hellip;.算了算了 曲线救国RTSP连入群晖 根据海康CVE-2017-7921漏洞 可以使用弱密码直接通过RTSP查看主码流 例子 # 主码流 ...">
+<meta property="og:url" content="https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/yi-dong-he-hui-yan-hk-q1-she-xiang-tou-lian-jie-qun-hui-jian-kong-tao-jian-surveillance-station/">
+<meta name="twitter:title" content="移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station">
+<meta name="twitter:description" content="前言 18年白嫖的了移动的这个摄像头 到手后搜了搜发现就是海康萤石云c6h，出厂预置移动辣鸡定制固件 看到有大佬提取了固件,动手能力强的可以直接拆开吹下ic写入c6h固件 然而手残党的我&amp;hellip;.算了算了 曲线救国RTSP连入群晖 根据海康CVE-2017-7921漏洞 可以使用弱密码直接通过RTSP查看主码流 例子 # 主码流 ...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              移动和慧眼HK-Q1摄像头连接群晖监控套件Surveillance Station
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-07-10
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+                <a href="/tag/hk-q1/" class="post-tag">
+                  # hk-q1
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="heading">前言</h3>
+<p>18年白嫖的了移动的这个摄像头<br />
+到手后搜了搜发现就是海康萤石云c6h，出厂预置移动<del>辣鸡</del>定制固件<br />
+看到有大佬提取了固件,动手能力强的可以直接拆开吹下ic写入c6h固件<br />
+然而手残党的我&hellip;.算了算了</p>
+<h3 id="rtsp">曲线救国RTSP连入群晖</h3>
+<p>根据<strong>海康CVE-2017-7921漏洞</strong><br />
+<strong>可以使用弱密码直接通过RTSP查看主码流</strong></p>
+<pre><code>例子
+# 主码流
+rtsp://admin:12345@IP:554/h264/ch1/main/av_stream
+rtsp://admin:12345@IP:554/MPEG-4/ch1/main/av_stream
+
+# 子码流
+rtsp://admin:12345@IP/mpeg4/ch1/sub/av_stream
+rtsp://admin:12345@IP/h264/ch1/sub/av_stream
+</code></pre>
+<p>实际体验下来，HK-Q1可以直接在套件中<strong>使用IP无需密码</strong>即可通过群晖套件接入<strong>录制</strong>并设置<strong>事件检测</strong><br />
+<img src="https://s1oz.github.io/post-images/1688955327831.png" alt="" /><br />
+这样直接在和慧眼调整好角度,声音后可以当作普通摄像头使用了<br />
+如果需要云台跟喊话功能临时去和慧眼好了</p>
+<h3 id="heading-1">优劣势</h3>
+<h4 id="heading-2">移动固件</h4>
+<h5 id="heading-3">优势</h5>
+<p>1.移动固件带ONVIF，但是不知道密码😃<br />
+2.可能能通过寄回维修重置密码？（未实际体验过,但公众号有此维修服务,人工无法直接重置）</p>
+<h5 id="heading-4">劣势</h5>
+<p>1.只能使用移动和慧眼APP操控摄像头<br />
+2.APP体验很差<br />
+3.因确实管理密码,无任何其他操作可能性</p>
+<h4 id="c6h">c6h固件</h4>
+<h5 id="heading-5">优势</h5>
+<p>1.萤石云APP体验较好</p>
+<h3 id="heading-6"></h3>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/unraid-zhi-tong-uhd630-he-xian-gei-xu-ni-ji-cai-keng/">
+              <h3 class="post-title">
+                UNRAID直通UHD630核显给虚拟机踩坑
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

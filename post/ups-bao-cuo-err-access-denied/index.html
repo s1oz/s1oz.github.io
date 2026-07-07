@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>UPS报错ERR ACCESS-DENIED | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="UPS报错ERR ACCESS-DENIED |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="原来BK650M2-CH是直接插unraid上 用自带的UPS 设置无法正常识别这款,一直显示工作在电池上 行吧,太个例了,同款ups有的正常,有的不正常 转投NUT Settings插件 但是&amp;hellip;会间歇性丢失ups,需要重启才能用 今天发现论坛上也有老哥发现此问题,也给了脚本来定时判断并重置来解决这个奇奇怪怪的bug 有兴趣的自己看这里 **htt&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/ups-bao-cuo-err-access-denied/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UPS报错ERR ACCESS-DENIED","url":"https://s1oz.github.io/post/ups-bao-cuo-err-access-denied/","description":"原来BK650M2-CH是直接插unraid上 用自带的UPS 设置无法正常识别这款,一直显示工作在电池上 行吧,太个例了,同款ups有的正常,有的不正常 转投NUT Settings插件 但是\u0026hellip;会间歇性丢失ups,需要重启才能用 今天发现论坛上也有老哥发现此问题,也给了脚本来定时判断并重置来解决这个奇奇怪怪的bug 有兴趣的自己看这里 **htt\u0026hellip;","datePublished":"2022-08-22T08:44:05+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/ups-bao-cuo-err-access-denied/","name":"UPS报错ERR ACCESS-DENIED","position":2}]}</script>
+<meta property="og:title" content="UPS报错ERR ACCESS-DENIED">
+<meta property="og:description" content="原来BK650M2-CH是直接插unraid上 用自带的UPS 设置无法正常识别这款,一直显示工作在电池上 行吧,太个例了,同款ups有的正常,有的不正常 转投NUT Settings插件 但是&amp;hellip;会间歇性丢失ups,需要重启才能用 今天发现论坛上也有老哥发现此问题,也给了脚本来定时判断并重置来解决这个奇奇怪怪的bug 有兴趣的自己看这里 **htt&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/ups-bao-cuo-err-access-denied/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/ups-bao-cuo-err-access-denied/">
+<meta name="twitter:title" content="UPS报错ERR ACCESS-DENIED">
+<meta name="twitter:description" content="原来BK650M2-CH是直接插unraid上 用自带的UPS 设置无法正常识别这款,一直显示工作在电池上 行吧,太个例了,同款ups有的正常,有的不正常 转投NUT Settings插件 但是&amp;hellip;会间歇性丢失ups,需要重启才能用 今天发现论坛上也有老哥发现此问题,也给了脚本来定时判断并重置来解决这个奇奇怪怪的bug 有兴趣的自己看这里 **htt&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              UPS报错ERR ACCESS-DENIED
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-08-22
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>原来BK650M2-CH是直接插unraid上<br />
+用自带的<strong>UPS 设置</strong>无法正常识别这款,<strong>一直显示工作在电池上</strong><br />
+行吧,太个例了,同款ups有的正常,有的不正常<br />
+转投<strong>NUT Settings插件</strong><br />
+但是&hellip;会<strong>间歇性丢失ups</strong>,需要重启才能用<br />
+今天发现论坛上也有老哥发现此问题,也给了脚本来定时判断并重置来解决这个奇奇怪怪的bug<br />
+有兴趣的自己看这里<br />
+<strong><a href="https://forums.unraid.net/topic/60217-plugin-nut-v2-network-ups-tools/page/21/">https://forums.unraid.net/topic/60217-plugin-nut-v2-network-ups-tools/page/21/</a></strong></p>
+<p>后来把UPS直接插到群晖上<br />
+通过unraid<strong>NUT Settings插件</strong>设置slave模式来连接<br />
+但是发现日志中提示</p>
+<pre><code>upsmon[10936]: Login on UPS [ups@192.168.1.19] failed - got [ERR ACCESS-DENIED]
+</code></pre>
+<p>搜了下可能是默认密码错了<br />
+重新在nut插件中输入密码即可<br />
+关键参数就是这些</p>
+<pre><code>UPS Mode:   slave
+UPS IP Addresss:  填群晖IP
+UPS Name:   ups
+UPS Monitor Username:   monuser
+UPS Monitor Password:   secret
+</code></pre>
+<p>其他的就按自己</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong/">
+              <h3 class="post-title">
+                关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

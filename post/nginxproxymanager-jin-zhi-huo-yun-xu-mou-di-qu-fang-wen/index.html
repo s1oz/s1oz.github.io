@@ -1,0 +1,418 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>NginxProxyManager禁止或允许某地区访问 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="NginxProxyManager禁止或允许某地区访问 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="npm,nginxproxymanager,反向代理" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="前言 家用一般都只在市里通勤🤡所以呀给npm个套子限制地区访问应该更安全 老套路了,一般都是禁止国外IP的访问 今天来设置下只允许本地市的访问,其他地区通通404 限制访问 以unraid应用市场中的NginxProxyManager为例( jlesage版) jc21版本存放目录不同 都是靠ngx_http_geoip2_module模块实现 **jc21版请自行添加&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"NginxProxyManager禁止或允许某地区访问","url":"https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/","description":"前言 家用一般都只在市里通勤🤡所以呀给npm个套子限制地区访问应该更安全 老套路了,一般都是禁止国外IP的访问 今天来设置下只允许本地市的访问,其他地区通通404 限制访问 以unraid应用市场中的NginxProxyManager为例( jlesage版) jc21版本存放目录不同 都是靠ngx_http_geoip2_module模块实现 **jc21版请自行添加\u0026hellip;","datePublished":"2022-09-22T15:07:05+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/","name":"NginxProxyManager禁止或允许某地区访问","position":2}]}</script>
+<meta property="og:title" content="NginxProxyManager禁止或允许某地区访问">
+<meta property="og:description" content="前言 家用一般都只在市里通勤🤡所以呀给npm个套子限制地区访问应该更安全 老套路了,一般都是禁止国外IP的访问 今天来设置下只允许本地市的访问,其他地区通通404 限制访问 以unraid应用市场中的NginxProxyManager为例( jlesage版) jc21版本存放目录不同 都是靠ngx_http_geoip2_module模块实现 **jc21版请自行添加&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/nginxproxymanager-jin-zhi-huo-yun-xu-mou-di-qu-fang-wen/">
+<meta name="twitter:title" content="NginxProxyManager禁止或允许某地区访问">
+<meta name="twitter:description" content="前言 家用一般都只在市里通勤🤡所以呀给npm个套子限制地区访问应该更安全 老套路了,一般都是禁止国外IP的访问 今天来设置下只允许本地市的访问,其他地区通通404 限制访问 以unraid应用市场中的NginxProxyManager为例( jlesage版) jc21版本存放目录不同 都是靠ngx_http_geoip2_module模块实现 **jc21版请自行添加&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              NginxProxyManager禁止或允许某地区访问
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-09-22
+              </span>
+              <span>
+                9 分钟阅读
+              </span>
+              
+                <a href="/tag/npm/" class="post-tag">
+                  # npm
+                </a>
+              
+                <a href="/tag/nginxproxymanager/" class="post-tag">
+                  # nginxproxymanager
+                </a>
+              
+                <a href="/tag/fan-xiang-dai-li/" class="post-tag">
+                  # 反向代理
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="heading">前言</h1>
+<p>家用一般都只在市里通勤🤡所以呀给npm个套子限制地区访问应该更安全<br />
+老套路了,一般都是禁止国外IP的访问<br />
+今天来设置下只允许本地市的访问,其他地区通通404</p>
+<h1 id="heading-1">限制访问</h1>
+<p>以unraid应用市场中的NginxProxyManager为例( jlesage版) jc21版本存放目录不同<br />
+都是靠<strong>ngx_http_geoip2_module模块</strong>实现 <strong>jc21版请自行添加</strong></p>
+<h2 id="geolite2-citymmdb">下载GeoLite2-City.mmdb</h2>
+<p>感谢<strong>P3TERX</strong>大佬的项目,每3天自动发布新版本.先从大佬这扒<strong>GeoLite2-City.mmdb</strong>文件至npm所能访问的持久化目录,npm容器内输入以下命令</p>
+<pre><code>wget https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb -O /data/GeoLite2-City.mmdb
+</code></pre>
+<h2 id="heading-2">获取地区信息</h2>
+<p>通过命令从<strong>GeoLite2-City.mmdb</strong>获取要禁用或者允许访问的地区信息<br />
+&ndash;ip后的地址就是要记录的可用信息</p>
+<pre><code>bash-5.1# cd /data
+bash-5.1# mmdblookup --file GeoLite2-City.mmdb --ip 47.111.166.161
+
+  {
+    &quot;city&quot;: 
+      {
+        &quot;geoname_id&quot;: 
+          1808926 &lt;uint32&gt;
+        &quot;names&quot;: 
+          {
+            &quot;de&quot;: 
+              &quot;Hangzhou&quot; &lt;utf8_string&gt;
+            &quot;en&quot;: 
+              &quot;Hangzhou&quot; &lt;utf8_string&gt;
+            &quot;es&quot;: 
+              &quot;Hangzhou&quot; &lt;utf8_string&gt;
+            &quot;fr&quot;: 
+              &quot;Hangzhou&quot; &lt;utf8_string&gt;
+            &quot;ja&quot;: 
+              &quot;杭州市&quot; &lt;utf8_string&gt;
+            &quot;pt-BR&quot;: 
+              &quot;Hangzhou&quot; &lt;utf8_string&gt;
+            &quot;ru&quot;: 
+              &quot;Ханчжоу&quot; &lt;utf8_string&gt;
+            &quot;zh-CN&quot;: 
+              &quot;杭州&quot; &lt;utf8_string&gt;
+          }
+      }
+    &quot;continent&quot;: 
+      {
+        &quot;code&quot;: 
+          &quot;AS&quot; &lt;utf8_string&gt;
+        &quot;geoname_id&quot;: 
+          6255147 &lt;uint32&gt;
+        &quot;names&quot;: 
+          {
+            &quot;de&quot;: 
+              &quot;Asien&quot; &lt;utf8_string&gt;
+            &quot;en&quot;: 
+              &quot;Asia&quot; &lt;utf8_string&gt;
+            &quot;es&quot;: 
+              &quot;Asia&quot; &lt;utf8_string&gt;
+            &quot;fr&quot;: 
+              &quot;Asie&quot; &lt;utf8_string&gt;
+            &quot;ja&quot;: 
+              &quot;アジア&quot; &lt;utf8_string&gt;
+            &quot;pt-BR&quot;: 
+              &quot;Ásia&quot; &lt;utf8_string&gt;
+            &quot;ru&quot;: 
+              &quot;Азия&quot; &lt;utf8_string&gt;
+            &quot;zh-CN&quot;: 
+              &quot;亚洲&quot; &lt;utf8_string&gt;
+          }
+      }
+    &quot;country&quot;: 
+      {
+        &quot;geoname_id&quot;: 
+          1814991 &lt;uint32&gt;
+        &quot;iso_code&quot;: 
+          &quot;CN&quot; &lt;utf8_string&gt;
+        &quot;names&quot;: 
+          {
+            &quot;de&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;en&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;es&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;fr&quot;: 
+              &quot;Chine&quot; &lt;utf8_string&gt;
+            &quot;ja&quot;: 
+              &quot;中国&quot; &lt;utf8_string&gt;
+            &quot;pt-BR&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;ru&quot;: 
+              &quot;Китай&quot; &lt;utf8_string&gt;
+            &quot;zh-CN&quot;: 
+              &quot;中国&quot; &lt;utf8_string&gt;
+          }
+      }
+    &quot;location&quot;: 
+      {
+        &quot;accuracy_radius&quot;: 
+          1000 &lt;uint16&gt;
+        &quot;latitude&quot;: 
+          30.299400 &lt;double&gt;
+        &quot;longitude&quot;: 
+          120.161200 &lt;double&gt;
+        &quot;time_zone&quot;: 
+          &quot;Asia/Shanghai&quot; &lt;utf8_string&gt;
+      }
+    &quot;registered_country&quot;: 
+      {
+        &quot;geoname_id&quot;: 
+          1814991 &lt;uint32&gt;
+        &quot;iso_code&quot;: 
+          &quot;CN&quot; &lt;utf8_string&gt;
+        &quot;names&quot;: 
+          {
+            &quot;de&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;en&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;es&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;fr&quot;: 
+              &quot;Chine&quot; &lt;utf8_string&gt;
+            &quot;ja&quot;: 
+              &quot;中国&quot; &lt;utf8_string&gt;
+            &quot;pt-BR&quot;: 
+              &quot;China&quot; &lt;utf8_string&gt;
+            &quot;ru&quot;: 
+              &quot;Китай&quot; &lt;utf8_string&gt;
+            &quot;zh-CN&quot;: 
+              &quot;中国&quot; &lt;utf8_string&gt;
+          }
+      }
+    &quot;subdivisions&quot;: 
+      [
+        {
+          &quot;geoname_id&quot;: 
+            1784764 &lt;uint32&gt;
+          &quot;iso_code&quot;: 
+            &quot;ZJ&quot; &lt;utf8_string&gt;
+          &quot;names&quot;: 
+            {
+              &quot;en&quot;: 
+                &quot;Zhejiang&quot; &lt;utf8_string&gt;
+              &quot;fr&quot;: 
+                &quot;Province de Zhejiang&quot; &lt;utf8_string&gt;
+              &quot;zh-CN&quot;: 
+                &quot;浙江省&quot; &lt;utf8_string&gt;
+            }
+        }
+      ]
+  }
+
+</code></pre>
+<p>内容很详细,都以en标签来举例:<br />
+要市就记<strong>Hangzhou</strong>要省就记<strong>zh-CN</strong>要州就记<strong>Asia</strong>要国家就记<strong>China</strong><br />
+图方便,直接用来中文表达</p>
+<h2 id="heading-3">添加判断规则</h2>
+<p>在npm的<strong>ngxin配置目录中</strong>新建<strong>custom</strong>目录<br />
+<strong>jlesage版config目录就是data目录</strong><br />
+此文件夹为自定义nginx配置,<strong>默认全局加载</strong></p>
+<pre><code>/data/nginx/custom/root.conf: 包含在 nginx.conf 的最后
+/data/nginx/custom/http_top.conf: 包含在主 http 块的顶部
+/data/nginx/custom/http.conf: 包含在主 http 块的末尾
+/data/nginx/custom/stream.conf: 包含在主流块的末尾
+/data/nginx/custom/server_proxy.conf: 包含在每个代理服务器块的末尾
+/data/nginx/custom/server_redirect.conf: 包含在每个重定向服务器块的末尾
+/data/nginx/custom/server_stream.conf: 包含在每个流服务器块的末尾
+/data/nginx/custom/server_stream_tcp.conf: 包含在每个 TCP 流服务器块的末尾
+/data/nginx/custom/server_stream_udp.conf: 包含在每个 UDP 流服务器块的末尾
+</code></pre>
+<p>我们只需要在此文件夹新建<strong>http_top.conf</strong>文件,粘贴以下内容保存</p>
+<pre><code># 这使用zh-CN就可以在下方黑名单中直接填写中文地区信息,如果写en到时候就填拼音,以此类推
+    geoip2 /data/GeoLite2-City.mmdb {
+        $geoip2_data_country_code country iso_code;
+        $geoip2_data_country_name country names zh-CN;
+        $geoip2_data_city_name city names zh-CN;
+        $geoip2_data_province_name subdivisions 0 names zh-CN;
+        $geoip2_data_province_isocode subdivisions 0 iso_code;
+        $geoip2_continent_code continent code;
+    }
+
+# 添加放行白名单文件
+include /data/nginx/custom/whitelist.conf;
+</code></pre>
+<p>继续此文件夹新建<strong>whitelist.conf</strong>添加要放行的地址<br />
+我默认放行我的<strong>局域网</strong>IP</p>
+<pre><code>geo $allow_ip {
+    default 0;
+    192.168.1.0/24 1;
+}
+</code></pre>
+<p>继续此文件夹新建<strong>server_proxy.conf</strong>添加要禁止的地址<br />
+我默认放行<strong>杭州</strong>地区的IP<br />
+<strong>根据第2步获取的信息按需选择填入要禁止市还是地区的访问</strong><br />
+<strong>如4G 5G的IP不稳定跨市,就用mmdblookup查下IP填入解除限制</strong><br />
+<strong>对于4G 5G的IP不要填ip138之类查询到的地址,以mmdblookup查询地址为准</strong></p>
+<pre><code># 关于$geoip2_xxx的定义参考http_top.conf中来写
+# 阻止除IP归属地为中国、澳门、香港的IP
+# if ($geoip2_country_code !~ (CN|MO|HK)) { set $geoblock 1; }
+
+# 阻止除IP归属地为杭州跟宁波的IP
+if ($geoip2_data_city_name !~ (杭州|宁波)) { set $geoblock 1; }
+
+# 对白名单内的ip放行
+if ($allow_ip = 1){ set $geoblock 0; }
+# 限制动作并返回错误代码
+if ($geoblock = 1){ return 770; }
+</code></pre>
+<h2 id="nginx">重启下nginx</h2>
+<pre><code>nginx -t &amp;&amp; nginx -s reload
+</code></pre>
+<p>打完收工</p>
+<h1 id="ps">PS</h1>
+<p>如果不想全局限制访问 就不要在<strong>custom</strong>文件夹新建<strong>server_proxy.conf</strong>文件<br />
+在指定代理主机的<strong>advanced</strong>的<strong>Custom Nginx Configuration</strong>内容框中贴入以下内容</p>
+<pre><code>include /data/nginx/blocker.conf;
+</code></pre>
+<p>为指定禁用访问的主机添加黑名单<br />
+黑名单内容与<strong>server_proxy.conf</strong>文件相同<br />
+in</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/unraid-shi-yong-nginxproxymanager-yu-dao-de-xiao-wen-ti/">
+              <h3 class="post-title">
+                UNRAID使用NginxProxyManager外网访问遇到的小问题
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>valine评论系统开启及删除评论 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="valine评论系统开启及删除评论 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="以Gridea为例 好多主题已经默认带valine评论系统了 如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜 不止Gridea其他如hexo也是通用的 所以我们只需要根据需求填入对于的APPID APPKey即可 获取ID Key并填入开启评论 我们先在这注册一个账号 自己走流程,顺&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"valine评论系统开启及删除评论","url":"https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/","description":"以Gridea为例 好多主题已经默认带valine评论系统了 如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜 不止Gridea其他如hexo也是通用的 所以我们只需要根据需求填入对于的APPID APPKey即可 获取ID Key并填入开启评论 我们先在这注册一个账号 自己走流程,顺\u0026hellip;","image":"/post-images/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun.png","datePublished":"2021-03-20T13:50:06+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/","name":"valine评论系统开启及删除评论","position":2}]}</script>
+<meta property="og:title" content="valine评论系统开启及删除评论">
+<meta property="og:description" content="以Gridea为例 好多主题已经默认带valine评论系统了 如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜 不止Gridea其他如hexo也是通用的 所以我们只需要根据需求填入对于的APPID APPKey即可 获取ID Key并填入开启评论 我们先在这注册一个账号 自己走流程,顺&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/post-images/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun/">
+<meta name="twitter:title" content="valine评论系统开启及删除评论">
+<meta name="twitter:description" content="以Gridea为例 好多主题已经默认带valine评论系统了 如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜 不止Gridea其他如hexo也是通用的 所以我们只需要根据需求填入对于的APPID APPKey即可 获取ID Key并填入开启评论 我们先在这注册一个账号 自己走流程,顺&amp;hellip;">
+<meta name="twitter:image" content="/post-images/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              valine评论系统开启及删除评论
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-20
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="/post-images/valine-ping-lun-xi-tong-kai-qi-ji-shan-chu-ping-lun.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="gridea">以Gridea为例</h3>
+<p>好多主题已经默认带valine评论系统了<br />
+如果你的没这玩意儿,去官网翻翻其他主题,肯定会有😜<br />
+不止<code>Gridea</code>其他如<code>hexo</code>也是通用的<br />
+所以我们只需要根据需求填入对于的<code>APPID</code> <code>APPKey</code>即可</p>
+<h3 id="id-key">获取ID Key并填入开启评论</h3>
+<p>我们先在这注册一个<a href="https://www.leancloud.cn/"><strong>账号</strong></a><br />
+自己走流程,顺带提一句,需要实名验证😓<br />
+好了之后我们需要创建一个开发版的应用<br />
+<img src="https://s1oz.github.io/post-images/1616220016355.png" alt="" /><br />
+名称随意.创建后点击进入这个应用<br />
+点击左下方<code>设置-应用Keys</code>即可看到我们所需要的<code>APPID</code> <code>APPKey</code><br />
+<img src="https://s1oz.github.io/post-images/1616220167950.png" alt="" /><br />
+然后回到<code>Gridea</code><br />
+在<code>主题</code> <code>自定义配置</code> <code>valine评论系统</code>中开启,并填入对应的<code>APPID</code> <code>APPKey</code><img src="https://s1oz.github.io/post-images/1616220259100.png" alt="" /><br />
+保存同步后,你已经可以在你的备忘录发布评论了<br />
+<strong>抢个沙发,板凳瓜子已经备好~👻</strong></p>
+<h3 id="heading">删除已经发布的评论</h3>
+<p>如果有<strong>XX</strong>留言怎么办呢<br />
+当然是干掉它咯😏<br />
+还是原来的配方,<code>储存</code>-<code>结构化数据</code>中的<code>Comment</code>框里的就是评论<br />
+![](<a href="https://s1oz.g">https://s1oz.g</a></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth/">
+              <h3 class="post-title">
+                49年入国军 尝试白嫖ETH
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

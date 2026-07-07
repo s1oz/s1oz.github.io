@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>PXE+ABB 备份恢复好帮手 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="PXE+ABB 备份恢复好帮手 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="dsm,nas" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="PXE跟ABB是啥 PXE: 预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动可以不依赖本地数据存储设备（如硬盘）或本地已安装的操作系统。 ABB: (Active Backup for Busi&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"PXE+ABB 备份恢复好帮手","url":"https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/","description":"PXE跟ABB是啥 PXE: 预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动可以不依赖本地数据存储设备（如硬盘）或本地已安装的操作系统。 ABB: (Active Backup for Busi\u0026hellip;","image":"/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg","datePublished":"2019-08-15T19:08:52+08:00","dateModified":"2026-07-07T09:13:26+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/","name":"PXE+ABB 备份恢复好帮手","position":2}]}</script>
+<meta property="og:title" content="PXE+ABB 备份恢复好帮手">
+<meta property="og:description" content="PXE跟ABB是啥 PXE: 预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动可以不依赖本地数据存储设备（如硬盘）或本地已安装的操作系统。 ABB: (Active Backup for Busi&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/">
+<meta name="twitter:title" content="PXE+ABB 备份恢复好帮手">
+<meta name="twitter:description" content="PXE跟ABB是啥 PXE: 预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动可以不依赖本地数据存储设备（如硬盘）或本地已安装的操作系统。 ABB: (Active Backup for Busi&amp;hellip;">
+<meta name="twitter:image" content="/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              PXE+ABB 备份恢复好帮手
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-08-15
+              </span>
+              <span>
+                3 分钟阅读
+              </span>
+              
+                <a href="/tag/dsm/" class="post-tag">
+                  # dsm
+                </a>
+              
+                <a href="/tag/nas/" class="post-tag">
+                  # nas
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="pxeabb"><em><strong>PXE跟ABB是啥</strong></em></h3>
+<h4 id="pxe">PXE:</h4>
+<p>预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动可以不依赖本地数据存储设备（如硬盘）或本地已安装的操作系统。</p>
+<h4 id="abb">ABB:</h4>
+<p>(Active Backup for Business)使您可从Synology NAS 的一个中央控制台管理所有VMware、Hyper-V、Windows 设备和文件服务器备份。快速可靠的恢复选项借助用于 Windows 设备、虚拟机和单个文件的即时还原选项，帮助您在面临灾难时仍可运行基本服务。</p>
+<p><strong><code>所以通过这两个搭配可以利用群辉来实现无盘启动安装系统跟恢复备份镜像</code></strong></p>
+<h3 id="heading"><em><strong>需要做啥准备工作</strong></em></h3>
+<h4 id="heading-1">群辉安装所需套件</h4>
+<p>套件中心安装<code>Active Backup for Business</code> <code>Web Station</code> <code>PHP 7.0</code>这三个套件</p>
+<h4 id="heading-2">下载所需文件</h4>
+<p>压缩包中含有支持uefi启动的pxe跟集成abb的pe的压缩包 <em><strong><a href="https://">这</a></strong></em></p>
+<h4 id="heading-3">配置文件路径</h4>
+<p>在群辉-控制面板-共享文件夹-新增<code>uefi</code>文件夹<br />
+<img src="https://s1oz.github.io/post-images/1616154472486.jpg" alt="" /><br />
+将压缩包解压后放置在此目录中<br />
+<img src="https://s1oz.github.io/post-images/1616154468238.jpg" alt="" /><br />
+并将文件夹中的<code>boot.ipxe.cfg</code>中的<br />
+<img src="https://s1oz.github.io/post-images/1616155457362.png" alt="" /></p>
+<pre><code>set nas_ip 192.168.2.101
+</code></pre>
+<p>ip改为自己群辉的ip</p>
+<h4 id="heading-4">建立虚拟主机</h4>
+<p>在<code>Web Stasion</code>中新增虚拟机 如图配置<br />
+<img src="https://s1oz.github.io/post-images/1616154716349.jpg" alt="" /><br />
+端口默认<code>6666</code><br />
+文件根目录下为刚刚新建的<code>uefi</code>文件夹<br />
+下方选择<code>Nginx</code>跟<code>PHP7.0</code></p>
+<h4 id="tftp">启用群辉TFTP服务</h4>
+<p>群晖-控制面板-TFTP<br />
+<img src="https://s1oz.github.io/post-images/1616154850844.jpg" alt="" /><br />
+勾选<em>启用TFTP服务</em><br />
+TFTP跟文件夹选择刚刚新增的<code>uefi</code>文件夹</p>
+<h4 id="tftp-1">路由器TFTP指向群辉</h4>
+<p>以OP为例,在dnsmasq文件中添加以下代码<br />
+<img src="https://s1oz.github.io/post-images/1616155500607.jpg" alt="" /></p>
+<pre><code>enable-tftp
+dhcp-boot=ipxe.efi,,192.168.1.2.101
+</code></pre>
+<p><code>ipxe.efi</code>为uefi启动文件<br />
+<code>192.168.1.2.101</code>为群辉ip<br />
+<strong>插播一点,为什么不把所有文件直接放在OP上呢?</strong><br />
+<strong>这不是手残党路由定时要刷机嘛,相对而言,NAS炸鸡的机会比较少了</strong><br />
+<strong>所有&hellip;群辉比较稳..嗯&hellip;相对比较稳</strong>😱</p>
+<h4 id="bios">设置bios</h4>
+<p>电脑连接网线<br />
+bios中开启pxe启动相关选项<br />
+<img src="https://s1oz.github.io/post-images/1616155154301.png" alt="" /><br />
+并调整启动顺序<br />
+<strong>如卡pe无法进入,请检查bios是否开启安全启动,如有关闭即可正常启动</strong><br />
+到此配置结束</p>
+<h3 id="heading-5"><em><strong>启动后可以干嘛</strong></em></h3>
+<h4 id="pxepe">连接PXE服务器并启动到PE</h4>
+<p>上电!开机!<br />
+<img src="https://s1oz.github.io/post-images/1616156310970.jpg" alt="" /></p>
+<h4 id="abb-1">利用ABB恢复之前备份的镜像</h4>
+<p>进入到PE后点击<code>是,启用共享并连接到设备</code><br />
+<img src="https://s1oz.github.io/post-images/1616156365757.jpg" alt="" /><br />
+然后该怎么做不用我说了吧🤣<br />
+桌面的<code>Synology Recovery Tool</code>文件夹的<code>recovery.exe</code><br />
+就是群辉的恢复工具,双击打开<br />
+<img src="https://s1oz.github.io/post-images/1616156533245.jpg" alt="" /><br />
+登陆后选择备份恢复即可</p>
+<h4 id="winntstup">利用WinNTStup安装系统</h4>
+<p>通过smb服务连接到群辉<br />
+<img src="https://s1oz.github.io/post-images/1616156663165.jpg" alt="" /><br />
+加载群辉上的系统安装镜像<br />
+<img src="https://s1oz.github.io/post-images/1616156673333.jpg" alt="" />萝卜青菜各有索爱嘛<br />
+**同理,如果</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/chang-hong-dian-shi-ji-xin-zls70hi5-ping-bi-guang-gao-qu-sheng-ji-jing-jian-gu-jian/">
+              <h3 class="post-title">
+                长虹电视机芯ZLS70Hi5屏蔽广告去升级精简固件
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

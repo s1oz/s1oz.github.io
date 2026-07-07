@@ -1,0 +1,238 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="今天无聊升级了下6.11.0rc3🤡 发现NerdPack / DevPack 无法打开正常刷新了,日志中也有报错🤣 去翻了下论坛,原来是它不再与 6.11 兼容,并且其中的许多软件包不再兼容或更新 插播一条 现已有新插件[NERDTOOLS](https://raw.githubusercontent.com/UnRAIDES/unRAID-NerdTools/main/p&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用","url":"https://s1oz.github.io/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong/","description":"今天无聊升级了下6.11.0rc3🤡 发现NerdPack / DevPack 无法打开正常刷新了,日志中也有报错🤣 去翻了下论坛,原来是它不再与 6.11 兼容,并且其中的许多软件包不再兼容或更新 插播一条 现已有新插件[NERDTOOLS](https://raw.githubusercontent.com/UnRAIDES/unRAID-NerdTools/main/p\u0026hellip;","datePublished":"2022-08-20T14:15:57+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong/","name":"关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用","position":2}]}</script>
+<meta property="og:title" content="关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用">
+<meta property="og:description" content="今天无聊升级了下6.11.0rc3🤡 发现NerdPack / DevPack 无法打开正常刷新了,日志中也有报错🤣 去翻了下论坛,原来是它不再与 6.11 兼容,并且其中的许多软件包不再兼容或更新 插播一条 现已有新插件[NERDTOOLS](https://raw.githubusercontent.com/UnRAIDES/unRAID-NerdTools/main/p&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong/">
+<meta name="twitter:title" content="关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用">
+<meta name="twitter:description" content="今天无聊升级了下6.11.0rc3🤡 发现NerdPack / DevPack 无法打开正常刷新了,日志中也有报错🤣 去翻了下论坛,原来是它不再与 6.11 兼容,并且其中的许多软件包不再兼容或更新 插播一条 现已有新插件[NERDTOOLS](https://raw.githubusercontent.com/UnRAIDES/unRAID-NerdTools/main/p&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-08-20
+              </span>
+              <span>
+                3 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>今天无聊升级了下6.11.0rc3🤡<br />
+发现NerdPack / DevPack 无法打开正常刷新了,日志中也有报错🤣<br />
+<del>去翻了下论坛,原来是它不再与 6.11 兼容,并且其中的许多软件包不再兼容或更新</del></p>
+<h2 id="heading">插播一条</h2>
+<p>现已有新插件<a href="https://raw.githubusercontent.com/UnRAIDES/unRAID-NerdTools/main/plugin/NerdTools.plg">NERDTOOLS</a>替代 支持6.11版本起<br />
+还是将软件包安装在路径/boot/extra中.有些不在插件中显示的,可以在<a href="https://github.com/ich777/slackware/tree/master/slackware64-15.0/slackware64">这手动下载</a><br />
+<strong>需要注意的是</strong>:如果手动下载指定版本安装包放置于/boot/extra文件夹中<br />
+安装优先级为 插件勾选最新的安装包&gt;extra文件夹低版本安装包<br />
+<strong>所以如果本地包新,就不要重复在插件里勾选</strong></p>
+<p>除此还可以了解下<a href="https://github.com/ich777/un-get">un-get</a> 睾丸可试</p>
+<h2 id="heading-1">强行使用方法如下</h2>
+<pre><code>cat /etc/slackware-version
+</code></pre>
+<p>可通过此命令查询unraid的slackware版本来添加软件包</p>
+<pre><code>https://slackware.pkgs.org/15.0/slackware-x86_64/ 
+https://slackonly.com/pub/packages/15.0-x86_64/
+任选其一
+https://github.com/dmacias72/unRAID-NerdPack/tree/master/packages/6.10
+https://github.com/dmacias72/unRAID-DevPack/tree/master/packages/6.10
+如果报错,就用原来插件里的包
+</code></pre>
+<p>以上网址列出了Unraid可能可用的软件包,反正<strong>报错缺啥补啥</strong><br />
+搜索下载需要的<strong>txz文件</strong><br />
+放入u盘<strong>extra文件夹(如没有就手动建立)</strong><br />
+<strong>等同系统中boot/extra目录</strong><br />
+系统将会在启动时安装此文件夹中的软件包</p>
+<h2 id="heading-2">举个栗子</h2>
+<pre><code>root@Tower:~# wget -P /boot/extra/ https://slackware.uk/slackware/slackware64-15.0/slackware64/ap/vim-8.2.4256-x86_64-1.txz
+--2022-08-20 15:37:20--  https://slackware.uk/slackware/slackware64-15.0/slackware64/ap/vim-8.2.4256-x86_64-1.txz
+Resolving slackware.uk (slackware.uk)... 216.119.155.61
+Connecting to slackware.uk (slackware.uk)|216.119.155.61|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 7981808 (7.6M) [application/octet-stream]
+Saving to: ‘vim-8.2.4256-x86_64-1.txz’
+
+vim-8.2.4256-x86_64-1.txz          100%[====================================================================&gt;]   7.61M  4.13MB/s    in 1.8s    
+
+2022-08-20 15:37:23 (4.13 MB/s) - ‘vim-8.2.4256-x86_64-1.txz’ saved [7981808/7981808]
+</code></pre>
+<p>这样重启后会就自动安装vim<br />
+不重启的话可以使用以下命令验证是否能正常安装运行</p>
+<pre><code>installpkg vim-8.2.4256-x86_64-1.txz
+</code></pre>
+<p>🤣<strong>哟呵 失败了 报错 可能是软件包可能缺依赖 有墙裂需求的就自己想办法找兼容的补吧</strong></p>
+<p>等下一次折腾</p>
+<p>大部分人安装NerdPack是需要perl来查看温度<br />
+然而只需要第1次检测后保存即可保证以后工作<br />
+所以升级后装不装无所谓了<br />
+并且社区开发者表示 <strong>Perl 将包含在 RC 系列的下一个版本中</strong><br />
+<strong>6.11.0稳定版已正式包含Perl</strong><br />
+感觉开发者只�</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/qbittorrent-zi-dai-rss-ding-yue-gui-ze/">
+              <h3 class="post-title">
+                qBittorrent自带RSS订阅规则
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

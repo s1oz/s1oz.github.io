@@ -1,0 +1,279 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>将UNRAID设置为HyperBackup远程rsync备份目的地 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="将UNRAID设置为HyperBackup远程rsync备份目的地 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="添加rsync服务脚本 通过应用商店中的Userscripts插件来新建一个开机运行脚本 粘贴以下内容在脚本中 #!/bin/bash # 创建Rsync服务的配置文件 echo &amp;quot; uid = nobody gid = users use chroot = yes max connections = 8 timeout = 600 port ...">
+<link rel="canonical" href="https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"将UNRAID设置为HyperBackup远程rsync备份目的地","url":"https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/","description":"添加rsync服务脚本 通过应用商店中的Userscripts插件来新建一个开机运行脚本 粘贴以下内容在脚本中 #!/bin/bash # 创建Rsync服务的配置文件 echo \u0026quot; uid = nobody gid = users use chroot = yes max connections = 8 timeout = 600 port ...","datePublished":"2024-05-22T08:50:02+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/","name":"将UNRAID设置为HyperBackup远程rsync备份目的地","position":2}]}</script>
+<meta property="og:title" content="将UNRAID设置为HyperBackup远程rsync备份目的地">
+<meta property="og:description" content="添加rsync服务脚本 通过应用商店中的Userscripts插件来新建一个开机运行脚本 粘贴以下内容在脚本中 #!/bin/bash # 创建Rsync服务的配置文件 echo &amp;quot; uid = nobody gid = users use chroot = yes max connections = 8 timeout = 600 port ...">
+<meta property="og:url" content="https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/">
+<meta name="twitter:title" content="将UNRAID设置为HyperBackup远程rsync备份目的地">
+<meta name="twitter:description" content="添加rsync服务脚本 通过应用商店中的Userscripts插件来新建一个开机运行脚本 粘贴以下内容在脚本中 #!/bin/bash # 创建Rsync服务的配置文件 echo &amp;quot; uid = nobody gid = users use chroot = yes max connections = 8 timeout = 600 port ...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              将UNRAID设置为HyperBackup远程rsync备份目的地
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-05-22
+              </span>
+              <span>
+                4 分钟阅读
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="rsync">添加rsync服务脚本</h2>
+<p>通过应用商店中的<code>Userscripts</code>插件来新建一个开机运行脚本</p>
+<h3 id="heading">粘贴以下内容在脚本中</h3>
+<pre><code>#!/bin/bash
+
+# 创建Rsync服务的配置文件
+echo &quot;
+uid = nobody
+gid = users
+use chroot = yes
+max connections = 8
+timeout = 600
+port = 873
+pid file = /var/run/rsyncd.pid
+log file = /var/log/rsync.log
+lock file = /var/run/rsync.lock
+
+[backups_synology]
+    path = /mnt/disk3/backup/HyperBackup
+    comment = HyperBackup
+    read only = no
+    list = yes
+    auth users = user
+    secrets file = /etc/rsyncd.secrets
+    hosts allow = 192.168.1.0/24
+    strict modes = yes
+    ignore nonreadable = yes
+    transfer logging = yes
+    fake super = yes
+&quot; &gt; /etc/rsyncd.conf
+
+# 设置配置文件的权限
+chmod 600 /etc/rsyncd.conf
+
+# 创建密钥文件
+echo &quot;user:password&quot; &gt; /etc/rsyncd.secrets
+chmod 600 /etc/rsyncd.secrets
+
+# 检验rsync进程是否存在，并重新启动
+RSYNC_PID=$(pidof rsync)
+if [ -n &quot;$RSYNC_PID&quot; ]; then
+    echo &quot;Rsync服务已经运行，PID: $RSYNC_PID，准备重启服务应用新配置。&quot;
+    kill $RSYNC_PID
+fi
+
+# 启动rsync服务
+rsync --daemon
+
+# 检查rsync服务是否已成功启动
+if ps aux | grep 'rsync --daemon' | grep -v grep; then
+    echo &quot;Rsync服务已成功启动。&quot;
+else
+    echo &quot;Rsync服务启动失败，请检查配置文件和日志。&quot;
+fi
+</code></pre>
+<h3 id="rsync-1">rsync配置常用参数注释</h3>
+<p>如想修改看这</p>
+<pre><code>uid = nobody                  # 运行rsync进程的用户
+gid = users                   # 运行rsync进程的组
+max connections = 8          # 最多允许8个并发连接
+path = /mnt/disk3/backup/HyperBackup          # 指定模块本地实际路径
+comment = HyperBackup                         # 模块名称
+read only = no                # yes:只读/no:允许读写
+auth users = user                              # 允许认证的用户
+hosts allow = 192.168.1.0/24                  # 允许的IP范围
+echo &quot;user:password&quot; &gt; /etc/rsyncd.secrets    # 设置上方认证的用户的账户密码
+</code></pre>
+<h2 id="heading-1">走个流程</h2>
+<h3 id="rsync-2">启动rsync</h3>
+<p><code>UNRAID</code>-<code>设置</code>-<code>User Scripts</code>-找到<code>rsync</code>脚本-点击<code>Run Script</code><br />
+不放心就检查下看看是否已经正常启动</p>
+<pre><code>ps aux|grep rsync
+</code></pre>
+<pre><code>root@Tower:/etc# ps aux|grep rsync
+root     11589  0.0  0.0  10608  2676 ?        Ss   10:10   0:00 rsync --daemon
+root     14585  0.0  0.0   4120  2176 pts/0    S+   10:11   0:00 grep rsync
+</code></pre>
+<p>如果没运行就手动启动下,一般不会这样吧?</p>
+<pre><code>rsync --daemon
+</code></pre>
+<h3 id="hyperbackup">群晖HyperBackup设置备份目的地</h3>
+<p>打开HyperBackup,在文件服务器中选择rsync<br />
+<img src="https://s1oz.github.io/post-images/1716344567374.png" alt="" /><br />
+按需选择备份版本<br />
+<img src="https://s1oz.github.io/post-images/1716344577085.png" alt="" /><br />
+选兼容服务器,填入UNRAID的IP.脚本中用于验证的账户密码<br />
+<img src="https://s1oz.github.io/post-images/1716344582767.png" alt="" /><br />
+<strong>可能会遇见的报错请确认脚本中本地实际路径文件夹是否存在,如无新建文件夹后再重新添加</strong><br />
+如我的实际路径是<code>/mnt/disk3/backup/HyperBackup</code>就需要保证<code>HyperBackup</code>文件夹已经创建<br />
+<img src="https://s1oz.github.io/post-images/1716344590329.png" alt="" /><br />
+没问题后就勾选需要备份的数据源文件夹以及对应设置<br />
+![](<a href="https://s1oz.github.io/post-images/1716344952870.p">https://s1oz.github.io/post-images/1716344952870.p</a></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/zai-gridaea-zhong-tian-jia-mermaid-zhi-chi-lai-xian-shi-tu-biao/">
+              <h3 class="post-title">
+                在Gridea中添加Mermaid支持来显示图表
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

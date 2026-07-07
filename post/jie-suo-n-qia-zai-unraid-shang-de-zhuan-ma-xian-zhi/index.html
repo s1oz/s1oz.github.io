@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>解锁N卡在Unraid上的转码限制 | </title>
+<link rel="shortcut icon" href="https://s1oz.github.io/favicon.ico?v=1783388920">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://s1oz.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="解锁N卡在Unraid上的转码限制 |  - Atom Feed" href="https://s1oz.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="举个栗子 如EMBY调用N卡来进行转码播放,有效终端为3个 也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码 还有一个可怜的人就只能软件转码了 这样会造成cpu资源极度的浪费&amp;hellip; 但是&amp;hellip;一般哪里来那么多客户端转码播放🤣 但是,有备无患嘛对吧 如何解锁 此处已经有因为国外的大佬制作好了[解锁补丁](https://github.com/Spacein&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"解锁N卡在Unraid上的转码限制","url":"https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/","description":"举个栗子 如EMBY调用N卡来进行转码播放,有效终端为3个 也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码 还有一个可怜的人就只能软件转码了 这样会造成cpu资源极度的浪费\u0026hellip; 但是\u0026hellip;一般哪里来那么多客户端转码播放🤣 但是,有备无患嘛对吧 如何解锁 此处已经有因为国外的大佬制作好了[解锁补丁](https://github.com/Spacein\u0026hellip;","image":"/post-images/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi.png","datePublished":"2021-03-25T15:39:25+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/","name":"解锁N卡在Unraid上的转码限制","position":2}]}</script>
+<meta property="og:title" content="解锁N卡在Unraid上的转码限制">
+<meta property="og:description" content="举个栗子 如EMBY调用N卡来进行转码播放,有效终端为3个 也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码 还有一个可怜的人就只能软件转码了 这样会造成cpu资源极度的浪费&amp;hellip; 但是&amp;hellip;一般哪里来那么多客户端转码播放🤣 但是,有备无患嘛对吧 如何解锁 此处已经有因为国外的大佬制作好了[解锁补丁](https://github.com/Spacein&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/post-images/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi/">
+<meta name="twitter:title" content="解锁N卡在Unraid上的转码限制">
+<meta name="twitter:description" content="举个栗子 如EMBY调用N卡来进行转码播放,有效终端为3个 也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码 还有一个可怜的人就只能软件转码了 这样会造成cpu资源极度的浪费&amp;hellip; 但是&amp;hellip;一般哪里来那么多客户端转码播放🤣 但是,有备无患嘛对吧 如何解锁 此处已经有因为国外的大佬制作好了[解锁补丁](https://github.com/Spacein&amp;hellip;">
+<meta name="twitter:image" content="/post-images/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi.png">
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://s1oz.github.io">
+  <img class="avatar" src="https://s1oz.github.io/images/avatar.png?v=1783388920" alt="">
+  </a>
+  <h1 class="site-title">
+    
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/post" class="menu">
+          博客
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              解锁N卡在Unraid上的转码限制
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-25
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="/post-images/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="heading">举个栗子</h3>
+<p>如EMBY调用N卡来进行转码播放,有效终端为3个<br />
+也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码<br />
+还有一个可怜的人就只能软件转码了<br />
+这样会造成cpu资源极度的浪费&hellip;<br />
+但是&hellip;一般哪里来那么多客户端转码播放🤣<br />
+但是,有备无患嘛对吧</p>
+<h3 id="heading-1">如何解锁</h3>
+<p>此处已经有因为国外的大佬制作好了<a href="https://github.com/SpaceinvaderOne/unlocknvidia_unraid">解锁补丁</a><br />
+我们只需要用起来即可<br />
+<strong>通过<code>User Scripts</code>新建脚本</strong><br />
+<img src="https://s1oz.github.io/post-images/1616658378917.png" alt="" /><br />
+<strong>粘贴如下代码</strong><br />
+<img src="https://s1oz.github.io/post-images/1616658386051.png" alt="" /></p>
+<pre><code>#!/bin/bash
+wget https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh
+chmod +x ./patch.sh
+./patch.sh
+</code></pre>
+<p><strong>保存</strong><br />
+<img src="https://s1oz.github.io/post-images/1616658396344.png" alt="" /><br />
+<strong>然后设置启动方式</strong><br />
+<strong>手动运行下脚本</strong></p>
+<h3 id="heading-2">测试下效果</h3>
+<p><img src="https://s1oz.github.io/post-images/1616658697024.jpg" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616658704315.jpg" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616717032520.jpg" alt="" /><br />
+<img src="https://s1oz.github.io/post-images/1616658713806.jpg" alt="" /><br />
+![](<a href="https://s1oz.github.io">https://s1oz.github.io</a></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/unraid-shang-rclone-cha-jian-de-shi-yong/">
+              <h3 class="post-title">
+                Unraid上rclone插件的使用
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  
+  <a class="rss" href="https://s1oz.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

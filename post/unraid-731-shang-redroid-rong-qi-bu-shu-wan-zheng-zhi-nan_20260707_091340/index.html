@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+<meta name="viewport"
+    content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+<meta name="renderer" content="webkit">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
+
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#292a2d" media="(prefers-color-scheme: dark)">
+
+
+<link rel="shortcut icon" href="/media/images/favicon.ico">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<style>:root{--accent-color:#28df99;}</style>
+
+
+<script>
+    // 自动为所有 target="_blank" 的链接添加 rel="noopener noreferrer"
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach(function (link) {
+            var rel = link.getAttribute('rel') || '';
+            if (rel.indexOf('noopener') === -1) {
+                rel += ' noopener';
+            }
+            if (rel.indexOf('noreferrer') === -1) {
+                rel += ' noreferrer';
+            }
+            link.setAttribute('rel', rel.trim());
+        });
+    });
+</script>
+
+<script>
+    // declaraction of document.ready() function.
+    (function () {
+        var ie = !!(window.attachEvent && !window.opera);
+        var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+        var fn = [];
+        var run = function () {
+            for (var i = 0; i < fn.length; i++) fn[i]();
+        };
+        var d = document;
+        d.ready = function (f) {
+            if (!ie && !wk && d.addEventListener)
+                return d.addEventListener('DOMContentLoaded', f, false);
+            if (fn.push(f) > 1) return;
+            if (ie)
+                (function () {
+                    try {
+                        d.documentElement.doScroll('left');
+                        run();
+                    } catch (err) {
+                        setTimeout(arguments.callee, 0);
+                    }
+                })();
+            else if (wk)
+                var t = setInterval(function () {
+                    if (/^(loaded|complete)$/.test(d.readyState))
+                        clearInterval(t), run();
+                }, 0);
+        };
+    })();
+
+
+    document.ready(
+        function () {
+            var _Blog = window._Blog || {};
+
+            const getSystemTheme = () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const configDefault = 'dark';
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+            const initialTheme = currentTheme || configDefault || getSystemTheme();
+            const isDark = initialTheme === 'dark';
+
+            const updateButtons = (dark) => {
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (dark) {
+                    if (sunBtn) sunBtn.style.display = 'none';
+                    if (moonBtn) moonBtn.style.display = 'inline-block';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'none';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'inline-block';
+                } else {
+                    if (sunBtn) sunBtn.style.display = 'inline-block';
+                    if (moonBtn) moonBtn.style.display = 'none';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'inline-block';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'none';
+                }
+            };
+
+            const updateThemeColor = (dark) => {
+                const themeColor = dark ? '#292a2d' : '#ffffff';
+                const metaTags = document.querySelectorAll('meta[name="theme-color"]');
+                if (metaTags.length > 0) {
+                    // 保留第一个，移除其他的，避免重复
+                    for (let i = 1; i < metaTags.length; i++) {
+                        metaTags[i].remove();
+                    }
+                    metaTags[0].setAttribute('content', themeColor);
+                    metaTags[0].removeAttribute('media');
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.name = 'theme-color';
+                    meta.content = themeColor;
+                    document.head.appendChild(meta);
+                }
+            };
+
+            const applyTheme = (dark) => {
+                const body = document.getElementsByTagName('body')[0];
+                if (dark) {
+                    body.classList.add('dark-theme');
+                } else {
+                    body.classList.remove('dark-theme');
+                }
+                updateButtons(dark);
+                updateThemeColor(dark);
+            };
+
+            // Initial application
+            applyTheme(isDark);
+            if (!currentTheme) {
+                window.localStorage && window.localStorage.setItem('theme', initialTheme);
+            }
+
+            _Blog.toggleTheme = function () {
+                const toggleFunc = (e) => {
+                    // Prevent bubbling if needed, though buttons are distinct now
+                    if (e) e.stopPropagation();
+
+                    const body = document.getElementsByTagName('body')[0];
+                    const isCurrentlyDark = body.classList.contains('dark-theme');
+
+                    if (isCurrentlyDark) {
+                        body.classList.remove('dark-theme');
+                        updateButtons(false);
+                        window.localStorage && window.localStorage.setItem('theme', 'light');
+                    } else {
+                        body.classList.add('dark-theme');
+                        updateButtons(true);
+                        window.localStorage && window.localStorage.setItem('theme', 'dark');
+                    }
+                };
+
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (sunBtn) sunBtn.addEventListener('click', toggleFunc);
+                if (moonBtn) moonBtn.addEventListener('click', toggleFunc);
+                if (mobileSunBtn) mobileSunBtn.addEventListener('click', toggleFunc);
+                if (mobileMoonBtn) mobileMoonBtn.addEventListener('click', toggleFunc);
+            };
+            _Blog.toggleTheme();
+
+            if (window.matchMedia && !configDefault) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    applyTheme(e.matches);
+                    window.localStorage && window.localStorage.setItem('theme', newTheme);
+                });
+            }
+        }
+    );
+</script>
+
+<script>
+    // Reading Progress Component
+    document.addEventListener('DOMContentLoaded', () => {
+        const progressValue = document.querySelector('.reading-value');
+        const progressCircle = document.querySelector('.progress-ring__circle');
+        const container = document.querySelector('.reading-progress-container');
+
+        // Exit if elements don't exist (e.g., not on a post page)
+        if (!progressValue || !progressCircle || !container) {
+            return;
+        }
+
+        // SVG Circle setup
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const safePercent = Math.min(100, Math.max(0, percent));
+            progressValue.textContent = `${Math.round(safePercent)}%`;
+            const offset = circumference - (safePercent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        function onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (scrollHeight <= 0) {
+                setProgress(0);
+                return;
+            }
+
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            setProgress(scrollPercent);
+
+            // Show/Hide logic: Show if scrolled more than 100px
+            if (scrollTop > 100) {
+                container.classList.add('show');
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        // Initialize
+        onScroll();
+
+        // Listen for scroll events
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Recalculate on resize
+        window.addEventListener('resize', onScroll);
+    });
+</script>
+
+
+
+
+
+
+
+    <meta name="generator" content="Gridea Pro 1.2.2">
+    <title>Unraid 7.3.1 上 Redroid 容器部署完整指南 | 杂乱的备忘录</title>
+
+    
+<meta name="description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
+<link rel="canonical" href="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/","name":"Unraid 7.3.1 上 Redroid 容器部署完整指南","position":2}]}</script>
+<meta property="og:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
+<meta property="og:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
+<meta property="og:url" content="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="杂乱的备忘录">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/">
+<meta name="twitter:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
+<meta name="twitter:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body class="">
+
+    
+<script>
+    (function () {
+        const getSystemTheme = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        };
+
+        const configDefault = 'dark';
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || configDefault || getSystemTheme();
+
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        if (!savedTheme) {
+            localStorage.setItem('theme', theme);
+        }
+    })();
+</script>
+<header class="mod-head">
+    <div class="mod-head__left">
+        <div class="mod-head__logo">
+            <a href="/">
+                
+                <img class="avatar" alt="avatar" src="/images/avatar.png">
+                
+            </a>
+        </div>
+    </div>
+
+    <div class="mod-head__right">
+        <span>
+            <button id="theme-toggle-sun" class="tiptap-button theme-toggle-sun" aria-label="Switch to dark mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"
+                        fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button id="theme-toggle-moon" class="tiptap-button theme-toggle-moon" aria-label="Switch to light mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </span>
+    </div>
+</header>
+<!-- <a href="#" id="back-to-top" style="display: inline;"> ^ </a> -->
+
+<article class="mod-post mod-post__type-post">
+    <header>
+        <h1 class="mod-post__title">
+            Unraid 7.3.1 上 Redroid 容器部署完整指南
+        </h1>
+    </header>
+
+    <div class="mod-post__meta">
+        <time datetime="2026-07-07">
+            2026-07-07
+        </time> • 12 分钟阅读 •
+         </div>
+
+
+
+            <div class="mod-post__entry wzulli">
+                
+                <h2 id="-">📌 环境准备</h2>
+<p>在 Unraid 7.3.1 版本上实践，<strong>无需任何额外修改和安装插件</strong>，默认内核已集成相关依赖。<br />
+只需要在 <strong>Boot Parameters → Custom Parameters</strong> 的 <strong>Add Custom Parameter</strong> 添加 <code>psi=1</code>，然后保存重启即可激活所有环境。</p>
+<pre><code>root@Tower:~# cat /proc/pressure/*
+some avg10=1.65 avg60=1.82 avg300=1.20 total=355489358
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+some avg10=0.20 avg60=0.25 avg300=0.59 total=347818195
+full avg10=0.18 avg60=0.19 avg300=0.50 total=328382926
+some avg10=0.00 avg60=0.00 avg300=0.00 total=0
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+</code></pre>
+<h2 id="--1">⚠️ 重要注意事项</h2>
+<h3 id="root-">Root 权限需求判断</h3>
+<p>根据你是否需要 Root 权限，选择不同的 Docker 存储驱动：</p>
+<table>
+<thead>
+<tr>
+<th align="left">场景</th>
+<th align="left">Docker 存储驱动</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>不需要 Root</strong></td>
+<td align="left"><code>Btrfs</code>（默认）</td>
+<td align="left">可直接运行官方原版镜像</td>
+</tr>
+<tr>
+<td align="left"><strong>需要 Root</strong>（游戏辅助/修改器）</td>
+<td align="left"><code>overlay2</code></td>
+<td align="left"><strong>必须修改</strong>，否则镜像无法正常工作</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>我玩的游戏大航海时代:传说需要使用辅助工具，所以 Root 是刚需。</strong></p>
+</blockquote>
+<hr />
+<h2 id="--2">🧪 测试过程与问题排查</h2>
+<h3 id="-btrfs-">默认 <code>Btrfs</code> 存储驱动下遇到的问题</h3>
+<p>在使用默认 <code>Btrfs</code> 存储驱动时，遇到以下问题：</p>
+<ol>
+<li><strong>预制 Magisk 镜像</strong>：点击 Magisk 应用后自动卸载，无法正常获取 Root 权限</li>
+<li><strong>修改版镜像</strong>：无法正常启动</li>
+<li><strong>redroid-script 自定义构建</strong>：基于官方镜像使用<a href="https://github.com/ayasa520/redroid-script">ayasa520/redroid-script</a>添加 NDK + Magisk 后也无法启动</li>
+<li><strong>官方原版镜像</strong>：能够正常启动 ✅</li>
+</ol>
+<h3 id="--3">💡 解决方案</h3>
+<p>AI 分析后指出，这些问题大概率是 <strong><code>Btrfs</code> 存储驱动与 Redroid 镜像层的兼容性问题</strong>。将 Docker 存储驱动修改为 <strong><code>overlay2</code></strong> 后，以上所有问题全部解决：</p>
+<ul>
+<li>所有镜像正常启动</li>
+<li>预制 Magisk 镜像正常启动</li>
+<li>Root 权限正常工作</li>
+</ul>
+<hr />
+<h2 id="--4">🐳 镜像选择推荐</h2>
+<p>测试了大部分Android 11-13的镜像，个人感觉<a href="https://hub.docker.com/r/erstt/redroid">erstt/redroid</a>系列镜像表现最优：</p>
+<h3 id="heading">版本选择建议</h3>
+<table>
+<thead>
+<tr>
+<th align="left">版本</th>
+<th align="left">兼容性</th>
+<th align="left">资源占用</th>
+<th align="left">推荐场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Android 11</strong></td>
+<td align="left">✅ 更好</td>
+<td align="left">⬇️ 更低</td>
+<td align="left"><strong>挂机优选</strong>，scrcpy 兼容性更好</td>
+</tr>
+<tr>
+<td align="left"><strong>Android 13</strong></td>
+<td align="left">⚠️ 略差</td>
+<td align="left">⬆️ 略高</td>
+<td align="left">部分新游戏可能需要</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-1">转译层选择</h3>
+<table>
+<thead>
+<tr>
+<th align="left">镜像</th>
+<th align="left">转译层</th>
+<th align="left">适用平台</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>erstt/redroid:11.0.0_houdini_magisk_ChromeOS</code></td>
+<td align="left"><strong>Houdini</strong></td>
+<td align="left"><strong>Intel 优选</strong></td>
+<td align="left">Intel CPU 优化，兼容性更广</td>
+</tr>
+<tr>
+<td align="left"><code>erstt/redroid:11.0.0_ndk_magisk_ChromeOS</code></td>
+<td align="left"><strong>NDK Translation</strong></td>
+<td align="left"><strong>AMD 优选</strong></td>
+<td align="left">兼容性好，部分场景下性能更优</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>个人推荐</strong>：intel处理器优先使用 <code>houdini</code> 版本，如遇到游戏兼容性问题再切换至 <code>ndk</code> 版本。</p>
+</blockquote>
+<hr />
+<h2 id="-unraid">📦 Unraid容器创建步骤</h2>
+<h3 id="1-">1. 基本配置</h3>
+<table>
+<thead>
+<tr>
+<th align="left">配置项</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>存储库</strong></td>
+<td align="left"><code>erstt/redroid:11.0.0_houdini_magisk_ChromeOS</code></td>
+</tr>
+<tr>
+<td align="left"><strong>额外参数</strong></td>
+<td align="left"><code>-itd -m 16G --memory-swappiness=0</code></td>
+</tr>
+<tr>
+<td align="left"><strong>网络类型</strong></td>
+<td align="left"><code>Bridge</code></td>
+</tr>
+<tr>
+<td align="left"><strong>特权</strong></td>
+<td align="left"><code>开启</code></td>
+</tr>
+<tr>
+<td align="left"><strong>映射端口</strong></td>
+<td align="left"><code>5555:5555</code></td>
+</tr>
+<tr>
+<td align="left"><strong>持久化目录</strong></td>
+<td align="left"><code>/mnt/system/appdata/redroid:/data</code></td>
+</tr>
+<tr>
+<td align="left"><strong>设备</strong></td>
+<td align="left"><code>/dev/dri</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-extra-parameters">2. 发布参数（Extra Parameters）</h3>
+<h4 id="houdini-">Houdini 版本</h4>
+<pre><code>androidboot.use_memfd=1 androidboot.redroid_net_ndns=1 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=60 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive androidboot.redroid_gpu_backend=mesa ro.product.cpu.abilist=x86_64,arm64-v8a ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=libhoudini.so
+</code></pre>
+<h4 id="ndk-">NDK 版本</h4>
+<pre><code>androidboot.use_memfd=1 androidboot.redroid_net_ndns=1 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=60 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive androidboot.redroid_gpu_backend=mesa ro.product.cpu.abilist=x86_64,arm64-v8a ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=libndk_translation.so ro.ndk_translation.version=0.2.3
+</code></pre>
+<h3 id="3-">3. 配置说明</h3>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">作用</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>androidboot.use_memfd=1</code></td>
+<td align="left">使用 memfd 替代 ashmem</td>
+<td align="left">高版本内核必需</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_net_dns1=223.5.5.5</code></td>
+<td align="left">DNS 解析（阿里 DNS）</td>
+<td align="left">可按需修改</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_width/height/dpi</code></td>
+<td align="left">分辨率 &amp; DPI</td>
+<td align="left">可按需调整</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_fps=60</code></td>
+<td align="left">系统帧率上限</td>
+<td align="left">游戏内可另设</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_gpu_mode=host</code></td>
+<td align="left">硬件加速</td>
+<td align="left"><strong>需要设备映射</strong></td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.selinux=permissive</code></td>
+<td align="left">SELinux 宽容模式</td>
+<td align="left">Magisk 需要</td>
+</tr>
+<tr>
+<td align="left"><code>androidboot.redroid_gpu_backend=mesa</code></td>
+<td align="left">Mesa 驱动</td>
+<td align="left"><strong>UHD 630 适用</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>GPU 后端说明</strong>：我使用的是 UHD 630 核显。如果是 <strong>N 卡或 A 卡</strong>，<code>androidboot.redroid_gpu_backend=mesa</code> 这个参数删除即可。</p>
+</blockquote>
+<blockquote>
+<p><strong>转译层参数</strong>：根据镜像类型，在发布参数中添加对应的转译层参数（<code>libhoudini.so</code> 或 <code>libndk_translation.so</code>）。</p>
+</blockquote>
+<pre><code>root@Tower:~# docker inspect redroid | grep -A 20 &quot;Cmd&quot;
+            &quot;Cmd&quot;: [
+                &quot;androidboot.use_memfd=1&quot;,
+                &quot;androidboot.redroid_net_ndns=1&quot;,
+                &quot;androidboot.redroid_net_dns1=223.5.5.5&quot;,
+                &quot;androidboot.redroid_width=720&quot;,
+                &quot;androidboot.redroid_height=1280&quot;,
+                &quot;androidboot.redroid_dpi=180&quot;,
+                &quot;androidboot.redroid_fps=60&quot;,
+                &quot;androidboot.redroid_gpu_mode=host&quot;,
+                &quot;androidboot.selinux=permissive&quot;,
+                &quot;androidboot.redroid_gpu_backend=mesa&quot;,
+                &quot;-&quot;,
+                &quot;ro.product.cpu.abilist=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi&quot;,
+                &quot;ro.product.cpu.abilist64=x86_64,arm64-v8a&quot;,
+                &quot;ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi&quot;,
+                &quot;ro.dalvik.vm.isa.arm=x86&quot;,
+                &quot;ro.dalvik.vm.isa.arm64=x86_64&quot;,
+                &quot;ro.enable.native.bridge.exec=1&quot;,
+                &quot;ro.enable.native.bridge.exec64=1&quot;,
+                &quot;ro.dalvik.vm.native.bridge=libhoudini.so&quot;
+            ],
+</code></pre>
+<h2 id="httpss1ozgithubiopost-images1783386091127png"><img src="https://s1oz.github.io/post-images/1783386091127.png" alt="" /></h2>
+<h2 id="--5">🖥️ 客户端连接工具</h2>
+<h3 id="heading-2">安卓端</h3>
+<p><strong><a href="https://github.com/XRSec/Screen-Remote">Screen-Remote</a></strong></p>
+<blockquote>
+<p>迭代了好几个版本，现在体验完胜其他方案。</p>
+</blockquote>
+<h3 id="windows-">Windows 端</h3>
+<table>
+<thead>
+<tr>
+<th align="left">工具</th>
+<th align="left">用途</th>
+<th align="left">链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>scrcpy-gui</strong></td>
+<td align="left">连接及远程操作</td>
+<td align="left"><a href="https://github.com/kil0bit-kb/scrcpy-gui">kil0bit-kb/scrcpy-gui</a></td>
+</tr>
+<tr>
+<td align="left"><strong>QtScrcpy</strong></td>
+<td align="left">可映射方向键，用键盘控制行走</td>
+<td align="left"><a href="https://github.com/barry-ran/QtScrcpy">barry-ran/QtScrcpy</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-3">输入法推荐</h3>
+<p><strong>微信输入法</strong> — 兼容性不错，在 Redroid 环境下表现稳定。</p>
+<hr />
+<h2 id="--6">🎮 游戏按键映射示例</h2>
+<h3 id="qtscrcpy-">《大航海时代：传说》QtScrcpy 映射脚本</h3>
+<p>将以下内容另存为 JSON 文件，放入 <code>QtScrcpy\keymap</code> 目录，刷新脚本后点击应用即可。按 <strong><code>~</code> 键</strong>（反引号）开启/关闭映射。<br />
+这样就能键盘控制角色移动了,上班摸鱼更方便了!</p>
+<pre><code class="language-json">{
+  &quot;switchKey&quot;: &quot;Key_QuoteLeft&quot;,
+  &quot;keyMapNodes&quot;: [
+    {
+      &quot;comment&quot;: &quot;虚拟摇杆 - WASD 控制移动&quot;,
+      &quot;type&quot;: &quot;KMT_STEER_WHEEL&quot;,
+      &quot;centerPos&quot;: {
+        &quot;x&quot;: 0.1498,
+        &quot;y&quot;: 0.7489
+      },
+      &quot;leftOffset&quot;: 0.11468,
+      &quot;rightOffset&quot;: 0.11381,
+      &quot;upOffset&quot;: 0.19237,
+      &quot;downOffset&quot;: 0.20701,
+      &quot;leftKey&quot;: &quot;Key_A&quot;,
+      &quot;rightKey&quot;: &quot;Key_D&quot;,
+      &quot;upKey&quot;: &quot;Key_W&quot;,
+      &quot;downKey&quot;: &quot;Key_S&quot;,
+      &quot;switchMap&quot;: false
+    },
+    {
+      &quot;comment&quot;: &quot;空格键 - 交互/确认&quot;,
+      &quot;type&quot;: &quot;KMT_CLICK&quot;,
+      &quot;pos&quot;: {
+        &quot;x&quot;: 0.9061,
+        &quot;y&quot;: 0.8195
+      },
+      &quot;key&quot;: &quot;Key_Space&quot;,
+      &quot;switchMap&quot;: false
+    }
+  ],
+  &quot;width&quot;: 1064.4285888671875,
+  &quot;height&quot;: 622.857177734375
+}
+</code></pre>
+<h3 id="heading-4">按键说明</h3>
+<table>
+<thead>
+<tr>
+<th align="left">按键</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>W</code> / <code>A</code> / <code>S</code> / <code>D</code></td>
+<td align="left">控制角色移动（虚拟摇杆）</td>
+</tr>
+<tr>
+<td align="left"><code>Space</code>（空格）</td>
+<td align="left">交互 / 确认点击</td>
+</tr>
+<tr>
+<td align="left"><code>`</code>（反引号）</td>
+<td align="left">切换映射开关</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="--7">📝 总结</h2>
+<ol>
+<li><strong>环境准备</strong>：Unraid 7.3.1 默认内核已就绪，只需添加 <code>psi=1</code> 重启</li>
+<li><strong>存储驱动</strong>：需要 Root → 使用 <code>overlay2</code>；不需要 Root → <code>Btrfs</code> 即可</li>
+<li><strong>镜像选择</strong>：intel推荐 <code>erstt/redroid:11.0.0_houdini_magisk_ChromeOS</code></li>
+<li><strong>性能调优</strong>：根据硬件调整 CPU-GPU 参数，例如降低分辨率,降低刷新率等操作，intel核显用 <code>mesa</code>，独显删除该参数</li>
+<li><strong>客户端</strong>：安卓用 Screen-Remote，Windows 用 QtScrcpy/scrcpy-gui</li>
+</ol>
+<hr />
+<h3 id="--8">📌 常见问题</h3>
+<p><strong>Q：为什么必须用 overlay2？</strong></p>
+<p>A：<code>Btrfs</code> 与 Redroid 多层镜像文件存在兼容性问题，导致 Magisk 镜像无法正常启动。</p>
+<p><strong>Q：Android 11 和 13 怎么选？</strong></p>
+<p>A：挂机优选 Android 11，兼容性更好，资源占用更低。scrcpy 连接也更稳定。</p>
+<p><strong>Q：Houdini 和 NDK 怎么选？</strong></p>
+<p>A：Intel CPU 优先 Houdini，如遇游戏兼容性问题再切换 NDK。AMD CPU 优先 NDK。</p>
+<p><strong>Q：其他参数不懂怎么办？</strong></p>
+<p>A：复杂参数可咨询 AI，或参考 Redroid 官方文档。</p>
+
+            </div>
+
+</article>
+
+
+
+
+
+
+<div class="mod-post__poster">
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- Reading Progress Component -->
+<div class="reading-progress-container">
+  <span class="reading-label">阅读进度</span>
+  <span class="reading-value">0%</span>
+  <svg class="progress-ring" viewBox="0 0 24 24">
+    <!-- Background Circle -->
+    <circle class="progress-ring__circle-bg" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+    <!-- Progress Circle -->
+    <circle class="progress-ring__circle" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+  </svg>
+</div>
+<footer id="footer" class="footer">
+    <nav>
+        
+    </nav>
+
+    <div class="Copyright">Copyright &copy; <span class="current-year"></span> <a href="https://s1oz.github.io">杂乱的备忘录</a></div>
+    <script>document.querySelector('.current-year').textContent = new Date().getFullYear();</script>
+
+    <div class="index_footer">
+        Powered by Gridea Pro ·
+        <a class="rss" href="/feed.xml" target="_blank" rel="noopener noreferrer">
+            <i class="ri-rss-line"></i>RSS
+        </a>
+    </div>
+</footer>
+
+
+
+
+    
+
+    
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: amore-jinja2 v1.1.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

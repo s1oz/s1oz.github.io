@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+<style>:root { --heatmap-color: #39d353; }</style>
+
+
+
+<style>
+  .theme-toggle-sun  { display: flex; }
+  .theme-toggle-moon { display: none; }
+  :root.theme-light .theme-toggle-sun  { display: none; }
+  :root.theme-light .theme-toggle-moon { display: flex; }
+</style>
+
+
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('flavor-theme');
+      var theme = saved || 'light';
+      if (theme === 'light') {
+        document.documentElement.classList.add('theme-light');
+      }
+    } catch (e) { }
+  })();
+</script>
+  <meta name="generator" content="Gridea Pro 1.2.2">
+  <title>在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡 | </title>
+  
+<meta property="og:title" content="在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡" />
+<meta property="og:type" content="article" />
+
+
+<meta name="description" content="废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&amp;hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡","url":"https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/","description":"废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码\u0026gt;拆掉独显,直通核显\u0026gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低\u0026hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一\u0026hellip;","datePublished":"2023-05-27T08:26:30+08:00","dateModified":"2026-07-07T09:13:25+08:00","author":{"@type":"Person","name":""},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":""}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/","name":"在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡","position":2}]}</script>
+<meta property="og:title" content="在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡">
+<meta property="og:description" content="废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&amp;hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://s1oz.github.io/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia/">
+<meta name="twitter:title" content="在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡">
+<meta name="twitter:description" content="废话 直接跳 主要还是折腾,心痒痒,对~就是玩 从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU 说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&amp;hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图? 需要准备些什么 一&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+<body class="flavor-theme">
+
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="top-bar">
+
+      
+      <div class="top-bar__left">
+        
+        <a href="https://s1oz.github.io" class="site-avatar-link" aria-label="返回首页">
+          <img class="site-avatar" src="/images/avatar.png" alt="" />
+        </a>
+        
+        <a href="https://s1oz.github.io" class="site-name-link"></a>
+      </div>
+
+      
+      <nav class="top-bar__nav" id="sectionBar">
+        
+        
+        <a class="nav-item" href="/">首页</a>
+        
+        <a class="nav-item" href="/post">博客</a>
+        
+        <a class="nav-item" href="/archives">归档</a>
+        
+        <a class="nav-item" href="/tags">标签</a>
+        
+        <a class="nav-item" href="/post/about">关于</a>
+        
+        
+      </nav>
+
+      
+      <div class="top-bar__right">
+        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="btn-icon theme-toggle theme-toggle-sun" id="themeToggleSun" type="button"
+          aria-label="切换到浅色模式">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"></path>
+            <path d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"></path>
+            <path d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"></path>
+            <path d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"></path>
+            <path d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"></path>
+            <path d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"></path>
+            <path d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"></path>
+            <path d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"></path>
+          </svg>
+        </button>
+        <button class="btn-icon theme-toggle theme-toggle-moon" id="themeToggleMoon" type="button"
+          aria-label="切换到深色模式">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"></path>
+            <path d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"></path>
+          </svg>
+        </button>
+        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
+          <div class="hamburger" id="hamburger">
+            <span class="hamburger__line hamburger__line--top"></span>
+            <span class="hamburger__line hamburger__line--bottom"></span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<div class="header-spacer"></div>
+
+<script>
+(function(){
+  var btn = document.getElementById('btnNavToggle');
+  var nav = document.getElementById('sectionBar');
+  var hamburger = document.getElementById('hamburger');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      nav.classList.toggle('top-bar__nav--open');
+      if (hamburger) hamburger.classList.toggle('is-active');
+    });
+    nav.querySelectorAll('.nav-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        nav.classList.remove('top-bar__nav--open');
+        if (hamburger) hamburger.classList.remove('is-active');
+      });
+    });
+  }
+
+  var root = document.documentElement;
+  var applyTheme = function(theme, persist){
+    if (theme === 'light') {
+      root.classList.add('theme-light');
+    } else {
+      root.classList.remove('theme-light');
+    }
+    if (persist) {
+      try { localStorage.setItem('flavor-theme', theme); } catch (e) {}
+    }
+  };
+  document.querySelectorAll('.theme-toggle').forEach(function(el){
+    el.addEventListener('click', function(){
+      applyTheme(root.classList.contains('theme-light') ? 'dark' : 'light', true);
+    });
+  });
+})();
+</script>
+
+  <main class="site-main" role="main">
+    
+<article class="article-container">
+  <header class="article-header">
+    <h1 class="article-title">在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡</h1>
+    <div class="article-meta">
+      
+      <span class="article-meta__item">2023-05-27</span>
+      
+      <span class="article-meta__sep">·</span>
+      <span class="article-meta__item">14 分钟阅读</span>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="article-content">
+    <h3 id="-">废话 直接跳</h3>
+<ul>
+<li>主要还是折腾,心痒痒,对~就是玩</li>
+<li>从1660直通虚拟机,核显转码&gt;拆掉独显,直通核显&gt;用炼丹卡玩下vGPU</li>
+<li><del>说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以又直通了核显,然后又嫌弃性能过低&hellip;就又搞了大显存的P4来给Emby转码+虚拟机串流玩游戏+试试Ai涩图?</del></li>
+</ul>
+<h3 id="heading">需要准备些什么</h3>
+<ol>
+<li>一台正常使用的UNRAID电脑</li>
+<li>BIOS正确开启VT-d / Above 4G Decoding 之类跟直通相关的选项</li>
+<li>一张身经百战的Tesla P4炼丹卡</li>
+<li>无所畏惧的精神</li>
+</ol>
+<h3 id="unraidvgpu">UNRAID安装vGPU插件</h3>
+<h4 id="heading-1">前提</h4>
+<ol>
+<li>保证UNRAID上不要安装Nvidia-Driver插件</li>
+<li>正常插入P4炼丹卡到主机中,在UNRAID的系统设备中不要勾选P4炼丹卡</li>
+</ol>
+<h4 id="heading-2">安装插件</h4>
+<ol>
+<li>安装<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver">stl88083365大佬</a>开发的<a href="https://raw.githubusercontent.com/stl88083365/unraid-nvidia-vgpu-driver/master/nvidia-vgpu-driver.plg">Unraid vGPU插件</a> 再次感谢大佬搞了这么方便的插件<br />
+在<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver/releases">releases页面</a>显示的就是插件支持的最新内核版本号<br />
+需要注意的是插件的版本是跟UNRAID的内核走的,如UNRAID版本过新,请<strong>降级后安装对应插件</strong></li>
+<li>插件安装完毕后可以根据大佬项目中的<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver#readme">README.md</a>流程走<br />
+大致就是安装&rsquo;user scripts&rsquo;插件,新建个用于加载驱动的脚本并粘贴以下内容<br />
+<strong>需要修改的两段我中文注释了</strong></li>
+</ol>
+<pre><code>#!/bin/bash
+# set -x
+
+# Load drivers 
+depmod -a
+nvidia-modprobe
+
+## 一共两段
+### 段落1
+### 定义虚拟机使用的vGPU的UUID,按下方vGPU的类型按需增删,分几个就用几个,uuid可用uuidgen命令创建
+vm1=&quot;2b6976dd-8620-49de-8d8d-ae9ba47a50db&quot;
+vm2=&quot;5fd6286d-06ac-4406-8b06-f26511c260d3&quot;
+#vm3=&quot;f090c00f-338b-47b4-a419-700101cd70c5&quot;
+#vm4=&quot;cee34c0a-6144-4f3e-8bdb-51538a98ba80&quot;
+#vm5=&quot;692c4c12-0def-4aa8-87b4-732fd5ef43ea&quot;
+#vm6=&quot;bc4b8513-43f0-49d2-81b1-a4aa9fe35826&quot;
+#vm7=&quot;e46b8864-0271-41ce-86b4-d5df5579d332&quot;
+#vm8=&quot;6fb3f4a0-a17d-43e5-b4fd-1a52acc3e382&quot;
+## 定义N卡的PCI位置
+NVPCI=&quot;0000:03:00.0&quot;
+## 定义vGPU的类型 玩游戏只用Q模式,其他都不考虑,更多信息可以在Nvidia Vgpu Driver插件中查询
+## 8个1G显存写63,4个2G显存的写64,2个4G显存写65,1个8G显存写66
+## 7.0.0版本开始大佬使用了550版本驱动,P4显示为 NVIDIA RTXA5500 ,请根据Nvidia Vgpu Driver插件中Mdevctl types来填写,如nvidia-765
+MDEVLIST=&quot;nvidia-65&quot;
+
+if [ ! -d /boot/config/nvidia-vgpu ]; then
+    mkdir -p /boot/config/nvidia-vgpu
+fi
+
+if [ ! -d /etc/vgpu_unlock/ ]; then
+    mkdir -p /etc/vgpu_unlock/
+fi
+
+if [ -f /boot/config/nvidia-vgpu/profile_override.toml ]; then
+  ln -sf /boot/config/nvidia-vgpu/profile_override.toml /etc/vgpu_unlock/profile_override.toml
+else 
+  touch /boot/config/nvidia-vgpu/profile_override.toml
+  ln -sf /boot/config/nvidia-vgpu/profile_override.toml /etc/vgpu_unlock/profile_override.toml
+fi
+
+echo &quot;unlock = false&quot; &gt; /etc/vgpu_unlock/config.toml
+
+env LD_PRELOAD=/usr/local/lib/libvgpu_unlock_rs.so &gt;/dev/null
+
+if pgrep -x nvidia-vgpu-mgr &gt; /dev/null
+then
+    nvidia-vgpud stop
+    nvidia-vgpu-mgr stop
+    killall nvidia-vgpu-mgr
+fi
+LD_PRELOAD=/usr/local/lib/libvgpu_unlock_rs.so nvidia-vgpud 
+LD_PRELOAD=/usr/local/lib/libvgpu_unlock_rs.so nvidia-vgpu-mgr
+
+sleep 3
+
+### 段落2
+### 上方定义几个vm,这就填几个
+#### 例子arr=( &quot;${vm1}&quot; &quot;${vm2}&quot; &quot;${vm3}&quot; &quot;${vm4}&quot; )
+arr=( &quot;${vm1}&quot; &quot;${vm2}&quot; )
+
+for os in &quot;${arr[@]}&quot;; do
+    if [[ &quot;$(mdevctl list)&quot; == *&quot;$os&quot;* ]]; then
+        echo &quot; [i] Found $os running, stopping and undefining...&quot;
+        mdevctl stop -u &quot;$os&quot;
+        mdevctl undefine -u &quot;$os&quot;
+    fi
+done
+
+for os in &quot;${arr[@]}&quot;; do
+    echo &quot; [i] Defining and running $os...&quot;
+    mdevctl define -u &quot;$os&quot; -p &quot;$NVPCI&quot; --type &quot;$MDEVLIST&quot;
+    mdevctl start -u &quot;$os&quot;
+done
+
+echo &quot; [i] Currently defined mdev devices:&quot;
+mdevctl list
+</code></pre>
+<p>然后把脚本设置为At First Array Start Only(第一次启动阵列时运行脚本)<br />
+然后运行此命令,告知由主机驱动程序管理设备</p>
+<pre><code>echo &quot;options nvidia cudahost=1&quot; &gt; /boot/config/modprobe.d/nvidia.conf
+</code></pre>
+<p>最后点击运行脚本,现在已经可以在UNRAID中输入命令查看显卡信息了</p>
+<pre><code>验证是否正常加载驱动
+lsmod |grep vfio 
+
+查看机器上所有N卡信息
+nvidia-smi
+
+查看vGPU显卡信息
+nvidia-smi vgpu
+
+关闭ECC,释放所有显存
+nvidia-smi -e 0
+
+滚动显示设备状态
+nvidia-smi dmon
+
+实时显示显存 5秒刷新一次
+nvidia-smi -l 5
+</code></pre>
+<p>更多信息可以直接在UNRAID的设置-Nvidia Vgpu Driver中查询</p>
+<h4 id="heading-3">更新插件</h4>
+<p>通过<a href="https://github.com/stl88083365/unraid-nvidia-vgpu-driver/blob/master/plugin_update_helper">plugin_update_helper</a>脚本来更新<br />
+使用方法很简单：</p>
+<ol>
+<li>在&rsquo;user scripts&rsquo;插件中,新建个脚本并粘贴<strong>plugin_update_helper</strong>中内容</li>
+<li>点击此脚本右侧<strong>Run In Background</strong>,让其后台运行</li>
+<li>工具-系统更新-检查更新，然后点击<strong>更新</strong>来安装新版本，等待安装完毕不要点重启</li>
+<li>这时刚后台运行的脚本会自动判断<strong>changes.txt</strong>已更新,对比<strong>releases</strong>版本是否对应系统内核版本,如果对应会自动更新,更新结束会发送通知，然后再重启系统即可</li>
+<li>如果出现不能使用,就恢复,并删除插件后重新安装插件即可</li>
+</ol>
+<h3 id="heading-4">虚拟机上使用</h3>
+<h4 id="vgpu">验证vGPU驱动</h4>
+<ol>
+<li>先在UNRAID的设置-Nvidia Vgpu Driver中查看刚脚本定义的vGPU的UUID是否正常显示</li>
+</ol>
+<pre><code>## mdevctl list命令也可查询
+root@Tower:~# mdevctl list
+2b6976dd-8620-49de-8d8d-ae9ba47a50db 0000:03:00.0 nvidia-65 manual (defined)
+5fd6286d-06ac-4406-8b06-f26511c260d3 0000:03:00.0 nvidia-65 manual (defined)
+</code></pre>
+<h4 id="heading-5">新建虚拟机</h4>
+<ol>
+<li>新建WIN10虚拟机,切记添加SPICE不要用VNC,因为安装vGPU驱动VNC有bug,完成安装后关机</li>
+<li>编辑虚拟机xml文件,在<strong>video</strong>标签下方增加以下内容</li>
+</ol>
+<pre><code>#vGPU 更改为自己的uuid跟正确的PCI位置
+    &lt;hostdev mode='subsystem' type='mdev' managed='no' model='vfio-pci' display='off'&gt;
+      &lt;source&gt;
+        &lt;address uuid='2b6976dd-8620-49de-8d8d-ae9ba47a50db'/&gt;
+      &lt;/source&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+    &lt;/hostdev&gt;
+</code></pre>
+<pre><code>#声卡 按需添加
+    &lt;sound model='ich9'&gt;
+    &lt;/sound&gt;
+</code></pre>
+<pre><code>#题外话 硬盘想显示为ssd，只需加在对应硬盘后面加 rotation_rate='1' 即可
+#例子 只限IDE SATA 不支持virtio
+      &lt;target dev='hdc' bus='sata' rotation_rate='1'/&gt;
+</code></pre>
+<p>修改保存后应该是这样的<br />
+<img src="https://s1oz.github.io/post-images/1685407263550.png" alt="" /></p>
+<h4 id="heading-6">安装驱动</h4>
+<ol>
+<li>开启虚拟机,通过浏览器直接访问 <strong>切记不要使用自动安装驱动或者驱动精灵之类来安装驱动</strong><br />
+<del>先拜读<a href="https://github.com/justin-himself/NVIDIA-VGPU-Driver-Archive">justin-himself</a>佬的项目这个仓库包含了 NVIDIA vGPU 驱动的历史版本<br />
+win虚拟机<strong>无脑安装</strong><a href="https://github.com/justin-himself/NVIDIA-VGPU-Driver-Archive/releases">Releases页面</a>中最新版本<br />
+<strong>下载NVIDIA-GRID-Linux-KVM开头的几个分卷解压</strong><br />
+安装<strong>Guest_Drivers</strong>文件夹中<strong>exe</strong>结尾GRID驱动</del><br />
+<strong>大佬已删库</strong>，请直接从<a href="https://cloud.google.com/compute/docs/gpus/grid-drivers-table?hl=zh-cn">Google Cloud</a>下载所需要的版本安装即可</li>
+</ol>
+<h3 id="vgpu-1">搭建民间vGPU激活方案</h3>
+<ul>
+<li>UNRAID直接下载容器模板后添加启动即可(自行修改模板中DLS_URL变量的 IP)</li>
+</ul>
+<pre><code>wget -O /boot/config/plugins/dockerMan/templates/FastAPI-DLS.xml https://raw.githubusercontent.com/s1oz/unraid/master/fastapi-dls.xml
+</code></pre>
+<p>项目源码为oscar.krause大佬的<a href="https://gitea.publichub.eu/oscar.krause/fastapi-dls">fastapi-dls</a>,更多内容请自行拜读<br />
+使用的镜像为来自<a href="https://foxi.buduanwang.vip/virtualization/pve/2195.html/">佛西博客</a>中的<a href="https://hub.docker.com/r/makedie/fastapi-dls">makedie/fastapi-dls</a>,感谢大佬自封证书挽救懒人</p>
+<ul>
+<li>WIN10虚拟机激活授权<br />
+虚拟机浏览器中打开https://容器IP:9443   <strong>切记是https</strong>  默认页面为配置说明<br />
+Windows激活方式如下:<br />
+浏览器访问 https://容器IP:9443/client-token 后会自动下载授权文件<br />
+将文件导入到<code>C:\Program Files\NVIDIA Corporation\vGPU Licensing\ClientConfigToken</code>文件夹中后重启即可<br />
+重启后右下角就弹出激活了<br />
+判断是否激活</li>
+</ul>
+<pre><code>nvidia-smi -q |findstr Lincese
+</code></pre>
+<h3 id="heading-7">开启串流远程玩游戏</h3>
+<p>得益于vGPU加成,安装驱动后直接附带了一个虚拟显示器<br />
+可以直接通过浏览器使用SPICE访问虚拟机来进行操作<br />
+安装parsec然后开始畅玩(都是成年人了,这点你肯定会的)<br />
+<strong>唯一要注意的就是在桌面右击-显示设置-多显示器-仅在2上显示</strong></p>
+<h4 id="heading-8">说个题外话:</h4>
+<p>一般串流要么插HDMI欺诈器之类,要么额外安装一个虚拟显示器来让远程游戏正确工作<br />
+举例个虚拟显示器:<br />
+先下载<a href="https://www.amyuni.com/downloads/usbmmidd_v2.zip">虚拟显示驱动程序</a><br />
+解压后以管理员身份运行<code>usbmmidd_v2</code>文件夹中的<code>usbmmidd.bat</code>即可<br />
+运行后会自动添加一个虚拟显示器</p>
+<pre><code>如果要停用虚拟显示器
+在文件夹路径以管理员身份运行的命令行中输入以下命令  停用多个虚拟显示器运行多次
+deviceinstaller64 enableidd 0
+如果重新运行就输入
+deviceinstaller64 enableidd 1
+</code></pre>
+<p>想完全卸载虚拟显示器可以在设备管理器中删除<code>USB Mobile Monitor Virtual Display</code></p>
+<h4 id="heading-9">多样串流按需选择</h4>
+<p>串流玩游戏方案有很多,mstsc / anydesk / parsec / moonlight等<br />
+不过moonlight不支持远程剪贴板复制粘贴,<br />
+两种解决方案,</p>
+<ol>
+<li>额外安装<a href="https://github.com/aitsc/natclip">natclip</a>,实现windows、macos或及其之间的剪切板文本共享, 可用于moonlight串流等远程控制剪切板不能用或失效的问题</li>
+<li>换mstsc / anydesk / parsec 之类</li>
+</ol>
+<p>虚拟机直接安装<a href="https://github.com/LizardByte/Sunshine">Sunshine</a>来让P4支持moonlight<br />
+服务端安装使用自行拜读<a href="https://docs.lizardbyte.dev/projects/sunshine/en/latest/">Sunshine Wiki</a><br />
+客户端安装使用自行拜读<a href="https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide">Moonlight Wiki</a></p>
+<h3 id="heading-10">超频</h3>
+<p>先用<code>nvidia-smi -q -d SUPPORTED_CLOCKS</code>查询下显卡最高支持的频率</p>
+<pre><code>root@Tower:~# nvidia-smi -q -d SUPPORTED_CLOCKS
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Sat May 27 12:46:25 2023
+Driver Version                            : 525.105.17
+CUDA Version                              : 12.0
+vGPU Driver Capability
+        Heterogenous Multi-vGPU           : Supported
+
+Attached GPUs                             : 1
+GPU 00000000:03:00.0
+    Supported Clocks
+        Memory                            : 3003 MHz
+            Graphics                      : 1531 MHz
+            Graphics                      : 1518 MHz
+            Graphics                      : 1506 MHz
+            Graphics                      : 1493 MHz
+
+                        ~~~~~~~~~~
+
+            Graphics                      : 455 MHz
+        Memory                            : 405 MHz
+            Graphics                      : 455 MHz
+</code></pre>
+<p>得知显存最高<strong>3003*,核心最高</strong>1531**<br />
+我就<strong>保守点</strong>来个3003,1531吧<br />
+输入<code>nvidia-smi -ac 3003,1531</code></p>
+<pre><code>root@Tower:~# nvidia-smi -ac 3003,1531
+Applications clocks set to &quot;(MEM 3003, SM 1531)&quot; for GPU 00000000:03:00.0
+All done.
+</code></pre>
+<p><img src="https://s1oz.github.io/post-images/1685407196185.jpg" alt="" /><br />
+超频完成,恭喜性能增加了.功耗也增加了<br />
+不怕耗电的,就直接新建脚本,然后把脚本设置为At First Array Start Only(第一次启动阵列时运行脚本</p>
+<h3 id="emby">给Emby添加炼丹卡解码转码</h3>
+<p>转码是会员功能,请先<a href="https://s1oz.github.io/post/docker-an-zhuang-emby-bing-bai-piao/">白嫖</a><br />
+调用N卡只要加以下参数<br />
+emby官方docker直接在额外参数中添加 <code>--gpus </code><br />
+新建设备  值填 <code>/dev/dri</code>即可<br />
+然后转码中勾选即可<br />
+<img src="https://s1oz.github.io/post-images/1685407178668.png" alt="" /></p>
+<h4 id="p4bug">P4独有bug</h4>
+<ul>
+<li>开机后需先开有vGPU的虚拟机后再开Emby</li>
+<li>不然�</li>
+</ul>
+
+  </div>
+
+  
+  <nav class="post-nav">
+    
+    <a href="/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan/" class="post-nav-card post-nav-card--prev">
+      
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">上一篇</span>
+        <span class="post-nav-card__title">Unraid 7.3.1 上 Redroid 容器部署完整指南</span>
+      </div>
+      <span class="post-nav-card__arrow">&larr;</span>
+    </a>
+    
+    
+    <a href="/post/zi-jian-clash-ding-yue-zhuan-huan-hou-duan-bing-pei-zhi-gui-ze/" class="post-nav-card post-nav-card--next">
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">下一篇</span>
+        <span class="post-nav-card__title">自建clash订阅转换subconverter后端并配置规则</span>
+      </div>
+      
+      <span class="post-nav-card__arrow">&rarr;</span>
+    </a>
+    
+  </nav>
+
+  
+  
+
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    
+    
+    <nav class="footer-nav" aria-label="页脚导航">
+      
+      <a class="footer-nav__link" href="/">首页</a>
+      
+      <a class="footer-nav__link" href="/post">博客</a>
+      
+      <a class="footer-nav__link" href="/archives">归档</a>
+      
+      <a class="footer-nav__link" href="/tags">标签</a>
+      
+      <a class="footer-nav__link" href="/post/about">关于</a>
+      
+    </nav>
+    
+
+    
+    <div class="footer-social">
+      
+      
+      
+      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
+        </svg>
+      </a>
+    </div>
+
+    
+    <div class="footer-copyright">
+      <p>&copy; 2026 . All rights reserved.</p>
+    </div>
+
+    
+    
+
+    
+    <div class="footer-powered">
+      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
+    </div>
+
+  </div>
+</footer>
+
+  
+  <div class="search-overlay" id="searchOverlay" style="display:none;">
+  <div class="search-modal">
+    <div class="search-header">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
+      <span class="search-kbd">&#8984;K</span>
+      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script src="/scripts/search.js"></script>
+  
+
+  
+
+  
+
+  
+
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

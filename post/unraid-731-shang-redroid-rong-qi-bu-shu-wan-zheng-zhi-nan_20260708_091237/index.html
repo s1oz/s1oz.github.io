@@ -46,7 +46,7 @@
 
 <meta name="description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
 <link rel="canonical" href="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-08-10T09:36:08+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-08-10T09:58:51+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","name":"Unraid 7.3.1 上 Redroid 容器部署完整指南","position":2}]}</script>
 <meta property="og:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
 <meta property="og:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
@@ -185,13 +185,15 @@
       <span class="article-meta__item">2026-07-07</span>
       
       <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">12 分钟阅读</span>
+      <span class="article-meta__item">10 分钟阅读</span>
       
     </div>
     
     <div class="article-header__tags">
       
       <a href="/tag/redroid/" class="tag-pill tag-pill--sm">redroid</a>
+      
+      <a href="/tag/unraid/" class="tag-pill tag-pill--sm">unraid</a>
       
     </div>
     
@@ -257,7 +259,10 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 </ul>
 <hr />
 <h2 id="--4">🐳 镜像选择推荐</h2>
-<p>测试了大部分Android 11-13的镜像，个人感觉<a href="https://hub.docker.com/r/erstt/redroid">erstt/redroid</a>系列镜像表现最优：</p>
+<p>测试了大部分Android 11-13的镜像，个人感觉<a href="https://hub.docker.com/r/erstt/redroid">erstt/redroid</a>系列镜像表现最优：<br />
+<strong>也提供自用build的Android 11新版本转译层镜像,稳定性不保证</strong><a href="https://hub.docker.com/r/s1oz/redroid">s1oz/redroid</a><br />
+<strong>ARM 兼容层 (Houdini):</strong> 内置 Houdini version <strong>14.0.0_z.GoogleGame_com1.2</strong>。</p>
+<p><strong>ARM 兼容层 (NDK):</strong> 内置 NDK Translation Version <strong>0.2.3</strong>。</p>
 <h3 id="heading">版本选择建议</h3>
 <table>
 <thead>
@@ -353,11 +358,13 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 </tbody>
 </table>
 <h3 id="2-extra-parameters">2. 发布参数（Extra Parameters）</h3>
-<h4 id="houdini-">Houdini 版本</h4>
-<pre><code>androidboot.use_memfd=1 androidboot.redroid_net_ndns=1 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=60 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive androidboot.redroid_gpu_backend=mesa ro.product.cpu.abilist=x86_64,arm64-v8a ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=libhoudini.so
-</code></pre>
-<h4 id="ndk-">NDK 版本</h4>
-<pre><code>androidboot.use_memfd=1 androidboot.redroid_net_ndns=1 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=60 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive androidboot.redroid_gpu_backend=mesa ro.product.cpu.abilist=x86_64,arm64-v8a ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=libndk_translation.so ro.ndk_translation.version=0.2.2
+<blockquote>
+<p>⚠️ <strong>隐私与封号警告：</strong> 启动参数中的设备 IMEI (<code>ro.ril.oem.imei</code>) 和序列号 (<code>ro.serialno</code>) 已被我替换为安全占位符（如 <code>&lt;YOUR_IMEI&gt;</code>）。<strong>为了防止设备被应用封禁或出现 Google Play 未认证错误，请务必在运行前将其修改为您自己生成的随机数字或真实值。</strong></p>
+</blockquote>
+<blockquote>
+<p>⚠️ 转译层 (<code>ro.dalvik.vm.native.bridge</code>) 已被我替换为安全占位符（如 <code>&lt;houdini or ndk&gt;</code>）根据下载镜像选择填写<strong>libndk_translation.so</strong>或<strong>libhoudini.so</strong></p>
+</blockquote>
+<pre><code>  androidboot.use_memfd=1 androidboot.redroid_net_ndns=2 androidboot.redroid_net_dns1=223.5.5.5 androidboot.redroid_net_dns2=119.29.29.29 androidboot.redroid_width=720 androidboot.redroid_height=1280 androidboot.redroid_dpi=180 androidboot.redroid_fps=30 androidboot.redroid_gpu_mode=host androidboot.selinux=permissive ro.board.platform=msm8150 ro.product.cpu.abilist=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi ro.product.cpu.abilist64=x86_64,arm64-v8a ro.dalvik.vm.isa.arm64=x86_64 ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi ro.enable.native.bridge.exec=1 ro.enable.native.bridge.exec64=1 ro.dalvik.vm.native.bridge=&lt;houdini or ndk&gt; ro.product.model=&quot;Pixel 4&quot; ro.product.brand=&quot;google&quot; ro.product.name=&quot;flame&quot; ro.product.device=&quot;flame&quot; ro.product.manufacturer=&quot;Google&quot; ro.build.type=user ro.build.flavor=&quot;flame-user&quot; ro.build.tags=release-keys ro.build.fingerprint=&quot;google/flame/flame:11/RQ3A.210805.001.A1/7481738:user/release-keys&quot; ro.boot.flash.locked=1 ro.ril.oem.imei=&lt;YOUR_IMEI&gt; ro.ril.oem.imei1=&lt;YOUR_IMEI&gt; ro.ril.oem.imei2=&lt;YOUR_IMEI&gt; ro.ril.oem.sno=&lt;YOUR_SERIAL&gt; ro.serialno=&lt;YOUR_SERIAL&gt; gsm.sim.operator.alpha=&quot;CMCC&quot; gsm.sim.operator.numeric=&quot;46000&quot; gsm.operator.alpha=&quot;CMCC&quot; gsm.operator.numeric=&quot;46000&quot;
 </code></pre>
 <h3 id="3-">3. 配置说明</h3>
 <table>
@@ -394,48 +401,9 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 <td align="left">硬件加速</td>
 <td align="left"><strong>需要设备映射</strong></td>
 </tr>
-<tr>
-<td align="left"><code>androidboot.selinux=permissive</code></td>
-<td align="left">SELinux 宽容模式</td>
-<td align="left">Magisk 需要</td>
-</tr>
-<tr>
-<td align="left"><code>androidboot.redroid_gpu_backend=mesa</code></td>
-<td align="left">Mesa 驱动</td>
-<td align="left"><strong>UHD 630 适用</strong></td>
-</tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>GPU 后端说明</strong>：我使用的是 UHD 630 核显。如果是 <strong>N 卡或 A 卡</strong>，<code>androidboot.redroid_gpu_backend=mesa</code> 这个参数删除即可。</p>
-</blockquote>
-<blockquote>
-<p><strong>转译层参数</strong>：根据镜像类型，在发布参数中添加对应的转译层参数（<code>libhoudini.so</code> 或 <code>libndk_translation.so</code>）。</p>
-</blockquote>
-<pre><code>root@Tower:~# docker inspect redroid | grep -A 20 &quot;Cmd&quot;
-            &quot;Cmd&quot;: [
-                &quot;androidboot.use_memfd=1&quot;,
-                &quot;androidboot.redroid_net_ndns=1&quot;,
-                &quot;androidboot.redroid_net_dns1=223.5.5.5&quot;,
-                &quot;androidboot.redroid_width=720&quot;,
-                &quot;androidboot.redroid_height=1280&quot;,
-                &quot;androidboot.redroid_dpi=180&quot;,
-                &quot;androidboot.redroid_fps=60&quot;,
-                &quot;androidboot.redroid_gpu_mode=host&quot;,
-                &quot;androidboot.selinux=permissive&quot;,
-                &quot;androidboot.redroid_gpu_backend=mesa&quot;,
-                &quot;-&quot;,
-                &quot;ro.product.cpu.abilist=x86_64,arm64-v8a,x86,armeabi-v7a,armeabi&quot;,
-                &quot;ro.product.cpu.abilist64=x86_64,arm64-v8a&quot;,
-                &quot;ro.product.cpu.abilist32=x86,armeabi-v7a,armeabi&quot;,
-                &quot;ro.dalvik.vm.isa.arm=x86&quot;,
-                &quot;ro.dalvik.vm.isa.arm64=x86_64&quot;,
-                &quot;ro.enable.native.bridge.exec=1&quot;,
-                &quot;ro.enable.native.bridge.exec64=1&quot;,
-                &quot;ro.dalvik.vm.native.bridge=libhoudini.so&quot;
-            ],
-</code></pre>
-<h2 id="httpss1ozgithubiopost-images1783386091127png"><img src="https://s1oz.github.io/post-images/1783386091127.png" alt="" /></h2>
+<hr />
 <h2 id="--5">🖥️ 客户端连接工具</h2>
 <h3 id="heading-2">安卓端</h3>
 <p><strong><a href="https://github.com/XRSec/Screen-Remote">Screen-Remote</a></strong></p>
@@ -465,7 +433,7 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 </tbody>
 </table>
 <h3 id="heading-3">输入法推荐</h3>
-<p><strong>微信输入法</strong> — 兼容性不错，在 Redroid 环境下表现稳定。</p>
+<p><strong>搜狗输入法</strong> — 兼容性不错，在 Redroid 环境下表现稳定。</p>
 <hr />
 <h2 id="--6">🎮 游戏按键映射示例</h2>
 <h3 id="qtscrcpy-">《大航海时代：传说》QtScrcpy 映射脚本</h3>
@@ -545,7 +513,7 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 <p><strong>Q：Android 11 和 13 怎么选？</strong></p>
 <p>A：挂机优选 Android 11，兼容性更好，资源占用更低。scrcpy 连接也更稳定。</p>
 <p><strong>Q：Houdini 和 NDK 怎么选？</strong></p>
-<p>A：Intel CPU 优先 Houdini，如遇游戏兼容性问题再切换 NDK。AMD CPU 优先 NDK。��������������������������</p>
+<p>A：Intel CPU 优先 Houdini，如遇游戏兼容性问题再切换 NDK。AMD CPU 优先 NDK。</p>
 
   </div>
 

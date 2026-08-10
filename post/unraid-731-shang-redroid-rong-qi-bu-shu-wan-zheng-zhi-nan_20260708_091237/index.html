@@ -46,7 +46,7 @@
 
 <meta name="description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
 <link rel="canonical" href="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-08-10T09:58:51+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-08-10T10:06:33+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","name":"Unraid 7.3.1 上 Redroid 容器部署完整指南","position":2}]}</script>
 <meta property="og:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
 <meta property="og:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
@@ -242,16 +242,12 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 </blockquote>
 <hr />
 <h2 id="--2">🧪 测试过程与问题排查</h2>
-<h3 id="-btrfs-">默认 <code>Btrfs</code> 存储驱动下遇到的问题</h3>
-<p>在使用默认 <code>Btrfs</code> 存储驱动时，遇到以下问题：</p>
 <ol>
-<li><strong>预制 Magisk 镜像</strong>：点击 Magisk 应用后自动卸载，无法正常获取 Root 权限</li>
-<li><strong>修改版镜像</strong>：无法正常启动</li>
-<li><strong>redroid-script 自定义构建</strong>：基于官方镜像使用<a href="https://github.com/ayasa520/redroid-script">ayasa520/redroid-script</a>添加 NDK + Magisk 后也无法启动</li>
+<li><strong>自制 Magisk 镜像</strong>：点击 Magisk 应用后崩溃自动卸载(redroid-script回滚git checkout 881f7f00d6a86af4f8e4947af5d587a144a1806c 可解决)</li>
 <li><strong>官方原版镜像</strong>：能够正常启动 ✅</li>
 </ol>
 <h3 id="--3">💡 解决方案</h3>
-<p>AI 分析后指出，这些问题大概率是 <strong><code>Btrfs</code> 存储驱动与 Redroid 镜像层的兼容性问题</strong>。将 Docker 存储驱动修改为 <strong><code>overlay2</code></strong> 后，以上所有问题全部解决：</p>
+<p>AI 说 <strong><code>Btrfs</code> 存储驱动与 Redroid 镜像层的兼容性问题</strong>。将 Docker 存储驱动修改为 <strong><code>overlay2</code></strong> 后，能纠结奇奇怪怪的问题,那就先听他狡辩改成这个先</p>
 <ul>
 <li>所有镜像正常启动</li>
 <li>预制 Magisk 镜像正常启动</li>
@@ -260,7 +256,7 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 <hr />
 <h2 id="--4">🐳 镜像选择推荐</h2>
 <p>测试了大部分Android 11-13的镜像，个人感觉<a href="https://hub.docker.com/r/erstt/redroid">erstt/redroid</a>系列镜像表现最优：<br />
-<strong>也提供自用build的Android 11新版本转译层镜像,稳定性不保证</strong><a href="https://hub.docker.com/r/s1oz/redroid">s1oz/redroid</a><br />
+<strong>自用Android 11新版本转译层镜像,稳定性不保证</strong><a href="https://hub.docker.com/r/s1oz/redroid">s1oz/redroid</a><br />
 <strong>ARM 兼容层 (Houdini):</strong> 内置 Houdini version <strong>14.0.0_z.GoogleGame_com1.2</strong>。</p>
 <p><strong>ARM 兼容层 (NDK):</strong> 内置 NDK Translation Version <strong>0.2.3</strong>。</p>
 <h3 id="heading">版本选择建议</h3>

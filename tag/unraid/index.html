@@ -177,7 +177,7 @@
     <a href="/tags" class="page-back meta-text">&larr; 所有标签</a>
     <h1 class="page-title"><span class="page-title__hash">#</span>unraid</h1>
     
-    <p class="page-subtitle meta-text">共 4 篇文章</p>
+    <p class="page-subtitle meta-text">共 9 篇文章</p>
     
   </div>
 
@@ -205,6 +205,51 @@
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
+    <a href="/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma_20260707_094614/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Unraid一卡多用转码+挖矿+超频</h3>
+    </a>
+    <a href="/post/unraid-yi-qia-duo-yong-wa-kuang-zhuan-ma_20260707_094614/" class="post-card__excerpt clamp-2">
+      一卡多用
+原来是靠新建虚拟机直通显卡挖矿
+但是这样显卡只能挖矿 ,实在可惜呀😒
+然而无意间发现有docker版本挖矿容器
+因这个方法挖矿,只要显存够用的话,其他容器都能调用这张N卡,如给emby直接解码转码
+所以,核显终于可以多出来做...
+    </a>
+    <div class="post-card__meta meta-text">
+      2021-03-25
+      <span class="badge badge--top">置顶</span>
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/unraid-69x-wang-qia-kai-qi-sr-iov_20260707_094612/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Unraid 6.9.x 网卡开启SR-IOV</h3>
+    </a>
+    <a href="/post/unraid-69x-wang-qia-kai-qi-sr-iov_20260707_094612/" class="post-card__excerpt clamp-2">
+      前提如下
+需主板支持SR-IOV
+如主板没有此功能,请直接臭不要脸跟厂家发邮件要,我就是这样要了个新bios刷入后开启
+
+如此途径失败,请购买其他板子😎
+需网卡支持SR-IOV
+82599ES/I350/82576都是支持的,其他自测...
+    </a>
+    <div class="post-card__meta meta-text">
+      2021-03-19
+      <span class="badge badge--top">置顶</span>
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
     <a href="/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/" class="post-card__title-link">
       <h3 class="post-card__title clamp-3">UNRAID下APC BK650M2-CH报错误修复</h3>
     </a>
@@ -223,16 +268,19 @@
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Unraid 7.3.1 上 Redroid 容器部署完整指南</h3>
+    <a href="/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi_20260707_094609/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">解锁N卡在Unraid上的转码限制</h3>
     </a>
-    <a href="/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/" class="post-card__excerpt clamp-2">
-      📌 环境准备
-在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。
-只需要在 Boot Parameters → Custom Parameters 的 Add Custom Paramete...
+    <a href="/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi_20260707_094609/" class="post-card__excerpt clamp-2">
+      举个栗子
+如EMBY调用N卡来进行转码播放,有效终端为3个
+也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码
+还有一个可怜的人就只能软件转码了
+这样会造成cpu资源极度的浪费&amp;hellip;
+但是&amp;hellip;一般哪里来...
     </a>
     <div class="post-card__meta meta-text">
-      2026-07-07
+      2021-03-25
       
     </div>
   </div>
@@ -242,22 +290,92 @@
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di_20260707_094609/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">将UNRAID设置为HyperBackup远程rsync备份目的地</h3>
+    <a href="/post/unraid-shang-rclone-cha-jian-de-shi-yong/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Unraid上rclone插件的使用</h3>
     </a>
-    <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di_20260707_094609/" class="post-card__excerpt clamp-2">
-      添加rsync服务脚本
-通过应用商店中的Userscripts插件来新建一个开机运行脚本
-粘贴以下内容在脚本中
-#!/bin/bash
+    <a href="/post/unraid-shang-rclone-cha-jian-de-shi-yong/" class="post-card__excerpt clamp-2">
+      友情提示 页面过长 请善用右侧目录
+安装rclone插件
+应用中搜素rclone
+选择这个插件安装,其他两个为docker
+安装完成后会出现在设置-用户实用程序中
 
-# 创建Rsync服务的配置文件
-echo &amp;quot;
-uid = nobody
-g...
+连接网盘
+谷歌团队盘
+在终端中输入rclone config
+No ...
     </a>
     <div class="post-card__meta meta-text">
-      2024-05-22
+      2021-03-22
+      
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth_20260707_094606/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">49年入国军 尝试白嫖ETH</h3>
+    </a>
+    <a href="/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth_20260707_094606/" class="post-card__excerpt clamp-2">
+      真的白嫖?
+怎么才能算白嫖呢😵
+我觉得拿手上现有的东西,不要额外投资资金
+这就是白嫖😶
+对&amp;hellip;.就是这样&amp;hellip;有道理噢~~
+现在也不玩游戏了&amp;hellip;电脑上的显卡反复告诉我它寂寞了&amp;hellip;
+NAS反...
+    </a>
+    <div class="post-card__meta meta-text">
+      2021-01-20
+      
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/unraid-geng-fang-bian-de-wan-zhuan-xia-zai_20260707_094613/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Unraid更方便的玩转下载</h3>
+    </a>
+    <a href="/post/unraid-geng-fang-bian-de-wan-zhuan-xia-zai_20260707_094613/" class="post-card__excerpt clamp-2">
+      为什么要这样做
+9102年了,谁还没蹄子呢👺
+下载工具一般也都是直接安装在NAS上,也没做分离
+但是既然用了蹄子,肯定就不能进行p2p下载了👎
+应该大部分基友都是搞个OP来煮蹄子吧
+lean的只有煮与不煮
+要么就是直接不给NAS吃蹄子...
+    </a>
+    <div class="post-card__meta meta-text">
+      2020-11-22
+      
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/unraid-bei-wang-lu_20260707_094613/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Unraid备忘录</h3>
+    </a>
+    <a href="/post/unraid-bei-wang-lu_20260707_094613/" class="post-card__excerpt clamp-2">
+      系统下载
+https://unraid.net/download
+
+插件
+Advanced Copy and Move提供cp mv 图形进度条
+CA Auto Update Applications 自动更新插件跟docker
+C...
+    </a>
+    <div class="post-card__meta meta-text">
+      2019-06-15
       
     </div>
   </div>

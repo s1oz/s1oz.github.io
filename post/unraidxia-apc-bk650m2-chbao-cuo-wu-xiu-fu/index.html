@@ -38,21 +38,26 @@
   })();
 </script>
   <meta name="generator" content="Gridea Pro 1.2.2">
-  <title>#dsm | 杂乱的备忘录</title>
+  <title>UNRAID下APC BK650M2-CH报错误修复 | 杂乱的备忘录</title>
   
-<meta name="description" content="杂乱的备忘录">
-<link rel="canonical" href="https://s1oz.github.io/tag/dsm/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"杂乱的备忘录","url":"https://s1oz.github.io","description":"杂乱的备忘录","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://s1oz.github.io/search?q={search_term_string}"}}</script>
-<meta property="og:title" content="杂乱的备忘录">
-<meta property="og:description" content="杂乱的备忘录">
-<meta property="og:url" content="https://s1oz.github.io/tag/dsm/">
-<meta property="og:type" content="website">
+<meta property="og:title" content="UNRAID下APC BK650M2-CH报错误修复" />
+<meta property="og:type" content="article" />
+
+
+<meta name="description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59Z","dateModified":"2026-08-10T09:43:59Z","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","name":"UNRAID下APC BK650M2-CH报错误修复","position":2}]}</script>
+<meta property="og:title" content="UNRAID下APC BK650M2-CH报错误修复">
+<meta property="og:description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="杂乱的备忘录">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://s1oz.github.io/tag/dsm/">
-<meta name="twitter:title" content="杂乱的备忘录">
-<meta name="twitter:description" content="杂乱的备忘录">
+<meta name="twitter:url" content="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
+<meta name="twitter:title" content="UNRAID下APC BK650M2-CH报错误修复">
+<meta name="twitter:description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
 <body class="flavor-theme">
@@ -172,198 +177,117 @@
 
   <main class="site-main" role="main">
     
-<div class="container">
-  <div class="page-header">
-    <a href="/tags" class="page-back meta-text">&larr; 所有标签</a>
-    <h1 class="page-title"><span class="page-title__hash">#</span>dsm</h1>
-    
-    <p class="page-subtitle meta-text">共 7 篇文章</p>
-    
-  </div>
-
-  
-  <div class="post-list">
-    
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di_20260707_094609/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">将UNRAID设置为HyperBackup远程rsync备份目的地</h3>
-    </a>
-    <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di_20260707_094609/" class="post-card__excerpt clamp-2">
-      添加rsync服务脚本
-通过应用商店中的Userscripts插件来新建一个开机运行脚本
-粘贴以下内容在脚本中
-#!/bin/bash
-
-# 创建Rsync服务的配置文件
-echo &amp;quot;
-uid = nobody
-g...
-    </a>
-    <div class="post-card__meta meta-text">
-      2024-05-22
+<article class="article-container">
+  <header class="article-header">
+    <h1 class="article-title">UNRAID下APC BK650M2-CH报错误修复</h1>
+    <div class="article-meta">
+      
+      <span class="article-meta__item">2026-08-10</span>
+      
+      <span class="article-meta__sep">·</span>
+      <span class="article-meta__item">2 分钟阅读</span>
       
     </div>
-  </div>
-  
-</article>
-
     
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">假装给群晖披层马甲</h3>
-    </a>
-    <a href="/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/" class="post-card__excerpt clamp-2">
-      严打呀,唉~
-以前是要公网难,现在是有公网开端口难🙁
-开了的时时刻刻要担心被运营商以违法搭建web服务找上门😱
-所以,给群晖,&amp;ldquo;备个案吧&amp;rdquo;
-像这样😬
-
-是不是突然就不怕了
-突然感觉自己是正经人了🙄
-只要把自己骗...
-    </a>
-    <div class="post-card__meta meta-text">
-      2020-12-25
+    <div class="article-header__tags">
+      
+      <a href="/tag/bk650m2-ch/" class="tag-pill tag-pill--sm">BK650M2-CH</a>
+      
+      <a href="/tag/unraid/" class="tag-pill tag-pill--sm">unraid</a>
       
     </div>
-  </div>
-  
-  <a href="/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia/" class="post-card__thumb-link">
-    <img class="post-card__thumb" src="/post-images/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia.png" alt="假装给群晖披层马甲" loading="lazy" />
-  </a>
-  
-</article>
-
     
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia_20260707_094609/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">假装给群晖披层马甲</h3>
-    </a>
-    <a href="/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia_20260707_094609/" class="post-card__excerpt clamp-2">
-      严打呀,唉~
-以前是要公网难,现在是有公网开端口难🙁
-开了的时时刻刻要担心被运营商以违法搭建web服务找上门😱
-所以,给群晖,&amp;ldquo;备个案吧&amp;rdquo;
-像这样😬
+  </header>
 
-是不是突然就不怕了
-突然感觉自己是正经人了🙄
-只要把自己骗...
-    </a>
-    <div class="post-card__meta meta-text">
-      2020-12-25
+  
+
+  <div class="article-content">
+    <h1 id="ol-dischrgnut">OL DISCHRG错误修复与NUT参数优化</h1>
+<p>在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 <code>On Line - Discharging Battery</code>。</p>
+<p>此问题通常发生在<strong>老版本固件</strong>的 BK650M2-CH 上，属于固件在 USB HID 协议下的标志位误报，并不影响实际硬件功能。以下为修复显示 Bug 及针对 UNRAID 关机特性的配置文件优化方案。</p>
+<hr />
+<h2 id="-">一、 原因分析与修复原理</h2>
+<p>通过终端运行 <code>upsc ups@127.0.0.1</code> 查看，老固件设备会输出 <code>OL DISCHRG</code> 状态值。APC 固件将“市电在线”与“浮充/微弱放电”标记混在一起，导致 NUT 识别为放电中。</p>
+<p>推荐使用 NUT 的条件匹配替换语法，仅将 <code>OL DISCHRG</code> 修正为 <code>OL</code>：</p>
+<pre><code class="language-ini">override.ups.status = &quot;OL&quot; &quot;OL DISCHRG&quot;
+
+</code></pre>
+<p>此方法仅针对误报生效，断电变为 <code>OB</code>（电池供电）时不会触发替换，保证安全关机逻辑不受影响。</p>
+<hr />
+<h2 id="-unraid-">二、 UNRAID 配置文件优化</h2>
+<p>将 UNRAID 网页设置中的 <strong>Enable Manual Configuration</strong> 改为 <strong><code>for UPS Driver</code></strong>，然后在 <code>/etc/nut/ups.conf</code> 中追加以下完整配置：</p>
+<pre><code class="language-ini">[ups]
+driver = usbhid-ups
+port = auto
+
+# 【修复显示 Bug】屏蔽 OL DISCHRG 误报，正常显示纯净的 OL (在线)
+override.ups.status = &quot;OL&quot; &quot;OL DISCHRG&quot;
+
+# 【来电恢复延时】市电恢复(来电)后，UPS 强制等待 60 秒再恢复插座供电，防止刚来电时电网闪断冲击硬件
+ondelay = 60
+
+# 【电网敏感度设置】降低对市电波动的敏感度(low)，防止家里开启大功率电器时 UPS 频繁无意义地切到电池供电(low/medium/high)
+default.input.sensitivity = low
+
+</code></pre>
+<hr />
+<h2 id="-unraid-gui-">三、 UNRAID GUI 匹配设置</h2>
+<p>在 UNRAID 的 <strong>Settings -&gt; NUT Settings</strong> 中完成对应修改：</p>
+<ul>
+<li><strong>Enable Manual Configuration</strong>: <code>for UPS Driver</code></li>
+<li><strong>UPS Battery Runtime Attribute</strong>: <code>battery.runtime</code></li>
+<li><strong>Shutdown Mode</strong>: <code>Time on Battery</code>（建议设为 <code>4</code> 分钟）或 <code>Battery Level</code>（设为 <code>30%</code>）</li>
+<li><strong>Disable UPS Power after Shutdown</strong>: <code>Yes</code></li>
+<li><strong>Battery Replacement Notification</strong>: <code>Yes</code></li>
+</ul>
+<hr />
+<h2 id="--1">四、 验证结果</h2>
+<p>保存并点击 <strong>Restart NUT</strong> 重启服务后，在终端执行命令：</p>
+<pre><code class="language-bash">upsc ups@127.0.0.1
+
+</code></pre>
+<p>核对关键输出项是否生效：</p>
+<ul>
+<li><code>ups.status</code>: <code>OL</code></li>
+<li><code>input.sensitivity</code>: <code>low</code></li>
+</ul>
+<p>此时状态栏显示恢复正常，断电保护机制亦已配置完毕。</p>
+
+  </div>
+
+  
+  <nav class="post-nav">
+    
+    <a href="/post/docker-an-zhuang-emby-bing-bai-piao_20260707_094607/" class="post-nav-card post-nav-card--prev">
       
-    </div>
-  </div>
-  
-  <a href="/post/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia_20260707_094609/" class="post-card__thumb-link">
-    <img class="post-card__thumb" src="/post-images/jia-zhuang-gei-qun-hui-pi-ceng-ma-jia.png" alt="假装给群晖披层马甲" loading="lazy" />
-  </a>
-  
-</article>
-
-    
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/pxeabb-bei-fen-hui-fu-hao-bang-shou_20260707_094611/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">PXE+ABB 备份恢复好帮手</h3>
-    </a>
-    <a href="/post/pxeabb-bei-fen-hui-fu-hao-bang-shou_20260707_094611/" class="post-card__excerpt clamp-2">
-      PXE跟ABB是啥
-PXE:
-预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动...
-    </a>
-    <div class="post-card__meta meta-text">
-      2019-08-15
+      <div class="post-nav-card__img">
+        <img src="/post-images/docker-an-zhuang-emby-bing-bai-piao.png" alt="安装Emby并白嫖" loading="lazy" />
+      </div>
       
-    </div>
-  </div>
-  
-  <a href="/post/pxeabb-bei-fen-hui-fu-hao-bang-shou_20260707_094611/" class="post-card__thumb-link">
-    <img class="post-card__thumb" src="/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg" alt="PXE+ABB 备份恢复好帮手" loading="lazy" />
-  </a>
-  
-</article>
-
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">上一篇</span>
+        <span class="post-nav-card__title">安装Emby并白嫖</span>
+      </div>
+      <span class="post-nav-card__arrow">&larr;</span>
+    </a>
     
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">PXE+ABB 备份恢复好帮手</h3>
-    </a>
-    <a href="/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/" class="post-card__excerpt clamp-2">
-      PXE跟ABB是啥
-PXE:
-预启动执行环境（Preboot eXecution Environment，PXE，也被称为预执行环境）提供了一种使用网络接口（Network Interface）启动计算机的机制。这种机制让计算机的启动...
-    </a>
-    <div class="post-card__meta meta-text">
-      2019-08-15
+    
+    <a href="/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260707_091340/" class="post-nav-card post-nav-card--next">
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">下一篇</span>
+        <span class="post-nav-card__title">Unraid 7.3.1 上 Redroid 容器部署完整指南</span>
+      </div>
       
-    </div>
-  </div>
-  
-  <a href="/post/pxeabb-bei-fen-hui-fu-hao-bang-shou/" class="post-card__thumb-link">
-    <img class="post-card__thumb" src="/post-images/pxeabb-bei-fen-hui-fu-hao-bang-shou.jpg" alt="PXE+ABB 备份恢复好帮手" loading="lazy" />
-  </a>
-  
-</article>
-
+      <span class="post-nav-card__arrow">&rarr;</span>
+    </a>
     
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/hei-qun-bei-wang-lu_20260707_094609/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Xpenology备忘录</h3>
-    </a>
-    <a href="/post/hei-qun-bei-wang-lu_20260707_094609/" class="post-card__excerpt clamp-2">
-      引导
-https://xpenology.com/forum/topic/12952-dsm-62-loader/
-额外驱动
-https://xpenology.com/forum/topic/21663-driver-extensi...
-    </a>
-    <div class="post-card__meta meta-text">
-      2018-06-10
-      
-    </div>
-  </div>
-  
-  <a href="/post/hei-qun-bei-wang-lu_20260707_094609/" class="post-card__thumb-link">
-    <img class="post-card__thumb" src="/post-images/hei-qun-bei-wang-lu.png" alt="Xpenology备忘录" loading="lazy" />
-  </a>
-  
-</article>
+  </nav>
 
-    
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/hei-qun-bei-wang-lu/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Xpenology备忘录</h3>
-    </a>
-    <a href="/post/hei-qun-bei-wang-lu/" class="post-card__excerpt clamp-2">
-      引导
-https://xpenology.com/forum/topic/12952-dsm-62-loader/
-额外驱动
-https://xpenology.com/forum/topic/21663-driver-extensi...
-    </a>
-    <div class="post-card__meta meta-text">
-      2018-06-10
-      
-    </div>
-  </div>
   
-  <a href="/post/hei-qun-bei-wang-lu/" class="post-card__thumb-link">
-    <img class="post-card__thumb" src="/post-images/hei-qun-bei-wang-lu.png" alt="Xpenology备忘录" loading="lazy" />
-  </a>
   
-</article>
 
-    
-  </div>
-  
-</div>
+
+</article>
 
   </main>
 

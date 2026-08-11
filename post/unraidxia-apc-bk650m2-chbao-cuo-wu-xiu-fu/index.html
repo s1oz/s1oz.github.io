@@ -46,7 +46,7 @@
 
 <meta name="description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
 <link rel="canonical" href="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-11T08:17:33+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-11T13:56:53+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","name":"UNRAID下APC BK650M2-CH报错误修复","position":2}]}</script>
 <meta property="og:title" content="UNRAID下APC BK650M2-CH报错误修复">
 <meta property="og:description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
@@ -225,10 +225,13 @@
 <pre><code class="language-ini">[ups]
 driver = usbhid-ups
 port = auto
+subdriver = apc
+vendorid = 051d
+productid = 0002
+pollinterval = 2
 
-# 启用 NUT 官方针对老固件 OL+DISCHRG 标志位的专用识别参数
-# (自动识别市电状态，防止断电时被误认成在线)
-onlinedischarge_onbattery
+# 【核心修复】启用针对老固件 APC 浮充误报的官方识别参数
+onlinedischarge_calibration
 
 # 【来电恢复延时】市电恢复(来电)后，UPS 强制等待 60 秒再恢复插座供电，防止刚来电时电网闪断冲击硬件
 ondelay = 60

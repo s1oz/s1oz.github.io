@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://s1oz.github.io/sitemap.xml

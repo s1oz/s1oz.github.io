@@ -46,7 +46,7 @@
 
 <meta name="description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
 <link rel="canonical" href="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-10T09:43:59+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-11T08:17:33+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","name":"UNRAID下APC BK650M2-CH报错误修复","position":2}]}</script>
 <meta property="og:title" content="UNRAID下APC BK650M2-CH报错误修复">
 <meta property="og:description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
@@ -205,23 +205,19 @@
     <h1 id="ol-dischrgnut">OL DISCHRG错误修复与NUT参数优化</h1>
 <p>在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 <code>On Line - Discharging Battery</code>。</p>
 <p>此问题通常发生在<strong>老版本固件</strong>的 BK650M2-CH 上，属于固件在 USB HID 协议下的标志位误报，并不影响实际硬件功能。以下为修复显示 Bug 及针对 UNRAID 关机特性的配置文件优化方案。</p>
-<hr />
 <h2 id="-">一、 原因分析与修复原理</h2>
-<p>通过终端运行 <code>upsc ups@127.0.0.1</code> 查看，老固件设备会输出 <code>OL DISCHRG</code> 状态值。APC 固件将“市电在线”与“浮充/微弱放电”标记混在一起，导致 NUT 识别为放电中。</p>
-<p>推荐使用 NUT 的条件匹配替换语法，仅将 <code>OL DISCHRG</code> 修正为 <code>OL</code>：</p>
-<pre><code class="language-ini">override.ups.status = &quot;OL&quot; &quot;OL DISCHRG&quot;
-
-</code></pre>
-<p>此方法仅针对误报生效，断电变为 <code>OB</code>（电池供电）时不会触发替换，保证安全关机逻辑不受影响。</p>
-<hr />
+<h3 id="-apc-bk650m2-ch--unraid--nut--on-line---discharging-battery-ol"><strong>现象</strong>：老固件版本的 APC BK650M2-CH 在 UNRAID 的 NUT 插件下，市电正常时会误报 On Line - Discharging Battery；若强行重写为 OL，会导致真实断电时无法识别并关机。</h3>
+<h3 id="-usb-hid--ol-dischrg"><strong>根源</strong>：老固件在 USB HID 协议下上报了混合状态码 OL DISCHRG。驱动默认难以识别，强行粗暴覆盖会掩盖真正的断电信号。</h3>
+<h3 id="-onlinedischarge-onbattery--on-battery---discharging-battery-"><strong>解决方案</strong>：直接使用驱动原生的 onlinedischarge_onbattery 参数，既能解决市电下的误报问题，又能确保断电时正确显示 On Battery - Discharging Battery 并顺畅触发自动关机。</h3>
 <h2 id="-unraid-">二、 UNRAID 配置文件优化</h2>
 <p>将 UNRAID 网页设置中的 <strong>Enable Manual Configuration</strong> 改为 <strong><code>for UPS Driver</code></strong>，然后在 <code>/etc/nut/ups.conf</code> 中追加以下完整配置：</p>
 <pre><code class="language-ini">[ups]
 driver = usbhid-ups
 port = auto
 
-# 【修复显示 Bug】屏蔽 OL DISCHRG 误报，正常显示纯净的 OL (在线)
-override.ups.status = &quot;OL&quot; &quot;OL DISCHRG&quot;
+# 启用 NUT 官方针对老固件 OL+DISCHRG 标志位的专用识别参数
+# (自动识别市电状态，防止断电时被误认成在线)
+onlinedischarge_onbattery
 
 # 【来电恢复延时】市电恢复(来电)后，UPS 强制等待 60 秒再恢复插座供电，防止刚来电时电网闪断冲击硬件
 ondelay = 60

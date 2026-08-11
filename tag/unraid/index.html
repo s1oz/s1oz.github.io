@@ -177,7 +177,7 @@
     <a href="/tags" class="page-back meta-text">&larr; 所有标签</a>
     <h1 class="page-title"><span class="page-title__hash">#</span>unraid</h1>
     
-    <p class="page-subtitle meta-text">共 9 篇文章</p>
+    <p class="page-subtitle meta-text">共 10 篇文章</p>
     
   </div>
 
@@ -196,6 +196,27 @@
     </a>
     <div class="post-card__meta meta-text">
       2026-07-07
+      <span class="badge badge--top">置顶</span>
+    </div>
+  </div>
+  
+</article>
+
+    
+    <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia_20260707_094617/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">在UNRAID上通过vGPU虚拟化把玩Tesla P4炼丹卡</h3>
+    </a>
+    <a href="/post/zai-unraid-shang-tong-guo-vgpu-xu-ni-hua-ba-wan-tesla-p4-lian-dan-qia_20260707_094617/" class="post-card__excerpt clamp-2">
+      废话 直接跳
+
+主要还是折腾,心痒痒,对~就是玩
+从1660直通虚拟机,核显转码&amp;gt;拆掉独显,直通核显&amp;gt;用炼丹卡玩下vGPU
+说实话就是一开始直通独显玩游戏,但是没啥意思就拆了省电,然后虚拟机没显卡又不好玩放置类小游戏,所以...
+    </a>
+    <div class="post-card__meta meta-text">
+      2023-05-27
       <span class="badge badge--top">置顶</span>
     </div>
   </div>
@@ -268,19 +289,22 @@
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi_20260707_094609/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">解锁N卡在Unraid上的转码限制</h3>
+    <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">将UNRAID设置为HyperBackup远程rsync备份目的地</h3>
     </a>
-    <a href="/post/jie-suo-n-qia-zai-unraid-shang-de-zhuan-ma-xian-zhi_20260707_094609/" class="post-card__excerpt clamp-2">
-      举个栗子
-如EMBY调用N卡来进行转码播放,有效终端为3个
-也就是说,假设你有4个人远程转码播放,只有3个人能用显卡转码
-还有一个可怜的人就只能软件转码了
-这样会造成cpu资源极度的浪费&amp;hellip;
-但是&amp;hellip;一般哪里来...
+    <a href="/post/jiang-unraid-she-zhi-wei-hyperbackup-yuan-cheng-rsync-bei-fen-mu-de-di/" class="post-card__excerpt clamp-2">
+      添加rsync服务脚本
+通过应用商店中的Userscripts插件来新建一个开机运行脚本
+粘贴以下内容在脚本中
+#!/bin/bash
+
+# 创建Rsync服务的配置文件
+echo &amp;quot;
+uid = nobody
+g...
     </a>
     <div class="post-card__meta meta-text">
-      2021-03-25
+      2024-05-22
       
     </div>
   </div>
@@ -290,23 +314,18 @@
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/unraid-shang-rclone-cha-jian-de-shi-yong/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Unraid上rclone插件的使用</h3>
+    <a href="/post/unraid-shi-yong-nginxproxymanager-yu-dao-de-xiao-wen-ti/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">UNRAID使用NginxProxyManager外网访问遇到的小问题</h3>
     </a>
-    <a href="/post/unraid-shang-rclone-cha-jian-de-shi-yong/" class="post-card__excerpt clamp-2">
-      友情提示 页面过长 请善用右侧目录
-安装rclone插件
-应用中搜素rclone
-选择这个插件安装,其他两个为docker
-安装完成后会出现在设置-用户实用程序中
-
-连接网盘
-谷歌团队盘
-在终端中输入rclone config
-No ...
+    <a href="/post/unraid-shi-yong-nginxproxymanager-yu-dao-de-xiao-wen-ti/" class="post-card__excerpt clamp-2">
+      给unraid设置反代后使用发现以下问题
+1.下载中断
+直接从unraid的文件管理器下载大文件每超过1G大小会被中断,需要再次点击继续
+可以直接在对应的unraid反代选项advanced页面中添加以下内容解除限制
+client_m...
     </a>
     <div class="post-card__meta meta-text">
-      2021-03-22
+      2022-09-16
       
     </div>
   </div>
@@ -316,20 +335,19 @@ No ...
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth_20260707_094606/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">49年入国军 尝试白嫖ETH</h3>
+    <a href="/post/gei-unraid-tian-jia-deng-lu-tong-zhi/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">给UNRAID添加登录通知</h3>
     </a>
-    <a href="/post/49-nian-ru-guo-jun-chang-shi-bai-piao-eth_20260707_094606/" class="post-card__excerpt clamp-2">
-      真的白嫖?
-怎么才能算白嫖呢😵
-我觉得拿手上现有的东西,不要额外投资资金
-这就是白嫖😶
-对&amp;hellip;.就是这样&amp;hellip;有道理噢~~
-现在也不玩游戏了&amp;hellip;电脑上的显卡反复告诉我它寂寞了&amp;hellip;
-NAS反...
+    <a href="/post/gei-unraid-tian-jia-deng-lu-tong-zhi/" class="post-card__excerpt clamp-2">
+      反正端口都没咋开,想着不怕一万就怕万一
+如果被偷偷登录了咋办呢,没办法及时知道呀
+群晖有登录提醒,那小天使unraid怎么能没有呢😗
+所以呀,就靠群晖来实现吧
+群晖设置好通知
+邮件通知 微信通知 自建gotify通知啥的都成 只能正常...
     </a>
     <div class="post-card__meta meta-text">
-      2021-01-20
+      2022-09-02
       
     </div>
   </div>
@@ -339,20 +357,18 @@ NAS反...
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/unraid-geng-fang-bian-de-wan-zhuan-xia-zai_20260707_094613/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Unraid更方便的玩转下载</h3>
+    <a href="/post/ups-bao-cuo-err-access-denied/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">UPS报错ERR ACCESS-DENIED</h3>
     </a>
-    <a href="/post/unraid-geng-fang-bian-de-wan-zhuan-xia-zai_20260707_094613/" class="post-card__excerpt clamp-2">
-      为什么要这样做
-9102年了,谁还没蹄子呢👺
-下载工具一般也都是直接安装在NAS上,也没做分离
-但是既然用了蹄子,肯定就不能进行p2p下载了👎
-应该大部分基友都是搞个OP来煮蹄子吧
-lean的只有煮与不煮
-要么就是直接不给NAS吃蹄子...
+    <a href="/post/ups-bao-cuo-err-access-denied/" class="post-card__excerpt clamp-2">
+      原来BK650M2-CH是直接插unraid上
+用自带的UPS 设置无法正常识别这款,一直显示工作在电池上
+行吧,太个例了,同款ups有的正常,有的不正常
+转投NUT Settings插件
+但是&amp;hellip;会间歇性丢失ups,需要...
     </a>
     <div class="post-card__meta meta-text">
-      2020-11-22
+      2022-08-22
       
     </div>
   </div>
@@ -362,20 +378,18 @@ lean的只有煮与不煮
     
     <article class="post-card post-card--list">
   <div class="post-card__body">
-    <a href="/post/unraid-bei-wang-lu_20260707_094613/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Unraid备忘录</h3>
+    <a href="/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong_20260707_094608/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">关于Unraid 6.11.+版本 NerdPack / DevPack 插件无法使用</h3>
     </a>
-    <a href="/post/unraid-bei-wang-lu_20260707_094613/" class="post-card__excerpt clamp-2">
-      系统下载
-https://unraid.net/download
-
-插件
-Advanced Copy and Move提供cp mv 图形进度条
-CA Auto Update Applications 自动更新插件跟docker
-C...
+    <a href="/post/guan-yu-unraid-611ban-ben-nerdpack-devpack-cha-jian-wu-fa-shi-yong_20260707_094608/" class="post-card__excerpt clamp-2">
+      今天无聊升级了下6.11.0rc3🤡
+发现NerdPack / DevPack 无法打开正常刷新了,日志中也有报错🤣
+去翻了下论坛,原来是它不再与 6.11 兼容,并且其中的许多软件包不再兼容或更新
+插播一条
+现已有新插件NERDTO...
     </a>
     <div class="post-card__meta meta-text">
-      2019-06-15
+      2022-08-20
       
     </div>
   </div>

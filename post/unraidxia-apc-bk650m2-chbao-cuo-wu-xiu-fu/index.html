@@ -46,7 +46,7 @@
 
 <meta name="description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
 <link rel="canonical" href="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-11T13:56:53+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-12T08:24:10+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","name":"UNRAID下APC BK650M2-CH报错误修复","position":2}]}</script>
 <meta property="og:title" content="UNRAID下APC BK650M2-CH报错误修复">
 <meta property="og:description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
@@ -196,7 +196,7 @@
       <span class="article-meta__item">2026-08-10</span>
       
       <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">2 分钟阅读</span>
+      <span class="article-meta__item">3 分钟阅读</span>
       
     </div>
     
@@ -216,27 +216,26 @@
     <h1 id="ol-dischrgnut">OL DISCHRG错误修复与NUT参数优化</h1>
 <p>在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 <code>On Line - Discharging Battery</code>。</p>
 <p>此问题通常发生在<strong>老版本固件</strong>的 BK650M2-CH 上，属于固件在 USB HID 协议下的标志位误报，并不影响实际硬件功能。以下为修复显示 Bug 及针对 UNRAID 关机特性的配置文件优化方案。</p>
-<h2 id="-">一、 原因分析与修复原理</h2>
-<h3 id="-apc-bk650m2-ch--unraid--nut--on-line---discharging-battery-ol"><strong>现象</strong>：老固件版本的 APC BK650M2-CH 在 UNRAID 的 NUT 插件下，市电正常时会误报 On Line - Discharging Battery；若强行重写为 OL，会导致真实断电时无法识别并关机。</h3>
-<h3 id="-usb-hid--ol-dischrg"><strong>根源</strong>：老固件在 USB HID 协议下上报了混合状态码 OL DISCHRG。驱动默认难以识别，强行粗暴覆盖会掩盖真正的断电信号。</h3>
+<h2 id="-">一、 原因分析</h2>
+<h3 id="-apc--99100--usb--olcal-dischrgnut--dischrg-"><strong>固件标志位乱码</strong>：老固件 APC 在电池充到 99%~100% 浮充阶段时，其 USB 芯片会同时输出 OL（在线）、CAL（校准）和 DISCHRG（放电）标志位。NUT 的默认逻辑容易把其中的 DISCHRG 误判为“断电放电”。</h3>
+<h3 id="usb--usb--interrupt-pipe--linux--220v--ol-"><strong>USB 芯片通信“假死”</strong>：拔掉市电瞬间，该型号的 USB 控芯片经常不会主动通过 Interrupt Pipe 上报事件，导致 Linux 系统拿到的数据停留在断电前（显示 220V 电压和 OL 状态）。</h3>
 <h3 id="-onlinedischarge-onbattery--on-battery---discharging-battery-"><strong>解决方案</strong>：直接使用驱动原生的 onlinedischarge_onbattery 参数，既能解决市电下的误报问题，又能确保断电时正确显示 On Battery - Discharging Battery 并顺畅触发自动关机。</h3>
 <h2 id="-unraid-">二、 UNRAID 配置文件优化</h2>
-<p>将 UNRAID 网页设置中的 <strong>Enable Manual Configuration</strong> 改为 <strong><code>for UPS Driver</code></strong>，然后在 <code>/etc/nut/ups.conf</code> 中追加以下完整配置：</p>
-<pre><code class="language-ini">[ups]
-driver = usbhid-ups
-port = auto
-subdriver = apc
-vendorid = 051d
-productid = 0002
-pollinterval = 2
-
-# 【核心修复】启用针对老固件 APC 浮充误报的官方识别参数
+<p>将 UNRAID 网页设置中的 <strong>Enable Manual Configuration</strong> 改为 <strong><code>for UPS Driver</code></strong>，并选择**default (2.8.5 stable)**驱动,然后在 <code>/etc/nut/ups.conf</code> 中追加以下完整配置：</p>
+<pre><code class="language-ini"># 【修复】
+# 将轮询间隔缩短为 1 秒
+pollinterval = 1
+# 当 USB 接口不主动上报事件时，容忍 2 次后强制重置/踢醒 USB 管道
+interrupt_pipe_no_events_tolerance = 2
+# 开启异步模式，防止 USB 数据阻塞导致状态滞后
+synchronous = no
+# 将老固件的 OL+DISCHRG/CAL 识别为校准/浮充，而非断电
 onlinedischarge_calibration
 
-# 【来电恢复延时】市电恢复(来电)后，UPS 强制等待 60 秒再恢复插座供电，防止刚来电时电网闪断冲击硬件
+# 【额外选项】
+# 市电恢复(来电)后，UPS 强制等待 60 秒再恢复插座供电，防止刚来电时电网闪断冲击硬件
 ondelay = 60
-
-# 【电网敏感度设置】降低对市电波动的敏感度(low)，防止家里开启大功率电器时 UPS 频繁无意义地切到电池供电(low/medium/high)
+# 降低对市电波动的敏感度(low)，防止家里开启大功率电器时 UPS 频繁无意义地切到电池供电(low/medium/high)
 default.input.sensitivity = low
 
 </code></pre>

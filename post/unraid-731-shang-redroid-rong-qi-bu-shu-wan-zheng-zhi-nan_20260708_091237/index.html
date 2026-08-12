@@ -46,7 +46,7 @@
 
 <meta name="description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
 <link rel="canonical" href="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-08-10T10:06:33+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":"📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-08-12T17:06:12+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","name":"Unraid 7.3.1 上 Redroid 容器部署完整指南","position":2}]}</script>
 <meta property="og:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
 <meta property="og:description" content="📌 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/press...">
@@ -196,7 +196,7 @@
       <span class="article-meta__item">2026-07-07</span>
       
       <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">10 分钟阅读</span>
+      <span class="article-meta__item">11 分钟阅读</span>
       
     </div>
     
@@ -411,6 +411,45 @@ full avg10=0.00 avg60=0.00 avg300=0.00 total=0
 </tbody>
 </table>
 <hr />
+<h2 id="uhid">添加UHID支持</h2>
+<h3 id="unraid-">Unraid 实现开机自动加载</h3>
+<pre><code>nano /boot/config/go
+添加
+modprobe uhid
+</code></pre>
+<h3 id="redroid-">Redroid 添加参数</h3>
+<pre><code>--device=/dev/uhid：把宿主的 /dev/uhid 映射进容器
+androidboot.redroid_enable_input_subsys=1：启用 redroid 的输入子系统
+</code></pre>
+<h3 id="magisk-">Magisk 模块添加脚本</h3>
+<pre><code>adb shell
+su
+mkdir -p /data/adb/modules/uhidfix
+cd /data/adb/modules/uhidfix
+
+cat &gt; module.prop &lt;&lt; 'EOF'
+id=uhidfix
+name=UHID Permission Fix
+version=1.0
+versionCode=1
+author=you
+description=Auto chmod 666 /dev/uhid for scrcpy HID
+EOF
+
+cat &gt; service.sh &lt;&lt; 'EOF'
+#!/system/bin/sh
+for i in $(seq 1 30); do
+    if [ -e /dev/uhid ]; then
+        chmod 666 /dev/uhid
+        chmod 666 /dev/uinput
+        exit 0
+    fi
+    sleep 1
+done
+EOF
+
+chmod 755 service.sh
+</code></pre>
 <h2 id="--5">🖥️ 客户端连接工具</h2>
 <h3 id="heading-2">安卓端</h3>
 <p><strong><a href="https://github.com/XRSec/Screen-Remote">Screen-Remote</a></strong></p>

@@ -46,7 +46,7 @@
 
 <meta name="description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
 <link rel="canonical" href="https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-12T08:24:10+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"UNRAID下APC BK650M2-CH报错误修复","url":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","description":"OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB\u0026hellip;","datePublished":"2026-08-10T09:43:59+08:00","dateModified":"2026-08-12T08:33:20+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraidxia-apc-bk650m2-chbao-cuo-wu-xiu-fu/","name":"UNRAID下APC BK650M2-CH报错误修复","position":2}]}</script>
 <meta property="og:title" content="UNRAID下APC BK650M2-CH报错误修复">
 <meta property="og:description" content="OL DISCHRG错误修复与NUT参数优化 在群晖（DSM）上使用正常的 APC BK650M2-CH，接入 UNRAID 后，使用自带的UPS 设置或安装NUT（Network UPS Tools）插件可能会在状态栏持续显示异常的 On Line - Discharging Battery。 此问题通常发生在老版本固件的 BK650M2-CH 上，属于固件在 USB&amp;hellip;">
@@ -196,7 +196,7 @@
       <span class="article-meta__item">2026-08-10</span>
       
       <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">3 分钟阅读</span>
+      <span class="article-meta__item">10 分钟阅读</span>
       
     </div>
     
@@ -251,16 +251,65 @@ default.input.sensitivity = low
 </ul>
 <hr />
 <h2 id="--1">四、 验证结果</h2>
-<p>保存并点击 <strong>Restart NUT</strong> 重启服务后，在终端执行命令：</p>
-<pre><code class="language-bash">upsc ups@127.0.0.1
-
+<p>保存并点击 <strong>Restart NUT</strong> 重启服务后，日志如下：</p>
+<pre><code>Aug 12 08:27:33 Tower ool www[2061217]: /usr/local/emhttp/plugins/nut-dw/scripts/start
+Aug 12 08:27:34 Tower rc.nut: Writing NUT configuration...
+Aug 12 08:27:34 Tower rc.nut: Updating permissions for NUT...
+Aug 12 08:27:34 Tower rc.nut: Checking if the NUT Runtime Statistics Module should be enabled...
+Aug 12 08:27:34 Tower rc.nut: Disabling the NUT Runtime Statistics Module...
+Aug 12 08:27:35 Tower rc.nut: Network UPS Tools upsdrvctl - UPS driver controller 2.8.5 release
+Aug 12 08:27:35 Tower rc.nut: Network UPS Tools 2.8.5 release - Generic HID driver 0.71
+Aug 12 08:27:35 Tower rc.nut: USB communication driver (libusb 1.0) 0.53
+Aug 12 08:27:35 Tower rc.nut: HIDParse: LogMax is less than LogMin. Vendor HID report descriptor may be incorrect; interpreting LogMax -1 as 255 in ReportID: 0x0c
+Aug 12 08:27:35 Tower rc.nut: HIDParse: LogMax is less than LogMin. Vendor HID report descriptor may be incorrect; interpreting LogMax -1 as 255 in ReportID: 0x22
+Aug 12 08:27:35 Tower rc.nut: HIDParse: LogMax is less than LogMin. Vendor HID report descriptor may be incorrect; interpreting LogMax -1 as 255 in ReportID: 0x40
+Aug 12 08:27:35 Tower rc.nut: Using subdriver: APC HID 0.101
+Aug 12 08:27:35 Tower rc.nut: Defaulting lbrb_log_delay_sec=3 for American Power Conversion model BK650M2-CH; consider also setting the lbrb_log_delay_without_calibrating and/or and/or onlinedischarge_log_throttle_sec flag(s) in your configuration
+Aug 12 08:27:35 Tower usbhid-ups[2074800]: Listening on socket /var/run/nut/usbhid-ups-ups
+Aug 12 08:27:35 Tower rc.nut: Listening on socket /var/run/nut/usbhid-ups-ups
+Aug 12 08:27:35 Tower usbhid-ups[2074802]: Startup successful: usbhid-ups
+Aug 12 08:27:36 Tower rc.nut: Network UPS Tools upsd 2.8.5 release
+Aug 12 08:27:36 Tower rc.nut: listening on 0.0.0.0 port 3493
+Aug 12 08:27:36 Tower upsd[2074836]: listening on 0.0.0.0 port 3493
+Aug 12 08:27:36 Tower upsd[2074836]: Connected to UPS [ups]: usbhid-ups-ups
+Aug 12 08:27:36 Tower rc.nut: Connected to UPS [ups]: usbhid-ups-ups
+Aug 12 08:27:36 Tower usbhid-ups[2074802]: sock_connect: enabling asynchronous mode (fixed)
+Aug 12 08:27:36 Tower upsd[2074836]: Found 1 UPS defined in ups.conf
+Aug 12 08:27:36 Tower rc.nut: Found 1 UPS defined in ups.conf
+Aug 12 08:27:36 Tower upsd[2074837]: Startup successful: upsd
+Aug 12 08:27:36 Tower rc.nut: Network UPS Tools upsmon 2.8.5 release
+Aug 12 08:27:36 Tower rc.nut: UPS: ups@127.0.0.1 (primary) (power value 1)
+Aug 12 08:27:36 Tower rc.nut: Using power down flag file /etc/nut/killpower
+Aug 12 08:27:36 Tower upsmon[2074840]: Startup successful: upsmon
+Aug 12 08:27:36 Tower upsmon[2074840]: Warning: running as one big root process by request (upsmon -p)
+Aug 12 08:27:36 Tower upsd[2074837]: User monuser@127.0.0.1 logged into UPS [ups]
+Aug 12 08:27:56 Tower upsmon[2074840]: UPS ups@127.0.0.1 on battery
+Aug 12 08:27:56 Tower nut-notify[2075310]: is now handling ONBATT
+Aug 12 08:27:56 Tower nut-notify[2075310]: [ups] UPS is on battery. The system will shutdown in 300 seconds.
+Aug 12 08:27:56 Tower nut-notify[2075310]: Executing user's hook script for ONBATT (as non-blocking)...
+Aug 12 08:27:56 Tower nut-notify[2075310]: Sending OS notifications...
+Aug 12 08:27:56 Tower xnut-notify-hooks.sh[2075310]: ONBATT commands are now executing in background...
+Aug 12 08:27:56 Tower nut-notify[2075310]: Shutdown criteria are now being monitored...
+Aug 12 08:28:06 Tower upsmon[2074840]: UPS ups@127.0.0.1: calibration in progress
+Aug 12 08:28:11 Tower upsmon[2074840]: UPS ups@127.0.0.1: calibration finished
+Aug 12 08:28:11 Tower upsmon[2074840]: UPS ups@127.0.0.1 on line power
+Aug 12 08:28:11 Tower nut-notify[2075703]: is now handling ONLINE
+Aug 12 08:28:11 Tower nut-notify[2075703]: Terminating monitoring instances of the program...
+Aug 12 08:28:11 Tower nut-notify[2075703]: kill -s SIGTERM 2075310
+Aug 12 08:28:11 Tower nut-notify[2075703]: [ups] UPS is online, any planned shutdowns were cancelled.
+Aug 12 08:28:11 Tower nut-notify[2075703]: Executing user's hook script for ONLINE (as non-blocking)...
+Aug 12 08:28:11 Tower xnut-notify-hooks.sh[2075703]: ONLINE commands are now executing in background...
+Aug 12 08:28:11 Tower nut-notify[2075703]: Sending OS notifications...
+Aug 12 08:28:11 Tower nut-notify[2075310]: has received a termination signal
+Aug 12 08:28:11 Tower nut-notify[2075310]: is now exiting from handling ONBATT
+Aug 12 08:28:11 Tower nut-notify[2075703]: is now exiting from handling ONLINE
 </code></pre>
-<p>核对关键输出项是否生效：</p>
-<ul>
-<li><code>ups.status</code>: <code>OL</code></li>
-<li><code>input.sensitivity</code>: <code>low</code></li>
-</ul>
-<p>此时状态栏显示恢复正常，断电保护机制亦已配置完毕。</p>
+<p>市电正常（100% 满电）：<br />
+状态准确显示为干净的 On Line 或 Calibrating，不再弹出关机倒计时。</p>
+<p>真实断电（拔掉插头）：<br />
+底层 USB 重置机制会在 2~3 秒内将 input.voltage 强行刷为 0.0V，系统立刻准确捕获 ONBATT 信号，弹出通知并启动倒计时关机。</p>
+<p>市电恢复（重新插电）：<br />
+系统自动中断并取消关机进程，恢复常态监控。</p>
 
   </div>
 

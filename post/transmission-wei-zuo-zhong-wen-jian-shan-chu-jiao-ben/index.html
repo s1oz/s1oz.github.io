@@ -38,21 +38,26 @@
   })();
 </script>
   <meta name="generator" content="Gridea Pro 1.2.2">
-  <title>标签 | 杂乱的备忘录</title>
+  <title>Transmission 未做种文件删除脚本 | 杂乱的备忘录</title>
   
-<meta name="description" content="杂乱的备忘录">
-<link rel="canonical" href="https://s1oz.github.io/tags/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"杂乱的备忘录","url":"https://s1oz.github.io","description":"杂乱的备忘录","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://s1oz.github.io/search?q={search_term_string}"}}</script>
-<meta property="og:title" content="杂乱的备忘录">
-<meta property="og:description" content="杂乱的备忘录">
-<meta property="og:url" content="https://s1oz.github.io/tags/">
-<meta property="og:type" content="website">
+<meta property="og:title" content="Transmission 未做种文件删除脚本" />
+<meta property="og:type" content="article" />
+
+
+<meta name="description" content="PT 站做种久了，磁盘里总会多出一堆“幽灵文件” 种子下完了、做种也做够了，顺手把任务从列表里删掉。结果文件还静静躺在硬盘里，占着空间却没人管。时间一长，下载目录里堆满了这些“已经不在做种、但又没删干净”的文件。 手动一个个找太麻烦，尤其是种子多、目录深的时候，根本分不清哪些还在做种、哪些已经成了孤儿。 以前用nevinee/qbittorrent，有列出未做种文件删&amp;hellip;">
+<link rel="canonical" href="https://s1oz.github.io/post/transmission-wei-zuo-zhong-wen-jian-shan-chu-jiao-ben/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Transmission 未做种文件删除脚本","url":"https://s1oz.github.io/post/transmission-wei-zuo-zhong-wen-jian-shan-chu-jiao-ben/","description":"PT 站做种久了，磁盘里总会多出一堆“幽灵文件” 种子下完了、做种也做够了，顺手把任务从列表里删掉。结果文件还静静躺在硬盘里，占着空间却没人管。时间一长，下载目录里堆满了这些“已经不在做种、但又没删干净”的文件。 手动一个个找太麻烦，尤其是种子多、目录深的时候，根本分不清哪些还在做种、哪些已经成了孤儿。 以前用nevinee/qbittorrent，有列出未做种文件删\u0026hellip;","datePublished":"2026-08-19T13:22:36Z","dateModified":"2026-08-19T13:22:36Z","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/transmission-wei-zuo-zhong-wen-jian-shan-chu-jiao-ben/","name":"Transmission 未做种文件删除脚本","position":2}]}</script>
+<meta property="og:title" content="Transmission 未做种文件删除脚本">
+<meta property="og:description" content="PT 站做种久了，磁盘里总会多出一堆“幽灵文件” 种子下完了、做种也做够了，顺手把任务从列表里删掉。结果文件还静静躺在硬盘里，占着空间却没人管。时间一长，下载目录里堆满了这些“已经不在做种、但又没删干净”的文件。 手动一个个找太麻烦，尤其是种子多、目录深的时候，根本分不清哪些还在做种、哪些已经成了孤儿。 以前用nevinee/qbittorrent，有列出未做种文件删&amp;hellip;">
+<meta property="og:url" content="https://s1oz.github.io/post/transmission-wei-zuo-zhong-wen-jian-shan-chu-jiao-ben/">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="杂乱的备忘录">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://s1oz.github.io/tags/">
-<meta name="twitter:title" content="杂乱的备忘录">
-<meta name="twitter:description" content="杂乱的备忘录">
+<meta name="twitter:url" content="https://s1oz.github.io/post/transmission-wei-zuo-zhong-wen-jian-shan-chu-jiao-ben/">
+<meta name="twitter:title" content="Transmission 未做种文件删除脚本">
+<meta name="twitter:description" content="PT 站做种久了，磁盘里总会多出一堆“幽灵文件” 种子下完了、做种也做够了，顺手把任务从列表里删掉。结果文件还静静躺在硬盘里，占着空间却没人管。时间一长，下载目录里堆满了这些“已经不在做种、但又没删干净”的文件。 手动一个个找太麻烦，尤其是种子多、目录深的时候，根本分不清哪些还在做种、哪些已经成了孤儿。 以前用nevinee/qbittorrent，有列出未做种文件删&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#ffffff">
@@ -183,165 +188,172 @@
 
   <main class="site-main" role="main">
     
-<div class="container">
-  <div class="page-header">
-    <h1 class="page-title">标签</h1>
+<article class="article-container">
+  <header class="article-header">
+    <h1 class="article-title">Transmission 未做种文件删除脚本</h1>
+    <div class="article-meta">
+      
+      <span class="article-meta__item">2026-08-19</span>
+      
+      <span class="article-meta__sep">·</span>
+      <span class="article-meta__item">5 分钟阅读</span>
+      
+    </div>
     
-    <p class="page-subtitle meta-text">共 29 个标签</p>
+    <div class="article-header__tags">
+      
+      <a href="/tag/transmission/" class="tag-pill tag-pill--sm">Transmission</a>
+      
+    </div>
     
+  </header>
+
+  
+
+  <div class="article-content">
+    <p><strong>PT 站做种久了，磁盘里总会多出一堆“幽灵文件”</strong></p>
+<p>种子下完了、做种也做够了，顺手把任务从列表里删掉。结果文件还静静躺在硬盘里，占着空间却没人管。时间一长，下载目录里堆满了这些“已经不在做种、但又没删干净”的文件。</p>
+<p>手动一个个找太麻烦，尤其是种子多、目录深的时候，根本分不清哪些还在做种、哪些已经成了孤儿。</p>
+<p>以前用nevinee/qbittorrent，有列出未做种文件删除的功能，但是切到Transmission发现没有这个功能。</p>
+<p>自备python环境，我是Unraid直接插件安装python，插件autoexec.sh添加<code>pip3 install transmission-rpc</code>这样每次开机都会安装所需依赖。</p>
+<p>这两个脚本就是为了解决这个问题：</p>
+<p>Unraid直接<strong>User Scripts</strong>插件添加这两个脚本</p>
+<p><strong>脚本1</strong>会去问 Transmission：“你现在到底在做种哪些文件？”<br />
+然后把本地目录里的文件和它对比，找出那些“本地有、但 Transmission 已经不管了”的文件，生成一个清单。</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+Transmission 未做种文件检查脚本
+功能：对比本地目录和 Transmission 正在做种的文件，生成可编辑的删除列表
+&quot;&quot;&quot;
+
+from transmission_rpc import Client
+import os
+
+# ====== 配置区域（按需修改） ======
+HOST = &quot;127.0.0.1&quot;                          # Transmission RPC 地址，本机用 127.0.0.1
+PORT = 9091                                 # Transmission WebUI / RPC 端口
+USERNAME = &quot;None&quot;                             # 登录用户名，没有认证就保持 None
+PASSWORD = &quot;None&quot;                             # 登录密码，没有认证就保持 None
+DOWNLOAD_DIR = &quot;/mnt/library/pt&quot;            # 宿主机上的下载目录（对应容器内的 /pt）
+LIST_FILE = &quot;/mnt/library/pt/orphans_to_delete.txt&quot;  # 生成的未做种文件列表路径
+# ==================================
+
+client = Client(host=HOST, port=PORT, username=USERNAME, password=PASSWORD)
+
+# 收集 Transmission 当前管理的所有文件
+managed = set()
+for torrent in client.get_torrents(arguments=[&quot;downloadDir&quot;, &quot;files&quot;, &quot;priorities&quot;, &quot;wanted&quot;]):
+    # 把容器内路径 /pt 转换成宿主机路径
+    host_dir = torrent.download_dir.replace(&quot;/pt&quot;, DOWNLOAD_DIR, 1)
+    for f in torrent.get_files():
+        full_path = os.path.normpath(os.path.join(host_dir, f.name))
+        managed.add(full_path)
+
+# 收集本地下载目录里的所有文件
+local_files = set()
+for root, dirs, files in os.walk(DOWNLOAD_DIR):
+    for name in files:
+        full_path = os.path.normpath(os.path.join(root, name))
+        local_files.add(full_path)
+
+# 差集 = 本地有但 Transmission 不在做种的文件
+orphans = sorted(local_files - managed)
+
+# 写入列表文件
+with open(LIST_FILE, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    for p in orphans:
+        f.write(p + &quot;\n&quot;)
+
+print(f&quot;共发现 {len(orphans)} 个未做种文件&quot;)
+print(f&quot;列表已保存到：{LIST_FILE}&quot;)
+print(&quot;请用文本编辑器打开这个文件，删除你不想删除的行，保存后再运行删除脚本。&quot;)
+</code></pre>
+<p><strong>脚本2</strong>负责根据这份清单删除文件。<br />
+删除前你可以先打开清单，把不想删的行手动去掉，确认无误再执行，最大程度避免误删。</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+根据列表删除 Transmission 未做种文件
+使用前请先运行「01_生成未做种列表.py」，并手动检查 orphans_to_delete.txt
+&quot;&quot;&quot;
+
+import os
+
+# ====== 配置区域 ======
+LIST_FILE = &quot;/mnt/library/pt/orphans_to_delete.txt&quot;  # 上一步生成的列表文件
+# ======================
+
+if not os.path.exists(LIST_FILE):
+    print(f&quot;列表文件不存在：{LIST_FILE}&quot;)
+    print(&quot;请先运行「01_生成未做种列表.py」&quot;)
+    exit(1)
+
+with open(LIST_FILE, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    paths = [line.strip() for line in f if line.strip()]
+
+print(f&quot;准备删除 {len(paths)} 个文件...\n&quot;)
+
+deleted = 0
+failed = 0
+total_size = 0
+
+for p in paths:
+    if not os.path.exists(p):
+        print(f&quot;[跳过] 文件已不存在: {p}&quot;)
+        continue
+    try:
+        size = os.path.getsize(p)
+        os.remove(p)
+        print(f&quot;[已删除] {p}  ({size / 1024 / 1024:.1f} MB)&quot;)
+        deleted += 1
+        total_size += size
+    except Exception as e:
+        print(f&quot;[失败] {p}  → {e}&quot;)
+        failed += 1
+
+print(f&quot;\n完成！成功删除 {deleted} 个文件，失败 {failed} 个&quot;)
+print(f&quot;共释放空间：{total_size / 1024 / 1024 / 1024:.2f} GB&quot;)
+</code></pre>
+<hr />
+<p>效果很直接：</p>
+<ul>
+<li>快速清理不再做种的垃圾文件</li>
+<li>释放被白白占用的硬盘空间</li>
+<li>不需要一个个去翻文件夹</li>
+<li>全程可控，删之前可以自己把关</li>
+</ul>
+<p>简单说就是：让硬盘里只留下真正还在做种的文件，其余的该清理就清理。</p>
+
   </div>
 
   
-  <div class="tag-cloud">
+  <nav class="post-nav">
     
-    <a href="/tag/redroid/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">redroid</span>
-      <span class="tag-pill__count">1</span>
+    <a href="/post/docker-an-zhuang-emby-bing-bai-piao_20260707_094607/" class="post-nav-card post-nav-card--prev">
+      
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">上一篇</span>
+        <span class="post-nav-card__title">安装Emby并白嫖</span>
+      </div>
+      <span class="post-nav-card__arrow">&larr;</span>
     </a>
     
-    <a href="/tag/rsync/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">rsync</span>
-      <span class="tag-pill__count">1</span>
+    
+    <a href="/post/windowsindocker-zhi-tong-xian-qia-wang-qia_20260707_094616/" class="post-nav-card post-nav-card--next">
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">下一篇</span>
+        <span class="post-nav-card__title">WindowsinDocker直通显卡网卡</span>
+      </div>
+      
+      <span class="post-nav-card__arrow">&rarr;</span>
     </a>
     
-    <a href="/tag/hyperbackup/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">hyperbackup</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/unraid/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">unraid</span>
-      <span class="tag-pill__count">15</span>
-    </a>
-    
-    <a href="/tag/dsm/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">dsm</span>
-      <span class="tag-pill__count">4</span>
-    </a>
-    
-    <a href="/tag/synology/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">synology</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/bk650m2-ch/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">BK650M2-CH</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/bei-wang-lu/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">备忘录</span>
-      <span class="tag-pill__count">7</span>
-    </a>
-    
-    <a href="/tag/docker/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">docker</span>
-      <span class="tag-pill__count">5</span>
-    </a>
-    
-    <a href="/tag/git/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">git</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/nas/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">nas</span>
-      <span class="tag-pill__count">10</span>
-    </a>
-    
-    <a href="/tag/openwrt/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">openwrt</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/windows/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">windows</span>
-      <span class="tag-pill__count">2</span>
-    </a>
-    
-    <a href="/tag/tv/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">tv</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/valine/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">valine</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/rclone/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">rclone</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/emby/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">emby</span>
-      <span class="tag-pill__count">3</span>
-    </a>
-    
-    <a href="/tag/qb/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">qb</span>
-      <span class="tag-pill__count">2</span>
-    </a>
-    
-    <a href="/tag/transmission/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">Transmission</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/nginxproxymanager/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">nginxproxymanager</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/ikuai/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">ikuai</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/mermaid/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">mermaid</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/dns/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">dns</span>
-      <span class="tag-pill__count">2</span>
-    </a>
-    
-    <a href="/tag/shellclash/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">shellclash</span>
-      <span class="tag-pill__count">2</span>
-    </a>
-    
-    <a href="/tag/npm/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">npm</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/fan-xiang-dai-li/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">反向代理</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/clash/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">clash</span>
-      <span class="tag-pill__count">2</span>
-    </a>
-    
-    <a href="/tag/hk-q1/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">hk-q1</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-    <a href="/tag/gridaea/" class="tag-pill tag-pill--lg">
-      <span class="tag-pill__name">gridaea</span>
-      <span class="tag-pill__count">1</span>
-    </a>
-    
-  </div>
+  </nav>
+
   
-</div>
+  
+
+
+</article>
 
   </main>
 

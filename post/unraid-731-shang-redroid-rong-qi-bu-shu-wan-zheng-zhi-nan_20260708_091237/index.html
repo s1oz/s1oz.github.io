@@ -46,7 +46,7 @@
 
 <meta name="description" content=":pushpin: 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/p...">
 <link rel="canonical" href="https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":":pushpin: 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/p...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-09-22T09:28:17+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unraid 7.3.1 上 Redroid 容器部署完整指南","url":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","description":":pushpin: 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/p...","datePublished":"2026-07-07T08:46:45+08:00","dateModified":"2026-09-22T09:34:53+08:00","author":{"@type":"Person","name":"杂乱的备忘录"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"杂乱的备忘录"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://s1oz.github.io","name":"杂乱的备忘录","position":1},{"@type":"ListItem","item":"https://s1oz.github.io/post/unraid-731-shang-redroid-rong-qi-bu-shu-wan-zheng-zhi-nan_20260708_091237/","name":"Unraid 7.3.1 上 Redroid 容器部署完整指南","position":2}]}</script>
 <meta property="og:title" content="Unraid 7.3.1 上 Redroid 容器部署完整指南">
 <meta property="og:description" content=":pushpin: 环境准备 在 Unraid 7.3.1 版本上实践，无需任何额外修改和安装插件，默认内核已集成相关依赖。 只需要在 Boot Parameters → Custom Parameters 的 Add Custom Parameter 添加 psi=1，然后保存重启即可激活所有环境。 root@Tower:~# cat /proc/p...">
@@ -443,7 +443,9 @@ EOF
 
 chmod 755 service.sh
 </code></pre>
-<p><span style="color: #e68a00; font-size: 13px">虚拟触摸屏（精灵/无障碍注入）模块</span></p>
+<h2 id="span-stylecolor-000000-font-size-22pxspan"><span style="color: #000000; font-size: 22px">虚拟触摸屏（精灵/无障碍注入）模块</span></h2>
+<p><a href="https://github.com/s1oz/s1oz.github.io/blob/main/post-images/1790040434634806300_0.jpg">https://github.com/s1oz/s1oz.github.io/blob/main/post-images/1790040434634806300_0.jpg</a></p>
+<p>下载后后缀改为zip,放入magisk中安装即可</p>
 <img src="/post-images/1790040366033611100_0.jpg" alt="" width="574">
 <p><img src="/post-images/1790040434634806300_0.jpg" alt="" /></p>
 <h2 id="computer-">:computer: 客户端连接工具</h2>
@@ -534,7 +536,7 @@ chmod 755 service.sh
 <td align="left">交互 / 确认点击</td>
 </tr>
 <tr>
-<td align="left">```（反引号） | 切换映射开关     |</td>
+<td align="left">```（反引号） | 切换映射开关 |   |</td>
 <td></td>
 </tr>
 </tbody>
